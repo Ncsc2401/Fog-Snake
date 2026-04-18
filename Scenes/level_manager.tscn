@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dwn7uxum6e14p"]
+
+[ext_resource type="Script" uid="uid://dxcjy4vtefdug" path="res://Scripts/level_manager.gd" id="1_83v1d"]
+[ext_resource type="Resource" uid="uid://bvxs8h3uh14q4" path="res://LevelData/Level1.tres" id="2_q361b"]
+
+[node name="LevelManager" type="Node2D" unique_id=1303606008]
+script = ExtResource("1_83v1d")
+initial_board = ExtResource("2_q361b")

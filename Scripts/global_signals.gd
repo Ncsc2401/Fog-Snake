@@ -3,12 +3,12 @@ extends Node
 ## Emitted every x time amount (see GlobalSignals tick time)
 signal Tick
 ## Emitted everytime a fruit is eaten
-signal FruitWasEaten
+signal FruitWasEaten(where : Vector2i)
 
 ## Total ticks
 var tick = 0;
 ## Seconds for each tick
-var tick_time = 0.1;
+var tick_time = 0.25;
 ## Time in seconds, resets every tick
 var time = 0;
 

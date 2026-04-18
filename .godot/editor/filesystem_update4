@@ -1,0 +1,15 @@
+res://Scenes/UI/in_game_menu.tscn
+res://Scripts/in_game_menu.gd
+res://Scenes/UI/game_over_menu.gd
+res://Scenes/UI/game_over_menu.tscn
+res://Scenes/game.tscn
+res://Scripts/snake.gd
+res://Scripts/game.gd
+res://Scripts/fruit_spawner.gd
+res://Scripts/game_over_menu.gd
+res://Scripts/scene_manager.gd
+res://Scripts/game_state.gd
+res://Scenes/main_menu.tscn
+res://Scripts/main_menu.gd
+res://Scripts/global_signals.gd
+res://Scripts/board_generator.gd

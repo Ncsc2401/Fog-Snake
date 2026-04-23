@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://dml3k3wo7t65l"]
+
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_amgy1"]
+[ext_resource type="PackedScene" uid="uid://cmwquxkvye4yv" path="res://Levels/maze_1.tscn" id="1_q5vsi"]
+
+[resource]
+script = ExtResource("1_amgy1")
+pos = Vector2i(-2, -3)
+id = 9
+save_name = "maze"
+level_name = "Maze"
+objecive = "Reach the end"
+level_scene = ExtResource("1_q5vsi")
+level_type = 3
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

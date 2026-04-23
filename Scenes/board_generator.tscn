@@ -1,9 +1,0 @@
-[gd_scene format=3 uid="uid://q3a4myk0q4lh"]
-
-[ext_resource type="Script" uid="uid://bwjmk56fgocku" path="res://Scripts/board_generator.gd" id="1_pw70r"]
-
-[node name="BoardGenerator" type="Node2D" unique_id=176163980 node_paths=PackedStringArray("board_area_layer", "background_layer", "wall_layer")]
-script = ExtResource("1_pw70r")
-board_area_layer = NodePath("")
-background_layer = NodePath("")
-wall_layer = NodePath("")

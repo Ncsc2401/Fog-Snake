@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://d0w32l8vqyjxf"]
+
+[ext_resource type="PackedScene" uid="uid://5a3nc72f8a1c" path="res://Levels/level_3.tscn" id="1_ajy35"]
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_v1rty"]
+[ext_resource type="Resource" uid="uid://dlf20rhfwpvks" path="res://LevelMapData/bonus_1.tres" id="1_vpfx1"]
+[ext_resource type="Resource" uid="uid://bi0ws8oxu55ya" path="res://LevelMapData/level_4.tres" id="3_q1w8t"]
+
+[resource]
+script = ExtResource("1_v1rty")
+pos = Vector2i(0, -2)
+id = 2
+save_name = "level_3"
+level_name = "Don't eat too much"
+objecive = "Get 20 points"
+level_scene = ExtResource("1_ajy35")
+left_level = ExtResource("1_vpfx1")
+up_level = ExtResource("3_q1w8t")
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

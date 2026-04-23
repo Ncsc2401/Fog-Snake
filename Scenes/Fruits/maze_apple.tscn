@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://cs4dlelyisc3y"]
+
+[ext_resource type="Script" uid="uid://dwrs4xtbqn8me" path="res://Scripts/Fruits/maze_apple.gd" id="1_ogesx"]
+[ext_resource type="Texture2D" uid="uid://dxsggfsa4x2cr" path="res://Assets/Sprites/Apple.png" id="2_cj4yy"]
+
+[node name="MazeApple" type="Node2D" unique_id=1201037746]
+script = ExtResource("1_ogesx")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1598342338]
+texture = ExtResource("2_cj4yy")

@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://4jcmt2xtqngq"]
+
+[ext_resource type="Texture2D" uid="uid://6i2yddtlvvp" path="res://Assets/UI/Checkbox.png" id="1_kkhx6"]
+
+[resource]
+atlas = ExtResource("1_kkhx6")
+region = Rect2(0, 0, 32, 32)

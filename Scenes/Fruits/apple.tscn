@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://48om1rvld52o"]
+
+[ext_resource type="Script" uid="uid://cmtptnipp7508" path="res://Scripts/Fruits/apple.gd" id="1_ir1en"]
+[ext_resource type="Texture2D" uid="uid://dxsggfsa4x2cr" path="res://Assets/Sprites/Apple.png" id="1_v3gsn"]
+[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Fruits/fruit_resource.gd" id="2_8gwai"]
+
+[sub_resource type="Resource" id="Resource_lyte0"]
+script = ExtResource("2_8gwai")
+fruit_name = "Apple"
+points = 1
+size_increase = 1
+metadata/_custom_type_script = "uid://cn37grwtxs5jy"
+
+[node name="Apple" type="Node2D" unique_id=1589894860]
+script = ExtResource("1_ir1en")
+fruit_resource = SubResource("Resource_lyte0")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1963994021]
+texture = ExtResource("1_v3gsn")

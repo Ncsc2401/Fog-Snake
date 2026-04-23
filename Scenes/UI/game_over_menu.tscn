@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://civhkml0xs3an"]
 
-[ext_resource type="Script" uid="uid://dl66saaje8omr" path="res://Scripts/game_over_menu.gd" id="1_xqyep"]
+[ext_resource type="Theme" uid="uid://drnrqrrtdyfbm" path="res://Assets/UI/UiTheme.tres" id="1_7hu81"]
+[ext_resource type="Script" uid="uid://dl66saaje8omr" path="res://Scripts/Menu/game_over_menu.gd" id="1_xqyep"]
 
 [node name="GameOverMenu" type="Control" unique_id=1624511320]
 process_mode = 3
@@ -10,43 +11,44 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_7hu81")
 script = ExtResource("1_xqyep")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=94255166]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = -103.0
-offset_right = 110.0
-offset_bottom = 37.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=2031916307]
+layout_mode = 0
+offset_top = 427.0
+offset_right = 271.85715
+offset_bottom = 600.0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=134408517]
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer2" unique_id=94255166]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer2/PanelContainer" unique_id=134408517]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=880810108]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2/PanelContainer/MarginContainer" unique_id=880810108]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="PlayAgainButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1562603912]
+[node name="PlayAgainButton" type="Button" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=1562603912]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Try Again"
 
-[node name="ReturnToMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1009478208]
+[node name="ReturnToMapButton" type="Button" parent="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer" unique_id=1009478208]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Return to Main Menu"
+text = "Return to Map
+"
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/PlayAgainButton" to="." method="_on_play_again_button_pressed"]
+[connection signal="pressed" from="MarginContainer2/PanelContainer/MarginContainer/VBoxContainer/ReturnToMapButton" to="." method="_on_return_to_map_button_pressed"]

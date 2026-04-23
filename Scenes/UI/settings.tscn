@@ -1,0 +1,138 @@
+[gd_scene format=3 uid="uid://dril7j6uyjipr"]
+
+[ext_resource type="Theme" uid="uid://drnrqrrtdyfbm" path="res://Assets/UI/UiTheme.tres" id="1_owiy1"]
+[ext_resource type="Script" uid="uid://d3aewrktk238o" path="res://Scripts/settings_ui.gd" id="2_ma1v7"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ce3w2"]
+line_spacing = 12.0
+font_size = 48
+
+[sub_resource type="LabelSettings" id="LabelSettings_1ehe0"]
+font_size = 32
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_48xlc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_1ehe0"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ce3w2"]
+
+[node name="SettingsUI" type="Control" unique_id=894190909]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_owiy1")
+script = ExtResource("2_ma1v7")
+metadata/_edit_use_anchors_ = true
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=973600852]
+layout_mode = 0
+offset_left = 287.0
+offset_top = 45.0
+offset_right = 739.0
+offset_bottom = 555.0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1391676103]
+layout_mode = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 40
+
+[node name="ScrollContainer" type="ScrollContainer" parent="PanelContainer/MarginContainer" unique_id=358458382]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer" unique_id=259027295]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 40
+alignment = 1
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=473883482]
+layout_mode = 2
+text = "Config"
+label_settings = SubResource("LabelSettings_ce3w2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MusicVolume" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=501598052]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/MusicVolume" unique_id=542064085]
+layout_mode = 2
+text = "Music Volume"
+label_settings = SubResource("LabelSettings_1ehe0")
+horizontal_alignment = 1
+
+[node name="MusicSlider" type="HSlider" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/MusicVolume" unique_id=900222770]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.001
+
+[node name="SoundEffectsVolume" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=849199934]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/SoundEffectsVolume" unique_id=1145246186]
+layout_mode = 2
+text = "Sound effect Volume"
+label_settings = SubResource("LabelSettings_1ehe0")
+horizontal_alignment = 1
+
+[node name="SoundEffectsSlider" type="HSlider" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/SoundEffectsVolume" unique_id=1541753462]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.001
+
+[node name="AmbianceVolume" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1148798956]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/AmbianceVolume" unique_id=97137755]
+layout_mode = 2
+text = "Ambiance volume"
+label_settings = SubResource("LabelSettings_1ehe0")
+horizontal_alignment = 1
+
+[node name="AmbianceSlider" type="HSlider" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/AmbianceVolume" unique_id=103350489]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.001
+
+[node name="Jumpscares" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=496250931]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Jumpscares" unique_id=960683401]
+layout_mode = 2
+text = "Jumpscares"
+label_settings = SubResource("LabelSettings_1ehe0")
+horizontal_alignment = 1
+
+[node name="JumpscareCheckbox" type="CheckBox" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Jumpscares" unique_id=786623827]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_48xlc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1ehe0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ce3w2")
+
+[connection signal="drag_ended" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/MusicVolume/MusicSlider" to="." method="_on_music_slider_drag_ended"]
+[connection signal="drag_ended" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/SoundEffectsVolume/SoundEffectsSlider" to="." method="_on_sound_effects_slider_drag_ended"]
+[connection signal="drag_ended" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/AmbianceVolume/AmbianceSlider" to="." method="_on_ambiance_slider_drag_ended"]
+[connection signal="pressed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Jumpscares/JumpscareCheckbox" to="." method="_on_jumpscare_checkbox_pressed"]

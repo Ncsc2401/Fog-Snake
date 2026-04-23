@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://c0rqbb431ixkx"]
+
+[ext_resource type="Script" uid="uid://c3yiyofv8fefw" path="res://Scripts/Map/map_level_bridge.gd" id="1_tdgwt"]
+
+[node name="MapLevelBridge" type="Line2D" unique_id=397977445]
+script = ExtResource("1_tdgwt")

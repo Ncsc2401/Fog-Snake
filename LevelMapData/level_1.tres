@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://c4l8a2mqx2hed"]
+
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_60qn7"]
+[ext_resource type="PackedScene" uid="uid://cfvp68lnbbqy" path="res://Levels/level_1.tscn" id="1_yg521"]
+[ext_resource type="Resource" uid="uid://yr0wpex5mi45" path="res://LevelMapData/level_2.tres" id="3_45hmn"]
+
+[resource]
+script = ExtResource("1_60qn7")
+id = 0
+save_name = "level_1"
+level_name = "First look"
+objecive = "Get 15 points"
+level_scene = ExtResource("1_yg521")
+up_level = ExtResource("3_45hmn")
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

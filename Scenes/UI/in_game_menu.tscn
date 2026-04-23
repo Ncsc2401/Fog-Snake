@@ -1,6 +1,8 @@
 [gd_scene format=3 uid="uid://c0ab63kyjl08a"]
 
-[ext_resource type="Script" uid="uid://635ojtpq4pkw" path="res://Scripts/in_game_menu.gd" id="1_383cv"]
+[ext_resource type="Theme" uid="uid://drnrqrrtdyfbm" path="res://Assets/UI/UiTheme.tres" id="1_1q72q"]
+[ext_resource type="Script" uid="uid://635ojtpq4pkw" path="res://Scripts/Menu/in_game_menu.gd" id="1_383cv"]
+[ext_resource type="PackedScene" uid="uid://dril7j6uyjipr" path="res://Scenes/UI/settings.tscn" id="3_gap67"]
 
 [node name="InGameMenu" type="Control" unique_id=91715939]
 process_mode = 3
@@ -10,49 +12,68 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_1q72q")
 script = ExtResource("1_383cv")
 
-[node name="PanelContainer" type="PanelContainer" parent="." unique_id=344382589]
+[node name="SettingsUI" parent="." unique_id=894190909 instance=ExtResource("3_gap67")]
+visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -110.0
-offset_top = -138.0
-offset_right = 110.0
-offset_bottom = 72.0
-grow_horizontal = 2
-grow_vertical = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer" unique_id=1997154386]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=967260716]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -294.0
+offset_right = 226.0
+grow_vertical = 0
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer" unique_id=2143154465]
+layout_mode = 2
+theme_override_constants/separation = 15
+
+[node name="LevelObjective" type="Label" parent="MarginContainer/VBoxContainer" unique_id=1412100896]
+layout_mode = 2
+size_flags_vertical = 6
+size_flags_stretch_ratio = 0.18
+text = "Objective"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer/VBoxContainer" unique_id=344382589]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/PanelContainer" unique_id=1997154386]
 layout_mode = 2
 theme_override_constants/margin_left = 10
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer" unique_id=1568357097]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer" unique_id=1568357097]
 layout_mode = 2
 theme_override_constants/separation = 20
 alignment = 1
 
-[node name="ResumeButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1314669019]
+[node name="ResumeButton" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1314669019]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Resume"
 
-[node name="SettingsButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=1894348769]
+[node name="SettingsButton" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=1894348769]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 text = "Settings"
 
-[node name="ReturnToMenuButton" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer" unique_id=940514499]
+[node name="ReturnToMap" type="Button" parent="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=940514499]
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-text = "Return to Main Menu"
+text = "Return to Map"
 
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
-[connection signal="pressed" from="PanelContainer/MarginContainer/VBoxContainer/ReturnToMenuButton" to="." method="_on_return_to_menu_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/ReturnToMap" to="." method="_on_return_to_map_pressed"]

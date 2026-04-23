@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://byayy2c7usui5"]
+
+[ext_resource type="Script" uid="uid://cjcyjeagklgt2" path="res://Scripts/Fruits/ice_cream.gd" id="1_avo7p"]
+[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Fruits/fruit_resource.gd" id="2_tb3jq"]
+[ext_resource type="Texture2D" uid="uid://c3mmoykijys55" path="res://Assets/Sprites/IceCream.png" id="3_l5day"]
+
+[sub_resource type="Resource" id="Resource_l5day"]
+script = ExtResource("2_tb3jq")
+fruit_name = "Ice Cream"
+points = 5
+size_increase = 2
+metadata/_custom_type_script = "uid://cn37grwtxs5jy"
+
+[node name="IceCream" type="Node2D" unique_id=1918213427]
+script = ExtResource("1_avo7p")
+fruit_resource = SubResource("Resource_l5day")
+fruit_tick_time = 6
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1009001151]
+texture = ExtResource("3_l5day")

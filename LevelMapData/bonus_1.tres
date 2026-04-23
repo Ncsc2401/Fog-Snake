@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://dlf20rhfwpvks"]
+
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_6eg84"]
+[ext_resource type="PackedScene" uid="uid://tbsnr6ej7fk3" path="res://Levels/bonus_1.tscn" id="1_sq2d7"]
+
+[resource]
+script = ExtResource("1_6eg84")
+pos = Vector2i(-1, -2)
+id = 5
+save_name = "bonus_1"
+level_name = "Endurance Test"
+objecive = "Fill the whole board"
+level_scene = ExtResource("1_sq2d7")
+level_type = 2
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://qt6chxjqysxc"]
+
+[ext_resource type="Theme" uid="uid://drnrqrrtdyfbm" path="res://Assets/UI/UiTheme.tres" id="1_4i75g"]
+[ext_resource type="Script" uid="uid://12iwtumyjc8d" path="res://Scripts/Menu/score.gd" id="2_dnb5v"]
+
+[node name="Score" type="Control" unique_id=56910234]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme = ExtResource("1_4i75g")
+script = ExtResource("2_dnb5v")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=323797907]
+layout_mode = 0
+offset_right = 139.0
+offset_bottom = 89.0
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1434022859]
+layout_mode = 2
+size_flags_vertical = 1
+text = "0 Points"

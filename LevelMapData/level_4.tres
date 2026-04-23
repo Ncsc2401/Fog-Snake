@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://bi0ws8oxu55ya"]
+
+[ext_resource type="PackedScene" uid="uid://doermm7td400b" path="res://Levels/level_4.tscn" id="1_3aatn"]
+[ext_resource type="Resource" uid="uid://0vrcyjd4al1e" path="res://LevelMapData/bonus_2.tres" id="1_b7gvf"]
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_itirl"]
+[ext_resource type="Resource" uid="uid://we2runfuge2s" path="res://LevelMapData/level_5.tres" id="4_sls2x"]
+
+[resource]
+script = ExtResource("1_itirl")
+pos = Vector2i(0, -3)
+id = 4
+save_name = "level_4"
+level_name = "Fruit Salad"
+objecive = "Get 35 points"
+level_scene = ExtResource("1_3aatn")
+left_level = ExtResource("1_b7gvf")
+up_level = ExtResource("4_sls2x")
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

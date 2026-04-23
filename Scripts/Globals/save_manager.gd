@@ -1,0 +1,189 @@
+extends Node
+
+const SAVE_LEVELS_PATH = "user://save/levels/"
+const SAVE_SETTINGS_PATH = "user://save/"
+const SETTINGS_FILE_NAME = "settings"
+
+var current_settings : SettingsData;
+var current_level : MapLevelData;
+
+var last_focused_level_pos : Vector2i;
+
+func _init() -> void:
+	current_level = MapLevelData.new()
+	
+	current_level.objecive = "NULL"
+	current_level.level_name = "NULL"
+	
+	load_settings()
+	apply_settings()
+
+## Creates a new map level save
+func create_map_level_save(save_name : String):
+	if !DirAccess.dir_exists_absolute(SAVE_LEVELS_PATH):
+		DirAccess.make_dir_recursive_absolute(SAVE_LEVELS_PATH)
+	
+	var level_save_path = SAVE_LEVELS_PATH + save_name;
+	var level_save = FileAccess.open(level_save_path, FileAccess.WRITE)
+	
+	var unlocked = false;
+	var least_time = -1;
+	var max_points = -1;
+	var max_size = -1;
+	
+	level_save.store_var(unlocked);
+	level_save.store_var(least_time);
+	level_save.store_var(max_points);
+	level_save.store_var(max_size);
+	
+	level_save.close()
+
+## Updates an already existing save
+func update_map_level_save(save_name : String, new_data : MapLevelSaveableData):
+	if !DirAccess.dir_exists_absolute(SAVE_LEVELS_PATH):
+		DirAccess.make_dir_recursive_absolute(SAVE_LEVELS_PATH)
+	
+	var level_save_path = SAVE_LEVELS_PATH + save_name;
+	
+	var current_data = get_map_level_save(save_name);
+	var level_save = FileAccess.open(level_save_path, FileAccess.WRITE)
+	
+	level_save.store_var(new_data.unlocked);
+	
+	if new_data.least_time < current_data.least_time || current_data.least_time == -1:
+		level_save.store_var(new_data.least_time);
+	else:
+		level_save.store_var(current_data.least_time);
+	
+	if new_data.max_points > current_data.max_points || current_data.max_points == -1:
+		level_save.store_var(new_data.max_points);
+	else:
+		level_save.store_var(current_data.max_points);
+	
+	if new_data.max_size > current_data.max_size || current_data.max_size == -1:
+		level_save.store_var(new_data.max_size);
+	else:
+		level_save.store_var(current_data.max_size);
+	
+	level_save.close()
+
+## Update the current level save
+func update_current_map_level_save(new_data : MapLevelSaveableData):
+	update_map_level_save(current_level.save_name, new_data);
+
+## Unlocks a level
+func unlock_level(save_name : String):
+	var data = get_map_level_save(save_name);
+	
+	var new_data = MapLevelSaveableData.new()
+	
+	new_data.unlocked = true;
+	new_data.max_points = data.max_points
+	new_data.max_size = data.max_size
+	new_data.least_time = data.least_time;
+
+	update_map_level_save(save_name, new_data);
+
+## Unlocks all surrounding levels
+func unlock_current_surrounding_levels():
+	var around_levels : Array[MapLevelData] = [
+		current_level.down_level,
+		current_level.left_level,
+		current_level.up_level,
+		current_level.right_level
+	]
+		
+	for level in around_levels:
+		if level == null:
+			continue
+		unlock_level(level.save_name)
+
+## Returns a level save
+func get_map_level_save(save_name : String):
+	var data = MapLevelSaveableData.new();
+	
+	var level_save_path = SAVE_LEVELS_PATH + save_name;
+	
+	if !FileAccess.file_exists(level_save_path):
+		create_map_level_save(save_name);
+	
+	var save = FileAccess.open(level_save_path, FileAccess.READ)
+	data.unlocked = save.get_var();
+	data.least_time = save.get_var();
+	data.max_points = save.get_var();
+	data.max_size = save.get_var();
+	
+	save.close();
+	
+	return data;
+
+## Delete all saves
+func wipe_save():
+	var dir = DirAccess.open(SAVE_LEVELS_PATH)
+	for file in dir.get_files():
+		dir.remove(file)
+
+func save_settings(settings_data : SettingsData):
+	if !DirAccess.dir_exists_absolute(SAVE_SETTINGS_PATH):
+		DirAccess.make_dir_recursive_absolute(SAVE_SETTINGS_PATH)
+	
+	var settings_file_path = SAVE_SETTINGS_PATH + SETTINGS_FILE_NAME;
+	var settings_file = FileAccess.open(settings_file_path, FileAccess.WRITE);
+	
+	settings_file.store_var(settings_data.music_volume);
+	settings_file.store_var(settings_data.sound_effects_volume);
+	settings_file.store_var(settings_data.ambiance_volume)
+	settings_file.store_var(settings_data.jumpscares);
+	
+	current_settings = settings_data
+	apply_settings()
+
+func save_settings_field(new_value, field : SettingsData.SettingsFields):
+	match field:
+		SettingsData.SettingsFields.MUSIC_VOLUME:
+			current_settings.music_volume = new_value;
+		SettingsData.SettingsFields.SOUND_EFFECTS_VOLUME:
+			current_settings.sound_effects_volume = new_value;
+		SettingsData.SettingsFields.AMBIANCE_VOLUME:
+			current_settings.ambiance_volume = new_value;
+		SettingsData.SettingsFields.JUMPSCARES:
+			current_settings.jumpscares = new_value;
+	
+	save_settings(current_settings);
+
+func load_settings():
+	var settings_file_path = SAVE_SETTINGS_PATH + SETTINGS_FILE_NAME;
+	var settings_data = SettingsData.new();
+	
+	if FileAccess.file_exists(settings_file_path):
+		var settings_file = FileAccess.open(settings_file_path, FileAccess.READ);
+		
+		settings_data.music_volume = settings_file.get_var();
+		settings_data.sound_effects_volume = settings_file.get_var();
+		settings_data.ambiance_volume = settings_file.get_var();
+		settings_data.jumpscares = settings_file.get_var();
+		
+		settings_file.close();
+	
+	else:
+		settings_data.music_volume = 0.5;
+		settings_data.sound_effects_volume = 0.5;
+		settings_data.jumpscares = true;
+	
+	current_settings = settings_data;
+
+func apply_settings():
+	AudioServer.set_bus_volume_db(
+		AudioServer.get_bus_index("Music"),
+		linear_to_db(current_settings.music_volume)
+	)
+	
+	AudioServer.set_bus_volume_db(
+		AudioServer.get_bus_index("Sound Effects"),
+		linear_to_db(current_settings.sound_effects_volume)
+	)
+	
+	AudioServer.set_bus_volume_db(
+		AudioServer.get_bus_index("Ambiance"),
+		linear_to_db(current_settings.ambiance_volume)
+	)

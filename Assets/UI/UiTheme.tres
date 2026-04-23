@@ -1,0 +1,45 @@
+[gd_resource type="Theme" format=3 uid="uid://drnrqrrtdyfbm"]
+
+[ext_resource type="FontFile" uid="uid://v3gg8maxne5i" path="res://Assets/Fonts/Magero.ttf" id="1_jo010"]
+[ext_resource type="Texture2D" uid="uid://dnsqbdwh8qwkk" path="res://Assets/UI/checkbox_checked.tres" id="2_y17es"]
+[ext_resource type="Texture2D" uid="uid://4jcmt2xtqngq" path="res://Assets/UI/checkbox_unchecked.tres" id="3_u0ca8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c2oa"]
+bg_color = Color(1.2513996e-06, 0.35474643, 0.39326134, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6q3n4"]
+bg_color = Color(0, 0.40392157, 0.44705883, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olcgw"]
+bg_color = Color(5.7756904e-07, 0.3217123, 0.35792598, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_np2xp"]
+bg_color = Color(0, 0.14166495, 0.24203786, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[resource]
+Button/fonts/font = ExtResource("1_jo010")
+Button/styles/hover = SubResource("StyleBoxFlat_4c2oa")
+Button/styles/normal = SubResource("StyleBoxFlat_6q3n4")
+Button/styles/pressed = SubResource("StyleBoxFlat_olcgw")
+CheckBox/icons/checked = ExtResource("2_y17es")
+CheckBox/icons/unchecked = ExtResource("3_u0ca8")
+Label/font_sizes/font_size = 24
+Label/fonts/font = ExtResource("1_jo010")
+Panel/styles/panel = SubResource("StyleBoxFlat_np2xp")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_np2xp")

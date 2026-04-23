@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://cle4ltcinb83c"]
+
+[ext_resource type="PackedScene" uid="uid://c6tjqb06dm71p" path="res://Levels/bonus_3.tscn" id="1_aor70"]
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_mdfaf"]
+[ext_resource type="Resource" uid="uid://m1wtro63vs3y" path="res://LevelMapData/secret_1.tres" id="2_uivcx"]
+
+[resource]
+script = ExtResource("1_mdfaf")
+pos = Vector2i(1, -4)
+id = 8
+save_name = "bonus_3"
+level_name = "To be annoyed"
+objecive = "Get 100 points"
+level_scene = ExtResource("1_aor70")
+level_type = 2
+right_level = ExtResource("2_uivcx")
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

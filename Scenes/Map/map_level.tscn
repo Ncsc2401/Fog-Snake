@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://choe75140jiq0"]
+
+[ext_resource type="Script" uid="uid://rkklbak0c0uu" path="res://Scripts/Map/map_level.gd" id="1_xbxjm"]
+[ext_resource type="Texture2D" uid="uid://dp8p6vthbrpei" path="res://Assets/Sprites/LevelMapSprites/NormalLevelSprite.tres" id="2_xbxjm"]
+
+[node name="MapLevel" type="Node2D" unique_id=80277886]
+script = ExtResource("1_xbxjm")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1139373573]
+texture = ExtResource("2_xbxjm")

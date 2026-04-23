@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://h3t2dvc0174k"]
+
+[ext_resource type="Script" uid="uid://br32ucer5p4rh" path="res://Scripts/Fruits/watermelon.gd" id="1_fwu0d"]
+[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Fruits/fruit_resource.gd" id="2_eewg5"]
+[ext_resource type="Texture2D" uid="uid://ddyylrer4rdo7" path="res://Assets/Sprites/Watermeon.png" id="3_jhtj6"]
+
+[sub_resource type="Resource" id="Resource_jhtj6"]
+script = ExtResource("2_eewg5")
+fruit_name = "Watermelon"
+points = 2
+size_increase = 5
+metadata/_custom_type_script = "uid://cn37grwtxs5jy"
+
+[node name="Watermelon" type="Node2D" unique_id=565065116]
+script = ExtResource("1_fwu0d")
+fruit_resource = SubResource("Resource_jhtj6")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1604238107]
+texture = ExtResource("3_jhtj6")

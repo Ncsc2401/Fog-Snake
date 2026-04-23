@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://p5d6nykafa2t"]
+
+[ext_resource type="Script" uid="uid://bkj3fwj4nbdkq" path="res://Scripts/Fruits/star_fruit.gd" id="1_30njs"]
+[ext_resource type="Texture2D" uid="uid://cguarjnsylvjx" path="res://Assets/Sprites/StartFruit.png" id="1_u3ljt"]
+[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Fruits/fruit_resource.gd" id="2_sdp74"]
+
+[sub_resource type="Resource" id="Resource_eo6dd"]
+script = ExtResource("2_sdp74")
+fruit_name = "Star Fruit"
+points = 3
+size_increase = 1
+metadata/_custom_type_script = "uid://cn37grwtxs5jy"
+
+[node name="StarFruit" type="Node2D" unique_id=772311244]
+script = ExtResource("1_30njs")
+fruit_resource = SubResource("Resource_eo6dd")
+fruit_tick_time = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1929351087]
+texture = ExtResource("1_u3ljt")

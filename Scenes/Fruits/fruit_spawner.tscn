@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dr5ov7u4kbfv7"]
+
+[ext_resource type="Script" uid="uid://dcfcvy515dqyo" path="res://Scripts/Fruits/fruit_spawner.gd" id="1_5mj3p"]
+[ext_resource type="Texture2D" uid="uid://ccgunoxtja1rg" path="res://Assets/Sprites/AppleTemplate.png" id="2_l4haa"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1phco"]
+texture = ExtResource("2_l4haa")
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_00tp4"]
+sources/0 = SubResource("TileSetAtlasSource_1phco")
+
+[node name="FruitSpawner" type="Node2D" unique_id=874991722]
+script = ExtResource("1_5mj3p")
+
+[node name="FruitLayer" type="TileMapLayer" parent="." unique_id=1547111378]
+scale = Vector2(2, 2)
+tile_set = SubResource("TileSet_00tp4")

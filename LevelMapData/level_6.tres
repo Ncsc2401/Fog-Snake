@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://dx6uyfft0y8up"]
+
+[ext_resource type="PackedScene" uid="uid://65twmtapa2wa" path="res://Levels/level_6.tscn" id="1_a7frq"]
+[ext_resource type="Resource" uid="uid://d246uwwrbqdj8" path="res://LevelMapData/challenge_1.tres" id="1_foc2r"]
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_i0ey1"]
+
+[resource]
+script = ExtResource("1_i0ey1")
+pos = Vector2i(0, -5)
+id = 8
+save_name = "level_6"
+level_name = "Damn bugs"
+objecive = "Get 15 points"
+level_scene = ExtResource("1_a7frq")
+left_level = ExtResource("1_foc2r")
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

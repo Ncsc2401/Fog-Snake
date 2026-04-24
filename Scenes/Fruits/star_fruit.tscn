@@ -12,6 +12,7 @@ size_increase = 1
 metadata/_custom_type_script = "uid://cn37grwtxs5jy"
 
 [node name="StarFruit" type="Node2D" unique_id=772311244]
+z_index = 6
 script = ExtResource("1_30njs")
 fruit_resource = SubResource("Resource_eo6dd")
 fruit_tick_time = 3

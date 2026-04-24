@@ -11,6 +11,8 @@
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="7_2mgoq"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="8_uhnj4"]
 [ext_resource type="Resource" uid="uid://dhyn2mxwoo1p5" path="res://BoardData/Level2.tres" id="9_1soli"]
+[ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="10_lmqi1"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="11_5yfph"]
 [ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="12_4pbjs"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lmqi1"]
@@ -41,6 +43,11 @@ script = ExtResource("4_u40f0")
 spawn_table = Array[ExtResource("5_0x4y1")]([SubResource("Resource_4pbjs")])
 metadata/_custom_type_script = "uid://3s5fmo1ne7gy"
 
+[sub_resource type="Resource" id="Resource_w6yvm"]
+script = ExtResource("10_lmqi1")
+points_to_win = 20
+metadata/_custom_type_script = "uid://dh5gms1csyc1n"
+
 [node name="Level2" type="Node2D" unique_id=1990779035]
 
 [node name="BackgroundLayer" type="TileMapLayer" parent="." unique_id=1660980384]
@@ -61,15 +68,16 @@ initial_fruit_pos = Array[Vector2i]([Vector2i(0, -5), Vector2i(0, 4)])
 level_manager = NodePath("../LevelManager")
 spawn_table_resource = SubResource("Resource_t27xo")
 
-[node name="LevelManager" parent="." unique_id=1303606008 node_paths=PackedStringArray("snake", "game_over_menu", "score_ui") instance=ExtResource("3_1q6tm")]
-points_to_win = 15
-initial_board = ExtResource("9_1soli")
-snake = NodePath("../Snake")
+[node name="LevelManager" parent="." unique_id=1303606008 node_paths=PackedStringArray("game_over_menu", "score_ui") instance=ExtResource("3_1q6tm")]
+board_data = ExtResource("9_1soli")
+win_condition = SubResource("Resource_w6yvm")
 game_over_menu = NodePath("../UI/GameOverMenu")
 score_ui = NodePath("../UI/Score")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1947359457]
 zoom = Vector2(1.5, 1.5)
+
+[node name="LevelIntro" parent="." unique_id=39525408 instance=ExtResource("11_5yfph")]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1391929785]
 

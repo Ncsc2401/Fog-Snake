@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://csh6kjgl8u7v2" path="res://Levels/level_5.tscn" id="1_mdthe"]
 [ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_wxmnv"]
 [ext_resource type="Resource" uid="uid://cle4ltcinb83c" path="res://LevelMapData/bonus_3.tres" id="2_qucju"]
+[ext_resource type="Resource" uid="uid://dx6uyfft0y8up" path="res://LevelMapData/level_6.tres" id="4_f0vrw"]
 
 [resource]
 script = ExtResource("1_wxmnv")
@@ -10,7 +11,8 @@ pos = Vector2i(0, -4)
 id = 6
 save_name = "level_5"
 level_name = "Is Ice Cream a fruit?"
-objecive = "Get 15 points"
+objecive = "Get 20 points"
 level_scene = ExtResource("1_mdthe")
 right_level = ExtResource("2_qucju")
+up_level = ExtResource("4_f0vrw")
 metadata/_custom_type_script = "uid://7wwtq4kmxin"

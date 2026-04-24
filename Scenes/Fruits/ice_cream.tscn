@@ -12,6 +12,7 @@ size_increase = 2
 metadata/_custom_type_script = "uid://cn37grwtxs5jy"
 
 [node name="IceCream" type="Node2D" unique_id=1918213427]
+z_index = 6
 script = ExtResource("1_avo7p")
 fruit_resource = SubResource("Resource_l5day")
 fruit_tick_time = 6

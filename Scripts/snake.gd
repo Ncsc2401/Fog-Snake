@@ -93,13 +93,15 @@ var direction : Directions
 ## Previous direction the snake moved
 var last_direction : Directions;
 
-## All tiles occupied by the snake
-var occupied_spaces : Array[Vector2i];
+var snake_body : Array[BodyData] = []
 
 ## Head of snake
 var head : BodyData;
 ## Tail of snake
 var tail : BodyData;
+
+## Last tail space
+var last_tail_pos : Vector2i;
 
 ## Size the snake should have
 var expected_size : int = 0;
@@ -107,20 +109,18 @@ var expected_size : int = 0;
 ## Size the snake has
 var body_size : int = 0;
 
+var is_dead : bool = false;
+
 func _ready() -> void:
 	await get_tree().process_frame
+	
+	level_manager.snakes.append(self);
 	
 	if level_manager == null:
 		push_error("Cannot work without a board manager reference");
 		
 	if initial_body == null:
 		push_warning("No initial body set")
-	
-	for body_part in initial_body:
-		if level_manager.get_cell(body_part) != BoardData.EMPTY:
-			push_warning("Snake spawning inside occupied cell");
-	
-	occupied_spaces = initial_body.duplicate();
 	
 	var last_segment : BodyData
 	for i in range(initial_body.size()):
@@ -133,14 +133,14 @@ func _ready() -> void:
 			body_data.previous = last_segment;
 			last_segment.next = body_data;
 			last_segment = body_data;
+		
+		snake_body.append(body_data);
 		tail = last_segment;
 	
 	direction = initial_direction;
 	last_direction = initial_direction;
 	body_size = initial_body.size();
 	expected_size = body_size;
-	
-	GlobalSignals.Tick.connect(move);
 	
 	draw_snake()
 
@@ -194,6 +194,9 @@ func update_buffer_lifetime(delta : float):
 
 ## Draws snake from tail to head so everything is drawn in the right order
 func draw_snake():
+	if is_dead:
+		return
+		
 	var body_segment = tail;
 	
 	while body_segment != null:
@@ -267,18 +270,20 @@ func draw_snake():
 
 ## Clears snake tilemap
 func clear_snake():
+	if is_dead:
+		return;
 	snake_layer.clear()
 
 func move():
-	print(level_manager.board);
-	
+	if is_dead:
+		return;
 	play_movement_sounds()
 	
 	# Saves the last direction the snake moved
 	last_direction = direction
 	
 	# Get new direction
-	var possible_movement : Directions
+	var possible_movement : Directions = Directions.RIGHT
 	var got_possible_movement : bool = false;
 	while direction_buffer.size() > 0 && !got_possible_movement:
 		possible_movement = direction_buffer.pop_front().direction;
@@ -292,72 +297,38 @@ func move():
 	if got_possible_movement:
 		direction = possible_movement
 	
-	# Needed variable to grow
-	var tail_pos_before_mov = tail.position
-	
 	# Next position it will move
 	var next : Vector2i = head.position + direction_to_vector[direction];
 	
-	# Adds a "new" head
-	occupied_spaces.insert(0, next);
-	
 	# Move every body data
+	last_tail_pos = tail.position;
 	var body_segment = tail
 	while body_segment.previous != null:
 		body_segment.position = body_segment.previous.position
 		body_segment = body_segment.previous
 	head.position = next
+
+func die():
+	is_dead = true;
+	GameOver.emit();
+
+func eat_fruit(fruit_resource : FruitResource):
+	if is_dead:
+		return
 	
-	# Decide first, do later
-	var will_die : bool = false;
-	var has_fruit : bool = false;
-	
-	# Checks if the player got any fruit
-	if level_manager.get_cell(next) == BoardData.FRUIT:
-		has_fruit = true;
-	
-	# Check for collisions with walls and with body
-	if (level_manager.get_cell(next) == BoardData.SNAKE\
-	or level_manager.get_cell(next) == BoardData.WALL\
-	or level_manager.get_cell(next) == BoardData.OUT_OF_BOUNDS)\
-	and (next != tail_pos_before_mov and expected_size == body_size):
-		will_die = true;
-	
-	# Occupy new cell in board manager
-	level_manager.set_cell(next, BoardData.SNAKE)
-	
-	if will_die:
-		GameOver.emit();
-		GlobalSignals.Tick.disconnect(move);
-		return;
-	
-	if has_fruit:
-		var fruit : FruitResource = level_manager.eat_fruit(next);
-		
-		# Play sound
-		sound_controller.play_sound("grow")
-		
-		# Increase size
-		expected_size += fruit.size_increase;
+	sound_controller.play_sound("grow");
+	expected_size += fruit_resource.size_increase;
+
+func grow():
+	if is_dead:
+		return
 	
 	if expected_size > body_size:
 		# Creates a new body segment
-		var new_body_segment = BodyData.new(false, true, tail_pos_before_mov);
+		var new_body_segment = BodyData.new(false, true, last_tail_pos);
 		new_body_segment.previous = tail;
 		tail.is_tail = false;
 		tail.next = new_body_segment;
 		tail = new_body_segment;
 		body_size += 1;
-	else:
-		# If the snake didn't grow then erases the tail 
-		occupied_spaces.remove_at(occupied_spaces.size() - 1);
-		
-		# Free tail cell in board manager final
-		if level_manager.get_cell(tail_pos_before_mov) == BoardData.SNAKE:
-			level_manager.set_cell(tail_pos_before_mov, BoardData.EMPTY);
-	
-	# Occupy new cell in board manager in case tail erased it
-	level_manager.set_cell(next, BoardData.SNAKE)
-	
-	snake_layer.clear()
-	draw_snake()
+		snake_body.append(new_body_segment);

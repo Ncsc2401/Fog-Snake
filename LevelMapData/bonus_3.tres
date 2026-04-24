@@ -7,7 +7,7 @@
 [resource]
 script = ExtResource("1_mdfaf")
 pos = Vector2i(1, -4)
-id = 8
+id = 9
 save_name = "bonus_3"
 level_name = "To be annoyed"
 objecive = "Get 100 points"

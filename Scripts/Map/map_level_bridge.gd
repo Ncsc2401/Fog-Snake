@@ -7,7 +7,7 @@ const CHALLENGE_BRIDGE_COLOR = Color(1, 0, 0);
 const BONUS_BRIDGE_COLOR = Color(1, 0.9568, 0);
 const SPECIAL_BRIDGE_COLOR = Color(0, 0.0862, 1);
 const LOCKED_BRIDGE_COLOR = Color(0, 0, 0);
-const SECRET_BRIDGE_COLOR = Color(0.1, 0.1, 0.1)
+const SECRET_BRIDGE_COLOR = Color(0.005, 0.005, 0.005)
 
 @export_storage var to : MapLevelData;
 

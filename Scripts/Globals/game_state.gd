@@ -5,7 +5,8 @@ enum GameStates{
 	RUNNING = 1,
 	MENU = 2,
 	GAMEOVER = 3,
-	MAP = 4
+	MAP = 4,
+	LEVEL_INTRO = 5
 }
 
 ## Game state when game is paused
@@ -18,11 +19,13 @@ const MENU = GameStates.MENU
 const GAMEOVER = GameStates.GAMEOVER
 ## Game state when in map
 const MAP = GameStates.MAP
+## Game state when in level intro
+const LEVEL_INTRO = GameStates.LEVEL_INTRO
 
 ## Current game state
-var game_state : GameStates = MENU:
-	set(value):
-		game_state = value;
+var game_state : GameStates = MENU;
+
+var is_in_transition : bool = false;
 
 ## Pauses the game and update game state
 func pause_game():

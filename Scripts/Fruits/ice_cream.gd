@@ -5,7 +5,7 @@ func on_eat():
 	delete_self()
 
 func on_fruit_tick():
-	var empty_cells = level_manager.get_empty_cells();
+	var empty_spaces = level_manager.get_empty_spaces();
 	
-	if empty_cells.size() > 0:
-		move_to(empty_cells.pick_random());
+	if empty_spaces.size() > 0:
+		move_to(empty_spaces.pick_random());

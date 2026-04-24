@@ -1,0 +1,17 @@
+[gd_scene format=4 uid="uid://c57rthiuaf5a"]
+
+[ext_resource type="Texture2D" uid="uid://oku4ohh1tpev" path="res://Assets/Sprites/Background.png" id="1_ixu8s"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ie3ed"]
+texture = ExtResource("1_ixu8s")
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_tirim"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_ie3ed")
+
+[node name="BackgroundLayer" type="TileMapLayer" unique_id=1221343614]
+tile_map_data = PackedByteArray("AAD+//7/AAAAAAAAAAD+////AAABAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAABAAAAAAD///7/AAABAAAAAAD/////AAAAAAAAAAD//wAAAAABAAAAAAD//wEAAAAAAAAAAAAAAP7/AAAAAAAAAAAAAP//AAABAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAABAP7/AAABAAAAAAABAP//AAAAAAAAAAABAAAAAAABAAAAAAABAAEAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_tirim")

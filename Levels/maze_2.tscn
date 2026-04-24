@@ -14,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="10_l60lk"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="11_dkpk1"]
 [ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="12_qalry"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="12_u33en"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1hvod"]
 texture = ExtResource("1_yw6rc")
@@ -63,15 +64,15 @@ initial_fruit_pos = Array[Vector2i]([Vector2i(-10, 8)])
 level_manager = NodePath("../MazeLevelManager")
 spawn_table_resource = SubResource("Resource_knfpk")
 
-[node name="MazeLevelManager" parent="." unique_id=471658471 node_paths=PackedStringArray("snake", "game_over_menu", "score_ui") instance=ExtResource("8_88ge2")]
+[node name="MazeLevelManager" parent="." unique_id=471658471 node_paths=PackedStringArray("game_over_menu", "score_ui") instance=ExtResource("8_88ge2")]
 script = ExtResource("9_d4cbr")
 next_maze_level = ExtResource("10_7grwl")
 is_last_level = false
-points_to_win = 0
-initial_board = ExtResource("9_yw6rc")
-snake = NodePath("../Snake")
+board_data = ExtResource("9_yw6rc")
 game_over_menu = NodePath("../UI/GameOverMenu")
 score_ui = NodePath("../UI/Score")
+
+[node name="LevelIntro" parent="." unique_id=39525408 instance=ExtResource("12_u33en")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1947359457]
 

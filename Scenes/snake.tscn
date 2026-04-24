@@ -55,6 +55,7 @@ initial_body = Array[Vector2i]([Vector2i(-6, 0), Vector2i(-7, 0), Vector2i(-8, 0
 initial_direction = 1
 
 [node name="SnakeLayer" type="TileMapLayer" parent="." unique_id=1038503882]
+z_index = 10
 tile_set = SubResource("TileSet_fgspn")
 
 [node name="SoundController" type="Node" parent="." unique_id=2067787773]

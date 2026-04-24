@@ -12,6 +12,7 @@
 [ext_resource type="Resource" uid="uid://yiry12v0bqf1" path="res://BoardData/Maze3.tres" id="10_38di6"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="10_wovhm"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="11_3y0qa"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="11_r0j58"]
 [ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="12_p7fws"]
 [ext_resource type="Texture2D" uid="uid://c8r5qaw33hx4l" path="res://Assets/Jumpscare.jpg" id="14_0ivgw"]
 [ext_resource type="Texture2D" uid="uid://ds8io2k37xafr" path="res://Assets/Safe.jpg" id="15_r0j58"]
@@ -67,7 +68,7 @@ initial_fruit_pos = Array[Vector2i]([Vector2i(0, -9)])
 level_manager = NodePath("../MazeLevelManager")
 spawn_table_resource = SubResource("Resource_t27xo")
 
-[node name="MazeLevelManager" parent="." unique_id=471658471 node_paths=PackedStringArray("jumpscare", "safe", "jumpscare_sound", "safe_sound", "jumpscare_timer", "snake", "game_over_menu", "score_ui") instance=ExtResource("8_y5xd7")]
+[node name="MazeLevelManager" parent="." unique_id=471658471 node_paths=PackedStringArray("jumpscare", "safe", "jumpscare_sound", "safe_sound", "jumpscare_timer", "game_over_menu", "score_ui") instance=ExtResource("8_y5xd7")]
 process_mode = 3
 script = ExtResource("9_0h0dp")
 next_maze_level = null
@@ -77,11 +78,11 @@ safe = NodePath("../UI/SafeMode")
 jumpscare_sound = NodePath("../Jumpscare")
 safe_sound = NodePath("../Safe")
 jumpscare_timer = NodePath("../Timer")
-points_to_win = 0
-initial_board = ExtResource("10_38di6")
-snake = NodePath("../Snake")
+board_data = ExtResource("10_38di6")
 game_over_menu = NodePath("../UI/GameOverMenu")
 score_ui = NodePath("../UI/Score")
+
+[node name="LevelIntro" parent="." unique_id=39525408 instance=ExtResource("11_r0j58")]
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1947359457]
 

@@ -9,6 +9,8 @@
 [ext_resource type="PackedScene" uid="uid://48om1rvld52o" path="res://Scenes/Fruits/apple.tscn" id="8_m370n"]
 [ext_resource type="Resource" uid="uid://ciyq7lyo7gufr" path="res://BoardData/Bonus1.tres" id="9_w54rl"]
 [ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/Components/level_manager.tscn" id="10_epds3"]
+[ext_resource type="Script" uid="uid://8b7rjkcyq8sv" path="res://Scripts/WinConditions/fill_whole_board_condition.gd" id="10_lmo2p"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="11_7xoa4"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="12_xaurf"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="13_156nc"]
 [ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="14_cdyqo"]
@@ -41,6 +43,10 @@ script = ExtResource("5_7o7ds")
 spawn_table = Array[ExtResource("6_fsjjx")]([SubResource("Resource_utic7")])
 metadata/_custom_type_script = "uid://3s5fmo1ne7gy"
 
+[sub_resource type="Resource" id="Resource_7xoa4"]
+script = ExtResource("10_lmo2p")
+metadata/_custom_type_script = "uid://8b7rjkcyq8sv"
+
 [node name="Bonus1" type="Node2D" unique_id=1990779035]
 
 [node name="BackgroundLayer" type="TileMapLayer" parent="." unique_id=1660980384]
@@ -61,15 +67,16 @@ initial_fruit_pos = Array[Vector2i]([Vector2i(4, 0), Vector2i(4, -1), Vector2i(4
 level_manager = NodePath("../LevelManager")
 spawn_table_resource = SubResource("Resource_t27xo")
 
-[node name="LevelManager" parent="." unique_id=1303606008 node_paths=PackedStringArray("snake", "game_over_menu", "score_ui") instance=ExtResource("10_epds3")]
-points_to_win = 189
-initial_board = ExtResource("9_w54rl")
-snake = NodePath("../Snake")
+[node name="LevelManager" parent="." unique_id=1303606008 node_paths=PackedStringArray("game_over_menu", "score_ui") instance=ExtResource("10_epds3")]
+board_data = ExtResource("9_w54rl")
+win_condition = SubResource("Resource_7xoa4")
 game_over_menu = NodePath("../UI/GameOverMenu")
 score_ui = NodePath("../UI/Score")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1947359457]
 zoom = Vector2(1.5, 1.5)
+
+[node name="LevelIntro" parent="." unique_id=39525408 instance=ExtResource("11_7xoa4")]
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1391929785]
 

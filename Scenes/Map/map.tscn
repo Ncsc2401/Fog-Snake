@@ -15,6 +15,11 @@
 [ext_resource type="Resource" uid="uid://cle4ltcinb83c" path="res://LevelMapData/bonus_3.tres" id="10_ogfrb"]
 [ext_resource type="Resource" uid="uid://m1wtro63vs3y" path="res://LevelMapData/secret_1.tres" id="11_4f523"]
 [ext_resource type="Resource" uid="uid://dml3k3wo7t65l" path="res://LevelMapData/maze.tres" id="11_k0edg"]
+[ext_resource type="Resource" uid="uid://dx6uyfft0y8up" path="res://LevelMapData/level_6.tres" id="14_kfta0"]
+[ext_resource type="Script" uid="uid://ds8k2nbvj7hiv" path="res://Scripts/CheatSystem/cheat_code_handler.gd" id="16_rojtv"]
+[ext_resource type="Script" uid="uid://cq55m6k8em2hi" path="res://Scripts/CheatSystem/cheat_code_command.gd" id="17_4a6f5"]
+[ext_resource type="Resource" uid="uid://d246uwwrbqdj8" path="res://LevelMapData/challenge_1.tres" id="17_w3xn6"]
+[ext_resource type="Script" uid="uid://drby3rvhbw28o" path="res://Scripts/CheatSystem/cheat_code_call_resource.gd" id="18_kfta0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_np2xp"]
 bg_color = Color(0, 0.14166495, 0.24203786, 1)
@@ -42,9 +47,61 @@ corner_radius_bottom_left = 8
 [sub_resource type="LabelSettings" id="LabelSettings_myvm1"]
 font_size = 32
 
-[node name="Map" type="Node2D" unique_id=284429208 node_paths=PackedStringArray("first_focused_level")]
+[sub_resource type="Resource" id="Resource_w3xn6"]
+script = ExtResource("17_4a6f5")
+command = Array[String](["w", "w", "s", "s", "a", "d", "a", "d", "b", "a"])
+metadata/_custom_type_script = "uid://cq55m6k8em2hi"
+
+[sub_resource type="Resource" id="Resource_l8e3b"]
+script = ExtResource("18_kfta0")
+node_path = NodePath("..")
+function_name = "unlock_all_cheat_code"
+cheat_code_display_text = "Unlocked all levels"
+metadata/_custom_type_script = "uid://drby3rvhbw28o"
+
+[sub_resource type="LabelSettings" id="LabelSettings_k0edg"]
+font_size = 24
+font_color = Color(1, 1, 1, 0)
+
+[sub_resource type="Animation" id="Animation_rojtv"]
+resource_name = "AppearAndFade"
+length = 1.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.5),
+"transitions": PackedFloat32Array(2.7320805, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_8uruf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:label_settings:font_color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.06666667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4a6f5"]
+_data = {
+&"AppearAndFade": SubResource("Animation_rojtv"),
+&"RESET": SubResource("Animation_8uruf")
+}
+
+[node name="Map" type="Node2D" unique_id=284429208]
 script = ExtResource("1_p3ir5")
-first_focused_level = NodePath("Levels/First look")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1497002141]
 position_smoothing_enabled = true
@@ -167,21 +224,39 @@ size_flags_vertical = 3
 theme_override_constants/separation = 12
 alignment = 1
 
+[node name="Won" type="Label" parent="CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=2001523551]
+layout_mode = 2
+text = "Won: ???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TotalTries" type="Label" parent="CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1333243950]
+layout_mode = 2
+text = "Total tries: "
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="MaxPoints" type="Label" parent="CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1015423445]
 layout_mode = 2
-text = "Max points: 43"
+text = "Max points: ???"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="MaxSize" type="Label" parent="CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=241437198]
 layout_mode = 2
-text = "Max size: 43"
+text = "Max size: ???"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LeastTime" type="Label" parent="CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=1870266544]
 layout_mode = 2
-text = "Least time: 43"
+text = "Least time: ???"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TriesToWin" type="Label" parent="CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=94433029]
+layout_mode = 2
+text = "Tries to win: ???"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -216,97 +291,159 @@ offset_right = -216.0
 offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
-[node name="Bridges" type="Node2D" parent="." unique_id=853677553]
+[node name="CheatCodeHandler" type="Node" parent="." unique_id=1709736944]
+script = ExtResource("16_rojtv")
+cheat_codes = Dictionary[ExtResource("17_4a6f5"), ExtResource("18_kfta0")]({
+SubResource("Resource_w3xn6"): SubResource("Resource_l8e3b")
+})
+
+[node name="CanvasLayer" type="CanvasLayer" parent="CheatCodeHandler" unique_id=1706099667]
+
+[node name="CheatCodeActions" type="Control" parent="CheatCodeHandler/CanvasLayer" unique_id=2142678986]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CheatCodeHandler/CanvasLayer/CheatCodeActions" unique_id=1785527124]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CheatCodeHandler/CanvasLayer/CheatCodeActions/MarginContainer" unique_id=857878311]
+layout_mode = 2
+mouse_filter = 2
+alignment = 2
+
+[node name="CheatCodeDisplay" type="Label" parent="CheatCodeHandler/CanvasLayer/CheatCodeActions/MarginContainer/VBoxContainer" unique_id=884601213]
+layout_mode = 2
+text = "{Cheat code name} activated"
+label_settings = SubResource("LabelSettings_k0edg")
+horizontal_alignment = 1
+
+[node name="CheatCodeDisplayAnimationPlayer" type="AnimationPlayer" parent="CheatCodeHandler/CanvasLayer/CheatCodeActions/MarginContainer/VBoxContainer/CheatCodeDisplay" unique_id=328196761]
+libraries/ = SubResource("AnimationLibrary_4a6f5")
+
+[node name="Bridges" type="Node2D" parent="." unique_id=716729206]
 
 [node name="MapLevelBridge" parent="Bridges" unique_id=397977445 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, 0, 0, -500)
 to = ExtResource("3_fyo8k")
 
-[node name="_Line2D_48879" parent="Bridges" unique_id=1695455981 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_272835" parent="Bridges" unique_id=707890779 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -500, 0, -1000)
 to = ExtResource("5_oydqy")
 
-[node name="_Line2D_48880" parent="Bridges" unique_id=1909844175 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_272836" parent="Bridges" unique_id=1270499869 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -500, 500, -500)
 default_color = Color(1, 0.9568, 0, 1)
 to = ExtResource("6_k0edg")
 
-[node name="_Line2D_48881" parent="Bridges" unique_id=1807084224 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_272837" parent="Bridges" unique_id=663467945 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -1000, 0, -1500)
 to = ExtResource("6_oydqy")
 
-[node name="_Line2D_48882" parent="Bridges" unique_id=114467162 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_272838" parent="Bridges" unique_id=520080662 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -1000, -500, -1000)
 default_color = Color(1, 0.9568, 0, 1)
 to = ExtResource("7_xdmry")
 
-[node name="_Line2D_48883" parent="Bridges" unique_id=518694929 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_272839" parent="Bridges" unique_id=1371568831 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -1500, 0, -2000)
 to = ExtResource("8_qtk15")
 
-[node name="_Line2D_48884" parent="Bridges" unique_id=1046550710 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_272840" parent="Bridges" unique_id=1728100297 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -1500, -500, -1500)
 default_color = Color(1, 0.9568, 0, 1)
 to = ExtResource("8_l00y7")
 
-[node name="_Line2D_48885" parent="Bridges" unique_id=326667336 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_272841" parent="Bridges" unique_id=823850032 instance=ExtResource("2_np2xp")]
+points = PackedVector2Array(0, -2000, 0, -2500)
+to = ExtResource("14_kfta0")
+
+[node name="_Line2D_272842" parent="Bridges" unique_id=278863691 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -2000, 500, -2000)
 default_color = Color(1, 0.9568, 0, 1)
 to = ExtResource("10_ogfrb")
 
-[node name="_Line2D_48886" parent="Bridges" unique_id=1483582400 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_272843" parent="Bridges" unique_id=2122703939 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(-500, -1500, -1000, -1500)
 default_color = Color(0, 0.0862, 1, 1)
 to = ExtResource("11_k0edg")
 
-[node name="_Line2D_48887" parent="Bridges" unique_id=258397184 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_272844" parent="Bridges" unique_id=686448514 instance=ExtResource("2_np2xp")]
+points = PackedVector2Array(0, -2500, -500, -2500)
+default_color = Color(1, 0, 0, 1)
+to = ExtResource("17_w3xn6")
+
+[node name="_Line2D_272845" parent="Bridges" unique_id=1987412032 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(500, -2000, 1000, -2000)
 default_color = Color(0.1, 0.1, 0.1, 1)
 to = ExtResource("11_4f523")
 
-[node name="Levels" type="Node2D" parent="." unique_id=1199887789]
+[node name="Levels" type="Node2D" parent="." unique_id=2027051502]
 
 [node name="First look" parent="Levels" unique_id=80277886 instance=ExtResource("3_w7jjh")]
 level_data = ExtResource("5_eu35m")
 
-[node name="They also move" parent="Levels" unique_id=1255822812 instance=ExtResource("3_w7jjh")]
+[node name="They also move" parent="Levels" unique_id=1892686289 instance=ExtResource("3_w7jjh")]
 position = Vector2(0, -500)
 level_data = ExtResource("3_fyo8k")
 
-[node name="Don\'t eat too much" parent="Levels" unique_id=693699591 instance=ExtResource("3_w7jjh")]
+[node name="Don\'t eat too much" parent="Levels" unique_id=1122314864 instance=ExtResource("3_w7jjh")]
 position = Vector2(0, -1000)
 level_data = ExtResource("5_oydqy")
 
-[node name="Smol" parent="Levels" unique_id=1839851800 instance=ExtResource("3_w7jjh")]
+[node name="Smol" parent="Levels" unique_id=1201152229 instance=ExtResource("3_w7jjh")]
 position = Vector2(500, -500)
 level_data = ExtResource("6_k0edg")
 
-[node name="Fruit Salad" parent="Levels" unique_id=304853288 instance=ExtResource("3_w7jjh")]
+[node name="Fruit Salad" parent="Levels" unique_id=1695592661 instance=ExtResource("3_w7jjh")]
 position = Vector2(0, -1500)
 level_data = ExtResource("6_oydqy")
 
-[node name="Endurance Test" parent="Levels" unique_id=1239871984 instance=ExtResource("3_w7jjh")]
+[node name="Endurance Test" parent="Levels" unique_id=272415524 instance=ExtResource("3_w7jjh")]
 position = Vector2(-500, -1000)
 level_data = ExtResource("7_xdmry")
 
-[node name="MapLevel" parent="Levels" unique_id=1270322693 instance=ExtResource("3_w7jjh")]
+[node name="MapLevel" parent="Levels" unique_id=1633911906 instance=ExtResource("3_w7jjh")]
 position = Vector2(0, -2000)
 level_data = ExtResource("8_qtk15")
 
-[node name="Bottle Neck" parent="Levels" unique_id=1285923746 instance=ExtResource("3_w7jjh")]
+[node name="Bottle Neck" parent="Levels" unique_id=1342426476 instance=ExtResource("3_w7jjh")]
 position = Vector2(-500, -1500)
 level_data = ExtResource("8_l00y7")
 
-[node name="To be annoyed" parent="Levels" unique_id=924433712 instance=ExtResource("3_w7jjh")]
+[node name="Damn bugs" parent="Levels" unique_id=1639737755 instance=ExtResource("3_w7jjh")]
+position = Vector2(0, -2500)
+level_data = ExtResource("14_kfta0")
+
+[node name="To be annoyed" parent="Levels" unique_id=1237425385 instance=ExtResource("3_w7jjh")]
 position = Vector2(500, -2000)
 level_data = ExtResource("10_ogfrb")
 
-[node name="Maze" parent="Levels" unique_id=2085214215 instance=ExtResource("3_w7jjh")]
+[node name="Maze" parent="Levels" unique_id=1749763136 instance=ExtResource("3_w7jjh")]
 position = Vector2(-1000, -1500)
 level_data = ExtResource("11_k0edg")
 
-[node name="To Lose You Mind" parent="Levels" unique_id=398280139 instance=ExtResource("3_w7jjh")]
+[node name="Infestation" parent="Levels" unique_id=1428893310 instance=ExtResource("3_w7jjh")]
+position = Vector2(-500, -2500)
+level_data = ExtResource("17_w3xn6")
+
+[node name="To Lose You Mind" parent="Levels" unique_id=1608561615 instance=ExtResource("3_w7jjh")]
 position = Vector2(1000, -2000)
 level_data = ExtResource("11_4f523")
 

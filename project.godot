@@ -29,6 +29,7 @@ GlobalSignals="*res://Scripts/Globals/global_signals.gd"
 GameState="*uid://cn81mtso28q4v"
 SceneManager="*uid://b1l5ubxvomang"
 SaveManager="*uid://c46r2fq8ukdr0"
+Transition="*uid://bf8aw0k75r40r"
 
 [display]
 

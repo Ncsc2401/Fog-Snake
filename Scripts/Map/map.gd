@@ -9,9 +9,12 @@ extends Node2D
 @onready var levels: Node2D = $Levels
 @onready var bridges: Node2D = $Bridges
 
+@onready var won_label: Label = $CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Won
 @onready var max_points_label: Label = $CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/MaxPoints
 @onready var max_size_label: Label = $CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/MaxSize
 @onready var least_time_label: Label = $CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/LeastTime
+@onready var tries_to_win_label: Label = $CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/TriesToWin
+@onready var total_tries_label: Label = $CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/TotalTries
 
 @onready var level_name_label: Label = $CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/LevelName
 @onready var objective_label: Label = $CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Objective
@@ -24,6 +27,7 @@ var level_grid : Dictionary[Vector2i, MapLevel];
 
 func _ready() -> void:
 	await get_tree().process_frame
+	
 	setup_level_grid()
 	
 	if SaveManager.last_focused_level_pos == null:
@@ -37,6 +41,7 @@ func _input(event: InputEvent) -> void:
 func handle_input(event : InputEvent):
 	var next_pos : Vector2i;
 	var was_event_pressed : bool = false;
+	
 	if event.is_action_pressed("Down"):
 		next_pos = grid_pos + Vector2i(0, 1);
 		was_event_pressed = true;
@@ -57,7 +62,7 @@ func handle_input(event : InputEvent):
 		SceneManager.change_scene_to_main_menu()
 	
 	elif event.is_action_pressed("Select"):
-		play_focused_level();
+		await play_focused_level();
 	
 	if !was_event_pressed:
 		return
@@ -73,17 +78,26 @@ func setup_level_grid():
 func update_displayed_data():
 	var saved_data = focused_level.level_data.get_saveable_data();
 	
+	var won = saved_data.won;
 	var max_points = saved_data.max_points;
 	var max_size = saved_data.max_size;
 	var least_time = saved_data.least_time
+	var total_tries = saved_data.total_tries;
+	var tries_to_win = saved_data.tries_to_win
 	
+	var won_text = "Won = Yes" if won else "Won = No"
 	var max_points_text = "Max Points = {0}".format([max_points]) if max_points != -1 else "No data :("
 	var least_time_text = "Least Time = {0}".format([least_time]) if least_time != -1 else "No data :("
 	var max_size_text = "Max Size = {0}".format([max_size]) if max_size != -1 else "No data :("
+	var total_tries_text = "Total Tries = {0}".format([total_tries])
+	var tries_to_win_text = "Tries to Win = {0}".format([tries_to_win]) if tries_to_win != -1 else "No data :("
 	
+	won_label.text = won_text
 	max_points_label.text = max_points_text
 	max_size_label.text = max_size_text
 	least_time_label.text = least_time_text
+	total_tries_label.text = total_tries_text
+	tries_to_win_label.text = tries_to_win_text
 	
 	level_name_label.text = focused_level.level_data.level_name
 	objective_label.text = focused_level.level_data.objecive
@@ -118,7 +132,12 @@ func look_at_pos(pos : Vector2i):
 	update_displayed_data()
 
 func _on_play_button_pressed() -> void:
-	play_focused_level();
+	await play_focused_level();
+
+func unlock_all_cheat_code():
+	SaveManager.unloack_all()
+	for bridge in bridges.get_children():
+		bridge.update_color();
 
 func play_focused_level():
 	SaveManager.current_level = focused_level.level_data;

@@ -11,14 +11,15 @@ class_name BaseFruit
 var tick : int;
 
 var fruit_spawner : FruitSpawner
-var tilemap_pos : Vector2i;
+var pos : Vector2i;
 var level_manager : LevelManager;
 var fruit_layer : TileMapLayer;
 
 var was_eaten : bool = false;
 
 func _ready() -> void:
-	GlobalSignals.Tick.connect(on_tick);
+	await get_tree().process_frame
+	level_manager.fruits.append(self);
 
 func on_tick():
 	tick += 1;
@@ -27,25 +28,17 @@ func on_tick():
 		tick = 0;
 
 ## Moves relative to the fruit layer
-func move_to(pos : Vector2i):
+func move_to(new_pos : Vector2i):
 	if was_eaten:
 		return;
-		
-	var previous_tilemap_pos = tilemap_pos;
 	
-	tilemap_pos = pos;
+	pos = new_pos;
 	
 	var world_pos : Vector2 = fruit_layer.to_global(fruit_layer.map_to_local(pos));
 	global_position = world_pos;
-	
-	if level_manager.board.has(previous_tilemap_pos) && level_manager.board[previous_tilemap_pos] == BoardData.FRUIT:
-		level_manager.board[previous_tilemap_pos] = BoardData.EMPTY;
-	
-	level_manager.fruits.erase(previous_tilemap_pos);
-	level_manager.fruits[pos] = self;
-	level_manager.board[pos] = BoardData.FRUIT;
 
 func delete_self():
+	level_manager.fruits.erase(self)
 	queue_free();
 
 @abstract

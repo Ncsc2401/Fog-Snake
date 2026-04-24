@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://bv1frym08dq8u"]
+
+[ext_resource type="Script" uid="uid://b1vgliqfdkomy" path="res://Scripts/Level/level_intro.gd" id="1_4y033"]
+[ext_resource type="Theme" uid="uid://drnrqrrtdyfbm" path="res://Assets/UI/UiTheme.tres" id="2_c6ewa"]
+[ext_resource type="PackedScene" uid="uid://s62ypy3y8lek" path="res://Scenes/UI/level_info.tscn" id="3_y3wdt"]
+
+[node name="LevelIntro" type="Node2D" unique_id=39525408]
+process_mode = 3
+script = ExtResource("1_4y033")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1892111639]
+
+[node name="LevelIntroUi" type="Control" parent="CanvasLayer" unique_id=5692156]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_c6ewa")
+metadata/_edit_use_anchors_ = true
+
+[node name="LevelInfo" parent="CanvasLayer/LevelIntroUi" unique_id=1568937603 instance=ExtResource("3_y3wdt")]
+layout_mode = 1
+
+[node name="InputHelpText" type="Control" parent="CanvasLayer/LevelIntroUi" unique_id=394710096]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -81.0
+grow_horizontal = 2
+grow_vertical = 0
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/LevelIntroUi/InputHelpText" unique_id=2021996112]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 16
+
+[node name="Label" type="Label" parent="CanvasLayer/LevelIntroUi/InputHelpText/MarginContainer" unique_id=1289838905]
+layout_mode = 2
+size_flags_vertical = 1
+text = "press anything to start..."
+horizontal_alignment = 1
+vertical_alignment = 2

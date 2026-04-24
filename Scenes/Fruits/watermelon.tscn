@@ -12,6 +12,7 @@ size_increase = 5
 metadata/_custom_type_script = "uid://cn37grwtxs5jy"
 
 [node name="Watermelon" type="Node2D" unique_id=565065116]
+z_index = 6
 script = ExtResource("1_fwu0d")
 fruit_resource = SubResource("Resource_jhtj6")
 

@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://bdnbplhqsw7jm"]
+
+[ext_resource type="Script" uid="uid://bdogma8a468i7" path="res://Scripts/Enemies/ladybug.gd" id="1_2ixnb"]
+[ext_resource type="Texture2D" uid="uid://c01kdmux1k782" path="res://Assets/Sprites/WarningTile.png" id="1_gw20p"]
+[ext_resource type="Texture2D" uid="uid://cawualqq88nnt" path="res://Assets/Sprites/Enemy1.png" id="2_2ixnb"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ixnb"]
+texture = ExtResource("1_gw20p")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_r2kd0"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_2ixnb")
+
+[node name="Ladybug" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("warning_layer")]
+script = ExtResource("1_2ixnb")
+enemy_tick_time = 8
+warning_window_time = 3
+warning_layer = NodePath("WarningLayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733223946]
+z_index = 6
+texture = ExtResource("2_2ixnb")
+
+[node name="WarningLayer" type="TileMapLayer" parent="." unique_id=1635689485]
+top_level = true
+z_index = 5
+z_as_relative = false
+tile_set = SubResource("TileSet_r2kd0")

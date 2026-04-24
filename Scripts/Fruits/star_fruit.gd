@@ -2,15 +2,15 @@ extends BaseFruit
 
 func on_fruit_tick():
 	var around_pos = [
-		tilemap_pos + Vector2i(0, 1),
-		tilemap_pos + Vector2i(0, -1),
-		tilemap_pos + Vector2i(1, 0),
-		tilemap_pos + Vector2i(-1, 0),
+		pos + Vector2i(0, 1),
+		pos + Vector2i(0, -1),
+		pos + Vector2i(1, 0),
+		pos + Vector2i(-1, 0),
 	]
 	
 	var new_pos = around_pos.pick_random();
 	
-	if level_manager.get_cell(new_pos) == BoardData.EMPTY:
+	if level_manager.is_space_empty(new_pos):
 		move_to(new_pos);
 
 func on_eat():

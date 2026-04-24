@@ -30,11 +30,17 @@ func create_map_level_save(save_name : String):
 	var least_time = -1;
 	var max_points = -1;
 	var max_size = -1;
+	var total_tries = 0;
+	var tries_to_win = -1;
+	var won = false;
 	
 	level_save.store_var(unlocked);
 	level_save.store_var(least_time);
 	level_save.store_var(max_points);
 	level_save.store_var(max_size);
+	level_save.store_var(total_tries);
+	level_save.store_var(tries_to_win);
+	level_save.store_var(won);
 	
 	level_save.close()
 
@@ -50,20 +56,40 @@ func update_map_level_save(save_name : String, new_data : MapLevelSaveableData):
 	
 	level_save.store_var(new_data.unlocked);
 	
-	if new_data.least_time < current_data.least_time || current_data.least_time == -1:
+	# Least time
+	if (new_data.least_time < current_data.least_time ||\
+	current_data.least_time == -1) &&\
+	new_data.least_time != -1:
 		level_save.store_var(new_data.least_time);
 	else:
 		level_save.store_var(current_data.least_time);
 	
+	# Max points
 	if new_data.max_points > current_data.max_points || current_data.max_points == -1:
 		level_save.store_var(new_data.max_points);
 	else:
 		level_save.store_var(current_data.max_points);
 	
+	# Max size
 	if new_data.max_size > current_data.max_size || current_data.max_size == -1:
 		level_save.store_var(new_data.max_size);
 	else:
 		level_save.store_var(current_data.max_size);
+	
+	# Total tries
+	level_save.store_var(new_data.total_tries);
+	
+	# Tries to win
+	if current_data.tries_to_win == -1 && new_data.won:
+		level_save.store_var(new_data.tries_to_win)
+	else:
+		level_save.store_var(current_data.tries_to_win);
+	
+	# Won
+	if current_data.won:
+		level_save.store_var(current_data.won)
+	else:
+		level_save.store_var(new_data.won);
 	
 	level_save.close()
 
@@ -81,8 +107,17 @@ func unlock_level(save_name : String):
 	new_data.max_points = data.max_points
 	new_data.max_size = data.max_size
 	new_data.least_time = data.least_time;
+	new_data.total_tries = data.total_tries
+	new_data.tries_to_win = data.tries_to_win
+	new_data.won = data.won;
 
 	update_map_level_save(save_name, new_data);
+
+func unloack_all():
+	var dir = DirAccess.open(SAVE_LEVELS_PATH)
+	
+	for level in dir.get_files():
+		unlock_level(level);
 
 ## Unlocks all surrounding levels
 func unlock_current_surrounding_levels():
@@ -112,10 +147,24 @@ func get_map_level_save(save_name : String):
 	data.least_time = save.get_var();
 	data.max_points = save.get_var();
 	data.max_size = save.get_var();
+	data.total_tries = save.get_var();
+	data.tries_to_win = save.get_var();
+	data.won = save.get_var()
 	
 	save.close();
 	
 	return data;
+
+func has_save():
+	var dir = DirAccess.open(SAVE_LEVELS_PATH);
+	
+	var has_files : bool = false;
+	
+	for file in dir.get_files():
+		has_files = true;
+		break;
+	
+	return has_files;
 
 ## Delete all saves
 func wipe_save():

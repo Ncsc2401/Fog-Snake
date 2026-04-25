@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://c252koo3i0taw"]
+
+[ext_resource type="PackedScene" uid="uid://rom72krte1iv" path="res://Levels/bonus_6.tscn" id="1_i5jqi"]
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_lnfwv"]
+
+[resource]
+script = ExtResource("1_lnfwv")
+pos = Vector2i(-1, 0)
+id = 7
+save_name = "bonus_6"
+level_name = "Running Stars"
+objective = "Get 60 points"
+level_scene = ExtResource("1_i5jqi")
+level_type = 2
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("1_3ce3g")
 pos = Vector2i(1, -1)
-id = 3
+id = 4
 save_name = "bonus_4"
 level_name = "Smol"
-objecive = "Fill the whole board"
+objective = "Fill the whole board"
 level_scene = ExtResource("1_slfx3")
 level_type = 2
 metadata/_custom_type_script = "uid://7wwtq4kmxin"

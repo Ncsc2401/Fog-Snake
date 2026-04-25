@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func set_display():
 	title.text = SaveManager.current_level.level_name;
-	objective.text = SaveManager.current_level.objecive;
+	objective.text = SaveManager.current_level.objective;
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey:

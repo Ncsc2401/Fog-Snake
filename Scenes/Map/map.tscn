@@ -12,14 +12,19 @@
 [ext_resource type="Resource" uid="uid://dlf20rhfwpvks" path="res://LevelMapData/bonus_1.tres" id="7_xdmry"]
 [ext_resource type="Resource" uid="uid://0vrcyjd4al1e" path="res://LevelMapData/bonus_2.tres" id="8_l00y7"]
 [ext_resource type="Resource" uid="uid://we2runfuge2s" path="res://LevelMapData/level_5.tres" id="8_qtk15"]
+[ext_resource type="Resource" uid="uid://dxel770ke264r" path="res://LevelMapData/bonus_5.tres" id="9_l8e3b"]
 [ext_resource type="Resource" uid="uid://cle4ltcinb83c" path="res://LevelMapData/bonus_3.tres" id="10_ogfrb"]
 [ext_resource type="Resource" uid="uid://m1wtro63vs3y" path="res://LevelMapData/secret_1.tres" id="11_4f523"]
 [ext_resource type="Resource" uid="uid://dml3k3wo7t65l" path="res://LevelMapData/maze.tres" id="11_k0edg"]
+[ext_resource type="Resource" uid="uid://c252koo3i0taw" path="res://LevelMapData/bonus_6.tres" id="13_qo3gp"]
 [ext_resource type="Resource" uid="uid://dx6uyfft0y8up" path="res://LevelMapData/level_6.tres" id="14_kfta0"]
 [ext_resource type="Script" uid="uid://ds8k2nbvj7hiv" path="res://Scripts/CheatSystem/cheat_code_handler.gd" id="16_rojtv"]
 [ext_resource type="Script" uid="uid://cq55m6k8em2hi" path="res://Scripts/CheatSystem/cheat_code_command.gd" id="17_4a6f5"]
 [ext_resource type="Resource" uid="uid://d246uwwrbqdj8" path="res://LevelMapData/challenge_1.tres" id="17_w3xn6"]
 [ext_resource type="Script" uid="uid://drby3rvhbw28o" path="res://Scripts/CheatSystem/cheat_code_call_resource.gd" id="18_kfta0"]
+[ext_resource type="Resource" uid="uid://drc1xmy8bo44c" path="res://LevelMapData/level_7.tres" id="19_tftes"]
+[ext_resource type="Resource" uid="uid://ti5cad34pttd" path="res://LevelMapData/choices.tres" id="20_utnqo"]
+[ext_resource type="Resource" uid="uid://bccdmwp5r4vap" path="res://LevelMapData/level_8.tres" id="23_6an1p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_np2xp"]
 bg_color = Color(0, 0.14166495, 0.24203786, 1)
@@ -57,6 +62,18 @@ script = ExtResource("18_kfta0")
 node_path = NodePath("..")
 function_name = "unlock_all_cheat_code"
 cheat_code_display_text = "Unlocked all levels"
+metadata/_custom_type_script = "uid://drby3rvhbw28o"
+
+[sub_resource type="Resource" id="Resource_qo3gp"]
+script = ExtResource("17_4a6f5")
+command = Array[String](["w", "h", "i", "t", "e", "m", "o", "d", "e"])
+metadata/_custom_type_script = "uid://cq55m6k8em2hi"
+
+[sub_resource type="Resource" id="Resource_utnqo"]
+script = ExtResource("18_kfta0")
+node_path = NodePath("..")
+function_name = "make_background_white_cheat_code"
+cheat_code_display_text = "White Mode"
 metadata/_custom_type_script = "uid://drby3rvhbw28o"
 
 [sub_resource type="LabelSettings" id="LabelSettings_k0edg"]
@@ -105,32 +122,6 @@ script = ExtResource("1_p3ir5")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1497002141]
 position_smoothing_enabled = true
-
-[node name="Control" type="Control" parent="Camera2D" unique_id=1727827681]
-layout_mode = 3
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -456.0
-offset_top = -371.0
-offset_right = 456.0
-offset_bottom = 371.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Background" type="ColorRect" parent="Camera2D/Control" unique_id=260448635]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = -0.59320176
-anchor_top = -0.5619946
-anchor_right = 1.5932018
-anchor_bottom = 1.5619944
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0, 0, 0, 1)
-metadata/_edit_use_anchors_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=398465055]
 
@@ -296,7 +287,8 @@ mouse_filter = 2
 [node name="CheatCodeHandler" type="Node" parent="." unique_id=1709736944]
 script = ExtResource("16_rojtv")
 cheat_codes = Dictionary[ExtResource("17_4a6f5"), ExtResource("18_kfta0")]({
-SubResource("Resource_w3xn6"): SubResource("Resource_l8e3b")
+SubResource("Resource_w3xn6"): SubResource("Resource_l8e3b"),
+SubResource("Resource_qo3gp"): SubResource("Resource_utnqo")
 })
 
 [node name="CanvasLayer" type="CanvasLayer" parent="CheatCodeHandler" unique_id=1706099667]
@@ -309,6 +301,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("2_eu35m")
 
 [node name="MarginContainer" type="MarginContainer" parent="CheatCodeHandler/CanvasLayer/CheatCodeActions" unique_id=1785527124]
 layout_mode = 1
@@ -337,114 +330,186 @@ horizontal_alignment = 1
 [node name="CheatCodeDisplayAnimationPlayer" type="AnimationPlayer" parent="CheatCodeHandler/CanvasLayer/CheatCodeActions/MarginContainer/VBoxContainer/CheatCodeDisplay" unique_id=328196761]
 libraries/ = SubResource("AnimationLibrary_4a6f5")
 
-[node name="Bridges" type="Node2D" parent="." unique_id=716729206]
+[node name="BackgroundLayer" type="CanvasLayer" parent="." unique_id=992115915]
+layer = -1
+
+[node name="Control" type="Control" parent="BackgroundLayer" unique_id=1727827681]
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -856.0
+offset_top = -671.0
+offset_right = 56.0
+offset_bottom = 71.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" type="ColorRect" parent="BackgroundLayer/Control" unique_id=260448635]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -0.59320176
+anchor_top = -0.5619946
+anchor_right = 1.5932018
+anchor_bottom = 1.5619944
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Bridges" type="Node2D" parent="." unique_id=572617407]
 
 [node name="MapLevelBridge" parent="Bridges" unique_id=397977445 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, 0, 0, -500)
 to = ExtResource("3_fyo8k")
 
-[node name="_Line2D_272835" parent="Bridges" unique_id=707890779 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_71323" parent="Bridges" unique_id=620560726 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -500, 0, -1000)
 to = ExtResource("5_oydqy")
 
-[node name="_Line2D_272836" parent="Bridges" unique_id=1270499869 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_71324" parent="Bridges" unique_id=1130495191 instance=ExtResource("2_np2xp")]
+points = PackedVector2Array(0, -500, -500, -500)
+default_color = Color(1, 0.9568, 0, 1)
+to = ExtResource("9_l8e3b")
+
+[node name="_Line2D_71325" parent="Bridges" unique_id=1064999420 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -500, 500, -500)
 default_color = Color(1, 0.9568, 0, 1)
 to = ExtResource("6_k0edg")
 
-[node name="_Line2D_272837" parent="Bridges" unique_id=663467945 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_71326" parent="Bridges" unique_id=1659053867 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -1000, 0, -1500)
 to = ExtResource("6_oydqy")
 
-[node name="_Line2D_272838" parent="Bridges" unique_id=520080662 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_71327" parent="Bridges" unique_id=1715027320 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -1000, -500, -1000)
 default_color = Color(1, 0.9568, 0, 1)
 to = ExtResource("7_xdmry")
 
-[node name="_Line2D_272839" parent="Bridges" unique_id=1371568831 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_71328" parent="Bridges" unique_id=1572991521 instance=ExtResource("2_np2xp")]
+points = PackedVector2Array(-500, -500, -500, 0)
+default_color = Color(1, 0.9568, 0, 1)
+to = ExtResource("13_qo3gp")
+
+[node name="_Line2D_71329" parent="Bridges" unique_id=719758882 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -1500, 0, -2000)
 to = ExtResource("8_qtk15")
 
-[node name="_Line2D_272840" parent="Bridges" unique_id=1728100297 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_71330" parent="Bridges" unique_id=871541001 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -1500, -500, -1500)
 default_color = Color(1, 0.9568, 0, 1)
 to = ExtResource("8_l00y7")
 
-[node name="_Line2D_272841" parent="Bridges" unique_id=823850032 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_71331" parent="Bridges" unique_id=2058936057 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -2000, 0, -2500)
 to = ExtResource("14_kfta0")
 
-[node name="_Line2D_272842" parent="Bridges" unique_id=278863691 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_71332" parent="Bridges" unique_id=1374332684 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -2000, 500, -2000)
 default_color = Color(1, 0.9568, 0, 1)
 to = ExtResource("10_ogfrb")
 
-[node name="_Line2D_272843" parent="Bridges" unique_id=2122703939 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_71333" parent="Bridges" unique_id=1008447042 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(-500, -1500, -1000, -1500)
 default_color = Color(0, 0.0862, 1, 1)
 to = ExtResource("11_k0edg")
 
-[node name="_Line2D_272844" parent="Bridges" unique_id=686448514 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_71334" parent="Bridges" unique_id=1589564299 instance=ExtResource("2_np2xp")]
+points = PackedVector2Array(0, -2500, 0, -3000)
+to = ExtResource("19_tftes")
+
+[node name="_Line2D_71335" parent="Bridges" unique_id=1540818607 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(0, -2500, -500, -2500)
 default_color = Color(1, 0, 0, 1)
 to = ExtResource("17_w3xn6")
 
-[node name="_Line2D_272845" parent="Bridges" unique_id=1987412032 instance=ExtResource("2_np2xp")]
+[node name="_Line2D_71336" parent="Bridges" unique_id=1767904177 instance=ExtResource("2_np2xp")]
+points = PackedVector2Array(0, -2500, 500, -2500)
+default_color = Color(0, 0.0862, 1, 1)
+to = ExtResource("20_utnqo")
+
+[node name="_Line2D_71337" parent="Bridges" unique_id=1073271741 instance=ExtResource("2_np2xp")]
 points = PackedVector2Array(500, -2000, 1000, -2000)
 default_color = Color(0.1, 0.1, 0.1, 1)
 to = ExtResource("11_4f523")
 
-[node name="Levels" type="Node2D" parent="." unique_id=2027051502]
+[node name="_Line2D_71338" parent="Bridges" unique_id=2121053275 instance=ExtResource("2_np2xp")]
+points = PackedVector2Array(0, -3000, -500, -3000)
+to = ExtResource("23_6an1p")
+
+[node name="Levels" type="Node2D" parent="." unique_id=1531891725]
 
 [node name="First look" parent="Levels" unique_id=80277886 instance=ExtResource("3_w7jjh")]
 level_data = ExtResource("5_eu35m")
 
-[node name="They also move" parent="Levels" unique_id=1892686289 instance=ExtResource("3_w7jjh")]
+[node name="They also move" parent="Levels" unique_id=36935306 instance=ExtResource("3_w7jjh")]
 position = Vector2(0, -500)
 level_data = ExtResource("3_fyo8k")
 
-[node name="Don\'t eat too much" parent="Levels" unique_id=1122314864 instance=ExtResource("3_w7jjh")]
+[node name="Don\'t eat too much" parent="Levels" unique_id=1660988930 instance=ExtResource("3_w7jjh")]
 position = Vector2(0, -1000)
 level_data = ExtResource("5_oydqy")
 
-[node name="Smol" parent="Levels" unique_id=1201152229 instance=ExtResource("3_w7jjh")]
+[node name="Gas Gas Gas" parent="Levels" unique_id=1716543607 instance=ExtResource("3_w7jjh")]
+position = Vector2(-500, -500)
+level_data = ExtResource("9_l8e3b")
+
+[node name="Smol" parent="Levels" unique_id=1993508632 instance=ExtResource("3_w7jjh")]
 position = Vector2(500, -500)
 level_data = ExtResource("6_k0edg")
 
-[node name="Fruit Salad" parent="Levels" unique_id=1695592661 instance=ExtResource("3_w7jjh")]
+[node name="Fruit Salad" parent="Levels" unique_id=709448249 instance=ExtResource("3_w7jjh")]
 position = Vector2(0, -1500)
 level_data = ExtResource("6_oydqy")
 
-[node name="Endurance Test" parent="Levels" unique_id=272415524 instance=ExtResource("3_w7jjh")]
+[node name="Endurance Test" parent="Levels" unique_id=1160821551 instance=ExtResource("3_w7jjh")]
 position = Vector2(-500, -1000)
 level_data = ExtResource("7_xdmry")
 
-[node name="MapLevel" parent="Levels" unique_id=1633911906 instance=ExtResource("3_w7jjh")]
+[node name="Running Stars" parent="Levels" unique_id=1285845455 instance=ExtResource("3_w7jjh")]
+position = Vector2(-500, 0)
+level_data = ExtResource("13_qo3gp")
+
+[node name="MapLevel" parent="Levels" unique_id=1105744157 instance=ExtResource("3_w7jjh")]
 position = Vector2(0, -2000)
 level_data = ExtResource("8_qtk15")
 
-[node name="Bottle Neck" parent="Levels" unique_id=1342426476 instance=ExtResource("3_w7jjh")]
+[node name="Bottle Neck" parent="Levels" unique_id=1482110747 instance=ExtResource("3_w7jjh")]
 position = Vector2(-500, -1500)
 level_data = ExtResource("8_l00y7")
 
-[node name="Damn bugs" parent="Levels" unique_id=1639737755 instance=ExtResource("3_w7jjh")]
+[node name="Damn bugs" parent="Levels" unique_id=1886745544 instance=ExtResource("3_w7jjh")]
 position = Vector2(0, -2500)
 level_data = ExtResource("14_kfta0")
 
-[node name="To be annoyed" parent="Levels" unique_id=1237425385 instance=ExtResource("3_w7jjh")]
+[node name="To be annoyed" parent="Levels" unique_id=984481186 instance=ExtResource("3_w7jjh")]
 position = Vector2(500, -2000)
 level_data = ExtResource("10_ogfrb")
 
-[node name="Maze" parent="Levels" unique_id=1749763136 instance=ExtResource("3_w7jjh")]
+[node name="Maze" parent="Levels" unique_id=377183025 instance=ExtResource("3_w7jjh")]
 position = Vector2(-1000, -1500)
 level_data = ExtResource("11_k0edg")
 
-[node name="Infestation" parent="Levels" unique_id=1428893310 instance=ExtResource("3_w7jjh")]
+[node name="Flies!!!" parent="Levels" unique_id=690715004 instance=ExtResource("3_w7jjh")]
+position = Vector2(0, -3000)
+level_data = ExtResource("19_tftes")
+
+[node name="Infestation" parent="Levels" unique_id=1443727983 instance=ExtResource("3_w7jjh")]
 position = Vector2(-500, -2500)
 level_data = ExtResource("17_w3xn6")
 
-[node name="To Lose You Mind" parent="Levels" unique_id=1608561615 instance=ExtResource("3_w7jjh")]
+[node name="Choices" parent="Levels" unique_id=1151253903 instance=ExtResource("3_w7jjh")]
+position = Vector2(500, -2500)
+level_data = ExtResource("20_utnqo")
+
+[node name="To Lose Your Mind" parent="Levels" unique_id=298234260 instance=ExtResource("3_w7jjh")]
 position = Vector2(1000, -2000)
 level_data = ExtResource("11_4f523")
+
+[node name="Filmmaker" parent="Levels" unique_id=2126827925 instance=ExtResource("3_w7jjh")]
+position = Vector2(-500, -3000)
+level_data = ExtResource("23_6an1p")
 
 [connection signal="pressed" from="CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/PlayButton" to="." method="_on_play_button_pressed"]

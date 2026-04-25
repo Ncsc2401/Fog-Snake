@@ -3,17 +3,26 @@
 [ext_resource type="Script" uid="uid://dodsdlfi1s037" path="res://Scripts/Map/map_generator.gd" id="1_gn1f5"]
 [ext_resource type="Resource" uid="uid://c4l8a2mqx2hed" path="res://LevelMapData/level_1.tres" id="2_wuafp"]
 [ext_resource type="PackedScene" uid="uid://c0rqbb431ixkx" path="res://Scenes/Map/map_level_bridge.tscn" id="3_if4xq"]
+[ext_resource type="Script" uid="uid://c3yiyofv8fefw" path="res://Scripts/Map/map_level_bridge.gd" id="4_2hfwc"]
 [ext_resource type="Resource" uid="uid://yr0wpex5mi45" path="res://LevelMapData/level_2.tres" id="5_dcbap"]
 [ext_resource type="Resource" uid="uid://d0w32l8vqyjxf" path="res://LevelMapData/level_3.tres" id="6_cg134"]
 [ext_resource type="Resource" uid="uid://b4q48jo2tm758" path="res://LevelMapData/bonus_4.tres" id="7_cg134"]
+[ext_resource type="Resource" uid="uid://dxel770ke264r" path="res://LevelMapData/bonus_5.tres" id="7_jc5s1"]
 [ext_resource type="Resource" uid="uid://bi0ws8oxu55ya" path="res://LevelMapData/level_4.tres" id="7_x2tmk"]
 [ext_resource type="Resource" uid="uid://dlf20rhfwpvks" path="res://LevelMapData/bonus_1.tres" id="8_mb0ek"]
 [ext_resource type="Resource" uid="uid://we2runfuge2s" path="res://LevelMapData/level_5.tres" id="9_d5n8i"]
 [ext_resource type="Resource" uid="uid://0vrcyjd4al1e" path="res://LevelMapData/bonus_2.tres" id="10_cn0sx"]
+[ext_resource type="Resource" uid="uid://c252koo3i0taw" path="res://LevelMapData/bonus_6.tres" id="11_5wc7d"]
 [ext_resource type="Resource" uid="uid://cle4ltcinb83c" path="res://LevelMapData/bonus_3.tres" id="11_wxvbo"]
 [ext_resource type="Resource" uid="uid://dml3k3wo7t65l" path="res://LevelMapData/maze.tres" id="12_dcbap"]
 [ext_resource type="PackedScene" uid="uid://choe75140jiq0" path="res://Scenes/Map/map_level.tscn" id="12_vv7pm"]
 [ext_resource type="Resource" uid="uid://m1wtro63vs3y" path="res://LevelMapData/secret_1.tres" id="13_cg134"]
+[ext_resource type="Resource" uid="uid://dx6uyfft0y8up" path="res://LevelMapData/level_6.tres" id="14_pief8"]
+[ext_resource type="Resource" uid="uid://d246uwwrbqdj8" path="res://LevelMapData/challenge_1.tres" id="17_a3ya8"]
+[ext_resource type="Resource" uid="uid://drc1xmy8bo44c" path="res://LevelMapData/level_7.tres" id="17_pief8"]
+[ext_resource type="Resource" uid="uid://ti5cad34pttd" path="res://LevelMapData/choices.tres" id="18_jc5s1"]
+[ext_resource type="Script" uid="uid://rkklbak0c0uu" path="res://Scripts/Map/map_level.gd" id="20_k8gyi"]
+[ext_resource type="Resource" uid="uid://bccdmwp5r4vap" path="res://LevelMapData/level_8.tres" id="21_a3ya8"]
 
 [node name="MapCreator" type="Node2D" unique_id=1864111717]
 script = ExtResource("1_gn1f5")
@@ -24,93 +33,188 @@ first_level = ExtResource("2_wuafp")
 
 [node name="Bridges" type="Node2D" parent="Map" unique_id=909580254]
 
-[node name="MapLevelBridge" parent="Map/Bridges" unique_id=397977445 instance=ExtResource("3_if4xq")]
+[node name="MapLevelBridge" type="Line2D" parent="Map/Bridges" unique_id=397977445 instance=ExtResource("3_if4xq")]
 points = PackedVector2Array(0, 0, 0, -500)
+script = ExtResource("4_2hfwc")
 to = ExtResource("5_dcbap")
 
-[node name="@Line2D@48879" parent="Map/Bridges" unique_id=551071317 instance=ExtResource("3_if4xq")]
+[node name="@Line2D@71323" type="Line2D" parent="Map/Bridges" unique_id=1454893238 instance=ExtResource("3_if4xq")]
 points = PackedVector2Array(0, -500, 0, -1000)
+script = ExtResource("4_2hfwc")
 to = ExtResource("6_cg134")
 
-[node name="@Line2D@48880" parent="Map/Bridges" unique_id=421261562 instance=ExtResource("3_if4xq")]
+[node name="@Line2D@71324" type="Line2D" parent="Map/Bridges" unique_id=778130045 instance=ExtResource("3_if4xq")]
+points = PackedVector2Array(0, -500, -500, -500)
+default_color = Color(1, 0.9568, 0, 1)
+script = ExtResource("4_2hfwc")
+to = ExtResource("7_jc5s1")
+
+[node name="@Line2D@71325" type="Line2D" parent="Map/Bridges" unique_id=555470972 instance=ExtResource("3_if4xq")]
 points = PackedVector2Array(0, -500, 500, -500)
 default_color = Color(1, 0.9568, 0, 1)
+script = ExtResource("4_2hfwc")
 to = ExtResource("7_cg134")
 
-[node name="@Line2D@48881" parent="Map/Bridges" unique_id=2145761428 instance=ExtResource("3_if4xq")]
+[node name="@Line2D@71326" type="Line2D" parent="Map/Bridges" unique_id=1562511140 instance=ExtResource("3_if4xq")]
 points = PackedVector2Array(0, -1000, 0, -1500)
+script = ExtResource("4_2hfwc")
 to = ExtResource("7_x2tmk")
 
-[node name="@Line2D@48882" parent="Map/Bridges" unique_id=425227856 instance=ExtResource("3_if4xq")]
+[node name="@Line2D@71327" type="Line2D" parent="Map/Bridges" unique_id=1278808658 instance=ExtResource("3_if4xq")]
 points = PackedVector2Array(0, -1000, -500, -1000)
 default_color = Color(1, 0.9568, 0, 1)
+script = ExtResource("4_2hfwc")
 to = ExtResource("8_mb0ek")
 
-[node name="@Line2D@48883" parent="Map/Bridges" unique_id=416107217 instance=ExtResource("3_if4xq")]
+[node name="@Line2D@71328" type="Line2D" parent="Map/Bridges" unique_id=854269751 instance=ExtResource("3_if4xq")]
+points = PackedVector2Array(-500, -500, -500, 0)
+default_color = Color(1, 0.9568, 0, 1)
+script = ExtResource("4_2hfwc")
+to = ExtResource("11_5wc7d")
+
+[node name="@Line2D@71329" type="Line2D" parent="Map/Bridges" unique_id=1789993181 instance=ExtResource("3_if4xq")]
 points = PackedVector2Array(0, -1500, 0, -2000)
+script = ExtResource("4_2hfwc")
 to = ExtResource("9_d5n8i")
 
-[node name="@Line2D@48884" parent="Map/Bridges" unique_id=968651523 instance=ExtResource("3_if4xq")]
+[node name="@Line2D@71330" type="Line2D" parent="Map/Bridges" unique_id=1418580302 instance=ExtResource("3_if4xq")]
 points = PackedVector2Array(0, -1500, -500, -1500)
 default_color = Color(1, 0.9568, 0, 1)
+script = ExtResource("4_2hfwc")
 to = ExtResource("10_cn0sx")
 
-[node name="@Line2D@48885" parent="Map/Bridges" unique_id=106101553 instance=ExtResource("3_if4xq")]
+[node name="@Line2D@71331" type="Line2D" parent="Map/Bridges" unique_id=2107422475 instance=ExtResource("3_if4xq")]
+points = PackedVector2Array(0, -2000, 0, -2500)
+script = ExtResource("4_2hfwc")
+to = ExtResource("14_pief8")
+
+[node name="@Line2D@71332" type="Line2D" parent="Map/Bridges" unique_id=1271944019 instance=ExtResource("3_if4xq")]
 points = PackedVector2Array(0, -2000, 500, -2000)
 default_color = Color(1, 0.9568, 0, 1)
+script = ExtResource("4_2hfwc")
 to = ExtResource("11_wxvbo")
 
-[node name="@Line2D@48886" parent="Map/Bridges" unique_id=1243253941 instance=ExtResource("3_if4xq")]
+[node name="@Line2D@71333" type="Line2D" parent="Map/Bridges" unique_id=32848292 instance=ExtResource("3_if4xq")]
 points = PackedVector2Array(-500, -1500, -1000, -1500)
 default_color = Color(0, 0.0862, 1, 1)
+script = ExtResource("4_2hfwc")
 to = ExtResource("12_dcbap")
 
-[node name="@Line2D@48887" parent="Map/Bridges" unique_id=1196175001 instance=ExtResource("3_if4xq")]
+[node name="@Line2D@71334" type="Line2D" parent="Map/Bridges" unique_id=288915272 instance=ExtResource("3_if4xq")]
+points = PackedVector2Array(0, -2500, 0, -3000)
+script = ExtResource("4_2hfwc")
+to = ExtResource("17_pief8")
+
+[node name="@Line2D@71335" type="Line2D" parent="Map/Bridges" unique_id=223825321 instance=ExtResource("3_if4xq")]
+points = PackedVector2Array(0, -2500, -500, -2500)
+default_color = Color(1, 0, 0, 1)
+script = ExtResource("4_2hfwc")
+to = ExtResource("17_a3ya8")
+
+[node name="@Line2D@71336" type="Line2D" parent="Map/Bridges" unique_id=293298614 instance=ExtResource("3_if4xq")]
+points = PackedVector2Array(0, -2500, 500, -2500)
+default_color = Color(0, 0.0862, 1, 1)
+script = ExtResource("4_2hfwc")
+to = ExtResource("18_jc5s1")
+
+[node name="@Line2D@71337" type="Line2D" parent="Map/Bridges" unique_id=764875655 instance=ExtResource("3_if4xq")]
 points = PackedVector2Array(500, -2000, 1000, -2000)
 default_color = Color(0.1, 0.1, 0.1, 1)
+script = ExtResource("4_2hfwc")
 to = ExtResource("13_cg134")
+
+[node name="@Line2D@71338" type="Line2D" parent="Map/Bridges" unique_id=512334271 instance=ExtResource("3_if4xq")]
+points = PackedVector2Array(0, -3000, -500, -3000)
+script = ExtResource("4_2hfwc")
+to = ExtResource("21_a3ya8")
 
 [node name="Levels" type="Node2D" parent="Map" unique_id=1661497080]
 
-[node name="First look" parent="Map/Levels" unique_id=80277886 instance=ExtResource("12_vv7pm")]
+[node name="First look" type="Node2D" parent="Map/Levels" unique_id=80277886 instance=ExtResource("12_vv7pm")]
+script = ExtResource("20_k8gyi")
 level_data = ExtResource("2_wuafp")
 
-[node name="They also move" parent="Map/Levels" unique_id=933805251 instance=ExtResource("12_vv7pm")]
+[node name="They also move" type="Node2D" parent="Map/Levels" unique_id=1110103598 instance=ExtResource("12_vv7pm")]
 position = Vector2(0, -500)
+script = ExtResource("20_k8gyi")
 level_data = ExtResource("5_dcbap")
 
-[node name="Don\'t eat too much" parent="Map/Levels" unique_id=1184120711 instance=ExtResource("12_vv7pm")]
+[node name="Don\'t eat too much" type="Node2D" parent="Map/Levels" unique_id=497844254 instance=ExtResource("12_vv7pm")]
 position = Vector2(0, -1000)
+script = ExtResource("20_k8gyi")
 level_data = ExtResource("6_cg134")
 
-[node name="Smol" parent="Map/Levels" unique_id=1702723064 instance=ExtResource("12_vv7pm")]
+[node name="Gas Gas Gas" type="Node2D" parent="Map/Levels" unique_id=1107474157 instance=ExtResource("12_vv7pm")]
+position = Vector2(-500, -500)
+script = ExtResource("20_k8gyi")
+level_data = ExtResource("7_jc5s1")
+
+[node name="Smol" type="Node2D" parent="Map/Levels" unique_id=15035556 instance=ExtResource("12_vv7pm")]
 position = Vector2(500, -500)
+script = ExtResource("20_k8gyi")
 level_data = ExtResource("7_cg134")
 
-[node name="Fruit Salad" parent="Map/Levels" unique_id=2085396658 instance=ExtResource("12_vv7pm")]
+[node name="Fruit Salad" type="Node2D" parent="Map/Levels" unique_id=1652383623 instance=ExtResource("12_vv7pm")]
 position = Vector2(0, -1500)
+script = ExtResource("20_k8gyi")
 level_data = ExtResource("7_x2tmk")
 
-[node name="Endurance Test" parent="Map/Levels" unique_id=859948414 instance=ExtResource("12_vv7pm")]
+[node name="Endurance Test" type="Node2D" parent="Map/Levels" unique_id=567323124 instance=ExtResource("12_vv7pm")]
 position = Vector2(-500, -1000)
+script = ExtResource("20_k8gyi")
 level_data = ExtResource("8_mb0ek")
 
-[node name="MapLevel" parent="Map/Levels" unique_id=1074352032 instance=ExtResource("12_vv7pm")]
+[node name="Running Stars" type="Node2D" parent="Map/Levels" unique_id=904570145 instance=ExtResource("12_vv7pm")]
+position = Vector2(-500, 0)
+script = ExtResource("20_k8gyi")
+level_data = ExtResource("11_5wc7d")
+
+[node name="MapLevel" type="Node2D" parent="Map/Levels" unique_id=1144610480 instance=ExtResource("12_vv7pm")]
 position = Vector2(0, -2000)
+script = ExtResource("20_k8gyi")
 level_data = ExtResource("9_d5n8i")
 
-[node name="Bottle Neck" parent="Map/Levels" unique_id=1390215144 instance=ExtResource("12_vv7pm")]
+[node name="Bottle Neck" type="Node2D" parent="Map/Levels" unique_id=1337867663 instance=ExtResource("12_vv7pm")]
 position = Vector2(-500, -1500)
+script = ExtResource("20_k8gyi")
 level_data = ExtResource("10_cn0sx")
 
-[node name="To be annoyed" parent="Map/Levels" unique_id=2010732590 instance=ExtResource("12_vv7pm")]
+[node name="Damn bugs" type="Node2D" parent="Map/Levels" unique_id=1854570965 instance=ExtResource("12_vv7pm")]
+position = Vector2(0, -2500)
+script = ExtResource("20_k8gyi")
+level_data = ExtResource("14_pief8")
+
+[node name="To be annoyed" type="Node2D" parent="Map/Levels" unique_id=1341485249 instance=ExtResource("12_vv7pm")]
 position = Vector2(500, -2000)
+script = ExtResource("20_k8gyi")
 level_data = ExtResource("11_wxvbo")
 
-[node name="Maze" parent="Map/Levels" unique_id=698451045 instance=ExtResource("12_vv7pm")]
+[node name="Maze" type="Node2D" parent="Map/Levels" unique_id=431491251 instance=ExtResource("12_vv7pm")]
 position = Vector2(-1000, -1500)
+script = ExtResource("20_k8gyi")
 level_data = ExtResource("12_dcbap")
 
-[node name="To Lose You Mind" parent="Map/Levels" unique_id=194435519 instance=ExtResource("12_vv7pm")]
+[node name="Flies!!!" type="Node2D" parent="Map/Levels" unique_id=1289526767 instance=ExtResource("12_vv7pm")]
+position = Vector2(0, -3000)
+script = ExtResource("20_k8gyi")
+level_data = ExtResource("17_pief8")
+
+[node name="Infestation" type="Node2D" parent="Map/Levels" unique_id=76490432 instance=ExtResource("12_vv7pm")]
+position = Vector2(-500, -2500)
+script = ExtResource("20_k8gyi")
+level_data = ExtResource("17_a3ya8")
+
+[node name="Choices" type="Node2D" parent="Map/Levels" unique_id=557224810 instance=ExtResource("12_vv7pm")]
+position = Vector2(500, -2500)
+script = ExtResource("20_k8gyi")
+level_data = ExtResource("18_jc5s1")
+
+[node name="To Lose Your Mind" type="Node2D" parent="Map/Levels" unique_id=1232982400 instance=ExtResource("12_vv7pm")]
 position = Vector2(1000, -2000)
+script = ExtResource("20_k8gyi")
 level_data = ExtResource("13_cg134")
+
+[node name="Filmmaker" type="Node2D" parent="Map/Levels" unique_id=217811890 instance=ExtResource("12_vv7pm")]
+position = Vector2(-500, -3000)
+script = ExtResource("20_k8gyi")
+level_data = ExtResource("21_a3ya8")

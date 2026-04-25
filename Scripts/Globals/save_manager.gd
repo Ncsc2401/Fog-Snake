@@ -4,6 +4,9 @@ const SAVE_LEVELS_PATH = "user://save/levels/"
 const SAVE_SETTINGS_PATH = "user://save/"
 const SETTINGS_FILE_NAME = "settings"
 
+var multi_level_save_data : MapLevelSaveableData;
+var multi_level_first_level_in_chain : PackedScene;
+
 var current_settings : SettingsData;
 var current_level : MapLevelData;
 
@@ -12,7 +15,7 @@ var last_focused_level_pos : Vector2i;
 func _init() -> void:
 	current_level = MapLevelData.new()
 	
-	current_level.objecive = "NULL"
+	current_level.objective = "NULL"
 	current_level.level_name = "NULL"
 	
 	load_settings()

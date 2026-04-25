@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://bccdmwp5r4vap"]
+
+[ext_resource type="PackedScene" uid="uid://c7yuwlsmve73i" path="res://Levels/level_8.tscn" id="1_23yuc"]
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_q54t2"]
+
+[resource]
+script = ExtResource("1_q54t2")
+pos = Vector2i(-1, -6)
+id = 17
+save_name = "level_8"
+level_name = "Filmmaker"
+objective = "Get 25 points"
+level_scene = ExtResource("1_23yuc")
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

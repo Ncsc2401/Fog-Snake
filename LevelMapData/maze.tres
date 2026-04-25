@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("1_amgy1")
 pos = Vector2i(-2, -3)
-id = 10
+id = 12
 save_name = "maze"
 level_name = "Maze"
-objecive = "Reach the end"
+objective = "Reach the end"
 level_scene = ExtResource("1_q5vsi")
 level_type = 3
 metadata/_custom_type_script = "uid://7wwtq4kmxin"

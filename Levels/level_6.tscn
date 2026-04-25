@@ -49,7 +49,7 @@ metadata/_custom_type_script = "uid://3s5fmo1ne7gy"
 
 [sub_resource type="Resource" id="Resource_ksj5j"]
 script = ExtResource("10_gpb84")
-points_to_win = 15
+points_to_win = 12
 metadata/_custom_type_script = "uid://dh5gms1csyc1n"
 
 [sub_resource type="Resource" id="Resource_gpb84"]

@@ -19,6 +19,8 @@ extends Node2D
 @onready var level_name_label: Label = $CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/LevelName
 @onready var objective_label: Label = $CanvasLayer/LevelDisplayData/MarginContainer/HBoxContainer/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/VBoxContainer/Objective
 
+@onready var background: ColorRect = $BackgroundLayer/Control/Background
+
 ## Current level at focus
 var focused_level : MapLevel;
 
@@ -34,6 +36,7 @@ func _ready() -> void:
 		look_at_level(first_focused_level);
 	else:
 		look_at_pos(SaveManager.last_focused_level_pos);
+		camera_2d.reset_smoothing()
 
 func _input(event: InputEvent) -> void:
 	handle_input(event)
@@ -100,7 +103,7 @@ func update_displayed_data():
 	tries_to_win_label.text = tries_to_win_text
 	
 	level_name_label.text = focused_level.level_data.level_name
-	objective_label.text = focused_level.level_data.objecive
+	objective_label.text = focused_level.level_data.objective
 
 func get_level_from_data(data : MapLevelData):
 	var level : MapLevel = levels.get_node(data.level_name);
@@ -138,6 +141,12 @@ func unlock_all_cheat_code():
 	SaveManager.unloack_all()
 	for bridge in bridges.get_children():
 		bridge.update_color();
+
+func make_background_white_cheat_code():
+	if background.color == Color.WHITE:
+		background.color = Color.BLACK
+	elif background.color == Color.BLACK:
+		background.color = Color.WHITE
 
 func play_focused_level():
 	SaveManager.current_level = focused_level.level_data;

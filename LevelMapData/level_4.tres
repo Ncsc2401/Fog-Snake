@@ -8,10 +8,10 @@
 [resource]
 script = ExtResource("1_itirl")
 pos = Vector2i(0, -3)
-id = 4
+id = 5
 save_name = "level_4"
 level_name = "Fruit Salad"
-objecive = "Get 35 points"
+objective = "Get 35 points"
 level_scene = ExtResource("1_3aatn")
 left_level = ExtResource("1_b7gvf")
 up_level = ExtResource("4_sls2x")

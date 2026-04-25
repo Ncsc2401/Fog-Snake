@@ -20,7 +20,7 @@ enum LevelType{
 
 @export_subgroup("Level data")
 @export var level_name : String;
-@export var objecive : String;
+@export var objective : String;
 @export var level_scene : PackedScene;
 @export var level_type : LevelType;
 

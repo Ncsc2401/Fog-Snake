@@ -44,6 +44,7 @@ func _on_quit_button_pressed() -> void:
 
 func _on_new_game_confirm_pressed() -> void:
 	SaveManager.wipe_save();
+	SaveManager.last_focused_level_pos = Vector2i(0, 0);
 	SceneManager.change_scene_to_map();
 
 func close_opened_menus():

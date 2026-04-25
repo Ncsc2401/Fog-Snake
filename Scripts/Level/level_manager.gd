@@ -4,12 +4,15 @@ class_name LevelManager
 
 var points = 0;
 var won : bool = false;
-var stating_tick;
+var starting_tick;
 var winning_tick;
 
 @export var board_data : BoardData
 
 @export var win_condition : BaseWinCondition
+
+## Amount of secods for each tick
+@export var game_tick_time : float = 0.25
 
 @export var game_over_menu : Control;
 @export var score_ui : Control
@@ -25,7 +28,8 @@ func _ready() -> void:
 	
 	win_condition.level_manager = self
 	points = 0;
-	stating_tick = GlobalSignals.ticks;
+	change_game_speed(game_tick_time)
+	starting_tick = GlobalSignals.ticks;
 	
 	if board_data == null:
 		push_error("Board data is null on " + name);
@@ -68,7 +72,7 @@ func on_game_over():
 	# Unlock levels
 	if won:
 		SaveManager.unlock_current_surrounding_levels();
-		new_data.least_time = (winning_tick - stating_tick) * GlobalSignals.tick_time
+		new_data.least_time = (winning_tick - starting_tick) * game_tick_time
 		new_data.tries_to_win = new_data.total_tries;
 		new_data.won = true;
 	
@@ -78,7 +82,6 @@ func check_victory():
 	if win_condition.check_win() && !won:
 		won = true;
 		winning_tick = GlobalSignals.ticks;
-		print("won")
 
 func tick_logic():
 	for enemy in enemies:
@@ -107,7 +110,8 @@ func tick_logic():
 				points += fruit.fruit_resource.points
 				if score_ui == null:
 					push_warning("Score ui is null")
-				score_ui.update_display(points)
+				else:
+					update_score_display()
 				snake.eat_fruit(fruit.fruit_resource);
 				fruit.on_eat_call()
 	
@@ -157,10 +161,17 @@ func tick_logic():
 		spawner.spawn_commit();
 		spawner.clear_requests()
 
+func update_score_display():
+	score_ui.update_display(points)
+
 func pre_spawn():
 	for spawner in spawners:
 		spawner.spawn_commit()
 		spawner.clear_requests()
+
+func change_game_speed(new_speed : float):
+	game_tick_time = new_speed;
+	GlobalSignals.tick_time = game_tick_time
 
 func get_empty_spaces() -> Array[Vector2i]:
 	var empty_spaces : Array[Vector2i] = [];

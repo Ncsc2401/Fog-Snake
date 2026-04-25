@@ -6,10 +6,10 @@
 [resource]
 script = ExtResource("1_oi2w2")
 pos = Vector2i(-1, -5)
-id = 11
+id = 14
 save_name = "challenge_1"
 level_name = "Infestation"
-objecive = "Get 35 points"
+objective = "Get 35 points"
 level_scene = ExtResource("1_4feq4")
 level_type = 1
 metadata/_custom_type_script = "uid://7wwtq4kmxin"

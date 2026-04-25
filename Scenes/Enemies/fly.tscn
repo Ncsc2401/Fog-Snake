@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://qxled4o5e5od"]
+
+[ext_resource type="Script" uid="uid://bg2d5bh65po7r" path="res://Scripts/Enemies/fly.gd" id="1_3jcle"]
+[ext_resource type="Texture2D" uid="uid://ccae60p4wqyqu" path="res://Assets/Sprites/Fly.png" id="2_qaimy"]
+[ext_resource type="Texture2D" uid="uid://c01kdmux1k782" path="res://Assets/Sprites/WarningTile.png" id="3_xmie3"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ixnb"]
+texture = ExtResource("3_xmie3")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_r2kd0"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_2ixnb")
+
+[node name="Fly" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("warning_layer")]
+script = ExtResource("1_3jcle")
+enemy_tick_time = 10
+warning_window_time = 3
+warning_layer = NodePath("WarningLayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733223946]
+z_index = 6
+texture = ExtResource("2_qaimy")
+
+[node name="WarningLayer" type="TileMapLayer" parent="." unique_id=1635689485]
+top_level = true
+z_index = 5
+z_as_relative = false
+tile_set = SubResource("TileSet_r2kd0")

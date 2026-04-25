@@ -15,7 +15,7 @@ func _input(event: InputEvent) -> void:
 func activate():
 	show();
 	GameState.pause_game();
-	level_objective.text = SaveManager.current_level.objecive;
+	level_objective.text = SaveManager.current_level.objective;
 
 func deactivate():
 	hide();

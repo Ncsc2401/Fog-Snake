@@ -46,7 +46,8 @@ func change_scene_with_ps(packed_scene : PackedScene):
 	
 	await Transition.TransitionEnded
 	
-	get_tree().change_scene_to_packed(packed_scene)
+	if packed_scene != null:
+		get_tree().change_scene_to_packed(packed_scene)
 	
 	await get_tree().process_frame
 	

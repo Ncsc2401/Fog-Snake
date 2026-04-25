@@ -4,6 +4,7 @@ extends Node
 const FOLDER_PATH = "res://BoardData/"
 
 @export_tool_button("Save", "Callable") var save = generate_board_data
+@export_tool_button("Reverse generate", "Callable") var rev_gen = reverse_generate
 @export_tool_button("Generate walls", "Callable") var walls_gen = generate_walls
 @export_tool_button("Generate background", "Callable") var background_gen = generate_background
 @export_tool_button("Clear", "Callable") var clear_all = clear;
@@ -12,6 +13,7 @@ const FOLDER_PATH = "res://BoardData/"
 @export var board_area_layer : TileMapLayer;
 @export var wall_layer : TileMapLayer
 @export var background_layer : TileMapLayer
+@export var board_data : BoardData
 
 func generate_board_data():
 	if board_area_layer == null:
@@ -43,6 +45,16 @@ func generate_board_data():
 		EditorInterface.get_resource_filesystem().scan();
 	else:
 		printerr("Failed to save resource. ", error);
+
+func reverse_generate():
+	clear();
+	board_area_layer.clear()
+	
+	for cell in board_data.board.keys():
+		if board_data.board[cell] == BoardData.EMPTY:
+			board_area_layer.set_cell(cell, 0, Vector2i(0, 0));
+		elif board_data.board[cell] == BoardData.WALL:
+			wall_layer.set_cell(cell, 0, Vector2i(0, 0));
 
 # Creates a out border of walls
 func generate_walls():

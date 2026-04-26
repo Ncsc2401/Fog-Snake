@@ -59,6 +59,25 @@ label_settings = SubResource("LabelSettings_ce3w2")
 horizontal_alignment = 1
 vertical_alignment = 1
 
+[node name="FullScreen" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=193771783]
+layout_mode = 2
+theme_override_constants/separation = 12
+
+[node name="Label" type="Label" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/FullScreen" unique_id=15952172]
+layout_mode = 2
+text = "Fullscreen"
+label_settings = SubResource("LabelSettings_1ehe0")
+horizontal_alignment = 1
+
+[node name="FullScreenCheckbox" type="CheckBox" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/FullScreen" unique_id=697553156]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 16
+theme_override_styles/normal = SubResource("StyleBoxEmpty_48xlc")
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_1ehe0")
+theme_override_styles/hover = SubResource("StyleBoxEmpty_ce3w2")
+
 [node name="MusicVolume" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=501598052]
 layout_mode = 2
 theme_override_constants/separation = 12
@@ -132,6 +151,7 @@ theme_override_styles/normal = SubResource("StyleBoxEmpty_48xlc")
 theme_override_styles/pressed = SubResource("StyleBoxEmpty_1ehe0")
 theme_override_styles/hover = SubResource("StyleBoxEmpty_ce3w2")
 
+[connection signal="pressed" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/FullScreen/FullScreenCheckbox" to="." method="_on_full_screen_checkbox_pressed"]
 [connection signal="drag_ended" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/MusicVolume/MusicSlider" to="." method="_on_music_slider_drag_ended"]
 [connection signal="drag_ended" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/SoundEffectsVolume/SoundEffectsSlider" to="." method="_on_sound_effects_slider_drag_ended"]
 [connection signal="drag_ended" from="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/AmbianceVolume/AmbianceSlider" to="." method="_on_ambiance_slider_drag_ended"]

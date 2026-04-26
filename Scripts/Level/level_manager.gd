@@ -20,7 +20,7 @@ var winning_tick;
 var walls : Array[Vector2i];
 var fruits : Array[BaseFruit]
 var spawners : Array[BaseSpawner]
-var snakes : Array[Snake];
+var snakes : Array[BaseSnake];
 var enemies : Array[BaseEnemy];
 
 func _ready() -> void:

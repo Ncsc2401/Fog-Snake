@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://oku4ohh1tpev" path="res://Assets/Sprites/Background.png" id="1_imrkm"]
 [ext_resource type="Texture2D" uid="uid://b8staunjcffh" path="res://Assets/Sprites/WallTemplate.png" id="2_orik1"]
-[ext_resource type="PackedScene" uid="uid://c5dee402455iu" path="res://Scenes/snake.tscn" id="3_47f0f"]
+[ext_resource type="PackedScene" uid="uid://c5dee402455iu" path="res://Scenes/Snakes/normal_snake.tscn" id="3_47f0f"]
 [ext_resource type="PackedScene" uid="uid://dr5ov7u4kbfv7" path="res://Scenes/Fruits/fruit_spawner.tscn" id="4_uenwt"]
 [ext_resource type="Script" uid="uid://3s5fmo1ne7gy" path="res://Scripts/Fruits/fruit_spawn_table_resource.gd" id="5_tg8pd"]
 [ext_resource type="Script" uid="uid://c5x5ehh7vn7t1" path="res://Scripts/Fruits/fruit_spawn_table_entry_resource.gd" id="6_vn7xk"]
@@ -47,11 +47,6 @@ script = ExtResource("5_tg8pd")
 spawn_table = Array[ExtResource("6_vn7xk")]([SubResource("Resource_nb51f")])
 metadata/_custom_type_script = "uid://3s5fmo1ne7gy"
 
-[sub_resource type="Resource" id="Resource_ksj5j"]
-script = ExtResource("10_d7ns6")
-points_to_win = 12
-metadata/_custom_type_script = "uid://dh5gms1csyc1n"
-
 [sub_resource type="Resource" id="Resource_rkskn"]
 script = ExtResource("13_dqnuc")
 entry_name = "Fly"
@@ -62,6 +57,11 @@ metadata/_custom_type_script = "uid://bcgmgwcdgs13w"
 script = ExtResource("12_cmy7x")
 spawn_table = Array[ExtResource("13_dqnuc")]([SubResource("Resource_rkskn")])
 metadata/_custom_type_script = "uid://6qt5wixa50el"
+
+[sub_resource type="Resource" id="Resource_ksj5j"]
+script = ExtResource("10_d7ns6")
+points_to_win = 12
+metadata/_custom_type_script = "uid://dh5gms1csyc1n"
 
 [node name="Level7" type="Node2D" unique_id=84585901]
 
@@ -83,16 +83,16 @@ initial_fruit_pos = Array[Vector2i]([Vector2i(6, 0)])
 level_manager = NodePath("../LevelManager")
 spawn_table_resource = SubResource("Resource_nnt18")
 
+[node name="EnemySpawner" parent="." unique_id=1146343413 node_paths=PackedStringArray("level_manager") instance=ExtResource("11_mhaa7")]
+level_manager = NodePath("../LevelManager")
+initial_enemy_pos = Array[Vector2i]([Vector2i(0, -4), Vector2i(0, 3)])
+spawn_table_resource = SubResource("Resource_r2nv7")
+
 [node name="LevelManager" parent="." unique_id=1303606008 node_paths=PackedStringArray("game_over_menu", "score_ui") instance=ExtResource("8_cqofn")]
 board_data = ExtResource("9_imrkm")
 win_condition = SubResource("Resource_ksj5j")
 game_over_menu = NodePath("../UI/GameOverMenu")
 score_ui = NodePath("../UI/Score")
-
-[node name="EnemySpawner" parent="." unique_id=1146343413 node_paths=PackedStringArray("level_manager") instance=ExtResource("11_mhaa7")]
-level_manager = NodePath("../LevelManager")
-initial_enemy_pos = Array[Vector2i]([Vector2i(0, -4), Vector2i(0, 3)])
-spawn_table_resource = SubResource("Resource_r2nv7")
 
 [node name="LevelIntro" parent="." unique_id=39525408 instance=ExtResource("15_t5ec6")]
 

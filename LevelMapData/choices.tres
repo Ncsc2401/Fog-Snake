@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_uapai")
 pos = Vector2i(1, -5)
-id = 15
+id = 16
 save_name = "choices"
 level_name = "Choices"
 objective = "Get 45 points"

@@ -186,6 +186,7 @@ func save_settings(settings_data : SettingsData):
 	settings_file.store_var(settings_data.sound_effects_volume);
 	settings_file.store_var(settings_data.ambiance_volume)
 	settings_file.store_var(settings_data.jumpscares);
+	settings_file.store_var(settings_data.full_screen);
 	
 	current_settings = settings_data
 	apply_settings()
@@ -200,6 +201,8 @@ func save_settings_field(new_value, field : SettingsData.SettingsFields):
 			current_settings.ambiance_volume = new_value;
 		SettingsData.SettingsFields.JUMPSCARES:
 			current_settings.jumpscares = new_value;
+		SettingsData.SettingsFields.FULL_SCREEN:
+			current_settings.full_screen = new_value;
 	
 	save_settings(current_settings);
 
@@ -214,13 +217,16 @@ func load_settings():
 		settings_data.sound_effects_volume = settings_file.get_var();
 		settings_data.ambiance_volume = settings_file.get_var();
 		settings_data.jumpscares = settings_file.get_var();
+		settings_data.full_screen = settings_file.get_var()
 		
 		settings_file.close();
 	
 	else:
 		settings_data.music_volume = 0.5;
 		settings_data.sound_effects_volume = 0.5;
+		settings_data.ambiance_volume = 0.5;
 		settings_data.jumpscares = true;
+		settings_data.full_screen = false;
 	
 	current_settings = settings_data;
 
@@ -239,3 +245,8 @@ func apply_settings():
 		AudioServer.get_bus_index("Ambiance"),
 		linear_to_db(current_settings.ambiance_volume)
 	)
+	
+	if current_settings.full_screen && DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN);
+	elif !current_settings.full_screen && DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_WINDOWED:
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED);

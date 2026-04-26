@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://v2i3oygmflae"]
+
+[ext_resource type="PackedScene" uid="uid://bwt6sldmnr3v1" path="res://Levels/bonus_7.tscn" id="1_0xou8"]
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="2_jg5bj"]
+
+[resource]
+script = ExtResource("2_jg5bj")
+pos = Vector2i(-2, -2)
+id = 18
+save_name = "bonus_7"
+level_name = "A true maze this time"
+objective = "Reach the end"
+level_scene = ExtResource("1_0xou8")
+level_type = 2
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

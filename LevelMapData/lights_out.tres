@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://7t83fgwg4oy1"]
+
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_agsvg"]
+[ext_resource type="PackedScene" uid="uid://rx5fu0ycsxly" path="res://Levels/lights_out.tscn" id="1_fyowc"]
+
+[resource]
+script = ExtResource("1_agsvg")
+pos = Vector2i(-1, -4)
+id = 11
+save_name = "lights_out"
+level_name = "Lights Out"
+objective = "Get 20 points"
+level_scene = ExtResource("1_fyowc")
+level_type = 3
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

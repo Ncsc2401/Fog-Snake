@@ -19,10 +19,7 @@ func on_eat():
 		bunny_sound.play();
 		await bunny_sound.finished
 	
-	(level_manager as MultiLevelManager).update_multi_level_data();
-	(level_manager as MultiLevelManager).commit_multi_level_data();
-	
-	SceneManager.change_scene_to_map();
+	level_manager.on_game_over()
 	
 func on_fruit_tick():
 	pass

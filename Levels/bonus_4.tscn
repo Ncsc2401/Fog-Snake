@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://c57rthiuaf5a" path="res://Scenes/Components/background_layer.tscn" id="1_12kul"]
 [ext_resource type="PackedScene" uid="uid://euo81gkk4b62" path="res://Scenes/Components/wall_layer.tscn" id="2_5xia1"]
-[ext_resource type="PackedScene" uid="uid://c5dee402455iu" path="res://Scenes/snake.tscn" id="3_67dfe"]
+[ext_resource type="PackedScene" uid="uid://c5dee402455iu" path="res://Scenes/Snakes/normal_snake.tscn" id="3_67dfe"]
 [ext_resource type="PackedScene" uid="uid://dr5ov7u4kbfv7" path="res://Scenes/Fruits/fruit_spawner.tscn" id="4_qoj0v"]
 [ext_resource type="Script" uid="uid://3s5fmo1ne7gy" path="res://Scripts/Fruits/fruit_spawn_table_resource.gd" id="5_hi60d"]
 [ext_resource type="Script" uid="uid://c5x5ehh7vn7t1" path="res://Scripts/Fruits/fruit_spawn_table_entry_resource.gd" id="6_tbkfl"]

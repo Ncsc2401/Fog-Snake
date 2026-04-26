@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_oi2w2")
 pos = Vector2i(-1, -5)
-id = 14
+id = 15
 save_name = "challenge_1"
 level_name = "Infestation"
 objective = "Get 35 points"

@@ -1,8 +1,5 @@
 extends Node2D
 
-## First level it will be looking at
-@export var first_focused_level : MapLevel
-
 @onready var map_level_anchor: Control = $CanvasLayer/MapLevelAnchor
 @onready var camera_2d: Camera2D = $Camera2D
 
@@ -32,11 +29,8 @@ func _ready() -> void:
 	
 	setup_level_grid()
 	
-	if SaveManager.last_focused_level_pos == null:
-		look_at_level(first_focused_level);
-	else:
-		look_at_pos(SaveManager.last_focused_level_pos);
-		camera_2d.reset_smoothing()
+	look_at_pos(SaveManager.last_focused_level_pos);
+	camera_2d.reset_smoothing()
 
 func _input(event: InputEvent) -> void:
 	handle_input(event)
@@ -137,6 +131,10 @@ func look_at_pos(pos : Vector2i):
 func _on_play_button_pressed() -> void:
 	await play_focused_level();
 
+func play_focused_level():
+	SaveManager.current_level = focused_level.level_data;
+	SceneManager.change_scene_to_level(focused_level.level_data.level_scene);
+
 func unlock_all_cheat_code():
 	SaveManager.unloack_all()
 	for bridge in bridges.get_children():
@@ -148,6 +146,14 @@ func make_background_white_cheat_code():
 	elif background.color == Color.BLACK:
 		background.color = Color.WHITE
 
-func play_focused_level():
-	SaveManager.current_level = focused_level.level_data;
-	SceneManager.change_scene_to_level(focused_level.level_data.level_scene);
+func increase_game_speed_cheat_code():
+	print("Increase")
+	GlobalSignals.tick_time_multiplier *= 0.8;
+
+func decrease_game_speed_cheat_code():
+	print("Decrease")
+	GlobalSignals.tick_time_multiplier *= 1.25;
+
+func reset_game_speed_to_normal_cheat_code():
+	print("Default")
+	GlobalSignals.tick_time_multiplier = 1;

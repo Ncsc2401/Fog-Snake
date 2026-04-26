@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://bm8l3pkxqa4je"]
+
+[ext_resource type="PackedScene" uid="uid://c8p74lm4mcml3" path="res://Levels/level_10.tscn" id="1_ma57h"]
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_xva2b"]
+[ext_resource type="Resource" uid="uid://7ynglops1pxl" path="res://LevelMapData/challenge_2.tres" id="3_bmio1"]
+
+[resource]
+script = ExtResource("1_xva2b")
+pos = Vector2i(2, -6)
+id = 21
+save_name = "level_10"
+level_name = "Double trouble"
+objective = "Get 30"
+level_scene = ExtResource("1_ma57h")
+up_level = ExtResource("3_bmio1")
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

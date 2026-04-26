@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://3s5fmo1ne7gy" path="res://Scripts/Fruits/fruit_spawn_table_resource.gd" id="4_u40f0"]
 [ext_resource type="Script" uid="uid://c5x5ehh7vn7t1" path="res://Scripts/Fruits/fruit_spawn_table_entry_resource.gd" id="5_0x4y1"]
 [ext_resource type="PackedScene" uid="uid://dr5ov7u4kbfv7" path="res://Scenes/Fruits/fruit_spawner.tscn" id="5_2mgoq"]
-[ext_resource type="PackedScene" uid="uid://c5dee402455iu" path="res://Scenes/snake.tscn" id="6_uhnj4"]
+[ext_resource type="PackedScene" uid="uid://c5dee402455iu" path="res://Scenes/Snakes/normal_snake.tscn" id="6_uhnj4"]
 [ext_resource type="PackedScene" uid="uid://p5d6nykafa2t" path="res://Scenes/Fruits/star_fruit.tscn" id="7_1soli"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="7_2mgoq"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="8_uhnj4"]

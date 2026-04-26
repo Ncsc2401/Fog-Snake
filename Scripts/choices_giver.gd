@@ -18,7 +18,7 @@ var choices : Dictionary[String, Callable] = {
 
 @export var fruit_spawner : FruitSpawner;
 @export var enemy_spawner : EnemySpawner;
-@export var snakes : Array[Snake];
+@export var snakes : Array[BaseSnake];
 @export var level_manager : LevelManager;
 
 var choice_1 : Callable;

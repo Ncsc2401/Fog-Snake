@@ -4,6 +4,7 @@ extends Control
 @onready var sound_effects_slider: HSlider = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/SoundEffectsVolume/SoundEffectsSlider
 @onready var ambiance_slider: HSlider = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/AmbianceVolume/AmbianceSlider
 @onready var jumpscare_checkbox: CheckBox = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Jumpscares/JumpscareCheckbox
+@onready var full_screen_checkbox: CheckBox = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/FullScreen/FullScreenCheckbox
 
 func activate():
 	show();
@@ -14,6 +15,7 @@ func load_values():
 	sound_effects_slider.value = SaveManager.current_settings.sound_effects_volume
 	ambiance_slider.value = SaveManager.current_settings.ambiance_volume
 	jumpscare_checkbox.button_pressed = SaveManager.current_settings.jumpscares
+	full_screen_checkbox.button_pressed = SaveManager.current_settings.full_screen
 
 func _on_music_slider_drag_ended(value_changed: bool) -> void:
 	if value_changed:
@@ -29,3 +31,6 @@ func _on_ambiance_slider_drag_ended(value_changed: bool) -> void:
 
 func _on_jumpscare_checkbox_pressed() -> void:
 	SaveManager.save_settings_field(jumpscare_checkbox.button_pressed, SettingsData.SettingsFields.JUMPSCARES);
+
+func _on_full_screen_checkbox_pressed() -> void:
+	SaveManager.save_settings_field(full_screen_checkbox.button_pressed, SettingsData.SettingsFields.FULL_SCREEN)

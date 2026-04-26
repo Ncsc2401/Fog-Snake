@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://c5dee402455iu"]
 
-[ext_resource type="Script" uid="uid://cfs31lq47stnf" path="res://Scripts/snake.gd" id="1_16tbv"]
-[ext_resource type="Texture2D" uid="uid://dn2u1iq36geok" path="res://Assets/Sprites/SnakeTileset.png" id="2_v1exp"]
-[ext_resource type="Script" uid="uid://dx4ubgei8bfkv" path="res://Scripts/sound_controller.gd" id="3_lmvgn"]
-[ext_resource type="AudioStream" uid="uid://boxr2s5yeer1i" path="res://Assets/Sounds/fog-snake-mov-1.wav" id="4_pnn8g"]
-[ext_resource type="AudioStream" uid="uid://dq8qgj83iam6g" path="res://Assets/Sounds/fog-snake-mov-2.wav" id="5_6tu6o"]
-[ext_resource type="AudioStream" uid="uid://bgnbkfq7icvuv" path="res://Assets/Sounds/fog-snake-mov-3.wav" id="6_v1exp"]
-[ext_resource type="AudioStream" uid="uid://d4nbp100vbmj8" path="res://Assets/Sounds/fog-snake-mov-4.wav" id="7_lpoka"]
-[ext_resource type="AudioStream" uid="uid://b5bnbcidomngq" path="res://Assets/Sounds/fog-snake-grow.wav" id="8_v1exp"]
+[ext_resource type="Script" uid="uid://cfs31lq47stnf" path="res://Scripts/Snakes/normal_snake.gd" id="1_4ddoe"]
+[ext_resource type="Texture2D" uid="uid://ehksp0xwnuu" path="res://Assets/Sprites/SnakeTileset.png" id="2_obaon"]
+[ext_resource type="Script" uid="uid://dx4ubgei8bfkv" path="res://Scripts/sound_controller.gd" id="3_hotcu"]
+[ext_resource type="AudioStream" uid="uid://boxr2s5yeer1i" path="res://Assets/Sounds/fog-snake-mov-1.wav" id="4_raf4p"]
+[ext_resource type="AudioStream" uid="uid://dq8qgj83iam6g" path="res://Assets/Sounds/fog-snake-mov-2.wav" id="5_grded"]
+[ext_resource type="AudioStream" uid="uid://bgnbkfq7icvuv" path="res://Assets/Sounds/fog-snake-mov-3.wav" id="6_fbpyj"]
+[ext_resource type="AudioStream" uid="uid://d4nbp100vbmj8" path="res://Assets/Sounds/fog-snake-mov-4.wav" id="7_72rue"]
+[ext_resource type="AudioStream" uid="uid://b5bnbcidomngq" path="res://Assets/Sounds/fog-snake-grow.wav" id="8_wt6mx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rjxvt"]
-texture = ExtResource("2_v1exp")
+texture = ExtResource("2_obaon")
 texture_region_size = Vector2i(32, 32)
 0:0/next_alternative_id = 4
 0:0/0 = 0
@@ -49,35 +49,36 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_rjxvt")
 
-[node name="Snake" type="Node2D" unique_id=1548924198]
-script = ExtResource("1_16tbv")
+[node name="NormalSnake" type="Node2D" unique_id=1548924198 node_paths=PackedStringArray("snake_layer")]
+script = ExtResource("1_4ddoe")
 initial_body = Array[Vector2i]([Vector2i(-6, 0), Vector2i(-7, 0), Vector2i(-8, 0)])
 initial_direction = 1
+snake_layer = NodePath("SnakeLayer")
 
 [node name="SnakeLayer" type="TileMapLayer" parent="." unique_id=1038503882]
 z_index = 10
 tile_set = SubResource("TileSet_fgspn")
 
 [node name="SoundController" type="Node" parent="." unique_id=2067787773]
-script = ExtResource("3_lmvgn")
+script = ExtResource("3_hotcu")
 
 [node name="Up" type="AudioStreamPlayer" parent="SoundController" unique_id=1647561121]
-stream = ExtResource("4_pnn8g")
+stream = ExtResource("4_raf4p")
 bus = &"Sound Effects"
 
 [node name="Down" type="AudioStreamPlayer" parent="SoundController" unique_id=334023267]
-stream = ExtResource("5_6tu6o")
+stream = ExtResource("5_grded")
 bus = &"Sound Effects"
 
 [node name="Left" type="AudioStreamPlayer" parent="SoundController" unique_id=1158149808]
-stream = ExtResource("6_v1exp")
+stream = ExtResource("6_fbpyj")
 bus = &"Sound Effects"
 
 [node name="Right" type="AudioStreamPlayer" parent="SoundController" unique_id=84273681]
-stream = ExtResource("7_lpoka")
+stream = ExtResource("7_72rue")
 bus = &"Sound Effects"
 
 [node name="Grow" type="AudioStreamPlayer" parent="SoundController" unique_id=414801182]
-stream = ExtResource("8_v1exp")
+stream = ExtResource("8_wt6mx")
 volume_db = 5.0
 bus = &"Sound Effects"

@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_q54t2")
 pos = Vector2i(-1, -6)
-id = 17
+id = 19
 save_name = "level_8"
 level_name = "Filmmaker"
 objective = "Get 25 points"

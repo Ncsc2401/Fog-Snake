@@ -3,17 +3,30 @@ extends Node
 
 const FOLDER_PATH = "res://BoardData/"
 
-@export_tool_button("Save", "Callable") var save = generate_board_data
-@export_tool_button("Reverse generate", "Callable") var rev_gen = reverse_generate
-@export_tool_button("Generate walls", "Callable") var walls_gen = generate_walls
-@export_tool_button("Generate background", "Callable") var background_gen = generate_background
-@export_tool_button("Clear", "Callable") var clear_all = clear;
+@export_subgroup("Buttons")
+@export_tool_button("Generate all", "Button") var gen_all = generate_all
+@export_tool_button("Save", "Save") var save = generate_board_data
+@export_tool_button("Generate walls", "Grid") var walls_gen = generate_walls
+@export_tool_button("Generate background", "Grid") var background_gen = generate_background
+@export_tool_button("Reverse generate", "PreviewRotate") var rev_gen = reverse_generate
+@export_tool_button("Clear", "Clear") var clear_all = clear;
+@export_tool_button("Full clear", "Clear") var full_cle = full_clear
 
+@export_subgroup("Input options")
 @export var board_data_name : String
+@export var overwrite_if_exist : bool;
 @export var board_area_layer : TileMapLayer;
+@export var enemy_layer : TileMapLayer
+@export var fruit_layer : TileMapLayer
+@export var board_data : BoardData
+
+@export_subgroup("Output options")
+@export var level_root : Node2D
 @export var wall_layer : TileMapLayer
 @export var background_layer : TileMapLayer
-@export var board_data : BoardData
+@export var enemy_spawner : EnemySpawner
+@export var fruit_spawner : FruitSpawner
+@export var level_manager : LevelManager
 
 func generate_board_data():
 	if board_area_layer == null:
@@ -36,7 +49,11 @@ func generate_board_data():
 	for cell in wall_layer.get_used_cells():
 		data.board[cell] = BoardData.WALL;
 	
-	var path = FOLDER_PATH + board_data_name + ".tres";
+	var path = FOLDER_PATH + board_data_name.capitalize().replace(" ", "") + ".tres";
+	
+	if FileAccess.file_exists(path) && !overwrite_if_exist:
+		print("File already exists and cannot overwrite");
+		return;
 	
 	var error = ResourceSaver.save(data, path);
 	
@@ -55,6 +72,8 @@ func reverse_generate():
 			board_area_layer.set_cell(cell, 0, Vector2i(0, 0));
 		elif board_data.board[cell] == BoardData.WALL:
 			wall_layer.set_cell(cell, 0, Vector2i(0, 0));
+	
+	print("Reverse generated")
 
 # Creates a out border of walls
 func generate_walls():
@@ -108,11 +127,49 @@ func generate_background():
 	
 	print("Background generated")
 
-func clear():
-	for cell in wall_layer.get_used_cells():
-		wall_layer.erase_cell(cell);
+func generate_all():
+	generate_walls()
+	generate_background()
 	
-	for cell in background_layer.get_used_cells():
-		background_layer.erase_cell(cell);
+	setup_fruit_spawner()
+	setup_enemy_spawner()
+	setup_level_root()
+	
+	generate_board_data();
+	setup_level_manager();
+
+func setup_fruit_spawner():
+	fruit_spawner.initial_fruit_pos = fruit_layer.get_used_cells();
+	print("Fruit spawner setup")
+
+func setup_enemy_spawner():
+	enemy_spawner.initial_enemy_pos = enemy_layer.get_used_cells();
+	print("Enemy setup")
+
+func setup_level_manager():
+	var data : BoardData = load(FOLDER_PATH + board_data_name.capitalize().replace(" ", "") + ".tres")
+	
+	level_manager.board_data = data;
+	print("Level manager setup")
+
+func setup_level_root():
+	level_root.name = board_data_name.capitalize().replace(" ", "")
+	print("Level root setup")
+
+func clear():
+	wall_layer.clear()
+	background_layer.clear()
+	
+	level_root.name = "Level"
 	
 	print("All cleared")
+
+func full_clear():
+	wall_layer.clear()
+	background_layer.clear()
+	
+	level_root.name = "Level"
+	
+	enemy_layer.clear()
+	fruit_layer.clear()
+	board_area_layer.clear()

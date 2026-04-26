@@ -2,14 +2,16 @@
 
 [ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_amgy1"]
 [ext_resource type="PackedScene" uid="uid://cmwquxkvye4yv" path="res://Levels/maze_1.tscn" id="1_q5vsi"]
+[ext_resource type="Resource" uid="uid://v2i3oygmflae" path="res://LevelMapData/bonus_7.tres" id="1_tkt1j"]
 
 [resource]
 script = ExtResource("1_amgy1")
 pos = Vector2i(-2, -3)
-id = 12
+id = 13
 save_name = "maze"
 level_name = "Maze"
 objective = "Reach the end"
 level_scene = ExtResource("1_q5vsi")
 level_type = 3
+down_level = ExtResource("1_tkt1j")
 metadata/_custom_type_script = "uid://7wwtq4kmxin"

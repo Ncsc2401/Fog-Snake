@@ -3,14 +3,16 @@
 [ext_resource type="Resource" uid="uid://bccdmwp5r4vap" path="res://LevelMapData/level_8.tres" id="1_wcqar"]
 [ext_resource type="PackedScene" uid="uid://cp4byxcl84j0l" path="res://Levels/level_7.tscn" id="2_pmsmm"]
 [ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="3_h6k4d"]
+[ext_resource type="Resource" uid="uid://5s3rxsclt60k" path="res://LevelMapData/level_9.tres" id="3_pmsmm"]
 
 [resource]
 script = ExtResource("3_h6k4d")
 pos = Vector2i(0, -6)
-id = 13
+id = 14
 save_name = "level_7"
 level_name = "Flies!!!"
 objective = "Get 12 points"
 level_scene = ExtResource("2_pmsmm")
 left_level = ExtResource("1_wcqar")
+right_level = ExtResource("3_pmsmm")
 metadata/_custom_type_script = "uid://7wwtq4kmxin"

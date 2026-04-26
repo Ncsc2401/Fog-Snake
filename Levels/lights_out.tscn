@@ -1,0 +1,115 @@
+[gd_scene format=4 uid="uid://rx5fu0ycsxly"]
+
+[ext_resource type="Texture2D" uid="uid://oku4ohh1tpev" path="res://Assets/Sprites/Background.png" id="1_rgxrf"]
+[ext_resource type="Texture2D" uid="uid://b8staunjcffh" path="res://Assets/Sprites/WallTemplate.png" id="2_gmmno"]
+[ext_resource type="PackedScene" uid="uid://dr5ov7u4kbfv7" path="res://Scenes/Fruits/fruit_spawner.tscn" id="4_cl64n"]
+[ext_resource type="Script" uid="uid://3s5fmo1ne7gy" path="res://Scripts/Fruits/fruit_spawn_table_resource.gd" id="5_xkpvn"]
+[ext_resource type="Script" uid="uid://c5x5ehh7vn7t1" path="res://Scripts/Fruits/fruit_spawn_table_entry_resource.gd" id="6_c5ekg"]
+[ext_resource type="PackedScene" uid="uid://48om1rvld52o" path="res://Scenes/Fruits/apple.tscn" id="6_rgxrf"]
+[ext_resource type="PackedScene" uid="uid://p5d6nykafa2t" path="res://Scenes/Fruits/star_fruit.tscn" id="7_gmmno"]
+[ext_resource type="PackedScene" uid="uid://h3t2dvc0174k" path="res://Scenes/Fruits/watermelon.tscn" id="7_o3828"]
+[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/Components/level_manager.tscn" id="8_e4wvd"]
+[ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="10_c0ysh"]
+[ext_resource type="Resource" uid="uid://dtadc2st1lpwy" path="res://BoardData/LightsOut.tres" id="10_o6v0v"]
+[ext_resource type="PackedScene" uid="uid://vsb5tli4i4t8" path="res://Scenes/Snakes/lights_out_snake.tscn" id="10_rgxrf"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="11_ttatf"]
+[ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="12_rwshy"]
+[ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="13_uk37i"]
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="14_g3osk"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rgxrf"]
+texture = ExtResource("1_rgxrf")
+texture_region_size = Vector2i(32, 32)
+1:0/0 = 0
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_gmmno"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_rgxrf")
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_gmmno"]
+polygon = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gmmno"]
+texture = ExtResource("2_gmmno")
+0:0/0 = 0
+0:0/0/occlusion_layer_0/polygon_0/polygon = SubResource("OccluderPolygon2D_gmmno")
+
+[sub_resource type="TileSet" id="TileSet_o6v0v"]
+occlusion_layer_0/light_mask = 1
+sources/0 = SubResource("TileSetAtlasSource_gmmno")
+
+[sub_resource type="Resource" id="Resource_ctdce"]
+script = ExtResource("6_c5ekg")
+entry_name = "Apple"
+scene = ExtResource("6_rgxrf")
+weight = 3.0
+metadata/_custom_type_script = "uid://c5x5ehh7vn7t1"
+
+[sub_resource type="Resource" id="Resource_o6v0v"]
+script = ExtResource("6_c5ekg")
+entry_name = "Star Fruit"
+scene = ExtResource("7_gmmno")
+weight = 0.5
+metadata/_custom_type_script = "uid://c5x5ehh7vn7t1"
+
+[sub_resource type="Resource" id="Resource_gmmno"]
+script = ExtResource("6_c5ekg")
+entry_name = "Water Melon"
+scene = ExtResource("7_o3828")
+metadata/_custom_type_script = "uid://c5x5ehh7vn7t1"
+
+[sub_resource type="Resource" id="Resource_2urlj"]
+script = ExtResource("5_xkpvn")
+spawn_table = Array[ExtResource("6_c5ekg")]([SubResource("Resource_ctdce"), SubResource("Resource_o6v0v"), SubResource("Resource_gmmno")])
+metadata/_custom_type_script = "uid://3s5fmo1ne7gy"
+
+[sub_resource type="Resource" id="Resource_5wr1k"]
+script = ExtResource("10_c0ysh")
+points_to_win = 20
+metadata/_custom_type_script = "uid://dh5gms1csyc1n"
+
+[node name="LightsOut" type="Node2D" unique_id=396815804]
+
+[node name="BackgroundLayer" type="TileMapLayer" parent="." unique_id=444626797]
+tile_map_data = PackedByteArray("AAD4//r/AAAAAAAAAAD4//v/AAABAAAAAAD4//z/AAAAAAAAAAD4//3/AAABAAAAAAD4//7/AAAAAAAAAAD4////AAABAAAAAAD4/wAAAAAAAAAAAAD4/wEAAAABAAAAAAD4/wIAAAAAAAAAAAD4/wMAAAABAAAAAAD4/wQAAAAAAAAAAAD4/wUAAAABAAAAAAD5//r/AAABAAAAAAD5//v/AAAAAAAAAAD5//z/AAABAAAAAAD5//3/AAAAAAAAAAD5//7/AAABAAAAAAD5////AAAAAAAAAAD5/wAAAAABAAAAAAD5/wEAAAAAAAAAAAD5/wIAAAABAAAAAAD5/wMAAAAAAAAAAAD5/wQAAAABAAAAAAD5/wUAAAAAAAAAAAD6//r/AAAAAAAAAAD6//v/AAABAAAAAAD6//7/AAAAAAAAAAD6////AAABAAAAAAD6/wAAAAAAAAAAAAD6/wEAAAABAAAAAAD6/wIAAAAAAAAAAAD6/wMAAAABAAAAAAD6/wQAAAAAAAAAAAD6/wUAAAABAAAAAAD7//r/AAABAAAAAAD7//v/AAAAAAAAAAD7//7/AAABAAAAAAD7////AAAAAAAAAAD7/wAAAAABAAAAAAD7/wEAAAAAAAAAAAD7/wIAAAABAAAAAAD7/wMAAAAAAAAAAAD7/wQAAAABAAAAAAD7/wUAAAAAAAAAAAD8//r/AAAAAAAAAAD8//v/AAABAAAAAAD8//z/AAAAAAAAAAD8//3/AAABAAAAAAD8//7/AAAAAAAAAAD8////AAABAAAAAAD8/wAAAAAAAAAAAAD8/wEAAAABAAAAAAD8/wIAAAAAAAAAAAD8/wMAAAABAAAAAAD8/wQAAAAAAAAAAAD8/wUAAAABAAAAAAD9//r/AAABAAAAAAD9//v/AAAAAAAAAAD9//z/AAABAAAAAAD9//3/AAAAAAAAAAD9//7/AAABAAAAAAD9////AAAAAAAAAAD9/wAAAAABAAAAAAD9/wEAAAAAAAAAAAD9/wIAAAABAAAAAAD9/wMAAAAAAAAAAAD9/wQAAAABAAAAAAD9/wUAAAAAAAAAAAD+//r/AAAAAAAAAAD+//v/AAABAAAAAAD+//z/AAAAAAAAAAD+//3/AAABAAAAAAD+//7/AAAAAAAAAAD+////AAABAAAAAAD+/wAAAAAAAAAAAAD+/wEAAAABAAAAAAD+/wIAAAAAAAAAAAD+/wMAAAABAAAAAAD+/wQAAAAAAAAAAAD+/wUAAAABAAAAAAD///r/AAABAAAAAAD///v/AAAAAAAAAAD///z/AAABAAAAAAD///3/AAAAAAAAAAD///7/AAABAAAAAAD//wEAAAAAAAAAAAD//wIAAAABAAAAAAD//wMAAAAAAAAAAAD//wQAAAABAAAAAAD//wUAAAAAAAAAAAAAAPr/AAAAAAAAAAAAAPv/AAABAAAAAAAAAPz/AAAAAAAAAAAAAP3/AAABAAAAAAAAAP7/AAAAAAAAAAAAAAEAAAABAAAAAAAAAAIAAAAAAAAAAAAAAAMAAAABAAAAAAAAAAQAAAAAAAAAAAAAAAUAAAABAAAAAAABAPr/AAABAAAAAAABAPv/AAAAAAAAAAABAPz/AAABAAAAAAABAP3/AAAAAAAAAAABAP7/AAABAAAAAAABAP//AAAAAAAAAAABAAAAAAABAAAAAAABAAEAAAAAAAAAAAABAAIAAAABAAAAAAABAAMAAAAAAAAAAAABAAQAAAABAAAAAAABAAUAAAAAAAAAAAACAPr/AAAAAAAAAAACAPv/AAABAAAAAAACAPz/AAAAAAAAAAACAP3/AAABAAAAAAACAP7/AAAAAAAAAAACAP//AAABAAAAAAACAAAAAAAAAAAAAAACAAEAAAABAAAAAAACAAIAAAAAAAAAAAACAAMAAAABAAAAAAACAAQAAAAAAAAAAAACAAUAAAABAAAAAAADAPr/AAABAAAAAAADAPv/AAAAAAAAAAADAPz/AAABAAAAAAADAP3/AAAAAAAAAAADAP7/AAABAAAAAAADAP//AAAAAAAAAAADAAAAAAABAAAAAAADAAEAAAAAAAAAAAADAAIAAAABAAAAAAADAAMAAAAAAAAAAAADAAQAAAABAAAAAAADAAUAAAAAAAAAAAAEAPr/AAAAAAAAAAAEAPv/AAABAAAAAAAEAPz/AAAAAAAAAAAEAP3/AAABAAAAAAAEAP7/AAAAAAAAAAAEAP//AAABAAAAAAAEAAAAAAAAAAAAAAAEAAEAAAABAAAAAAAEAAQAAAAAAAAAAAAEAAUAAAABAAAAAAAFAPr/AAABAAAAAAAFAPv/AAAAAAAAAAAFAPz/AAABAAAAAAAFAP3/AAAAAAAAAAAFAP7/AAABAAAAAAAFAP//AAAAAAAAAAAFAAAAAAABAAAAAAAFAAEAAAAAAAAAAAAFAAQAAAABAAAAAAAFAAUAAAAAAAAAAAAGAPr/AAAAAAAAAAAGAPv/AAABAAAAAAAGAPz/AAAAAAAAAAAGAP3/AAABAAAAAAAGAP7/AAAAAAAAAAAGAP//AAABAAAAAAAGAAAAAAAAAAAAAAAGAAEAAAABAAAAAAAGAAIAAAAAAAAAAAAGAAMAAAABAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAABAAAAAAAHAPr/AAABAAAAAAAHAPv/AAAAAAAAAAAHAPz/AAABAAAAAAAHAP3/AAAAAAAAAAAHAP7/AAABAAAAAAAHAP//AAAAAAAAAAAHAAAAAAABAAAAAAAHAAEAAAAAAAAAAAAHAAIAAAABAAAAAAAHAAMAAAAAAAAAAAAHAAQAAAABAAAAAAAHAAUAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_gmmno")
+
+[node name="WallLayer" type="TileMapLayer" parent="." unique_id=263885122]
+scale = Vector2(2, 2)
+tile_map_data = PackedByteArray("AAD4//n/AAAAAAAAAAD3//r/AAAAAAAAAAD3//n/AAAAAAAAAAD3//v/AAAAAAAAAAD5//n/AAAAAAAAAAD3//z/AAAAAAAAAAD3//3/AAAAAAAAAAD3//7/AAAAAAAAAAD3////AAAAAAAAAAD3/wAAAAAAAAAAAAD3/wEAAAAAAAAAAAD3/wIAAAAAAAAAAAD3/wMAAAAAAAAAAAD3/wQAAAAAAAAAAAD3/wUAAAAAAAAAAAD4/wYAAAAAAAAAAAD3/wYAAAAAAAAAAAD5/wYAAAAAAAAAAAD6//n/AAAAAAAAAAD6//z/AAAAAAAAAAD6//3/AAAAAAAAAAD6/wYAAAAAAAAAAAD7//n/AAAAAAAAAAD7//z/AAAAAAAAAAD7//3/AAAAAAAAAAD7/wYAAAAAAAAAAAD8//n/AAAAAAAAAAD8/wYAAAAAAAAAAAD9//n/AAAAAAAAAAD9/wYAAAAAAAAAAAD+//n/AAAAAAAAAAD+/wYAAAAAAAAAAAD///n/AAAAAAAAAAD/////AAAAAAAAAAD//wAAAAAAAAAAAAD//wYAAAAAAAAAAAAAAPn/AAAAAAAAAAAAAP//AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAABAPn/AAAAAAAAAAABAAYAAAAAAAAAAAACAPn/AAAAAAAAAAACAAYAAAAAAAAAAAADAPn/AAAAAAAAAAADAAYAAAAAAAAAAAAEAPn/AAAAAAAAAAAEAAIAAAAAAAAAAAAEAAMAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAPn/AAAAAAAAAAAFAAIAAAAAAAAAAAAFAAMAAAAAAAAAAAAFAAYAAAAAAAAAAAAGAPn/AAAAAAAAAAAGAAYAAAAAAAAAAAAHAPn/AAAAAAAAAAAHAAYAAAAAAAAAAAAIAPr/AAAAAAAAAAAIAPn/AAAAAAAAAAAIAPv/AAAAAAAAAAAIAPz/AAAAAAAAAAAIAP3/AAAAAAAAAAAIAP7/AAAAAAAAAAAIAP//AAAAAAAAAAAIAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAIAAIAAAAAAAAAAAAIAAMAAAAAAAAAAAAIAAQAAAAAAAAAAAAIAAUAAAAAAAAAAAAIAAYAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_o6v0v")
+
+[node name="FruitSpawner" parent="." unique_id=874991722 node_paths=PackedStringArray("level_manager") instance=ExtResource("4_cl64n")]
+initial_fruit_pos = Array[Vector2i]([Vector2i(6, -5)])
+level_manager = NodePath("../LevelManager")
+spawn_table_resource = SubResource("Resource_2urlj")
+
+[node name="LightsOutSnake" parent="." unique_id=1548924198 node_paths=PackedStringArray("level_manager") instance=ExtResource("10_rgxrf")]
+initial_body = Array[Vector2i]([Vector2i(-6, 2), Vector2i(-6, 3)])
+initial_direction = 4
+level_manager = NodePath("../LevelManager")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1867749425]
+zoom = Vector2(1.5, 1.5)
+
+[node name="LevelIntro" parent="." unique_id=39525408 instance=ExtResource("11_ttatf")]
+
+[node name="LevelManager" parent="." unique_id=1303606008 node_paths=PackedStringArray("game_over_menu", "score_ui") instance=ExtResource("8_e4wvd")]
+board_data = ExtResource("10_o6v0v")
+win_condition = SubResource("Resource_5wr1k")
+game_over_menu = NodePath("../UI/GameOverMenu")
+score_ui = NodePath("../UI/Score")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1361888976]
+color = Color(0, 0, 0, 1)
+
+[node name="UI" type="CanvasLayer" parent="." unique_id=767385031]
+
+[node name="InGameMenu" parent="UI" unique_id=91715939 instance=ExtResource("12_rwshy")]
+visible = false
+
+[node name="GameOverMenu" parent="UI" unique_id=1624511320 instance=ExtResource("13_uk37i")]
+visible = false
+
+[node name="Score" parent="UI" unique_id=56910234 instance=ExtResource("14_g3osk")]

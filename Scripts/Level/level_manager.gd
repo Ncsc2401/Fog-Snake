@@ -4,7 +4,6 @@ class_name LevelManager
 
 var points = 0;
 var won : bool = false;
-var starting_tick;
 var winning_tick;
 
 @export var board_data : BoardData
@@ -12,7 +11,13 @@ var winning_tick;
 @export var win_condition : BaseWinCondition
 
 ## Amount of secods for each tick
-@export var game_tick_time : float = 0.25
+@export var initial_game_tick_time : float = 0.25
+
+var game_tick_time : float = 0;
+
+## Stores the history of the game_tick_time in a dict in the form game_tick_time : ticks
+var game_tick_time_history : Dictionary[float, float];
+var game_tick_time_starting_tick : int = 0;
 
 @export var game_over_menu : Control;
 @export var score_ui : Control
@@ -28,8 +33,7 @@ func _ready() -> void:
 	
 	win_condition.level_manager = self
 	points = 0;
-	change_game_speed(game_tick_time)
-	starting_tick = GlobalSignals.ticks;
+	change_game_speed(initial_game_tick_time)
 	
 	if board_data == null:
 		push_error("Board data is null on " + name);
@@ -72,7 +76,7 @@ func on_game_over():
 	# Unlock levels
 	if won:
 		SaveManager.unlock_current_surrounding_levels();
-		new_data.least_time = (winning_tick - starting_tick) * game_tick_time
+		new_data.least_time = calculate_game_time()
 		new_data.tries_to_win = new_data.total_tries;
 		new_data.won = true;
 	
@@ -170,8 +174,26 @@ func pre_spawn():
 		spawner.clear_requests()
 
 func change_game_speed(new_speed : float):
+	var delta_tick  = GlobalSignals.ticks - game_tick_time_starting_tick;
+	if !game_tick_time_history.has(game_tick_time):
+		game_tick_time_history[game_tick_time] = delta_tick
+	else:
+		game_tick_time_history[game_tick_time] += delta_tick;
+	game_tick_time_starting_tick = GlobalSignals.ticks;
+	
 	game_tick_time = new_speed;
 	GlobalSignals.tick_time = game_tick_time
+
+func calculate_game_time():
+	var time = 0;
+	for key in game_tick_time_history.keys():
+		time += key * game_tick_time_history[key];
+	
+	var current_delta_time = (GlobalSignals.ticks - game_tick_time_starting_tick) * game_tick_time;
+	
+	time += current_delta_time
+	
+	return time;
 
 func get_empty_spaces() -> Array[Vector2i]:
 	var empty_spaces : Array[Vector2i] = [];

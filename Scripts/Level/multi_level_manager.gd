@@ -98,7 +98,7 @@ func update_multi_level_data():
 	if won:
 		if SaveManager.multi_level_save_data.least_time == -1:
 			SaveManager.multi_level_save_data.least_time = 0;
-		SaveManager.multi_level_save_data.least_time += (winning_tick - starting_tick) * game_tick_time
+		SaveManager.multi_level_save_data.least_time += calculate_game_time()
 
 func commit_multi_level_data():
 	var new_data = MapLevelSaveableData.new();

@@ -47,11 +47,6 @@ script = ExtResource("5_cc6nk")
 spawn_table = Array[ExtResource("6_ce5na")]([SubResource("Resource_nb51f")])
 metadata/_custom_type_script = "uid://3s5fmo1ne7gy"
 
-[sub_resource type="Resource" id="Resource_ksj5j"]
-script = ExtResource("10_gpb84")
-points_to_win = 12
-metadata/_custom_type_script = "uid://dh5gms1csyc1n"
-
 [sub_resource type="Resource" id="Resource_gpb84"]
 script = ExtResource("15_ce5na")
 entry_name = "Ladybug"
@@ -62,6 +57,11 @@ metadata/_custom_type_script = "uid://bcgmgwcdgs13w"
 script = ExtResource("14_cc6nk")
 spawn_table = Array[ExtResource("15_ce5na")]([SubResource("Resource_gpb84")])
 metadata/_custom_type_script = "uid://6qt5wixa50el"
+
+[sub_resource type="Resource" id="Resource_ksj5j"]
+script = ExtResource("10_gpb84")
+points_to_win = 12
+metadata/_custom_type_script = "uid://dh5gms1csyc1n"
 
 [node name="Level6" type="Node2D" unique_id=84585901]
 
@@ -83,16 +83,16 @@ initial_fruit_pos = Array[Vector2i]([Vector2i(6, 0)])
 level_manager = NodePath("../LevelManager")
 spawn_table_resource = SubResource("Resource_nnt18")
 
+[node name="EnemySpawner" parent="." unique_id=1146343413 node_paths=PackedStringArray("level_manager") instance=ExtResource("13_sio2j")]
+level_manager = NodePath("../LevelManager")
+initial_enemy_pos = Array[Vector2i]([Vector2i(0, -4), Vector2i(0, 3)])
+spawn_table_resource = SubResource("Resource_smkgk")
+
 [node name="LevelManager" parent="." unique_id=1303606008 node_paths=PackedStringArray("game_over_menu", "score_ui") instance=ExtResource("8_smkgk")]
 board_data = ExtResource("9_qrith")
 win_condition = SubResource("Resource_ksj5j")
 game_over_menu = NodePath("../UI/GameOverMenu")
 score_ui = NodePath("../UI/Score")
-
-[node name="EnemySpawner" parent="." unique_id=1146343413 node_paths=PackedStringArray("level_manager") instance=ExtResource("13_sio2j")]
-level_manager = NodePath("../LevelManager")
-initial_enemy_pos = Array[Vector2i]([Vector2i(0, -4), Vector2i(0, 3)])
-spawn_table_resource = SubResource("Resource_smkgk")
 
 [node name="LevelIntro" parent="." unique_id=39525408 instance=ExtResource("15_smkgk")]
 

@@ -71,7 +71,7 @@ spawn_table_resource = SubResource("Resource_nnt18")
 [node name="LevelManager" parent="." unique_id=1303606008 node_paths=PackedStringArray("game_over_menu", "score_ui") instance=ExtResource("8_pqiv6")]
 board_data = ExtResource("9_hlpcn")
 win_condition = SubResource("Resource_34erp")
-game_tick_time = 0.05
+initial_game_tick_time = 0.05
 game_over_menu = NodePath("../UI/GameOverMenu")
 score_ui = NodePath("../UI/Score")
 

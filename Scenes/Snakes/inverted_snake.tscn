@@ -1,60 +1,59 @@
 [gd_scene format=3 uid="uid://ipsw2kqcf15t"]
 
-[ext_resource type="Script" uid="uid://0s1pxs4fm4d2" path="res://Scripts/inverted_snake.gd" id="1_ab3gb"]
-[ext_resource type="Texture2D" uid="uid://dmym00brbhgge" path="res://Assets/Sprites/InverseSnakeTilemap.png" id="3_kob4j"]
+[ext_resource type="Script" uid="uid://4w8urs321i4d" path="res://Scripts/Snakes/base_snake.gd" id="1_ynxyc"]
+[ext_resource type="TileSet" uid="uid://bxyphtiipk4td" path="res://Scenes/Snakes/inverted_snake_tile_set.tres" id="2_ab3gb"]
+[ext_resource type="Script" uid="uid://fugkvr1qh0m8" path="res://Scripts/Snakes/SnakeComponents/DeathComponents/normal_snake_death_component.gd" id="2_r2wfo"]
 [ext_resource type="Script" uid="uid://dx4ubgei8bfkv" path="res://Scripts/sound_controller.gd" id="3_x60vl"]
+[ext_resource type="Script" uid="uid://bln70orb5n6me" path="res://Scripts/Snakes/SnakeComponents/DrawComponents/default_snake_draw_component.gd" id="3_ynxyc"]
 [ext_resource type="AudioStream" uid="uid://boxr2s5yeer1i" path="res://Assets/Sounds/fog-snake-mov-1.wav" id="4_c6mg4"]
 [ext_resource type="AudioStream" uid="uid://dq8qgj83iam6g" path="res://Assets/Sounds/fog-snake-mov-2.wav" id="5_pa4ba"]
+[ext_resource type="Script" uid="uid://bagd4dtstgvtj" path="res://Scripts/Snakes/SnakeComponents/MovementComponents/normal_snake_movement_component.gd" id="5_ti433"]
+[ext_resource type="Script" uid="uid://clb5xj7d51pfn" path="res://Scripts/Snakes/SnakeComponents/GrowComponents/normal_snake_grow_component.gd" id="6_g5uop"]
 [ext_resource type="AudioStream" uid="uid://bgnbkfq7icvuv" path="res://Assets/Sounds/fog-snake-mov-3.wav" id="6_r2wfo"]
+[ext_resource type="Script" uid="uid://t3ahs52kl0kk" path="res://Scripts/Snakes/SnakeComponents/EatComponents/normal_snake_eat_component.gd" id="7_f57hx"]
 [ext_resource type="AudioStream" uid="uid://d4nbp100vbmj8" path="res://Assets/Sounds/fog-snake-mov-4.wav" id="7_ynxyc"]
 [ext_resource type="AudioStream" uid="uid://b5bnbcidomngq" path="res://Assets/Sounds/fog-snake-grow.wav" id="8_ti433"]
+[ext_resource type="Script" uid="uid://bv4ltr0iwp8a1" path="res://Scripts/Snakes/SnakeComponents/InputComponents/inverted_snake_input_component.gd" id="8_ynxyc"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x60vl"]
-texture = ExtResource("3_kob4j")
-texture_region_size = Vector2i(32, 32)
-0:0/next_alternative_id = 4
-0:0/0 = 0
-0:0/1 = 1
-0:0/1/transpose = true
-0:0/2 = 2
-0:0/2/flip_h = true
-0:0/3 = 3
-0:0/3/flip_v = true
-0:0/3/transpose = true
-1:0/next_alternative_id = 2
-1:0/0 = 0
-1:0/1 = 1
-1:0/1/transpose = true
-2:0/next_alternative_id = 4
-2:0/0 = 0
-2:0/1 = 1
-2:0/1/flip_v = true
-2:0/2 = 2
-2:0/2/flip_h = true
-2:0/2/flip_v = true
-2:0/3 = 3
-2:0/3/flip_h = true
-3:0/next_alternative_id = 4
-3:0/0 = 0
-3:0/1 = 1
-3:0/1/transpose = true
-3:0/2 = 2
-3:0/2/flip_h = true
-3:0/3 = 3
-3:0/3/flip_v = true
-3:0/3/transpose = true
+[sub_resource type="Resource" id="Resource_ti433"]
+script = ExtResource("2_r2wfo")
+metadata/_custom_type_script = "uid://fugkvr1qh0m8"
 
-[sub_resource type="TileSet" id="TileSet_fgspn"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_x60vl")
+[sub_resource type="Resource" id="Resource_g5uop"]
+script = ExtResource("3_ynxyc")
+snake_tileset = ExtResource("2_ab3gb")
+metadata/_custom_type_script = "uid://bln70orb5n6me"
 
-[node name="InvertedSnake" type="Node2D" unique_id=1548924198 node_paths=PackedStringArray("snake_layer")]
-script = ExtResource("1_ab3gb")
+[sub_resource type="Resource" id="Resource_f57hx"]
+script = ExtResource("5_ti433")
+metadata/_custom_type_script = "uid://bagd4dtstgvtj"
+
+[sub_resource type="Resource" id="Resource_i4heh"]
+script = ExtResource("6_g5uop")
+metadata/_custom_type_script = "uid://clb5xj7d51pfn"
+
+[sub_resource type="Resource" id="Resource_gru48"]
+script = ExtResource("7_f57hx")
+metadata/_custom_type_script = "uid://t3ahs52kl0kk"
+
+[sub_resource type="Resource" id="Resource_87085"]
+script = ExtResource("8_ynxyc")
+metadata/_custom_type_script = "uid://bv4ltr0iwp8a1"
+
+[node name="InvertedSnake" type="Node2D" unique_id=1548924198 node_paths=PackedStringArray("snake_layer", "sound_controller")]
+script = ExtResource("1_ynxyc")
 snake_layer = NodePath("SnakeLayer")
+sound_controller = NodePath("SoundController")
+death_component = SubResource("Resource_ti433")
+draw_component = SubResource("Resource_g5uop")
+movement_component = SubResource("Resource_f57hx")
+grow_component = SubResource("Resource_i4heh")
+eat_component = SubResource("Resource_gru48")
+input_component = SubResource("Resource_87085")
 
 [node name="SnakeLayer" type="TileMapLayer" parent="." unique_id=1038503882]
 z_index = 10
-tile_set = SubResource("TileSet_fgspn")
+tile_set = ExtResource("2_ab3gb")
 
 [node name="SoundController" type="Node" parent="." unique_id=2067787773]
 script = ExtResource("3_x60vl")

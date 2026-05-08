@@ -7,14 +7,17 @@
 [ext_resource type="Script" uid="uid://3s5fmo1ne7gy" path="res://Scripts/Fruits/fruit_spawn_table_resource.gd" id="5_b5mi5"]
 [ext_resource type="Script" uid="uid://c5x5ehh7vn7t1" path="res://Scripts/Fruits/fruit_spawn_table_entry_resource.gd" id="6_2amnv"]
 [ext_resource type="PackedScene" uid="uid://48om1rvld52o" path="res://Scenes/Fruits/apple.tscn" id="7_ncli2"]
+[ext_resource type="PackedScene" uid="uid://h3t2dvc0174k" path="res://Scenes/Fruits/watermelon.tscn" id="8_1jqhs"]
 [ext_resource type="Theme" uid="uid://drnrqrrtdyfbm" path="res://Assets/UI/UiTheme.tres" id="8_7bisd"]
 [ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/Components/level_manager.tscn" id="8_a71li"]
 [ext_resource type="Script" uid="uid://cit4k6u2rruwx" path="res://Scripts/choices_giver.gd" id="8_abtbe"]
 [ext_resource type="PackedScene" uid="uid://65wep6sjv2bu" path="res://Scenes/Enemies/enemy_spawner.tscn" id="8_vpylo"]
+[ext_resource type="PackedScene" uid="uid://byayy2c7usui5" path="res://Scenes/Fruits/ice_cream.tscn" id="9_1rgid"]
 [ext_resource type="Resource" uid="uid://cvaavaiepsim" path="res://BoardData/Choices.tres" id="9_51x5u"]
 [ext_resource type="Script" uid="uid://6qt5wixa50el" path="res://Scripts/Enemies/enemy_spawn_table_resource.gd" id="9_ncli2"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="10_1jqhs"]
 [ext_resource type="Script" uid="uid://bcgmgwcdgs13w" path="res://Scripts/Enemies/enemy_spawn_table_entry_resource.gd" id="10_a71li"]
+[ext_resource type="PackedScene" uid="uid://p5d6nykafa2t" path="res://Scenes/Fruits/star_fruit.tscn" id="10_n7dqa"]
 [ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="11_1rgid"]
 [ext_resource type="PackedScene" uid="uid://bdnbplhqsw7jm" path="res://Scenes/Enemies/ladybug.tscn" id="11_51x5u"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="12_n7dqa"]
@@ -42,11 +45,33 @@ sources/0 = SubResource("TileSetAtlasSource_xdxes")
 script = ExtResource("6_2amnv")
 entry_name = "Apple"
 scene = ExtResource("7_ncli2")
+weight = 5.0
+metadata/_custom_type_script = "uid://c5x5ehh7vn7t1"
+
+[sub_resource type="Resource" id="Resource_8yr6x"]
+script = ExtResource("6_2amnv")
+entry_name = "Watermelon"
+scene = ExtResource("8_1jqhs")
+weight = 2.5
+metadata/_custom_type_script = "uid://c5x5ehh7vn7t1"
+
+[sub_resource type="Resource" id="Resource_scek3"]
+script = ExtResource("6_2amnv")
+entry_name = "Ice Cream"
+scene = ExtResource("9_1rgid")
+weight = 0.2
+metadata/_custom_type_script = "uid://c5x5ehh7vn7t1"
+
+[sub_resource type="Resource" id="Resource_ct1fp"]
+script = ExtResource("6_2amnv")
+entry_name = "Star Fruit"
+scene = ExtResource("10_n7dqa")
+weight = 0.7
 metadata/_custom_type_script = "uid://c5x5ehh7vn7t1"
 
 [sub_resource type="Resource" id="Resource_nnt18"]
 script = ExtResource("5_b5mi5")
-spawn_table = Array[ExtResource("6_2amnv")]([SubResource("Resource_nb51f")])
+spawn_table = Array[ExtResource("6_2amnv")]([SubResource("Resource_nb51f"), SubResource("Resource_8yr6x"), SubResource("Resource_scek3"), SubResource("Resource_ct1fp")])
 metadata/_custom_type_script = "uid://3s5fmo1ne7gy"
 
 [sub_resource type="Resource" id="Resource_1jqhs"]
@@ -81,7 +106,7 @@ tile_map_data = PackedByteArray("AAD7/wkAAAAAAAAAAAD6/wkAAAAAAAAAAAD8/wkAAAAAAAA
 tile_set = SubResource("TileSet_ofrr6")
 
 [node name="Snake" parent="." unique_id=1548924198 node_paths=PackedStringArray("level_manager") instance=ExtResource("3_abtbe")]
-initial_direction = 2
+initial_body = Array[Vector2i]([Vector2i(-5, 0), Vector2i(-6, 0), Vector2i(-7, 0)])
 level_manager = NodePath("../LevelManager")
 
 [node name="FruitSpawner" parent="." unique_id=874991722 node_paths=PackedStringArray("level_manager") instance=ExtResource("4_vpylo")]

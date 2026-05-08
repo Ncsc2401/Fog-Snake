@@ -1,15 +1,51 @@
 [gd_scene format=3 uid="uid://vsb5tli4i4t8"]
 
-[ext_resource type="Script" uid="uid://w140hwnwiyme" path="res://Scripts/Snakes/lights_out_snake.gd" id="1_ibfl5"]
+[ext_resource type="Script" uid="uid://4w8urs321i4d" path="res://Scripts/Snakes/base_snake.gd" id="1_pslef"]
 [ext_resource type="Texture2D" uid="uid://ehksp0xwnuu" path="res://Assets/Sprites/SnakeTileset.png" id="2_5blj7"]
+[ext_resource type="Script" uid="uid://fugkvr1qh0m8" path="res://Scripts/Snakes/SnakeComponents/DeathComponents/normal_snake_death_component.gd" id="2_yep1l"]
 [ext_resource type="Script" uid="uid://dx4ubgei8bfkv" path="res://Scripts/sound_controller.gd" id="3_ibfl5"]
+[ext_resource type="Script" uid="uid://bln70orb5n6me" path="res://Scripts/Snakes/SnakeComponents/DrawComponents/default_snake_draw_component.gd" id="3_q6y07"]
+[ext_resource type="Script" uid="uid://bagd4dtstgvtj" path="res://Scripts/Snakes/SnakeComponents/MovementComponents/normal_snake_movement_component.gd" id="4_2rpwd"]
 [ext_resource type="AudioStream" uid="uid://boxr2s5yeer1i" path="res://Assets/Sounds/fog-snake-mov-1.wav" id="4_meahd"]
+[ext_resource type="TileSet" uid="uid://brkptblvkpwo1" path="res://Scenes/Snakes/normal_snake_tile_set.tres" id="4_yep1l"]
 [ext_resource type="AudioStream" uid="uid://dq8qgj83iam6g" path="res://Assets/Sounds/fog-snake-mov-2.wav" id="5_1qibd"]
+[ext_resource type="Script" uid="uid://clb5xj7d51pfn" path="res://Scripts/Snakes/SnakeComponents/GrowComponents/normal_snake_grow_component.gd" id="5_xjh6b"]
+[ext_resource type="Script" uid="uid://t3ahs52kl0kk" path="res://Scripts/Snakes/SnakeComponents/EatComponents/normal_snake_eat_component.gd" id="6_qs5iv"]
 [ext_resource type="AudioStream" uid="uid://bgnbkfq7icvuv" path="res://Assets/Sounds/fog-snake-mov-3.wav" id="6_tbcrd"]
+[ext_resource type="Script" uid="uid://bkx5phxmfge8o" path="res://Scripts/Snakes/SnakeComponents/InputComponents/normal_snake_input_component.gd" id="7_cksnc"]
 [ext_resource type="AudioStream" uid="uid://d4nbp100vbmj8" path="res://Assets/Sounds/fog-snake-mov-4.wav" id="7_cpefm"]
 [ext_resource type="AudioStream" uid="uid://b5bnbcidomngq" path="res://Assets/Sounds/fog-snake-grow.wav" id="8_otiso"]
-[ext_resource type="Texture2D" uid="uid://crd8kbcmut4e8" path="res://Assets/LightSourceCircle.png" id="9_ibfl5"]
-[ext_resource type="Texture2D" uid="uid://bimiaauh8uugc" path="res://Assets/LightSourceCone.png" id="10_meahd"]
+[ext_resource type="Script" uid="uid://70dhhop8xt8i" path="res://Scripts/Snakes/SnakeComponents/MiscComponents/base_snake_misc_component.gd" id="9_pslef"]
+[ext_resource type="Script" uid="uid://6bm157xqiora" path="res://Scripts/Snakes/SnakeComponents/MiscComponents/light_system_component.gd" id="10_yep1l"]
+
+[sub_resource type="Resource" id="Resource_rrj7h"]
+script = ExtResource("2_yep1l")
+metadata/_custom_type_script = "uid://fugkvr1qh0m8"
+
+[sub_resource type="Resource" id="Resource_jka3n"]
+script = ExtResource("3_q6y07")
+snake_tileset = ExtResource("4_yep1l")
+metadata/_custom_type_script = "uid://bln70orb5n6me"
+
+[sub_resource type="Resource" id="Resource_yoodp"]
+script = ExtResource("4_2rpwd")
+metadata/_custom_type_script = "uid://bagd4dtstgvtj"
+
+[sub_resource type="Resource" id="Resource_qlfgk"]
+script = ExtResource("5_xjh6b")
+metadata/_custom_type_script = "uid://clb5xj7d51pfn"
+
+[sub_resource type="Resource" id="Resource_i62gn"]
+script = ExtResource("6_qs5iv")
+metadata/_custom_type_script = "uid://t3ahs52kl0kk"
+
+[sub_resource type="Resource" id="Resource_wkmbp"]
+script = ExtResource("7_cksnc")
+metadata/_custom_type_script = "uid://bkx5phxmfge8o"
+
+[sub_resource type="Resource" id="Resource_q6y07"]
+script = ExtResource("10_yep1l")
+metadata/_custom_type_script = "uid://6bm157xqiora"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rjxvt"]
 texture = ExtResource("2_5blj7")
@@ -51,24 +87,17 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_rjxvt")
 
-[node name="LightsOutSnake" type="Node2D" unique_id=1548924198 node_paths=PackedStringArray("snake_layer")]
-script = ExtResource("1_ibfl5")
-makes_move_sounds = null
-initial_body = null
-initial_direction = null
+[node name="LightsOutSnake" type="Node2D" unique_id=1548924198 node_paths=PackedStringArray("snake_layer", "sound_controller")]
+script = ExtResource("1_pslef")
 snake_layer = NodePath("SnakeLayer")
-
-[node name="LightPivot" type="Node2D" parent="." unique_id=1211894891]
-
-[node name="Aura" type="PointLight2D" parent="LightPivot" unique_id=405693800]
-scale = Vector2(0.5, 0.5)
-shadow_enabled = true
-texture = ExtResource("9_ibfl5")
-
-[node name="Flashlight" type="PointLight2D" parent="LightPivot" unique_id=239779283]
-position = Vector2(80, 0)
-shadow_enabled = true
-texture = ExtResource("10_meahd")
+sound_controller = NodePath("SoundController")
+death_component = SubResource("Resource_rrj7h")
+draw_component = SubResource("Resource_jka3n")
+movement_component = SubResource("Resource_yoodp")
+grow_component = SubResource("Resource_qlfgk")
+eat_component = SubResource("Resource_i62gn")
+input_component = SubResource("Resource_wkmbp")
+misc_components = Array[ExtResource("9_pslef")]([SubResource("Resource_q6y07")])
 
 [node name="SnakeLayer" type="TileMapLayer" parent="." unique_id=1038503882]
 z_index = 10

@@ -1,4 +1,3 @@
-@abstract
 extends Node2D
 
 class_name BaseSnake
@@ -82,6 +81,20 @@ var direction_to_angle : Dictionary[Directions, float] = {
 ## Tile map layer where the snake is drawn
 @export var snake_layer: TileMapLayer;
 
+@export_subgroup("Sound Related")
+@export var sound_controller : SoundController;
+@export var makes_move_sounds : bool = true;
+
+@export_subgroup("Components")
+@export var death_component : BaseSnakeDeathComponent;
+@export var draw_component : BaseSnakeDrawComponent
+@export var movement_component : BaseSnakeMovementComponent;
+@export var grow_component : BaseSnakeGrowComponent;
+@export var eat_component : BaseSnakeEatComponent;
+@export var input_component : BaseSnakeInputComponent;
+@export var misc_components : Array[BaseSnakeMiscComponent];
+
+
 ## How many keys are saved
 const MAX_DIRECTION_BUFFER_SIZE = 3;
 
@@ -126,6 +139,7 @@ func _ready() -> void:
 	if initial_body == null:
 		push_warning("No initial body set")
 	
+	# Initializate body data
 	var last_segment : BodyData
 	for i in range(initial_body.size()):
 		var body_data = BodyData.new(i == 0, i == initial_body.size() - 1, initial_body[i]);
@@ -141,19 +155,44 @@ func _ready() -> void:
 		snake_body.append(body_data);
 		tail = last_segment;
 	
+	# Initial status
 	direction = initial_direction;
 	last_direction = initial_direction;
 	body_size = initial_body.size();
 	expected_size = body_size;
 	
-	draw_snake()
+	# Component initialization
+	death_component.initialize(self);
+	draw_component.initialize(self);
+	movement_component.initialize(self);
+	grow_component.initialize(self);
+	eat_component.initialize(self);
+	input_component.initialize(self);
+	
+	for misc_component in misc_components:
+		misc_component.initialize(self);
+	
+	# Set tile set
+	snake_layer.tile_set = draw_component.snake_tileset;
+	
+	# Draw
+	draw_component.draw();
 
 func _process(delta: float) -> void:
 	update_buffer_lifetime(delta);
+	
+	for misc_component in misc_components:
+		if misc_component.is_initialized:
+			misc_component.on_process(delta);
 
 func _input(event: InputEvent) -> void:
-	input_handler(event);
+	if input_component.is_initialized:
+		input_component.handle_input(event);
 
+func snake_layer_to_global_pos(tilemap_pos : Vector2i) -> Vector2:
+	return snake_layer.to_global(snake_layer.map_to_local(tilemap_pos));
+
+## Adds a direction to the buffer. Acts as an input buffer for directions
 func add_direction_to_buffer(dir : Directions):
 	var direction_buffer_data = DirectionBufferData.new(dir)
 	
@@ -162,6 +201,7 @@ func add_direction_to_buffer(dir : Directions):
 	if direction_buffer.size() >= MAX_DIRECTION_BUFFER_SIZE:
 		direction_buffer.remove_at(0);
 
+## Manages input buffer lifetime
 func update_buffer_lifetime(delta : float):
 	var indeces_to_remove : Array[int]
 	for i in range(direction_buffer.size()):
@@ -185,20 +225,81 @@ func clear_snake():
 func force_clear_snake():
 	snake_layer.clear()
 
-@abstract
-func input_handler(event : InputEvent);
+func play_movement_sounds():
+	if sound_controller == null:
+		print("Missing sound controller");
+		return
+	
+	if direction == Directions.UP && last_direction != Directions.UP:
+		sound_controller.play_sound("Up")
+	elif direction == Directions.LEFT && last_direction != Directions.LEFT:
+		sound_controller.play_sound("Left")
+	elif direction == Directions.DOWN && last_direction != Directions.DOWN:
+		sound_controller.play_sound("Down")
+	elif direction == Directions.RIGHT && last_direction != Directions.RIGHT:
+		sound_controller.play_sound("Right")
 
-@abstract
-func draw_snake();
+func draw_snake():
+	if is_dead:
+		return;
+	
+	if draw_component.is_initialized:
+		draw_component.draw()
 
-@abstract
-func move();
+func move():
+	if is_dead:
+		return;
+	
+	# Saves the last direction the snake moved
+	last_direction = direction
+	
+	# Get new direction
+	var possible_movement : Directions = Directions.RIGHT
+	var got_possible_movement : bool = false;
+	while direction_buffer.size() > 0 && !got_possible_movement:
+		possible_movement = direction_buffer.pop_front().direction;
+			
+		if possible_movement == direction:
+			continue;
+			
+		if possible_movement == flipped_direction[direction]:
+			continue;
+		got_possible_movement = true;
+	if got_possible_movement:
+		direction = possible_movement
+	
+	if movement_component.is_initialized:
+		movement_component.move(direction);
+	
+	for misc_component in misc_components:
+		if misc_component.is_initialized:
+			misc_component.on_move(direction);
 
-@abstract
-func die();
+func die():
+	if is_dead:
+		return
+	
+	if death_component.is_initialized:
+		death_component.die();
+	
+	for misc_component in misc_components:
+		if misc_component.is_initialized:
+			misc_component.on_death();
 
-@abstract
-func eat_fruit(fruit_resource : FruitResource);
+func eat_fruit(fruit_resource : FruitResource):
+	if is_dead:
+		return;
+	
+	if eat_component.is_initialized:
+		eat_component.eat(fruit_resource)
+		
+	for misc_component in misc_components:
+		if misc_component.is_initialized:
+			misc_component.on_eat(fruit_resource)
 
-@abstract
-func grow();
+func grow():
+	if is_dead:
+		return
+	
+	if grow_component.is_initialized:
+		grow_component.grow();

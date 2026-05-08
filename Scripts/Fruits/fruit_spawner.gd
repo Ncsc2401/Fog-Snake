@@ -10,7 +10,6 @@ class_name FruitSpawner
 
 ## Fruit spawn table
 @export var spawn_table_resource : FruitSpawnTableResource
-var total_spawn_table_weight : float;
 
 ## Tile map layer where fruits are drawn
 @onready var fruit_layer: TileMapLayer = $FruitLayer
@@ -25,8 +24,6 @@ func _ready() -> void:
 	
 	if spawn_table_resource == null:
 		push_error("Missing spawn table");
-	
-	total_spawn_table_weight = spawn_table_resource.get_total_weight();
 	
 	for fruit_pos in initial_fruit_pos:
 		spawn_random_fruit_at(fruit_pos);
@@ -88,6 +85,8 @@ func spawn_fruit_random(fruit_scene : PackedScene):
 	spawn_requests.append(spawn_request)
 
 func get_random_fruit_scene() -> PackedScene:
+	var total_spawn_table_weight = spawn_table_resource.get_total_weight();
+	
 	var rand_val : float = randf_range(0, total_spawn_table_weight);
 	
 	var weight = 0;

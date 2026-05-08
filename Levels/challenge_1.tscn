@@ -47,11 +47,6 @@ script = ExtResource("3_87uai")
 spawn_table = Array[ExtResource("4_miqvu")]([SubResource("Resource_nb51f")])
 metadata/_custom_type_script = "uid://3s5fmo1ne7gy"
 
-[sub_resource type="Resource" id="Resource_pbq31"]
-script = ExtResource("10_miqvu")
-points_to_win = 35
-metadata/_custom_type_script = "uid://dh5gms1csyc1n"
-
 [sub_resource type="Resource" id="Resource_gpb84"]
 script = ExtResource("13_io6xk")
 entry_name = "Ladybug"
@@ -62,6 +57,11 @@ metadata/_custom_type_script = "uid://bcgmgwcdgs13w"
 script = ExtResource("12_l3neo")
 spawn_table = Array[ExtResource("13_io6xk")]([SubResource("Resource_gpb84")])
 metadata/_custom_type_script = "uid://6qt5wixa50el"
+
+[sub_resource type="Resource" id="Resource_pbq31"]
+script = ExtResource("10_miqvu")
+points_to_win = 35
+metadata/_custom_type_script = "uid://dh5gms1csyc1n"
 
 [node name="Challenge1" type="Node2D" unique_id=84585901]
 
@@ -76,7 +76,6 @@ tile_set = SubResource("TileSet_yq8vx")
 
 [node name="Snake" parent="." unique_id=1548924198 node_paths=PackedStringArray("level_manager") instance=ExtResource("1_cmuxt")]
 initial_body = Array[Vector2i]([Vector2i(-5, -1), Vector2i(-6, -1), Vector2i(-6, 0)])
-initial_direction = 2
 level_manager = NodePath("../LevelManager")
 
 [node name="FruitSpawner" parent="." unique_id=874991722 node_paths=PackedStringArray("level_manager") instance=ExtResource("2_miagx")]
@@ -84,16 +83,16 @@ initial_fruit_pos = Array[Vector2i]([Vector2i(-1, -1), Vector2i(0, -1), Vector2i
 level_manager = NodePath("../LevelManager")
 spawn_table_resource = SubResource("Resource_nnt18")
 
+[node name="EnemySpawner" parent="." unique_id=1146343413 node_paths=PackedStringArray("level_manager") instance=ExtResource("11_lf742")]
+level_manager = NodePath("../LevelManager")
+initial_enemy_pos = Array[Vector2i]([Vector2i(-8, -6), Vector2i(-7, -6), Vector2i(-8, -5), Vector2i(-7, -5), Vector2i(7, -6), Vector2i(6, -6), Vector2i(6, -5), Vector2i(7, -5), Vector2i(-8, 5), Vector2i(-7, 5), Vector2i(-7, 4), Vector2i(-8, 4), Vector2i(7, 5), Vector2i(6, 5), Vector2i(6, 4), Vector2i(7, 4)])
+spawn_table_resource = SubResource("Resource_smkgk")
+
 [node name="LevelManager" parent="." unique_id=1303606008 node_paths=PackedStringArray("game_over_menu", "score_ui") instance=ExtResource("6_53w2q")]
 board_data = ExtResource("9_87uai")
 win_condition = SubResource("Resource_pbq31")
 game_over_menu = NodePath("../UI/GameOverMenu")
 score_ui = NodePath("../UI/Score")
-
-[node name="EnemySpawner" parent="." unique_id=1146343413 node_paths=PackedStringArray("level_manager") instance=ExtResource("11_lf742")]
-level_manager = NodePath("../LevelManager")
-initial_enemy_pos = Array[Vector2i]([Vector2i(-8, -6), Vector2i(-7, -6), Vector2i(-8, -5), Vector2i(-7, -5), Vector2i(7, -6), Vector2i(6, -6), Vector2i(6, -5), Vector2i(7, -5), Vector2i(-8, 5), Vector2i(-7, 5), Vector2i(-7, 4), Vector2i(-8, 4), Vector2i(7, 5), Vector2i(6, 5), Vector2i(6, 4), Vector2i(7, 4)])
-spawn_table_resource = SubResource("Resource_smkgk")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1952114691]
 zoom = Vector2(1.5, 1.5)

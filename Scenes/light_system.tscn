@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://dcwcghgdqid4o"]
+
+[ext_resource type="Texture2D" uid="uid://crd8kbcmut4e8" path="res://Assets/LightSourceCircle.png" id="1_kt1fh"]
+[ext_resource type="Texture2D" uid="uid://bimiaauh8uugc" path="res://Assets/LightSourceCone.png" id="2_tej6p"]
+
+[node name="LightSystem" type="Node2D" unique_id=2038240622]
+
+[node name="LightPivot" type="Node2D" parent="." unique_id=1449159617]
+
+[node name="Aura" type="PointLight2D" parent="LightPivot" unique_id=721243429]
+scale = Vector2(0.5, 0.5)
+shadow_enabled = true
+texture = ExtResource("1_kt1fh")
+
+[node name="Flashlight" type="PointLight2D" parent="LightPivot" unique_id=618685662]
+position = Vector2(80, 0)
+shadow_enabled = true
+texture = ExtResource("2_tej6p")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=313767748]
+top_level = true
+color = Color(0, 0, 0, 1)

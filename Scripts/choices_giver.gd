@@ -3,11 +3,21 @@ extends Node
 const LADYBUG = preload("uid://bdnbplhqsw7jm")
 const FLY = preload("uid://qxled4o5e5od")
 
+const APPLE = preload("uid://48om1rvld52o")
+const STAR_FRUIT = preload("uid://p5d6nykafa2t")
+const WATERMELON = preload("uid://h3t2dvc0174k")
+const ICE_CREAM = preload("uid://byayy2c7usui5")
+
+const INVERTED_SNAKE_TILE_SET = preload("uid://bxyphtiipk4td")
+
 var choices : Dictionary[String, Callable] = {
 	"Spawn 4 ladybugs" : spawn_ladybugs,
 	"Spawn 3 flies" : spawn_flies,
 	"Grow snake" : grow_snakes,
-	"Speed up game" : speed_game
+	"Speed up game" : speed_game,
+	"Invert movement" : invert_movement,
+	"Lights out" : lights_out,
+	"Spawn one more fruit" : spawn_one_more_fruit,
 }
 
 @onready var choices_menu: Control = $CanvasLayer/ChoicesMenu
@@ -91,3 +101,63 @@ func speed_game():
 func spawn_flies():
 	for i in range(3):
 		enemy_spawner.spawn_enemy_random(FLY);
+
+func invert_movement():
+	for snake in level_manager.snakes:
+		var inverted_input_component = InvertedSnakeInputComponent.new()
+		snake.input_component = inverted_input_component
+		inverted_input_component.initialize(snake);
+		
+	choices.erase("Invert movement")
+
+func lights_out():
+	for snake in level_manager.snakes:
+		var light_system_component = LightSystemComponent.new()
+		snake.misc_components.append(light_system_component);
+		light_system_component.initialize(snake);
+	
+	choices.erase("Lights out")
+
+func spawn_one_more_fruit():
+	for spawner in level_manager.spawners:
+		if spawner is FruitSpawner:
+			spawner.spawn_random_fruit_random();
+
+func watermelon_can_spawn():
+	var watermelon_entry = FruitSpawnTableEntryResource.new();
+	
+	watermelon_entry.entry_name = "Watermelon"
+	watermelon_entry.scene = WATERMELON;
+	watermelon_entry.weight = 1.0;
+	
+	for spawner in level_manager.spawners:
+		if spawner is FruitSpawner:
+			spawner.spawn_table_resource.spawn_table.append(watermelon_entry)
+	
+	choices.erase("Watermelon can spawn")
+
+func ice_cream_can_spawn():
+	var ice_cream_entry = FruitSpawnTableEntryResource.new();
+	
+	ice_cream_entry.entry_name = "Ice Cream"
+	ice_cream_entry.scene = ICE_CREAM;
+	ice_cream_entry.weight = 1.0;
+	
+	for spawner in level_manager.spawners:
+		if spawner is FruitSpawner:
+			spawner.spawn_table_resource.spawn_table.append(ice_cream_entry)
+	
+	choices.erase("Ice cream can spawn")
+
+func star_fruit_can_spawn():
+	var star_fruit_entry = FruitSpawnTableEntryResource.new();
+	
+	star_fruit_entry.entry_name = "Star Fruit"
+	star_fruit_entry.scene = STAR_FRUIT;
+	star_fruit_entry.weight = 1.0;
+	
+	for spawner in level_manager.spawners:
+		if spawner is FruitSpawner:
+			spawner.spawn_table_resource.spawn_table.append(star_fruit_entry)
+	
+	choices.erase("Star fruit can spawn")

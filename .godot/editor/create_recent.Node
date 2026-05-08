@@ -1,3 +1,4 @@
+Node2D
 AnimationPlayer
 Control
 TextureRect
@@ -5,11 +6,9 @@ LevelManager
 FruitSpawner
 EnemySpawner
 TileMapLayer
-Node2D
 Camera2D
 CanvasModulate
 LightOccluder2D
 DirectionalLight2D
 PointLight2D
 CanvasLayer
-Label

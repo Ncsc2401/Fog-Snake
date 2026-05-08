@@ -1,8 +1,9 @@
+res://Scenes/
+res://Scenes/Snakes/
 D:/Users/nicol/Desktop/DontFallFromAtopASkyscraper/
 res://LevelMapData/
 res://Levels/
 res://Assets/Sprites/
-res://Scenes/Snakes/
 res://Scripts/Snakes/
 res://Scenes/Components/
 res://Scripts/Level/
@@ -12,7 +13,6 @@ res://Scripts/
 res://Scripts/Fruits/
 res://Scenes/UI/
 res://Scripts/Menu/
-res://Scenes/
 res://Scenes/ToolsScenes/
 res://Scenes/Fruits/
 res://Assets/Sprites/LevelMapSprites/

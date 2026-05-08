@@ -92,7 +92,7 @@ tile_map_data = PackedByteArray("AAD4//n/AAAAAAAAAAD3//r/AAAAAAAAAAD3//n/AAAAAAA
 tile_set = SubResource("TileSet_hf8n1")
 
 [node name="Snake" parent="." unique_id=1548924198 node_paths=PackedStringArray("level_manager") instance=ExtResource("3_j3scm")]
-initial_direction = 2
+initial_body = Array[Vector2i]([Vector2i(-5, 0), Vector2i(-6, 0), Vector2i(-7, 0)])
 level_manager = NodePath("../LevelManager")
 
 [node name="FruitSpawner" parent="." unique_id=874991722 node_paths=PackedStringArray("level_manager") instance=ExtResource("4_hf8n1")]
@@ -115,7 +115,6 @@ spawn_table_resource = SubResource("Resource_smkgk")
 
 [node name="DynamicCamera" parent="." unique_id=418611729 node_paths=PackedStringArray("snake") instance=ExtResource("16_p81r4")]
 zoom = Vector2(1.5, 1.5)
-position_smoothing_enabled = true
 snake = NodePath("../Snake")
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=735442333]

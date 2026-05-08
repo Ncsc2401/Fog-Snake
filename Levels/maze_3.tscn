@@ -61,7 +61,6 @@ tile_set = SubResource("TileSet_r0j58")
 
 [node name="Snake" parent="." unique_id=1548924198 node_paths=PackedStringArray("level_manager") instance=ExtResource("3_38di6")]
 initial_body = Array[Vector2i]([Vector2i(-11, 7), Vector2i(-12, 7)])
-initial_direction = 2
 level_manager = NodePath("../MultiLevelManager")
 
 [node name="FruitSpawner" parent="." unique_id=874991722 node_paths=PackedStringArray("level_manager") instance=ExtResource("4_0ivgw")]

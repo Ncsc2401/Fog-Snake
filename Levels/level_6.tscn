@@ -75,7 +75,7 @@ tile_map_data = PackedByteArray("AAD5//v/AAAAAAAAAAD4//v/AAAAAAAAAAD5/wQAAAAAAAA
 tile_set = SubResource("TileSet_7s08o")
 
 [node name="Snake" parent="." unique_id=1548924198 node_paths=PackedStringArray("level_manager") instance=ExtResource("3_rolfb")]
-initial_direction = 2
+initial_body = Array[Vector2i]([Vector2i(-5, 0), Vector2i(-6, 0), Vector2i(-7, 0)])
 level_manager = NodePath("../LevelManager")
 
 [node name="FruitSpawner" parent="." unique_id=874991722 node_paths=PackedStringArray("level_manager") instance=ExtResource("4_sio2j")]

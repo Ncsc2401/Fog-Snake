@@ -119,11 +119,11 @@ func tick_logic():
 				snake.eat_fruit(fruit.fruit_resource);
 				fruit.on_eat_call()
 	
-	check_victory()
-	
 	# Snake grows
 	for snake in snakes:
 		snake.grow();
+	
+	check_victory()
 	
 	# Snake dies
 	for snake in snakes:

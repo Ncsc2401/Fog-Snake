@@ -5,6 +5,9 @@ extends Control
 
 var is_settings_open : bool = false;
 
+func _ready() -> void:
+	deactivate()
+
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Menu"):
 		if GameState.game_state == GameState.RUNNING:

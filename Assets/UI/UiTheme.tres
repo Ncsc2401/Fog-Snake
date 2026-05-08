@@ -3,43 +3,95 @@
 [ext_resource type="FontFile" uid="uid://v3gg8maxne5i" path="res://Assets/Fonts/Magero.ttf" id="1_jo010"]
 [ext_resource type="Texture2D" uid="uid://dnsqbdwh8qwkk" path="res://Assets/UI/checkbox_checked.tres" id="2_y17es"]
 [ext_resource type="Texture2D" uid="uid://4jcmt2xtqngq" path="res://Assets/UI/checkbox_unchecked.tres" id="3_u0ca8"]
+[ext_resource type="Texture2D" uid="uid://fvymgauqpa70" path="res://Assets/UI/Circle.png" id="4_u0ca8"]
+[ext_resource type="Texture2D" uid="uid://jxa13fhgi3ae" path="res://Assets/UI/CircleHighlight.png" id="5_h2i87"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c2oa"]
-bg_color = Color(1.2513996e-06, 0.35474643, 0.39326134, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jo010"]
+bg_color = Color(0.11764706, 0.34117648, 0.6117647, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6q3n4"]
-bg_color = Color(0, 0.40392157, 0.44705883, 1)
+bg_color = Color(0, 0.59607846, 0.85882354, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olcgw"]
-bg_color = Color(5.7756904e-07, 0.3217123, 0.35792598, 1)
+bg_color = Color(0.1254902, 0.08235294, 0.2, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2i87"]
+bg_color = Color(0, 0.59607846, 0.85882354, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_el0jb"]
+bg_color = Color(0, 0.59607846, 0.85882354, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y17es"]
+bg_color = Color(0, 0.59607846, 0.85882354, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_np2xp"]
-bg_color = Color(0, 0.14166495, 0.24203786, 1)
+bg_color = Color(0, 0.14117648, 0.24313726, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u0ca8"]
+bg_color = Color(0, 0.59607846, 0.85882354, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g67hf"]
+bg_color = Color(0, 0.59607846, 0.85882354, 1)
 corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
 [resource]
+Button/colors/font_color = Color(0.1254902, 0.08235294, 0.2, 1)
+Button/colors/font_hover_color = Color(1, 1, 1, 1)
+Button/colors/font_pressed_color = Color(1, 1, 1, 1)
+Button/colors/icon_pressed_color = Color(0.1254902, 0.08235294, 0.2, 1)
 Button/fonts/font = ExtResource("1_jo010")
-Button/styles/hover = SubResource("StyleBoxFlat_4c2oa")
+Button/styles/hover = SubResource("StyleBoxFlat_jo010")
 Button/styles/normal = SubResource("StyleBoxFlat_6q3n4")
 Button/styles/pressed = SubResource("StyleBoxFlat_olcgw")
 CheckBox/icons/checked = ExtResource("2_y17es")
 CheckBox/icons/unchecked = ExtResource("3_u0ca8")
+HSlider/icons/grabber = ExtResource("4_u0ca8")
+HSlider/icons/grabber_highlight = ExtResource("5_h2i87")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_h2i87")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_el0jb")
 Label/font_sizes/font_size = 24
 Label/fonts/font = ExtResource("1_jo010")
+LineEdit/colors/font_color = Color(0.1254902, 0.08235294, 0.2, 1)
+LineEdit/fonts/font = ExtResource("1_jo010")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_y17es")
 Panel/styles/panel = SubResource("StyleBoxFlat_np2xp")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_np2xp")
+TextEdit/colors/font_color = Color(0.1254902, 0.08235294, 0.2, 1)
+TextEdit/fonts/font = ExtResource("1_jo010")
+TextEdit/styles/normal = SubResource("StyleBoxFlat_u0ca8")
+VScrollBar/styles/grabber = SubResource("StyleBoxFlat_g67hf")

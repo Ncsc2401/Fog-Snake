@@ -6,6 +6,9 @@ extends Control
 @onready var jumpscare_checkbox: CheckBox = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/Jumpscares/JumpscareCheckbox
 @onready var full_screen_checkbox: CheckBox = $PanelContainer/MarginContainer/ScrollContainer/VBoxContainer/FullScreen/FullScreenCheckbox
 
+func _ready() -> void:
+	hide();
+
 func activate():
 	show();
 	load_values();

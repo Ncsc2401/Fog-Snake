@@ -95,6 +95,7 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 max_value = 1.0
 step = 0.001
+value = 0.5
 
 [node name="SoundEffectsVolume" type="VBoxContainer" parent="PanelContainer/MarginContainer/ScrollContainer/VBoxContainer" unique_id=849199934]
 layout_mode = 2

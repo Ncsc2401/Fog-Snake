@@ -3,6 +3,10 @@
 [ext_resource type="Script" uid="uid://bqtb0vfibe4id" path="res://Scripts/Menu/main_menu.gd" id="1_28flt"]
 [ext_resource type="Theme" uid="uid://drnrqrrtdyfbm" path="res://Assets/UI/UiTheme.tres" id="1_48xlc"]
 [ext_resource type="PackedScene" uid="uid://dril7j6uyjipr" path="res://Scenes/UI/settings.tscn" id="3_1ehe0"]
+[ext_resource type="Texture2D" uid="uid://cfmrvarsdx1sl" path="res://Assets/Sprites/MenuArtNoText.png" id="3_ce3w2"]
+[ext_resource type="Texture2D" uid="uid://dtyijfkkxbnrd" path="res://Assets/Sprites/AbsurdismText.png" id="4_cp0ys"]
+[ext_resource type="Texture2D" uid="uid://bsblyqxcc7h1u" path="res://Assets/Sprites/SnakeText.png" id="5_yhxw7"]
+[ext_resource type="Texture2D" uid="uid://dlm7vj45xhfqt" path="res://Assets/Sprites/ExclamationMarkText.png" id="6_trj04"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_48xlc"]
 line_spacing = 8.0
@@ -11,6 +15,91 @@ font_size = 48
 [sub_resource type="LabelSettings" id="LabelSettings_1ehe0"]
 line_spacing = 8.0
 font_size = 32
+
+[sub_resource type="Animation" id="Animation_cp0ys"]
+resource_name = "Intro"
+length = 1.75
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text/Absurdism:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.12500003, 0.725),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -445), Vector2(0, -445), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text/Snake:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.12500003, 0.52500004, 1.0166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -445), Vector2(0, -445), Vector2(0, -445), Vector2(0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text/!:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.12500003, 0.425, 1.1116667, 1.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, -445), Vector2(0, -445), Vector2(0, -445), Vector2(0, -445), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_yhxw7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Text/Absurdism:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -445)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Text/Snake:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -445)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Text/!:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -445)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_trj04"]
+_data = {
+&"Intro": SubResource("Animation_cp0ys"),
+&"RESET": SubResource("Animation_yhxw7")
+}
 
 [node name="MainMenu" type="Control" unique_id=527600818]
 layout_mode = 3
@@ -21,6 +110,62 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_48xlc")
 script = ExtResource("1_28flt")
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=1563614097]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("3_ce3w2")
+
+[node name="Text" type="Control" parent="." unique_id=1410761077]
+layout_mode = 1
+anchor_left = 0.0225
+anchor_right = 1.0225
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="Absurdism" type="TextureRect" parent="Text" unique_id=717027010]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -445.0
+offset_bottom = -445.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("4_cp0ys")
+
+[node name="Snake" type="TextureRect" parent="Text" unique_id=922169862]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -445.0
+offset_bottom = -445.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("5_yhxw7")
+
+[node name="!" type="TextureRect" parent="Text" unique_id=406266155]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -445.0
+offset_bottom = -445.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("6_trj04")
 
 [node name="MainMenuButtons" type="Control" parent="." unique_id=1687691798]
 layout_mode = 1
@@ -46,7 +191,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MainMenuButtons/MarginContainer" unique_id=1464597110]
 layout_mode = 2
-theme_override_constants/separation = 20
+theme_override_constants/separation = 15
 alignment = 1
 
 [node name="ContinueButton" type="Button" parent="MainMenuButtons/MarginContainer/VBoxContainer" unique_id=147052486]
@@ -77,7 +222,6 @@ layout_mode = 2
 text = "Quit"
 
 [node name="Settings" parent="." unique_id=894190909 instance=ExtResource("3_1ehe0")]
-visible = false
 layout_mode = 1
 
 [node name="Credits" type="Control" parent="." unique_id=2040855838]
@@ -168,6 +312,9 @@ layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 text = "Yes"
+
+[node name="IntroPlayer" type="AnimationPlayer" parent="." unique_id=559276652]
+libraries/ = SubResource("AnimationLibrary_trj04")
 
 [connection signal="pressed" from="MainMenuButtons/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="MainMenuButtons/MarginContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]

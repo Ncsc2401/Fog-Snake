@@ -10,6 +10,8 @@ enum Menus {
 @onready var settings: Control = $Settings
 @onready var new_game_confirmation: Control = $NewGameConfirmation
 
+@onready var intro_player: AnimationPlayer = $IntroPlayer
+
 @onready var continue_button: Button = $MainMenuButtons/MarginContainer/VBoxContainer/ContinueButton
 
 ## All opened menus, should be only one at time
@@ -17,6 +19,7 @@ var opened_menus : Array[Menus]
 
 func _ready() -> void:
 	continue_button.disabled = !SaveManager.has_save();
+	intro_player.play("Intro")
 
 func _on_new_game_button_pressed() -> void:
 	if SaveManager.has_save():

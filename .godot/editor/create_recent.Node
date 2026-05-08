@@ -1,3 +1,6 @@
+AnimationPlayer
+Control
+TextureRect
 LevelManager
 FruitSpawner
 EnemySpawner
@@ -10,6 +13,3 @@ DirectionalLight2D
 PointLight2D
 CanvasLayer
 Label
-VBoxContainer
-Button
-MarginContainer

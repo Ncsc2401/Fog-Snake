@@ -161,6 +161,9 @@ func get_map_level_save(save_name : String):
 func has_save():
 	var dir = DirAccess.open(SAVE_LEVELS_PATH);
 	
+	if dir == null:
+		return false;
+	
 	var has_files : bool = false;
 	
 	for file in dir.get_files():

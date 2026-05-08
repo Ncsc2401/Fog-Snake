@@ -9,30 +9,20 @@ class BodyData:
 	var is_head : bool;
 	var is_tail : bool;
 	
-	var position : Vector2i;
+	var pos : Vector2i;
 	var next : BodyData;
 	var previous : BodyData;
 	
-	## Converts vector to enum direction
-	var vector_to_direction : Dictionary = {
-		Vector2i(-1, 0) : Directions.LEFT,
-		Vector2i(1, 0) : Directions.RIGHT,
-		Vector2i(0, 1) : Directions.DOWN,
-		Vector2i(0, -1) : Directions.UP,
-	}
-	
-	
-	func _init(is_head : bool, is_tail : bool, position : Vector2i) -> void:
+	func _init(is_head : bool, is_tail : bool, pos : Vector2i) -> void:
 		self.is_head = is_head;
 		self.is_tail = is_tail;
-		self.position = position;
+		self.pos = pos;
 	
-	func get_next_direction() -> Directions:
-		return vector_to_direction[next.position - position];
-		
+	func get_next_relative_pos() -> Vector2i:
+		return next.pos - pos;
 	
-	func get_previous_direction():
-		return vector_to_direction[previous.position - position]
+	func get_previous_relative_pos() -> Vector2i:
+		return previous.pos - pos;
 
 class DirectionBufferData:
 	var life_time;
@@ -63,6 +53,21 @@ var direction_to_vector : Dictionary = {
 	Directions.RIGHT : Vector2i(1, 0),
 	Directions.UP : Vector2i(0, -1),
 	Directions.DOWN : Vector2i(0, 1),
+}
+
+## Converts vector to enum direction
+var vector_to_direction : Dictionary = {
+	Vector2i(-1, 0) : Directions.LEFT,
+	Vector2i(1, 0) : Directions.RIGHT,
+	Vector2i(0, 1) : Directions.DOWN,
+	Vector2i(0, -1) : Directions.UP,
+}
+
+var direction_to_angle : Dictionary[Directions, float] = {
+	Directions.RIGHT : 0,
+	Directions.UP : 3 * PI / 2,
+	Directions.LEFT : PI,
+	Directions.DOWN : PI / 2
 }
 
 ## Initial snake body, index 0 is the head

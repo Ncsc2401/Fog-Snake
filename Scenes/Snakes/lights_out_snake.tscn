@@ -53,6 +53,9 @@ sources/0 = SubResource("TileSetAtlasSource_rjxvt")
 
 [node name="LightsOutSnake" type="Node2D" unique_id=1548924198 node_paths=PackedStringArray("snake_layer")]
 script = ExtResource("1_ibfl5")
+makes_move_sounds = null
+initial_body = null
+initial_direction = null
 snake_layer = NodePath("SnakeLayer")
 
 [node name="LightPivot" type="Node2D" parent="." unique_id=1211894891]

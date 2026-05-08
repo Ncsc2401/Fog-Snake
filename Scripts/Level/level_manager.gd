@@ -11,7 +11,7 @@ var winning_tick;
 @export var win_condition : BaseWinCondition
 
 ## Amount of secods for each tick
-@export var initial_game_tick_time : float = 0.25
+@export var initial_game_tick_time : float = 0.20
 
 var game_tick_time : float = 0;
 
@@ -110,7 +110,7 @@ func tick_logic():
 			continue
 		
 		for snake in snakes:
-			if fruit.pos == snake.head.position:
+			if fruit.pos == snake.head.pos:
 				points += fruit.fruit_resource.points
 				if score_ui == null:
 					push_warning("Score ui is null")
@@ -128,17 +128,17 @@ func tick_logic():
 	# Snake dies
 	for snake in snakes:
 		# Check walls
-		if walls.has(snake.head.position):
+		if walls.has(snake.head.pos):
 			snake.die()
 			continue
 		
 		# Check out of bounds
-		if !board_data.board.has(snake.head.position):
+		if !board_data.board.has(snake.head.pos):
 			snake.die()
 			continue
 		
 		for enemy in enemies:
-			if snake.head.position == enemy.board_pos:
+			if snake.head.pos == enemy.board_pos:
 				snake.die()
 				continue;
 		
@@ -148,7 +148,7 @@ func tick_logic():
 			for body_segment in snake_2.snake_body:
 				if body_segment == snake.head:
 					continue;
-				if body_segment.position == snake.head.position:
+				if body_segment.pos == snake.head.pos:
 					snake.die()
 					snake_collided_with_snake = true;
 					break;
@@ -218,7 +218,7 @@ func get_empty_spaces() -> Array[Vector2i]:
 	# Remove spaces occupied by snakes
 	for snake in snakes:
 		for snake_segment in snake.snake_body:
-			empty_spaces.erase(snake_segment.position);
+			empty_spaces.erase(snake_segment.pos);
 	
 	return empty_spaces;
 
@@ -240,7 +240,7 @@ func is_space_empty(pos : Vector2i) -> bool:
 	
 	for snake in snakes:
 		for body_segment in snake.snake_body:
-			if body_segment.position == pos:
+			if body_segment.pos == pos:
 				return false;
 	
 	for enemy in enemies:

@@ -6,13 +6,6 @@ class_name LightsOutSnake
 @onready var flashlight: PointLight2D = $LightPivot/Flashlight
 @onready var light_pivot: Node2D = $LightPivot
 
-var direction_to_angle : Dictionary[Directions, float] = {
-	Directions.RIGHT : 0,
-	Directions.UP : 3 * PI / 2,
-	Directions.LEFT : PI,
-	Directions.DOWN : PI / 2
-}
-
 func _ready() -> void:
 	super();
 	

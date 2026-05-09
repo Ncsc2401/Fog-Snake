@@ -11,7 +11,7 @@ class_name FruitSpawner
 ## Fruit spawn table
 @export var spawn_table_resource : FruitSpawnTableResource
 
-## Tile map layer where fruits are drawn
+## Tile map layer for reference to where to spawn
 @onready var fruit_layer: TileMapLayer = $FruitLayer
 
 func _ready() -> void:
@@ -26,62 +26,39 @@ func _ready() -> void:
 		push_error("Missing spawn table");
 	
 	for fruit_pos in initial_fruit_pos:
-		spawn_random_fruit_at(fruit_pos);
+		spawn_fruit_at(fruit_pos, null, 0, [RANDOM_SCENE_ATTRIBUTE]);
 		pass
-
-func on_fruit_was_eaten(where : Vector2i):
-	fruit_layer.erase_cell(where);
-	spawn_random_fruit_random();
 
 ## Spawns all spawn requests
 func spawn_commit():
 	for spawn_request in spawn_requests:
-		var to_spawn_scene : PackedScene
-		var to_spawn_position; ## Is a vector2i most of the time, but can be null
+		if spawn_request.status != STATUS_READY:
+			continue
+			
+		var to_spawn_scene = spawn_request.scene 
 		
-		if spawn_request.is_random_scene:
-			to_spawn_scene = get_random_fruit_scene();
-		else:
-			to_spawn_scene = spawn_request.scene;
+		## Is a vector2i most of the time
+		var to_spawn_position = spawn_request.pos;
 		
-		if spawn_request.is_random_pos:
-			to_spawn_position = get_random_free_space();
-		else:
-			to_spawn_position = spawn_request.pos
-		
-		if to_spawn_position == null:
+		if to_spawn_position == null or to_spawn_scene == null:
+			spawn_request.status = STATUS_FAILED
+			push_warning("Fruit spawn request failed")
 			continue;
 		
 		var fruit : BaseFruit = to_spawn_scene.instantiate();
 		get_tree().current_scene.add_child(fruit);
-	
+		
 		fruit.level_manager = level_manager;
 		fruit.fruit_layer = fruit_layer;
 		fruit.fruit_spawner = self;
 		
 		fruit.move_to(to_spawn_position);
-
-func clear_requests():
-	spawn_requests.clear();
+		
+		spawn_request.status = STATUS_FINISHED
 
 ## Add a spawn request to the queue
-func spawn_fruit_at(pos : Vector2i, fruit_scene : PackedScene):
-	var spawn_request = SpawnRequest.new(pos, fruit_scene, false, false);
-	spawn_requests.append(spawn_request)
-
-## Spawns a random fruit at the given position, do not check if position is valid
-func spawn_random_fruit_at(pos : Vector2i):
-	var spawn_request = SpawnRequest.new(pos, null, false, true);
-	spawn_requests.append(spawn_request)
-
-## Spawns a random fruit randomly or not if there isn't any available tiles
-func spawn_random_fruit_random():
-	var spawn_request = SpawnRequest.new(Vector2i.ZERO, null, true, true);
-	spawn_requests.append(spawn_request)
-
-## Spawns a fruit randomly or not if there isn't any available tiles
-func spawn_fruit_random(fruit_scene : PackedScene):
-	var spawn_request = SpawnRequest.new(Vector2i.ZERO, fruit_scene, true, false);
+func spawn_fruit_at(pos : Vector2i, fruit_scene : PackedScene, ticks_to_spawn : int, attributes : Array[SpawnRequestAttributes]):
+	var spawn_request = SpawnRequest.new(pos, fruit_scene, ticks_to_spawn, attributes);
 	spawn_requests.append(spawn_request)
 
 func get_random_fruit_scene() -> PackedScene:
@@ -109,3 +86,12 @@ func get_random_free_space():
 	var pos : Vector2i = spawnable_coords.pick_random();
 	
 	return pos;
+
+func get_random_scene() -> PackedScene:
+	return get_random_fruit_scene();
+
+func get_random_position():
+	return get_random_free_space();
+
+func solve_custom_attibutes(attibute : SpawnRequestAttributes, spawn_request : SpawnRequest):
+	pass

@@ -8,8 +8,6 @@ const STAR_FRUIT = preload("uid://p5d6nykafa2t")
 const WATERMELON = preload("uid://h3t2dvc0174k")
 const ICE_CREAM = preload("uid://byayy2c7usui5")
 
-const INVERTED_SNAKE_TILE_SET = preload("uid://bxyphtiipk4td")
-
 var choices : Dictionary[String, Callable] = {
 	"Spawn 4 ladybugs" : spawn_ladybugs,
 	"Spawn 3 flies" : spawn_flies,
@@ -82,7 +80,7 @@ func _on_choice_2_button_pressed() -> void:
 
 func spawn_ladybugs():
 	for i in range(4):
-		enemy_spawner.spawn_enemy_random(LADYBUG);
+		enemy_spawner.spawn_enemy_at(Vector2.ZERO, LADYBUG, 0, [BaseSpawner.RANDOM_POSITION_ATTRIBUTE]);
 
 func grow_snakes():
 	for snake in snakes:
@@ -100,7 +98,7 @@ func speed_game():
 
 func spawn_flies():
 	for i in range(3):
-		enemy_spawner.spawn_enemy_random(FLY);
+		enemy_spawner.spawn_enemy_at(Vector2.ZERO, FLY, 0, [BaseSpawner.RANDOM_POSITION_ATTRIBUTE]);
 
 func invert_movement():
 	for snake in level_manager.snakes:
@@ -121,43 +119,4 @@ func lights_out():
 func spawn_one_more_fruit():
 	for spawner in level_manager.spawners:
 		if spawner is FruitSpawner:
-			spawner.spawn_random_fruit_random();
-
-func watermelon_can_spawn():
-	var watermelon_entry = FruitSpawnTableEntryResource.new();
-	
-	watermelon_entry.entry_name = "Watermelon"
-	watermelon_entry.scene = WATERMELON;
-	watermelon_entry.weight = 1.0;
-	
-	for spawner in level_manager.spawners:
-		if spawner is FruitSpawner:
-			spawner.spawn_table_resource.spawn_table.append(watermelon_entry)
-	
-	choices.erase("Watermelon can spawn")
-
-func ice_cream_can_spawn():
-	var ice_cream_entry = FruitSpawnTableEntryResource.new();
-	
-	ice_cream_entry.entry_name = "Ice Cream"
-	ice_cream_entry.scene = ICE_CREAM;
-	ice_cream_entry.weight = 1.0;
-	
-	for spawner in level_manager.spawners:
-		if spawner is FruitSpawner:
-			spawner.spawn_table_resource.spawn_table.append(ice_cream_entry)
-	
-	choices.erase("Ice cream can spawn")
-
-func star_fruit_can_spawn():
-	var star_fruit_entry = FruitSpawnTableEntryResource.new();
-	
-	star_fruit_entry.entry_name = "Star Fruit"
-	star_fruit_entry.scene = STAR_FRUIT;
-	star_fruit_entry.weight = 1.0;
-	
-	for spawner in level_manager.spawners:
-		if spawner is FruitSpawner:
-			spawner.spawn_table_resource.spawn_table.append(star_fruit_entry)
-	
-	choices.erase("Star fruit can spawn")
+			spawner.spawn_fruit_at(Vector2.ZERO, null, 0, [BaseSpawner.RANDOM_POSITION_ATTRIBUTE, BaseSpawner.RANDOM_SCENE_ATTRIBUTE]);

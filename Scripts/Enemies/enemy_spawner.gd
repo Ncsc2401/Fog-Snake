@@ -27,31 +27,28 @@ func _ready() -> void:
 	total_spawn_table_weight = spawn_table_resource.get_total_weight();
 	
 	for enemy_pos in initial_enemy_pos:
-		spawn_random_enemy_at(enemy_pos);
+		spawn_enemy_at(enemy_pos, null, 0, [RANDOM_SCENE_ATTRIBUTE]);
 		pass
 
 ## Spawns all spawn requests
 func spawn_commit():
 	for spawn_request in spawn_requests:
-		var to_spawn_scene : PackedScene
-		var to_spawn_position; ## Is a vector2i most of the time, but can be null
+		if spawn_request.status != STATUS_READY:
+			continue;
 		
-		if spawn_request.is_random_scene:
-			to_spawn_scene = get_random_enemy_scene();
-		else:
-			to_spawn_scene = spawn_request.scene;
+		var to_spawn_scene = spawn_request.scene
+		var to_spawn_position = spawn_request.pos;
 		
-		if spawn_request.is_random_pos:
-			to_spawn_position = get_random_free_space();
-		else:
-			to_spawn_position = spawn_request.pos
-		
-		if to_spawn_position == null:
+		if to_spawn_position == null or to_spawn_scene == null:
+			spawn_request.status = STATUS_FAILED
+			
+			push_warning("Enemy spawn request failed")
+			
 			continue;
 		
 		var enemy : BaseEnemy = to_spawn_scene.instantiate();
 		get_tree().current_scene.add_child(enemy);
-	
+		
 		enemy.level_manager = level_manager;
 		enemy.enemy_layer = enemy_layer;
 		enemy.enemy_spawner = self;
@@ -59,28 +56,12 @@ func spawn_commit():
 		enemy.move_to(to_spawn_position);
 		
 		enemy.on_spawn()
-
-func clear_requests():
-	spawn_requests.clear();
+		
+		spawn_request.status = STATUS_FINISHED
 
 ## Add a spawn request to the queue
-func spawn_enemy_at(pos : Vector2i, enemy_scene : PackedScene):
-	var spawn_request = SpawnRequest.new(pos, enemy_scene, false, false);
-	spawn_requests.append(spawn_request)
-
-## Spawns a random enemy at the given position, do not check if position is valid
-func spawn_random_enemy_at(pos : Vector2i):
-	var spawn_request = SpawnRequest.new(pos, null, false, true);
-	spawn_requests.append(spawn_request)
-
-## Spawns a random enemy randomly or not if there isn't any available tiles
-func spawn_random_enemy_random():
-	var spawn_request = SpawnRequest.new(Vector2i.ZERO, null, true, true);
-	spawn_requests.append(spawn_request)
-
-## Spawns a enemy randomly or not if there isn't any available tiles
-func spawn_enemy_random(enemy_scene : PackedScene):
-	var spawn_request = SpawnRequest.new(Vector2i.ZERO, enemy_scene, true, false);
+func spawn_enemy_at(pos : Vector2i, enemy_scene : PackedScene, ticks_to_spawn : int, attributes : Array[SpawnRequestAttributes]):
+	var spawn_request = SpawnRequest.new(pos, enemy_scene, ticks_to_spawn, attributes);
 	spawn_requests.append(spawn_request)
 
 func get_random_enemy_scene() -> PackedScene:
@@ -106,3 +87,14 @@ func get_random_free_space():
 	var pos : Vector2i = spawnable_coords.pick_random();
 	
 	return pos;
+
+func get_random_scene() -> PackedScene:
+	return get_random_enemy_scene();
+
+func get_random_position() -> Vector2:
+	return get_random_free_space();
+
+func solve_custom_attibutes(attibute : SpawnRequestAttributes, spawn_request : SpawnRequest):
+	match attibute:
+		WARNS_BEFORE_SPAWNING:
+			pass;

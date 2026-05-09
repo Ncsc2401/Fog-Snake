@@ -222,6 +222,7 @@ layout_mode = 2
 text = "Quit"
 
 [node name="Settings" parent="." unique_id=894190909 instance=ExtResource("3_1ehe0")]
+visible = false
 layout_mode = 1
 
 [node name="Credits" type="Control" parent="." unique_id=2040855838]

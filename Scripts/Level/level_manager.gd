@@ -162,6 +162,7 @@ func tick_logic():
 	
 	# Spawners spawn
 	for spawner in spawners:
+		spawner.process_requests()
 		spawner.spawn_commit();
 		spawner.clear_requests()
 
@@ -170,6 +171,7 @@ func update_score_display():
 
 func pre_spawn():
 	for spawner in spawners:
+		spawner.process_requests()
 		spawner.spawn_commit()
 		spawner.clear_requests()
 

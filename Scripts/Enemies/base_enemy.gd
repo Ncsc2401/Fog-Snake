@@ -6,6 +6,9 @@ class_name BaseEnemy
 ## How many ticks to enemy to act
 @export var enemy_tick_time : int
 
+## How many points are given when enemy dies
+@export var enemy_points_on_death : int = 0;
+
 ## How many ticks before enemy tick  
 @export var warning_window_time : int
 

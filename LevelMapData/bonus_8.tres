@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://byxm2vehnv66d"]
+
+[ext_resource type="PackedScene" uid="uid://dgogkk0esiox1" path="res://Levels/bonus_8.tscn" id="1_i7f06"]
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_lsecn"]
+
+[resource]
+script = ExtResource("1_lsecn")
+pos = Vector2i(1, -7)
+id = 23
+save_name = "bonus_8"
+level_name = "Mirror"
+objective = "Get 30 points"
+level_scene = ExtResource("1_i7f06")
+level_type = 2
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

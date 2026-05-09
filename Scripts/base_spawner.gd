@@ -36,7 +36,7 @@ class SpawnRequest:
 	
 	var status : SpawnRequestStatus = STATUS_UNPROCESSED;
 	
-	func _init(pos : Vector2i, scene : PackedScene, ticks_to_spawn : int, attributes : Array[SpawnRequestAttributes]):
+	func _init(pos : Vector2i, scene : PackedScene, ticks_to_spawn : int, attributes : Array):
 		self.pos = pos;
 		self.scene = scene;
 		self.ticks_to_spawn = ticks_to_spawn;

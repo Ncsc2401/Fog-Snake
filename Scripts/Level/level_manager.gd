@@ -3,6 +3,7 @@ extends Node2D
 class_name LevelManager
 
 var points = 0;
+var kills = 0;
 var won : bool = false;
 var winning_tick;
 
@@ -102,6 +103,12 @@ func tick_logic():
 	# Enemy dies
 	for enemy in enemies:
 		if enemy.just_died:
+			points += enemy.enemy_points_on_death;
+			kills += 1;
+			if score_ui == null:
+				push_warning("Score ui is null")
+			else:
+				update_score_display()
 			enemy.on_die_call();
 	
 	# Snake eats
@@ -140,7 +147,6 @@ func tick_logic():
 		for enemy in enemies:
 			if snake.head.pos == enemy.board_pos:
 				snake.die()
-				continue;
 		
 		# Check for snake
 		var snake_collided_with_snake : bool = false;

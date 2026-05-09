@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://wu60dcvuguxe"]
+
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_abwqj"]
+[ext_resource type="PackedScene" uid="uid://dha68rhyi03kh" path="res://Levels/level_11.tscn" id="1_nnm7q"]
+
+[resource]
+script = ExtResource("1_abwqj")
+pos = Vector2i(2, -5)
+id = 26
+save_name = "level_11"
+level_name = "Coffee and Pills"
+objective = "Get 15 points"
+level_scene = ExtResource("1_nnm7q")
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

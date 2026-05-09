@@ -64,11 +64,6 @@ script = ExtResource("5_6hc2o")
 spawn_table = Array[ExtResource("6_r7gda")]([SubResource("Resource_nb51f"), SubResource("Resource_r7gda"), SubResource("Resource_x8frw")])
 metadata/_custom_type_script = "uid://3s5fmo1ne7gy"
 
-[sub_resource type="Resource" id="Resource_47ynv"]
-script = ExtResource("10_d4m8n")
-points_to_win = 25
-metadata/_custom_type_script = "uid://dh5gms1csyc1n"
-
 [sub_resource type="Resource" id="Resource_gpb84"]
 script = ExtResource("13_qpbod")
 entry_name = "Ladybug"
@@ -79,6 +74,11 @@ metadata/_custom_type_script = "uid://bcgmgwcdgs13w"
 script = ExtResource("12_eyuq7")
 spawn_table = Array[ExtResource("13_qpbod")]([SubResource("Resource_gpb84")])
 metadata/_custom_type_script = "uid://6qt5wixa50el"
+
+[sub_resource type="Resource" id="Resource_47ynv"]
+script = ExtResource("10_d4m8n")
+points_to_win = 25
+metadata/_custom_type_script = "uid://dh5gms1csyc1n"
 
 [node name="Level8" type="Node2D" unique_id=84585901]
 
@@ -100,16 +100,16 @@ initial_fruit_pos = Array[Vector2i]([Vector2i(6, 0), Vector2i(6, -1), Vector2i(6
 level_manager = NodePath("../LevelManager")
 spawn_table_resource = SubResource("Resource_nnt18")
 
+[node name="EnemySpawner" parent="." unique_id=1146343413 node_paths=PackedStringArray("level_manager") instance=ExtResource("11_yhjjx")]
+level_manager = NodePath("../LevelManager")
+initial_enemy_pos = Array[Vector2i]([Vector2i(0, -4), Vector2i(0, 3)])
+spawn_table_resource = SubResource("Resource_smkgk")
+
 [node name="LevelManager" parent="." unique_id=1303606008 node_paths=PackedStringArray("game_over_menu", "score_ui") instance=ExtResource("8_hefcu")]
 board_data = ExtResource("9_lkmnu")
 win_condition = SubResource("Resource_47ynv")
 game_over_menu = NodePath("../UI/GameOverMenu")
 score_ui = NodePath("../UI/Score")
-
-[node name="EnemySpawner" parent="." unique_id=1146343413 node_paths=PackedStringArray("level_manager") instance=ExtResource("11_yhjjx")]
-level_manager = NodePath("../LevelManager")
-initial_enemy_pos = Array[Vector2i]([Vector2i(0, -4), Vector2i(0, 3)])
-spawn_table_resource = SubResource("Resource_smkgk")
 
 [node name="LevelIntro" parent="." unique_id=39525408 instance=ExtResource("15_7ne0p")]
 

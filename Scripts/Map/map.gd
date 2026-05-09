@@ -84,7 +84,7 @@ func update_displayed_data():
 	
 	var won_text = "Won = Yes" if won else "Won = No"
 	var max_points_text = "Max Points = {0}".format([max_points]) if max_points != -1 else "No data :("
-	var least_time_text = "Least Time = {0}".format([least_time]) if least_time != -1 else "No data :("
+	var least_time_text = "Least Time = %.2f" % least_time if least_time != -1 else "No data :("
 	var max_size_text = "Max Size = {0}".format([max_size]) if max_size != -1 else "No data :("
 	var total_tries_text = "Total Tries = {0}".format([total_tries])
 	var tries_to_win_text = "Tries to Win = {0}".format([tries_to_win]) if tries_to_win != -1 else "No data :("

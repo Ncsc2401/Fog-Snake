@@ -94,6 +94,13 @@ var direction_to_angle : Dictionary[Directions, float] = {
 @export var input_component : BaseSnakeInputComponent;
 @export var misc_components : Array[BaseSnakeMiscComponent];
 
+var l_death_component : BaseSnakeDeathComponent;
+var l_draw_component : BaseSnakeDrawComponent
+var l_movement_component : BaseSnakeMovementComponent;
+var l_grow_component : BaseSnakeGrowComponent;
+var l_eat_component : BaseSnakeEatComponent;
+var l_input_component : BaseSnakeInputComponent;
+var l_misc_components : Array[BaseSnakeMiscComponent] = [];
 
 ## How many keys are saved
 const MAX_DIRECTION_BUFFER_SIZE = 3;
@@ -161,33 +168,44 @@ func _ready() -> void:
 	body_size = initial_body.size();
 	expected_size = body_size;
 	
-	# Component initialization
-	death_component.initialize(self);
-	draw_component.initialize(self);
-	movement_component.initialize(self);
-	grow_component.initialize(self);
-	eat_component.initialize(self);
-	input_component.initialize(self);
+	# Component duplication
+	l_death_component = death_component.duplicate()
+	l_draw_component = draw_component.duplicate()
+	l_movement_component = movement_component.duplicate()
+	l_grow_component = grow_component.duplicate()
+	l_eat_component = eat_component.duplicate()
+	l_input_component = input_component.duplicate()
 	
 	for misc_component in misc_components:
-		misc_component.initialize(self);
+		l_misc_components.append(misc_component.duplicate())
+	
+	# Component initialization
+	l_death_component.initialize(self);
+	l_draw_component.initialize(self);
+	l_movement_component.initialize(self);
+	l_grow_component.initialize(self);
+	l_eat_component.initialize(self);
+	l_input_component.initialize(self);
+	
+	for l_misc_component in l_misc_components:
+		l_misc_component.initialize(self);
 	
 	# Set tile set
-	snake_layer.tile_set = draw_component.snake_tileset;
+	snake_layer.tile_set = l_draw_component.snake_tileset;
 	
 	# Draw
-	draw_component.draw();
+	l_draw_component.draw();
 
 func _process(delta: float) -> void:
 	update_buffer_lifetime(delta);
 	
-	for misc_component in misc_components:
+	for misc_component in l_misc_components:
 		if misc_component.is_initialized:
 			misc_component.on_process(delta);
 
 func _input(event: InputEvent) -> void:
-	if input_component.is_initialized:
-		input_component.handle_input(event);
+	if l_input_component != null and l_input_component.is_initialized:
+		l_input_component.handle_input(event);
 
 func snake_layer_to_global_pos(tilemap_pos : Vector2i) -> Vector2:
 	return snake_layer.to_global(snake_layer.map_to_local(tilemap_pos));
@@ -226,6 +244,9 @@ func force_clear_snake():
 	snake_layer.clear()
 
 func play_movement_sounds():
+	if makes_move_sounds == false:
+		return;
+	
 	if sound_controller == null:
 		print("Missing sound controller");
 		return
@@ -243,8 +264,8 @@ func draw_snake():
 	if is_dead:
 		return;
 	
-	if draw_component.is_initialized:
-		draw_component.draw()
+	if l_draw_component.is_initialized:
+		l_draw_component.draw()
 
 func move():
 	if is_dead:
@@ -268,10 +289,10 @@ func move():
 	if got_possible_movement:
 		direction = possible_movement
 	
-	if movement_component.is_initialized:
-		movement_component.move(direction);
+	if l_movement_component.is_initialized:
+		l_movement_component.move(direction);
 	
-	for misc_component in misc_components:
+	for misc_component in l_misc_components:
 		if misc_component.is_initialized:
 			misc_component.on_move(direction);
 
@@ -279,10 +300,10 @@ func die():
 	if is_dead:
 		return
 	
-	if death_component.is_initialized:
-		death_component.die();
+	if l_death_component.is_initialized:
+		l_death_component.die();
 	
-	for misc_component in misc_components:
+	for misc_component in l_misc_components:
 		if misc_component.is_initialized:
 			misc_component.on_death();
 
@@ -290,10 +311,10 @@ func eat_fruit(fruit_resource : FruitResource):
 	if is_dead:
 		return;
 	
-	if eat_component.is_initialized:
-		eat_component.eat(fruit_resource)
+	if l_eat_component.is_initialized:
+		l_eat_component.eat(fruit_resource)
 		
-	for misc_component in misc_components:
+	for misc_component in l_misc_components:
 		if misc_component.is_initialized:
 			misc_component.on_eat(fruit_resource)
 
@@ -301,5 +322,5 @@ func grow():
 	if is_dead:
 		return
 	
-	if grow_component.is_initialized:
-		grow_component.grow();
+	if l_grow_component.is_initialized:
+		l_grow_component.grow();

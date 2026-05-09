@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://c2byxgf4uejvt"]
+
+[ext_resource type="Script" uid="uid://4w8urs321i4d" path="res://Scripts/Snakes/base_snake.gd" id="1_kxbem"]
+[ext_resource type="Script" uid="uid://fugkvr1qh0m8" path="res://Scripts/Snakes/SnakeComponents/DeathComponents/normal_snake_death_component.gd" id="2_t61of"]
+[ext_resource type="Script" uid="uid://bln70orb5n6me" path="res://Scripts/Snakes/SnakeComponents/DrawComponents/default_snake_draw_component.gd" id="3_fl458"]
+[ext_resource type="TileSet" uid="uid://brkptblvkpwo1" path="res://Scenes/Snakes/normal_snake_tile_set.tres" id="4_wg53c"]
+[ext_resource type="Script" uid="uid://bagd4dtstgvtj" path="res://Scripts/Snakes/SnakeComponents/MovementComponents/normal_snake_movement_component.gd" id="5_gmsql"]
+[ext_resource type="Script" uid="uid://clb5xj7d51pfn" path="res://Scripts/Snakes/SnakeComponents/GrowComponents/normal_snake_grow_component.gd" id="6_g4ksh"]
+[ext_resource type="Script" uid="uid://t3ahs52kl0kk" path="res://Scripts/Snakes/SnakeComponents/EatComponents/normal_snake_eat_component.gd" id="7_wkuln"]
+[ext_resource type="Script" uid="uid://c8vilcu34bcom" path="res://Scripts/Snakes/SnakeComponents/InputComponents/mirror_snake_input_component.gd" id="8_kxbem"]
+[ext_resource type="Script" uid="uid://dx4ubgei8bfkv" path="res://Scripts/sound_controller.gd" id="9_tfurp"]
+[ext_resource type="AudioStream" uid="uid://boxr2s5yeer1i" path="res://Assets/Sounds/fog-snake-mov-1.wav" id="10_vvtvs"]
+[ext_resource type="AudioStream" uid="uid://dq8qgj83iam6g" path="res://Assets/Sounds/fog-snake-mov-2.wav" id="11_wjdb6"]
+[ext_resource type="AudioStream" uid="uid://bgnbkfq7icvuv" path="res://Assets/Sounds/fog-snake-mov-3.wav" id="12_7hvib"]
+[ext_resource type="AudioStream" uid="uid://d4nbp100vbmj8" path="res://Assets/Sounds/fog-snake-mov-4.wav" id="13_3y8kb"]
+[ext_resource type="AudioStream" uid="uid://b5bnbcidomngq" path="res://Assets/Sounds/fog-snake-grow.wav" id="14_oxji1"]
+
+[sub_resource type="Resource" id="Resource_dykhk"]
+script = ExtResource("2_t61of")
+metadata/_custom_type_script = "uid://fugkvr1qh0m8"
+
+[sub_resource type="Resource" id="Resource_wt6mx"]
+script = ExtResource("3_fl458")
+snake_tileset = ExtResource("4_wg53c")
+metadata/_custom_type_script = "uid://bln70orb5n6me"
+
+[sub_resource type="Resource" id="Resource_vti4h"]
+script = ExtResource("5_gmsql")
+metadata/_custom_type_script = "uid://bagd4dtstgvtj"
+
+[sub_resource type="Resource" id="Resource_rh8t6"]
+script = ExtResource("6_g4ksh")
+metadata/_custom_type_script = "uid://clb5xj7d51pfn"
+
+[sub_resource type="Resource" id="Resource_ftgv0"]
+script = ExtResource("7_wkuln")
+metadata/_custom_type_script = "uid://t3ahs52kl0kk"
+
+[sub_resource type="Resource" id="Resource_t61of"]
+script = ExtResource("8_kxbem")
+metadata/_custom_type_script = "uid://c8vilcu34bcom"
+
+[node name="MirrorSnake" type="Node2D" unique_id=1548924198 node_paths=PackedStringArray("snake_layer", "sound_controller")]
+script = ExtResource("1_kxbem")
+snake_layer = NodePath("SnakeLayer")
+sound_controller = NodePath("SoundController")
+death_component = SubResource("Resource_dykhk")
+draw_component = SubResource("Resource_wt6mx")
+movement_component = SubResource("Resource_vti4h")
+grow_component = SubResource("Resource_rh8t6")
+eat_component = SubResource("Resource_ftgv0")
+input_component = SubResource("Resource_t61of")
+
+[node name="SnakeLayer" type="TileMapLayer" parent="." unique_id=1038503882]
+z_index = 10
+tile_set = ExtResource("4_wg53c")
+
+[node name="SoundController" type="Node" parent="." unique_id=2067787773]
+script = ExtResource("9_tfurp")
+
+[node name="Up" type="AudioStreamPlayer" parent="SoundController" unique_id=1647561121]
+stream = ExtResource("10_vvtvs")
+bus = &"Sound Effects"
+
+[node name="Down" type="AudioStreamPlayer" parent="SoundController" unique_id=334023267]
+stream = ExtResource("11_wjdb6")
+bus = &"Sound Effects"
+
+[node name="Left" type="AudioStreamPlayer" parent="SoundController" unique_id=1158149808]
+stream = ExtResource("12_7hvib")
+bus = &"Sound Effects"
+
+[node name="Right" type="AudioStreamPlayer" parent="SoundController" unique_id=84273681]
+stream = ExtResource("13_3y8kb")
+bus = &"Sound Effects"
+
+[node name="Grow" type="AudioStreamPlayer" parent="SoundController" unique_id=414801182]
+stream = ExtResource("14_oxji1")
+volume_db = 5.0
+bus = &"Sound Effects"

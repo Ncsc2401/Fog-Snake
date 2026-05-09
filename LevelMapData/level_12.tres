@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://bttit420puw6n"]
+
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_003e8"]
+[ext_resource type="PackedScene" uid="uid://5dujlik1miyj" path="res://Levels/level_12.tscn" id="1_yc7r1"]
+[ext_resource type="Resource" uid="uid://c4vjml84j8n13" path="res://LevelMapData/level_13.tres" id="3_d07sr"]
+
+[resource]
+script = ExtResource("1_003e8")
+pos = Vector2i(0, -7)
+id = 19
+save_name = "level_12"
+level_name = "Chess?"
+objective = "Get 15 points"
+level_scene = ExtResource("1_yc7r1")
+up_level = ExtResource("3_d07sr")
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

@@ -3,14 +3,16 @@
 [ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_50kxy"]
 [ext_resource type="PackedScene" uid="uid://dr8ljecks02gy" path="res://Levels/level_9.tscn" id="1_x4p3e"]
 [ext_resource type="Resource" uid="uid://bm8l3pkxqa4je" path="res://LevelMapData/level_10.tres" id="2_x5cux"]
+[ext_resource type="Resource" uid="uid://byxm2vehnv66d" path="res://LevelMapData/bonus_8.tres" id="4_c6f08"]
 
 [resource]
 script = ExtResource("1_50kxy")
 pos = Vector2i(1, -6)
-id = 20
+id = 21
 save_name = "level_9"
 level_name = "Inverted color are too ugly"
 objective = "Get 15 points"
 level_scene = ExtResource("1_x4p3e")
 right_level = ExtResource("2_x5cux")
+up_level = ExtResource("4_c6f08")
 metadata/_custom_type_script = "uid://7wwtq4kmxin"

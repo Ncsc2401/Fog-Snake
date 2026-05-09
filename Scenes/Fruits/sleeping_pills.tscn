@@ -1,0 +1,20 @@
+[gd_scene format=3 uid="uid://jb52fn0u5xki"]
+
+[ext_resource type="Script" uid="uid://c6eb3320o7mib" path="res://Scripts/Fruits/sleeping_pills.gd" id="1_n7rki"]
+[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Fruits/fruit_resource.gd" id="2_gunwh"]
+[ext_resource type="Texture2D" uid="uid://ch8ns7ke3nvyt" path="res://Assets/Sprites/Pill.png" id="2_n7rki"]
+
+[sub_resource type="Resource" id="Resource_fs660"]
+script = ExtResource("2_gunwh")
+fruit_name = "Pills"
+points = 2
+size_increase = 1
+metadata/_custom_type_script = "uid://cn37grwtxs5jy"
+
+[node name="SleepingPills" type="Node2D" unique_id=1589894860]
+z_index = 6
+script = ExtResource("1_n7rki")
+fruit_resource = SubResource("Resource_fs660")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1963994021]
+texture = ExtResource("2_n7rki")

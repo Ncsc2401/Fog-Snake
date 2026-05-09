@@ -251,5 +251,5 @@ func apply_settings():
 	
 	if current_settings.full_screen && DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_FULLSCREEN:
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_FULLSCREEN);
-	elif !current_settings.full_screen && DisplayServer.window_get_mode() != DisplayServer.WINDOW_MODE_WINDOWED:
+	elif !current_settings.full_screen && (DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_FULLSCREEN or DisplayServer.window_get_mode() == DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN):
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_WINDOWED);

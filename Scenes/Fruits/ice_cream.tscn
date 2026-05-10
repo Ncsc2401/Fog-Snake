@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://byayy2c7usui5"]
 
-[ext_resource type="Script" uid="uid://cjcyjeagklgt2" path="res://Scripts/Fruits/ice_cream.gd" id="1_avo7p"]
-[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Fruits/fruit_resource.gd" id="2_tb3jq"]
-[ext_resource type="Texture2D" uid="uid://c3mmoykijys55" path="res://Assets/Sprites/IceCream.png" id="3_l5day"]
+[ext_resource type="Script" uid="uid://c2cm7nsym2ojr" path="res://Scripts/Actors/Fruit/fruit.gd" id="1_t08rp"]
+[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Actors/Fruit/fruit_resource.gd" id="2_tb3jq"]
+[ext_resource type="Script" uid="uid://cffpnm6raml4s" path="res://Scripts/Actors/Fruit/FruitEatComponents/base_fruit_eat_component.gd" id="3_7t31b"]
+[ext_resource type="Texture2D" uid="uid://eafhhj2qk745" path="res://Assets/Sprites/IceCream.png" id="3_l5day"]
+[ext_resource type="Script" uid="uid://bsv7qg871hms6" path="res://Scripts/Actors/Fruit/FruitEatComponents/spawn_random_fruit_eat_component.gd" id="4_ek3cn"]
+[ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="5_i38jo"]
+[ext_resource type="Script" uid="uid://bsbonjfxscb2v" path="res://Scripts/Actors/ActorActions/actor_action_node.gd" id="6_7t31b"]
+[ext_resource type="Script" uid="uid://i5fjfrhn5vf1" path="res://Scripts/Actors/ActorActions/find_free_board_spaces_actor_action.gd" id="7_opdyp"]
+[ext_resource type="Script" uid="uid://c74qxur36h0l" path="res://Scripts/Actors/ActorActions/choose_random_possible_board_move_actor_action.gd" id="8_2h2oi"]
+[ext_resource type="Script" uid="uid://cq7uekj2tof0v" path="res://Scripts/Actors/ActorActions/board_move_actor_action.gd" id="9_2h2oi"]
 
 [sub_resource type="Resource" id="Resource_l5day"]
 script = ExtResource("2_tb3jq")
@@ -11,11 +18,56 @@ points = 5
 size_increase = 2
 metadata/_custom_type_script = "uid://cn37grwtxs5jy"
 
-[node name="IceCream" type="Node2D" unique_id=1918213427]
+[sub_resource type="Resource" id="Resource_opdyp"]
+script = ExtResource("4_ek3cn")
+metadata/_custom_type_script = "uid://bsv7qg871hms6"
+
+[sub_resource type="Resource" id="Resource_4jfpr"]
+script = ExtResource("5_i38jo")
+metadata/_custom_type_script = "uid://bod7gi7o0sngf"
+
+[sub_resource type="Resource" id="Resource_i38jo"]
+script = ExtResource("7_opdyp")
+action_tick = 8
+metadata/_custom_type_script = "uid://i5fjfrhn5vf1"
+
+[sub_resource type="Resource" id="Resource_agvxy"]
+script = ExtResource("8_2h2oi")
+action_tick = 8
+action_priority = 1
+metadata/_custom_type_script = "uid://c74qxur36h0l"
+
+[sub_resource type="Resource" id="Resource_0g50r"]
+script = ExtResource("9_2h2oi")
+action_tick = 8
+action_priority = 2
+metadata/_custom_type_script = "uid://cq7uekj2tof0v"
+
+[node name="IceCream" type="Node2D" unique_id=1918213427 node_paths=PackedStringArray("actor_action_nodes_parent")]
 z_index = 6
-script = ExtResource("1_avo7p")
+script = ExtResource("1_t08rp")
 fruit_resource = SubResource("Resource_l5day")
-fruit_tick_time = 6
+fruit_eat_components = Array[ExtResource("3_7t31b")]([SubResource("Resource_opdyp")])
+actor_action_nodes_parent = NodePath("Actions")
+max_ticks = 8
+alive_component = SubResource("Resource_4jfpr")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1009001151]
 texture = ExtResource("3_l5day")
+
+[node name="Actions" type="Node" parent="." unique_id=1805005982]
+
+[node name="8_0-FindAllSpaces" type="Node" parent="Actions" unique_id=422717141]
+script = ExtResource("6_7t31b")
+actor_action = SubResource("Resource_i38jo")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="8_1-ChooseSpace" type="Node" parent="Actions" unique_id=717836718]
+script = ExtResource("6_7t31b")
+actor_action = SubResource("Resource_agvxy")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="8_2-Move" type="Node" parent="Actions" unique_id=333169345]
+script = ExtResource("6_7t31b")
+actor_action = SubResource("Resource_0g50r")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"

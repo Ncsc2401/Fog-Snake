@@ -37,4 +37,4 @@ func interpolate_movement():
 	global_position = interpolated_pos
 
 func get_snake_head_global_pos() -> Vector2:
-	return reference_tilemap.to_global(reference_tilemap.map_to_local(snake.head.position));
+	return reference_tilemap.to_global(reference_tilemap.map_to_local(snake.head.pos));

@@ -1,8 +1,15 @@
 [gd_scene format=3 uid="uid://p5d6nykafa2t"]
 
-[ext_resource type="Script" uid="uid://bkj3fwj4nbdkq" path="res://Scripts/Fruits/star_fruit.gd" id="1_30njs"]
-[ext_resource type="Texture2D" uid="uid://cguarjnsylvjx" path="res://Assets/Sprites/StartFruit.png" id="1_u3ljt"]
-[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Fruits/fruit_resource.gd" id="2_sdp74"]
+[ext_resource type="Script" uid="uid://c2cm7nsym2ojr" path="res://Scripts/Actors/Fruit/fruit.gd" id="1_sdp74"]
+[ext_resource type="Texture2D" uid="uid://55t484ntkq7w" path="res://Assets/Sprites/StartFruit.png" id="1_u3ljt"]
+[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Actors/Fruit/fruit_resource.gd" id="2_sdp74"]
+[ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="3_a45tu"]
+[ext_resource type="Script" uid="uid://cffpnm6raml4s" path="res://Scripts/Actors/Fruit/FruitEatComponents/base_fruit_eat_component.gd" id="3_menib"]
+[ext_resource type="Script" uid="uid://bsv7qg871hms6" path="res://Scripts/Actors/Fruit/FruitEatComponents/spawn_random_fruit_eat_component.gd" id="3_otxwe"]
+[ext_resource type="Script" uid="uid://bsbonjfxscb2v" path="res://Scripts/Actors/ActorActions/actor_action_node.gd" id="4_m7eru"]
+[ext_resource type="Script" uid="uid://by75mlqmgmrtl" path="res://Scripts/Actors/ActorActions/find_cardinal_moves_actor_action.gd" id="5_a45tu"]
+[ext_resource type="Script" uid="uid://c74qxur36h0l" path="res://Scripts/Actors/ActorActions/choose_random_possible_board_move_actor_action.gd" id="6_fp4oy"]
+[ext_resource type="Script" uid="uid://cq7uekj2tof0v" path="res://Scripts/Actors/ActorActions/board_move_actor_action.gd" id="8_fp4oy"]
 
 [sub_resource type="Resource" id="Resource_eo6dd"]
 script = ExtResource("2_sdp74")
@@ -11,11 +18,56 @@ points = 3
 size_increase = 1
 metadata/_custom_type_script = "uid://cn37grwtxs5jy"
 
-[node name="StarFruit" type="Node2D" unique_id=772311244]
+[sub_resource type="Resource" id="Resource_vmhw1"]
+script = ExtResource("3_otxwe")
+metadata/_custom_type_script = "uid://bsv7qg871hms6"
+
+[sub_resource type="Resource" id="Resource_fp4oy"]
+script = ExtResource("3_a45tu")
+metadata/_custom_type_script = "uid://bod7gi7o0sngf"
+
+[sub_resource type="Resource" id="Resource_otxwe"]
+script = ExtResource("5_a45tu")
+action_tick = 5
+metadata/_custom_type_script = "uid://by75mlqmgmrtl"
+
+[sub_resource type="Resource" id="Resource_menib"]
+script = ExtResource("6_fp4oy")
+action_tick = 5
+action_priority = 1
+metadata/_custom_type_script = "uid://c74qxur36h0l"
+
+[sub_resource type="Resource" id="Resource_k4fnb"]
+script = ExtResource("8_fp4oy")
+action_tick = 5
+action_priority = 2
+metadata/_custom_type_script = "uid://cq7uekj2tof0v"
+
+[node name="StarFruit" type="Node2D" unique_id=772311244 node_paths=PackedStringArray("actor_action_nodes_parent")]
 z_index = 6
-script = ExtResource("1_30njs")
+script = ExtResource("1_sdp74")
 fruit_resource = SubResource("Resource_eo6dd")
-fruit_tick_time = 3
+fruit_eat_components = Array[ExtResource("3_menib")]([SubResource("Resource_vmhw1")])
+actor_action_nodes_parent = NodePath("ActorActions")
+max_ticks = 5
+alive_component = SubResource("Resource_fp4oy")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1929351087]
 texture = ExtResource("1_u3ljt")
+
+[node name="ActorActions" type="Node" parent="." unique_id=280436264]
+
+[node name="5_0-FindMoves" type="Node" parent="ActorActions" unique_id=393594787]
+script = ExtResource("4_m7eru")
+actor_action = SubResource("Resource_otxwe")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="5_1-ChooseMove" type="Node" parent="ActorActions" unique_id=1595542896]
+script = ExtResource("4_m7eru")
+actor_action = SubResource("Resource_menib")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="5_2-Move" type="Node" parent="ActorActions" unique_id=197212395]
+script = ExtResource("4_m7eru")
+actor_action = SubResource("Resource_k4fnb")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"

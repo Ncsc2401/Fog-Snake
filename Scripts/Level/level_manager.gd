@@ -24,10 +24,10 @@ var game_tick_time_starting_tick : int = 0;
 @export var score_ui : Control
 
 var walls : Array[Vector2i];
-var fruits : Array[BaseFruit]
+var fruits : Array[Fruit]
 var spawners : Array[BaseSpawner]
 var snakes : Array[BaseSnake];
-var enemies : Array[BaseEnemy];
+var enemies : Array[Enemy];
 
 func _ready() -> void:
 	await get_tree().process_frame
@@ -102,14 +102,16 @@ func tick_logic():
 	
 	# Enemy dies
 	for enemy in enemies:
-		if enemy.just_died:
-			points += enemy.enemy_points_on_death;
-			kills += 1;
+		if !enemy.is_actor_alive():
+			points += enemy.enemy_resource.points_on_death;
+			kills += enemy.enemy_resource.kills_on_death;
+			
 			if score_ui == null:
 				push_warning("Score ui is null")
 			else:
 				update_score_display()
-			enemy.on_die_call();
+				
+			enemy.die();
 	
 	# Snake eats
 	for fruit in fruits.duplicate():
@@ -117,14 +119,14 @@ func tick_logic():
 			continue
 		
 		for snake in snakes:
-			if fruit.pos == snake.head.pos:
+			if fruit.board_position == snake.head.pos:
 				points += fruit.fruit_resource.points
 				if score_ui == null:
 					push_warning("Score ui is null")
 				else:
 					update_score_display()
 				snake.eat_fruit(fruit.fruit_resource);
-				fruit.on_eat_call()
+				fruit.on_eat()
 	
 	# Snake grows
 	for snake in snakes:
@@ -145,7 +147,7 @@ func tick_logic():
 			continue
 		
 		for enemy in enemies:
-			if snake.head.pos == enemy.board_pos:
+			if snake.head.pos == enemy.board_position:
 				snake.die()
 		
 		# Check for snake
@@ -217,11 +219,11 @@ func get_empty_spaces() -> Array[Vector2i]:
 	
 	# Remove spaces occupied by fruits
 	for fruit in fruits:
-		empty_spaces.erase(fruit.pos);
+		empty_spaces.erase(fruit.board_position);
 	
 	# Remove spaces occupied by enemies
 	for enemy in enemies:
-		empty_spaces.erase(enemy.board_pos);
+		empty_spaces.erase(enemy.board_position);
 	
 	# Remove spaces occupied by snakes
 	for snake in snakes:
@@ -243,7 +245,7 @@ func is_space_empty(pos : Vector2i) -> bool:
 		return false;
 	
 	for fruit in fruits:
-		if fruit.pos == pos:
+		if fruit.board_position == pos:
 			return false;
 	
 	for snake in snakes:
@@ -252,7 +254,7 @@ func is_space_empty(pos : Vector2i) -> bool:
 				return false;
 	
 	for enemy in enemies:
-		if enemy.board_pos == pos:
+		if enemy.board_position == pos:
 			return false;
 	
 	return true;
@@ -260,9 +262,9 @@ func is_space_empty(pos : Vector2i) -> bool:
 ## Returns if space has enemy
 func has_space_enemy(pos : Vector2i) -> bool:
 	for enemy in enemies:
-		if pos == enemy.board_pos:
+		if pos == enemy.board_position:
 			return true;
-		
+	
 	return false;
 
 ## Returns if space is wall

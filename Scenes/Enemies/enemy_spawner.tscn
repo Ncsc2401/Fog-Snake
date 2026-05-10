@@ -1,12 +1,28 @@
 [gd_scene format=3 uid="uid://65wep6sjv2bu"]
 
-[ext_resource type="Script" uid="uid://dajiaaqcu5kb8" path="res://Scripts/Enemies/enemy_spawner.gd" id="1_pk4yh"]
+[ext_resource type="Script" uid="uid://dajiaaqcu5kb8" path="res://Scripts/Actors/Enemy/enemy_spawner.gd" id="1_pk4yh"]
+[ext_resource type="Texture2D" uid="uid://c01kdmux1k782" path="res://Assets/Sprites/WarningTile.png" id="2_pk4yh"]
 
 [sub_resource type="TileSet" id="TileSet_pk4yh"]
 tile_size = Vector2i(32, 32)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_00ume"]
+texture = ExtResource("2_pk4yh")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_l64ff"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_00ume")
 
 [node name="EnemySpawner" type="Node2D" unique_id=1146343413]
 script = ExtResource("1_pk4yh")
 
 [node name="EnemyLayer" type="TileMapLayer" parent="." unique_id=626340968]
 tile_set = SubResource("TileSet_pk4yh")
+
+[node name="WarningLayer" type="TileMapLayer" parent="." unique_id=308571212]
+top_level = true
+z_index = 5
+z_as_relative = false
+tile_set = SubResource("TileSet_l64ff")

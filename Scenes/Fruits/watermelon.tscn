@@ -1,8 +1,11 @@
 [gd_scene format=3 uid="uid://h3t2dvc0174k"]
 
-[ext_resource type="Script" uid="uid://br32ucer5p4rh" path="res://Scripts/Fruits/watermelon.gd" id="1_fwu0d"]
-[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Fruits/fruit_resource.gd" id="2_eewg5"]
-[ext_resource type="Texture2D" uid="uid://ddyylrer4rdo7" path="res://Assets/Sprites/Watermeon.png" id="3_jhtj6"]
+[ext_resource type="Script" uid="uid://c2cm7nsym2ojr" path="res://Scripts/Actors/Fruit/fruit.gd" id="1_0h0bw"]
+[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Actors/Fruit/fruit_resource.gd" id="2_eewg5"]
+[ext_resource type="Script" uid="uid://cffpnm6raml4s" path="res://Scripts/Actors/Fruit/FruitEatComponents/base_fruit_eat_component.gd" id="3_24807"]
+[ext_resource type="Texture2D" uid="uid://dfshjr0cl0x7" path="res://Assets/Sprites/Watermeon.png" id="3_jhtj6"]
+[ext_resource type="Script" uid="uid://bsv7qg871hms6" path="res://Scripts/Actors/Fruit/FruitEatComponents/spawn_random_fruit_eat_component.gd" id="4_c3aug"]
+[ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="5_24807"]
 
 [sub_resource type="Resource" id="Resource_jhtj6"]
 script = ExtResource("2_eewg5")
@@ -11,10 +14,23 @@ points = 2
 size_increase = 5
 metadata/_custom_type_script = "uid://cn37grwtxs5jy"
 
-[node name="Watermelon" type="Node2D" unique_id=565065116]
+[sub_resource type="Resource" id="Resource_6vqot"]
+script = ExtResource("4_c3aug")
+metadata/_custom_type_script = "uid://bsv7qg871hms6"
+
+[sub_resource type="Resource" id="Resource_c3aug"]
+script = ExtResource("5_24807")
+metadata/_custom_type_script = "uid://bod7gi7o0sngf"
+
+[node name="Watermelon" type="Node2D" unique_id=565065116 node_paths=PackedStringArray("actor_action_nodes_parent")]
 z_index = 6
-script = ExtResource("1_fwu0d")
+script = ExtResource("1_0h0bw")
 fruit_resource = SubResource("Resource_jhtj6")
+fruit_eat_components = Array[ExtResource("3_24807")]([SubResource("Resource_6vqot")])
+actor_action_nodes_parent = NodePath("Node")
+alive_component = SubResource("Resource_c3aug")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1604238107]
 texture = ExtResource("3_jhtj6")
+
+[node name="Node" type="Node" parent="." unique_id=1721349600]

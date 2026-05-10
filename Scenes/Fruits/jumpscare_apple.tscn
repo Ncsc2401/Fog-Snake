@@ -1,12 +1,11 @@
 [gd_scene format=3 uid="uid://cs4dlelyisc3y"]
 
-[ext_resource type="Script" uid="uid://c7rv16lgmgbh3" path="res://Scripts/Fruits/jumpscare_apple.gd" id="1_v33qd"]
-[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Fruits/fruit_resource.gd" id="2_q1cis"]
-[ext_resource type="Texture2D" uid="uid://dxsggfsa4x2cr" path="res://Assets/Sprites/Apple.png" id="3_s573m"]
-[ext_resource type="Texture2D" uid="uid://c8r5qaw33hx4l" path="res://Assets/Jumpscare.jpg" id="4_fjfs8"]
-[ext_resource type="Texture2D" uid="uid://ds8io2k37xafr" path="res://Assets/Bunny.jpg" id="5_nvge5"]
-[ext_resource type="AudioStream" uid="uid://dxpext8sd4xu3" path="res://Assets/Sounds/bunny.wav" id="6_dhhc3"]
-[ext_resource type="AudioStream" uid="uid://prv2oyxfvs5s" path="res://Assets/Sounds/MazeJumpscare.wav" id="6_nvge5"]
+[ext_resource type="Script" uid="uid://c2cm7nsym2ojr" path="res://Scripts/Actors/Fruit/fruit.gd" id="1_nvge5"]
+[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Actors/Fruit/fruit_resource.gd" id="2_q1cis"]
+[ext_resource type="Script" uid="uid://cffpnm6raml4s" path="res://Scripts/Actors/Fruit/FruitEatComponents/base_fruit_eat_component.gd" id="3_fjfs8"]
+[ext_resource type="Texture2D" uid="uid://bx1i1qnyhpifh" path="res://Assets/Sprites/Apple.png" id="3_s573m"]
+[ext_resource type="Script" uid="uid://dy4trhrlu18cw" path="res://Scripts/Actors/Fruit/FruitEatComponents/jumpscare_fruit_eat_component.gd" id="4_nvge5"]
+[ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="5_fjfs8"]
 
 [sub_resource type="Resource" id="Resource_mefrx"]
 script = ExtResource("2_q1cis")
@@ -15,53 +14,23 @@ points = 1
 size_increase = 1
 metadata/_custom_type_script = "uid://cn37grwtxs5jy"
 
-[node name="JumpscareApple" type="Node2D" unique_id=1201037746]
+[sub_resource type="Resource" id="Resource_dhhc3"]
+script = ExtResource("4_nvge5")
+metadata/_custom_type_script = "uid://dy4trhrlu18cw"
+
+[sub_resource type="Resource" id="Resource_nvge5"]
+script = ExtResource("5_fjfs8")
+metadata/_custom_type_script = "uid://bod7gi7o0sngf"
+
+[node name="JumpscareApple" type="Node2D" unique_id=1201037746 node_paths=PackedStringArray("actor_action_nodes_parent")]
 process_mode = 3
-script = ExtResource("1_v33qd")
+script = ExtResource("1_nvge5")
 fruit_resource = SubResource("Resource_mefrx")
+fruit_eat_components = Array[ExtResource("3_fjfs8")]([SubResource("Resource_dhhc3")])
+actor_action_nodes_parent = NodePath("Node")
+alive_component = SubResource("Resource_nvge5")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1598342338]
 texture = ExtResource("3_s573m")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1719394557]
-
-[node name="Control" type="Control" parent="CanvasLayer" unique_id=673927167]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-metadata/_edit_use_anchors_ = true
-
-[node name="Jumpscare2" type="TextureRect" parent="CanvasLayer/Control" unique_id=1500703790]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("4_fjfs8")
-metadata/_edit_use_anchors_ = true
-
-[node name="Bunny2" type="TextureRect" parent="CanvasLayer/Control" unique_id=892103577]
-visible = false
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-mouse_filter = 2
-texture = ExtResource("5_nvge5")
-metadata/_edit_use_anchors_ = true
-
-[node name="Jumpscare" type="AudioStreamPlayer" parent="CanvasLayer/Control" unique_id=1653584086]
-stream = ExtResource("6_nvge5")
-
-[node name="Bunny" type="AudioStreamPlayer" parent="CanvasLayer/Control" unique_id=1336685309]
-stream = ExtResource("6_dhhc3")
-bus = &"Sound Effects"
+[node name="Node" type="Node" parent="." unique_id=765014158]

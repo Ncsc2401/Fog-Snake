@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dr5ov7u4kbfv7"]
 
-[ext_resource type="Script" uid="uid://dcfcvy515dqyo" path="res://Scripts/Fruits/fruit_spawner.gd" id="1_5mj3p"]
+[ext_resource type="Script" uid="uid://dcfcvy515dqyo" path="res://Scripts/Actors/Fruit/fruit_spawner.gd" id="1_5mj3p"]
 [ext_resource type="Texture2D" uid="uid://ccgunoxtja1rg" path="res://Assets/Sprites/AppleTemplate.png" id="2_l4haa"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_1phco"]

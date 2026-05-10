@@ -1,8 +1,32 @@
 [gd_scene format=3 uid="uid://qxled4o5e5od"]
 
-[ext_resource type="Script" uid="uid://bg2d5bh65po7r" path="res://Scripts/Enemies/fly.gd" id="1_3jcle"]
-[ext_resource type="Texture2D" uid="uid://ccae60p4wqyqu" path="res://Assets/Sprites/Fly.png" id="2_qaimy"]
+[ext_resource type="Script" uid="uid://dc2pgdqlx4j8x" path="res://Scripts/Actors/Enemy/enemy.gd" id="1_ry83y"]
+[ext_resource type="Script" uid="uid://u50f423e2317" path="res://Scripts/Actors/Enemy/enemy_resource.gd" id="2_6wvqc"]
+[ext_resource type="Texture2D" uid="uid://472r3h1jou4f" path="res://Assets/Sprites/Fly.png" id="2_qaimy"]
+[ext_resource type="Script" uid="uid://cogn7slytosua" path="res://Scripts/Actors/Enemy/EnemyDeathComponents/nothing_enemy_death_component.gd" id="3_d01c0"]
 [ext_resource type="Texture2D" uid="uid://c01kdmux1k782" path="res://Assets/Sprites/WarningTile.png" id="3_xmie3"]
+[ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="4_35oag"]
+[ext_resource type="Script" uid="uid://bsbonjfxscb2v" path="res://Scripts/Actors/ActorActions/actor_action_node.gd" id="7_5wbga"]
+[ext_resource type="Script" uid="uid://i5fjfrhn5vf1" path="res://Scripts/Actors/ActorActions/find_free_board_spaces_actor_action.gd" id="8_ir8si"]
+[ext_resource type="Script" uid="uid://c74qxur36h0l" path="res://Scripts/Actors/ActorActions/choose_random_possible_board_move_actor_action.gd" id="9_w50ts"]
+[ext_resource type="Script" uid="uid://dkb65xr6l1gaw" path="res://Scripts/Actors/ActorActions/warn_next_board_movement_actor_action.gd" id="10_didnd"]
+[ext_resource type="Script" uid="uid://c2vlo5cen5kug" path="res://Scripts/Actors/ActorActions/clear_warnings_actor_action.gd" id="11_w50ts"]
+[ext_resource type="Script" uid="uid://cq7uekj2tof0v" path="res://Scripts/Actors/ActorActions/board_move_actor_action.gd" id="12_didnd"]
+
+[sub_resource type="Resource" id="Resource_5wbga"]
+script = ExtResource("2_6wvqc")
+enemy_name = "Fly"
+points_on_death = 1
+kills_on_death = 1
+metadata/_custom_type_script = "uid://u50f423e2317"
+
+[sub_resource type="Resource" id="Resource_ir8si"]
+script = ExtResource("3_d01c0")
+metadata/_custom_type_script = "uid://cogn7slytosua"
+
+[sub_resource type="Resource" id="Resource_w50ts"]
+script = ExtResource("4_35oag")
+metadata/_custom_type_script = "uid://bod7gi7o0sngf"
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ixnb"]
 texture = ExtResource("3_xmie3")
@@ -13,11 +37,38 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_2ixnb")
 
-[node name="Fly" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("warning_layer")]
-script = ExtResource("1_3jcle")
-enemy_tick_time = 10
-warning_window_time = 3
-warning_layer = NodePath("WarningLayer")
+[sub_resource type="Resource" id="Resource_1v3i1"]
+script = ExtResource("8_ir8si")
+metadata/_custom_type_script = "uid://i5fjfrhn5vf1"
+
+[sub_resource type="Resource" id="Resource_6r2ue"]
+script = ExtResource("9_w50ts")
+action_priority = 1
+metadata/_custom_type_script = "uid://c74qxur36h0l"
+
+[sub_resource type="Resource" id="Resource_qhxm7"]
+script = ExtResource("10_didnd")
+action_tick = 4
+metadata/_custom_type_script = "uid://dkb65xr6l1gaw"
+
+[sub_resource type="Resource" id="Resource_rdjcp"]
+script = ExtResource("11_w50ts")
+action_tick = 8
+metadata/_custom_type_script = "uid://c2vlo5cen5kug"
+
+[sub_resource type="Resource" id="Resource_1kbiw"]
+script = ExtResource("12_didnd")
+action_tick = 8
+action_priority = 1
+metadata/_custom_type_script = "uid://cq7uekj2tof0v"
+
+[node name="Fly" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("actor_action_nodes_parent")]
+script = ExtResource("1_ry83y")
+enemy_resource = SubResource("Resource_5wbga")
+death_component = SubResource("Resource_ir8si")
+actor_action_nodes_parent = NodePath("Actions")
+max_ticks = 8
+alive_component = SubResource("Resource_w50ts")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733223946]
 z_index = 6
@@ -28,3 +79,30 @@ top_level = true
 z_index = 5
 z_as_relative = false
 tile_set = SubResource("TileSet_r2kd0")
+
+[node name="Actions" type="Node" parent="." unique_id=1874323325]
+
+[node name="0_0-GetAllSpaces" type="Node" parent="Actions" unique_id=419802570]
+script = ExtResource("7_5wbga")
+actor_action = SubResource("Resource_1v3i1")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_1-ChooseSpace" type="Node" parent="Actions" unique_id=952141373]
+script = ExtResource("7_5wbga")
+actor_action = SubResource("Resource_6r2ue")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="4-WarnsPlayer" type="Node" parent="Actions" unique_id=851784387]
+script = ExtResource("7_5wbga")
+actor_action = SubResource("Resource_qhxm7")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="8_0-ClearsWarnings" type="Node" parent="Actions" unique_id=1684128296]
+script = ExtResource("7_5wbga")
+actor_action = SubResource("Resource_rdjcp")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="8_1-Move" type="Node" parent="Actions" unique_id=1708470293]
+script = ExtResource("7_5wbga")
+actor_action = SubResource("Resource_1kbiw")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"

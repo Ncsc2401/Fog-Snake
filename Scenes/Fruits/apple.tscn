@@ -1,20 +1,36 @@
 [gd_scene format=3 uid="uid://48om1rvld52o"]
 
-[ext_resource type="Script" uid="uid://cmtptnipp7508" path="res://Scripts/Fruits/apple.gd" id="1_ir1en"]
-[ext_resource type="Texture2D" uid="uid://dxsggfsa4x2cr" path="res://Assets/Sprites/Apple.png" id="1_v3gsn"]
-[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Fruits/fruit_resource.gd" id="2_8gwai"]
+[ext_resource type="Script" uid="uid://c2cm7nsym2ojr" path="res://Scripts/Actors/Fruit/fruit.gd" id="1_bpppa"]
+[ext_resource type="Texture2D" uid="uid://bx1i1qnyhpifh" path="res://Assets/Sprites/Apple.png" id="1_v3gsn"]
+[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Actors/Fruit/fruit_resource.gd" id="2_8gwai"]
+[ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="3_0ubyp"]
+[ext_resource type="Script" uid="uid://cffpnm6raml4s" path="res://Scripts/Actors/Fruit/FruitEatComponents/base_fruit_eat_component.gd" id="3_fyhte"]
+[ext_resource type="Script" uid="uid://bsv7qg871hms6" path="res://Scripts/Actors/Fruit/FruitEatComponents/spawn_random_fruit_eat_component.gd" id="3_nxcck"]
 
-[sub_resource type="Resource" id="Resource_lyte0"]
+[sub_resource type="Resource" id="Resource_0ubyp"]
 script = ExtResource("2_8gwai")
 fruit_name = "Apple"
 points = 1
 size_increase = 1
 metadata/_custom_type_script = "uid://cn37grwtxs5jy"
 
-[node name="Apple" type="Node2D" unique_id=1589894860]
+[sub_resource type="Resource" id="Resource_cuque"]
+script = ExtResource("3_nxcck")
+metadata/_custom_type_script = "uid://bsv7qg871hms6"
+
+[sub_resource type="Resource" id="Resource_nxcck"]
+script = ExtResource("3_0ubyp")
+metadata/_custom_type_script = "uid://bod7gi7o0sngf"
+
+[node name="Apple" type="Node2D" unique_id=1589894860 node_paths=PackedStringArray("actor_action_nodes_parent")]
 z_index = 6
-script = ExtResource("1_ir1en")
-fruit_resource = SubResource("Resource_lyte0")
+script = ExtResource("1_bpppa")
+fruit_resource = SubResource("Resource_0ubyp")
+fruit_eat_components = Array[ExtResource("3_fyhte")]([SubResource("Resource_cuque")])
+actor_action_nodes_parent = NodePath("Node")
+alive_component = SubResource("Resource_nxcck")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1963994021]
 texture = ExtResource("1_v3gsn")
+
+[node name="Node" type="Node" parent="." unique_id=302577701]

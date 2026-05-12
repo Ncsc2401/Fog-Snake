@@ -26,7 +26,7 @@ var choices : Dictionary[String, Callable] = {
 
 @export var fruit_spawner : FruitSpawner;
 @export var enemy_spawner : EnemySpawner;
-@export var snakes : Array[BaseSnake];
+@export var snakes : Array[Snake];
 @export var level_manager : LevelManager;
 
 var choice_1 : Callable;
@@ -103,7 +103,7 @@ func spawn_flies():
 func invert_movement():
 	for snake in level_manager.snakes:
 		var inverted_input_component = InvertedSnakeInputComponent.new()
-		snake.input_component = inverted_input_component
+		snake.l_input_component = inverted_input_component
 		inverted_input_component.initialize(snake);
 		
 	choices.erase("Invert movement")
@@ -111,7 +111,7 @@ func invert_movement():
 func lights_out():
 	for snake in level_manager.snakes:
 		var light_system_component = LightSystemComponent.new()
-		snake.misc_components.append(light_system_component);
+		snake.l_misc_components.append(light_system_component);
 		light_system_component.initialize(snake);
 	
 	choices.erase("Lights out")

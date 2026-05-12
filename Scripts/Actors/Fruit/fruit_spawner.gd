@@ -54,7 +54,7 @@ func spawn_commit():
 		spawn_request.status = STATUS_FINISHED
 
 ## Add a spawn request to the queue
-func spawn_fruit_at(pos : Vector2i, fruit_scene : PackedScene, ticks_to_spawn : int, attributes : Array[SpawnRequestAttributes]):
+func spawn_fruit_at(pos : Vector2i, fruit_scene : PackedScene, ticks_to_spawn : int, attributes : Array):
 	var spawn_request = SpawnRequest.new(pos, fruit_scene, ticks_to_spawn, attributes);
 	spawn_requests.append(spawn_request)
 
@@ -92,3 +92,6 @@ func get_random_position():
 
 func solve_custom_attibutes(attibute : SpawnRequestAttributes, spawn_request : SpawnRequest):
 	pass
+
+func spawn_at(pos : Vector2i, enemy_scene : PackedScene, ticks_to_spawn : int, attributes : Array):
+	spawn_fruit_at(pos, enemy_scene, ticks_to_spawn, attributes)

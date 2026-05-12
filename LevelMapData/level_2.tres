@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://yr0wpex5mi45"]
 
-[ext_resource type="Resource" uid="uid://dxel770ke264r" path="res://LevelMapData/bonus_5.tres" id="1_dss1d"]
+[ext_resource type="Resource" uid="uid://dxel770ke264r" path="res://LevelMapData/level_14.tres" id="1_dss1d"]
 [ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_gq3hs"]
 [ext_resource type="PackedScene" uid="uid://dcmd6tdmoelto" path="res://Levels/level_2.tscn" id="1_gr5mu"]
 [ext_resource type="Resource" uid="uid://b4q48jo2tm758" path="res://LevelMapData/bonus_4.tres" id="2_2mawp"]

@@ -8,14 +8,15 @@
 [ext_resource type="PackedScene" uid="uid://48om1rvld52o" path="res://Scenes/Fruits/apple.tscn" id="6_rgxrf"]
 [ext_resource type="PackedScene" uid="uid://p5d6nykafa2t" path="res://Scenes/Fruits/star_fruit.tscn" id="7_gmmno"]
 [ext_resource type="PackedScene" uid="uid://h3t2dvc0174k" path="res://Scenes/Fruits/watermelon.tscn" id="7_o3828"]
-[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/Components/level_manager.tscn" id="8_e4wvd"]
+[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/LevelComponents/level_manager.tscn" id="8_e4wvd"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="10_c0ysh"]
 [ext_resource type="Resource" uid="uid://dtadc2st1lpwy" path="res://BoardData/LightsOut.tres" id="10_o6v0v"]
 [ext_resource type="PackedScene" uid="uid://vsb5tli4i4t8" path="res://Scenes/Snakes/lights_out_snake.tscn" id="10_rgxrf"]
-[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="11_ttatf"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/LevelComponents/level_intro.tscn" id="11_ttatf"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="12_rwshy"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="13_uk37i"]
 [ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="14_g3osk"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rgxrf"]
 texture = ExtResource("1_rgxrf")

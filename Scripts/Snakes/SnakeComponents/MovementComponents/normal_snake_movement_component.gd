@@ -2,7 +2,7 @@ extends BaseSnakeMovementComponent
 
 class_name NormalSnakeMovementComponent;
 
-func move(move_direction : BaseSnake.Directions):
+func move(move_direction : Snake.Directions):
 	snake.play_movement_sounds()
 	
 	# Saves the last direction the snake moved

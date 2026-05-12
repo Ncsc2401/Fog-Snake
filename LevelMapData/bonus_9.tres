@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://cedkn7dbs7svs"]
+
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_k8iw0"]
+[ext_resource type="PackedScene" uid="uid://d3l6ldfv3ws7n" path="res://Levels/bonus_9.tscn" id="1_nfgnn"]
+
+[resource]
+script = ExtResource("1_k8iw0")
+pos = Vector2i(1, -8)
+id = 29
+save_name = "bonus_9"
+level_name = "4-way mirror"
+objective = "Fill the whole board"
+level_scene = ExtResource("1_nfgnn")
+level_type = 2
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

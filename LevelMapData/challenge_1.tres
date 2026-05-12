@@ -1,6 +1,7 @@
 [gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://d246uwwrbqdj8"]
 
 [ext_resource type="PackedScene" uid="uid://dgm2j75s7kmxw" path="res://Levels/challenge_1.tscn" id="1_4feq4"]
+[ext_resource type="Resource" uid="uid://c5mhwsssxm63a" path="res://LevelMapData/challenge_3.tres" id="1_awhbl"]
 [ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_oi2w2"]
 
 [resource]
@@ -12,4 +13,5 @@ level_name = "Infestation"
 objective = "Get 35 points"
 level_scene = ExtResource("1_4feq4")
 level_type = 1
+left_level = ExtResource("1_awhbl")
 metadata/_custom_type_script = "uid://7wwtq4kmxin"

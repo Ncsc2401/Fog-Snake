@@ -11,6 +11,17 @@ var level_manager : LevelManager;
 @export var max_ticks : int = 0;
 
 @export var alive_component : BaseActorAliveComponent
+
+@export_subgroup("Warning Related")
+@export var warning_layer : TileMapLayer;
+@export var warning_layer_source : int;
+@export var warning_layer_coordinate : Vector2i;
+
+@export_subgroup("Debug", "debug_")
+@export var debug_print_failed_actions : bool = false
+@export var debug_print_brain_data_every_tick : bool = false;
+@export var debug_print_current_tick : bool = false;
+
 var l_alive_component : BaseActorAliveComponent;
 
 var reference_tilemap : TileMapLayer;
@@ -26,6 +37,9 @@ var board_position : Vector2i;
 
 ## Start at -1 so the first tick_logic() is tick 0
 var current_tick : int = -1;
+
+var was_new_tick_requested : bool = false;
+var new_tick_requested : int = -1;
 
 var actions : Array[BaseActorAction] = [];
 
@@ -48,7 +62,9 @@ func is_actor_alive() -> bool:
 	return l_alive_component.is_alive()
 
 func on_tick():
-	current_tick = (current_tick + 1) % (max_ticks + 1);
+	current_tick += 1;
+	apply_tick_change()
+	current_tick %= max_ticks + 1
 	process_actions();
 
 func initialize_actions():
@@ -63,17 +79,13 @@ func initialize_actions():
 		if node.actor_action == null:
 			continue;
 		
-		if node.enabled == false:
-			continue
-		
-		var actor_action : BaseActorAction = node.actor_action.duplicate(true) 
+		var actor_action : BaseActorAction = node.actor_action.duplicate() 
 		
 		actions.append(actor_action);
 		actor_action.initialize(self);
 
 func process_actions():
 	var to_do_actions : Array[BaseActorAction]
-	
 	for action in actions:
 		if action.action_tick != current_tick:
 			continue
@@ -81,12 +93,37 @@ func process_actions():
 		if action.is_initialized == false:
 			continue;
 		
+		if action.enabled == false:
+			continue;
+		
 		to_do_actions.append(action);
+	
+	if debug_print_current_tick:
+		print("Tick - %d" % current_tick);
 	
 	to_do_actions.sort_custom(func(a : BaseActorAction, b : BaseActorAction): return a.action_priority < b.action_priority)
 	
 	for action in to_do_actions:
 		if !action.can_do_action():
+			if debug_print_failed_actions:
+				print("Failed {0} {1}".format([action.action_tick, action.action_priority]))
 			continue
 		
 		action.do_action();
+		
+		if action.one_time:
+			action.enabled = false;
+	
+	if debug_print_brain_data_every_tick:
+		print("Brain: {0} \n".format([brain.saved_data]));
+
+func request_tick_change(new_tick : int):
+	new_tick_requested = new_tick;
+	was_new_tick_requested = true;
+
+func apply_tick_change():
+	if was_new_tick_requested == false:
+		return;
+	
+	was_new_tick_requested = false;
+	current_tick = new_tick_requested;

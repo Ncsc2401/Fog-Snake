@@ -9,11 +9,11 @@
 [ext_resource type="PackedScene" uid="uid://ipsw2kqcf15t" path="res://Scenes/Snakes/inverted_snake.tscn" id="5_qraae"]
 [ext_resource type="PackedScene" uid="uid://c5dee402455iu" path="res://Scenes/Snakes/normal_snake.tscn" id="6_4mlec"]
 [ext_resource type="PackedScene" uid="uid://48om1rvld52o" path="res://Scenes/Fruits/apple.tscn" id="6_ucoer"]
-[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/Components/level_manager.tscn" id="7_datb7"]
+[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/LevelComponents/level_manager.tscn" id="7_datb7"]
 [ext_resource type="PackedScene" uid="uid://h3t2dvc0174k" path="res://Scenes/Fruits/watermelon.tscn" id="7_iw114"]
 [ext_resource type="Resource" uid="uid://co84r6ar88ga1" path="res://BoardData/Challenge2.tres" id="8_8h43g"]
 [ext_resource type="PackedScene" uid="uid://byayy2c7usui5" path="res://Scenes/Fruits/ice_cream.tscn" id="8_rte40"]
-[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="9_ucoer"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/LevelComponents/level_intro.tscn" id="9_ucoer"]
 [ext_resource type="PackedScene" uid="uid://p5d6nykafa2t" path="res://Scenes/Fruits/star_fruit.tscn" id="9_wofqe"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="10_iw114"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="11_rte40"]
@@ -23,7 +23,8 @@
 [ext_resource type="PackedScene" uid="uid://qxled4o5e5od" path="res://Scenes/Enemies/fly.tscn" id="13_rte40"]
 [ext_resource type="PackedScene" uid="uid://bdnbplhqsw7jm" path="res://Scenes/Enemies/ladybug.tscn" id="14_wofqe"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="19_wofqe"]
-[ext_resource type="PackedScene" uid="uid://dqk08ixjb43p0" path="res://Scenes/Components/normal_camera.tscn" id="21_cw1jt"]
+[ext_resource type="PackedScene" uid="uid://dqk08ixjb43p0" path="res://Scenes/LevelComponents/normal_camera.tscn" id="21_cw1jt"]
+
 
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6qvhk"]

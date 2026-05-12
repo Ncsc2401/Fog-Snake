@@ -2,7 +2,7 @@ extends Camera2D
 
 class_name DynamicCamera
 
-@export var snake : BaseSnake;
+@export var snake : Snake;
 
 @onready var reference_tilemap: TileMapLayer = $ReferenceTilemap
 

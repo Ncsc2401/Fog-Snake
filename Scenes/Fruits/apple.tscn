@@ -1,11 +1,12 @@
 [gd_scene format=3 uid="uid://48om1rvld52o"]
 
 [ext_resource type="Script" uid="uid://c2cm7nsym2ojr" path="res://Scripts/Actors/Fruit/fruit.gd" id="1_bpppa"]
-[ext_resource type="Texture2D" uid="uid://bx1i1qnyhpifh" path="res://Assets/Sprites/Apple.png" id="1_v3gsn"]
+[ext_resource type="Texture2D" uid="uid://bx1i1qnyhpifh" path="res://Assets/Sprites/Fruits/Apple.png" id="1_v3gsn"]
 [ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Actors/Fruit/fruit_resource.gd" id="2_8gwai"]
 [ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="3_0ubyp"]
 [ext_resource type="Script" uid="uid://cffpnm6raml4s" path="res://Scripts/Actors/Fruit/FruitEatComponents/base_fruit_eat_component.gd" id="3_fyhte"]
 [ext_resource type="Script" uid="uid://bsv7qg871hms6" path="res://Scripts/Actors/Fruit/FruitEatComponents/spawn_random_fruit_eat_component.gd" id="3_nxcck"]
+
 
 [sub_resource type="Resource" id="Resource_0ubyp"]
 script = ExtResource("2_8gwai")

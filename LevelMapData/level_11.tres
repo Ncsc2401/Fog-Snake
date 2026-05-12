@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_abwqj")
 pos = Vector2i(2, -5)
-id = 26
+id = 31
 save_name = "level_11"
 level_name = "Coffee and Pills"
 objective = "Get 15 points"

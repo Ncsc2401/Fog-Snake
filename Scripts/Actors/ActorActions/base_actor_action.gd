@@ -4,8 +4,12 @@ extends Resource
 class_name BaseActorAction
 
 var is_initialized : bool = false;
-
 var actor : Actor;
+
+@export var enabled : bool = true;
+
+## If true, the action executes only once
+@export var one_time : bool = false;
 
 @export var action_tick : int;
 

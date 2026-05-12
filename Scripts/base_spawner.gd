@@ -28,7 +28,7 @@ const STATUS_FAILED = SpawnRequestStatus.STATUS_FAILED
 const STATUS_FINISHED = SpawnRequestStatus.STATUS_FINISHED;
 
 class SpawnRequest:
-	var attributes : Array[SpawnRequestAttributes];
+	var attributes : Array;
 	
 	var pos : Vector2i;
 	var scene : PackedScene;
@@ -97,3 +97,7 @@ func get_random_position()
 
 @abstract
 func solve_custom_attibutes(attibute : SpawnRequestAttributes, spawn_request : SpawnRequest);
+
+## A generic spawn function, prefer to use the class specific alternatives
+@abstract
+func spawn_at(pos : Vector2i, enemy_scene : PackedScene, ticks_to_spawn : int, attributes : Array[SpawnRequestAttributes])

@@ -4,4 +4,4 @@ extends BaseSnakeComponent
 class_name BaseSnakeMovementComponent;
 
 @abstract
-func move(move_direction : BaseSnake.Directions);
+func move(move_direction : Snake.Directions);

@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://dx7jp0phlanj3"]
+
+[ext_resource type="PackedScene" uid="uid://c43xv7f5hd7jb" path="res://Levels/level_17.tscn" id="1_1fp8v"]
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_f6eyf"]
+
+[resource]
+script = ExtResource("1_f6eyf")
+pos = Vector2i(-3, -6)
+id = 28
+save_name = "level_17"
+level_name = "A little bit of chaos"
+objective = "Get 25 points"
+level_scene = ExtResource("1_1fp8v")
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

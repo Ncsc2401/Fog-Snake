@@ -22,13 +22,13 @@ func draw():
 			var previous_dir = snake.vector_to_direction[previous_pos];
 			
 			match previous_dir:
-				BaseSnake.Directions.LEFT:
+				Snake.Directions.LEFT:
 					alternative = 0;
-				BaseSnake.Directions.RIGHT:
+				Snake.Directions.RIGHT:
 					alternative = 2
-				BaseSnake.Directions.UP:
+				Snake.Directions.UP:
 					alternative = 1
-				BaseSnake.Directions.DOWN:
+				Snake.Directions.DOWN:
 					alternative = 3
 		
 		# Head case
@@ -44,13 +44,13 @@ func draw():
 			var neg_next_dir = snake.vector_to_direction[neg_next_pos];
 			
 			match neg_next_dir:
-				BaseSnake.Directions.LEFT:
+				Snake.Directions.LEFT:
 					alternative = 2;
-				BaseSnake.Directions.RIGHT:
+				Snake.Directions.RIGHT:
 					alternative = 0
-				BaseSnake.Directions.UP:
+				Snake.Directions.UP:
 					alternative = 3
-				BaseSnake.Directions.DOWN:
+				Snake.Directions.DOWN:
 					alternative = 1
 		
 		# Body case
@@ -68,9 +68,9 @@ func draw():
 				var next_dir = snake.vector_to_direction[next_pos]
 				
 				match next_dir:
-					BaseSnake.Directions.UP, BaseSnake.Directions.DOWN:
+					Snake.Directions.UP, Snake.Directions.DOWN:
 						alternative = 1;
-					BaseSnake.Directions.LEFT, BaseSnake.Directions.RIGHT:
+					Snake.Directions.LEFT, Snake.Directions.RIGHT:
 						alternative = 0;
 			
 			# Is curved
@@ -88,21 +88,21 @@ func draw():
 				var to = snake.vector_to_direction[to_pos]
 				
 				match [from, to]:
-					[BaseSnake.Directions.LEFT, BaseSnake.Directions.UP]:
+					[Snake.Directions.LEFT, Snake.Directions.UP]:
 						alternative = 0
-					[BaseSnake.Directions.UP, BaseSnake.Directions.LEFT]:
+					[Snake.Directions.UP, Snake.Directions.LEFT]:
 						alternative = 0
-					[BaseSnake.Directions.LEFT, BaseSnake.Directions.DOWN]:
+					[Snake.Directions.LEFT, Snake.Directions.DOWN]:
 						alternative = 1
-					[BaseSnake.Directions.DOWN, BaseSnake.Directions.LEFT]:
+					[Snake.Directions.DOWN, Snake.Directions.LEFT]:
 						alternative = 1
-					[BaseSnake.Directions.DOWN, BaseSnake.Directions.RIGHT]:
+					[Snake.Directions.DOWN, Snake.Directions.RIGHT]:
 						alternative = 2
-					[BaseSnake.Directions.RIGHT, BaseSnake.Directions.DOWN]:
+					[Snake.Directions.RIGHT, Snake.Directions.DOWN]:
 						alternative = 2
-					[BaseSnake.Directions.UP, BaseSnake.Directions.RIGHT]:
+					[Snake.Directions.UP, Snake.Directions.RIGHT]:
 						alternative = 3
-					[BaseSnake.Directions.RIGHT, BaseSnake.Directions.UP]:
+					[Snake.Directions.RIGHT, Snake.Directions.UP]:
 						alternative = 3
 		
 		snake.snake_layer.set_cell(body_segment.pos, 0, atlas_coord, alternative);

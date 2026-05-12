@@ -1,0 +1,126 @@
+All actor brain keys are stored here for documentation.
+All variations like "BrainKey", "Brain key", "brainkey", "brain key", etc; are treated as the same
+--------------------------------------------------------
+For a easier navigation, each key has tags, they are:
+	Movement, Position, Snake, Enemy, Fruit, Spawn, Specific
+--------------------------------------------------------
+
+[Movement]
+PossibleBoardMovements
+Array[Vector2i]
+Stores all possible board movements it can go
+
+[Movement]
+NextBoardMovement
+Vector2i
+Stores the next board space the actor wants to go
+
+[Movement]
+NextGlobalMovement
+Vector2
+Stores the next global position the actor wants to go
+
+[Snake, Position]
+SnakeBoardPositionMemory
+Vector2i
+Stores the last saved snake board position. Can be either the head or the tail
+
+[Snake, Size]
+SnakeExpectedSizeMemory
+int
+Stores the last saved snake expected size.
+
+[Snake, Size]
+SnakeSizeMemory
+int
+Stores the last saved snake size.
+
+[Snake]
+SnakesInMemory
+Array[Snake]
+Stores all snakes it saved
+
+[Snake]
+SnakeInMemory
+Snake
+Stores a chosen snake
+
+[Fruit, Specific]
+FruitPointsMemory
+int
+Stores the last saved fruit points
+
+[Fruit, Position]
+FruitBoardPositionMemory
+Vector2i
+Stores the last saved fruit board position
+
+[Fruit, Specific]
+FruitSizeIncreaseMemory
+int
+Stores the last saved fruit size increase
+
+[Fruit, Specific]
+FruitNameMemory
+String
+Stores the last saved fruit name
+
+[Fruit]
+FruitsInMemory
+Array[Fruit]
+Stores all fruits it saved
+
+[Fruit]
+FruitInMemory
+Fruit
+Stores a chosen fruit
+
+[Enemy, Position]
+EnemyBoardPositionMemory
+Vector2i
+Stores the last saved enemy board position
+
+[Enemy, Specific]
+EnemyKillsOnDeathMemory
+int
+Stores the last saved enemy kills on death
+
+[Enemy, Specific]
+EnemyNameMemory
+String
+Stores the last saved enemy name
+
+[Enemy, Specific]
+EnemyPointsOnDeathMemory
+int
+Stores the last saved enemy points on death
+
+[Enemy]
+EnemiesInMemory
+Array[Enemy]
+Stores all enemies it saved
+
+[Enemy]
+EnemyInMemory
+Enemy
+Stores a chosen enemy
+
+[Spawn, Position]
+ToSpawnPosition
+Vector2i
+Stores the position to be used to spawn something
+
+[Spawn]
+ToSpawnScene
+PackedScene
+Stores the scene to be spawned
+
+[Spawn]
+TicksToSpawn
+int
+Stores how many ticks after the spawn request it will take to actually spawn something
+
+[Spawn]
+ToSpawnAttributes
+Array[SpawnAttributes]
+Stores the attributes to be given when requesting a spawn

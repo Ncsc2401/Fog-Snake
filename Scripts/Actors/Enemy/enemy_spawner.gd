@@ -3,7 +3,6 @@ extends BaseSpawner
 class_name EnemySpawner
 
 @onready var enemy_layer: TileMapLayer = $EnemyLayer
-@onready var warning_layer: TileMapLayer = $WarningLayer
 
 @export var level_manager : LevelManager;
 
@@ -54,10 +53,6 @@ func spawn_commit():
 		
 		enemy.initialize(to_spawn_position, initial_global_position, level_manager, enemy_layer, self);
 		
-		enemy.brain.save_in_brain("WarningLayer", warning_layer);
-		enemy.brain.save_in_brain("WarningSource", 0);
-		enemy.brain.save_in_brain("WarningAtlasCoordinate", Vector2i(0, 0));
-		
 		spawn_request.status = STATUS_FINISHED
 
 ## Add a spawn request to the queue
@@ -99,3 +94,6 @@ func solve_custom_attibutes(attibute : SpawnRequestAttributes, spawn_request : S
 	match attibute:
 		WARNS_BEFORE_SPAWNING:
 			pass;
+
+func spawn_at(pos : Vector2i, enemy_scene : PackedScene, ticks_to_spawn : int, attributes : Array[SpawnRequestAttributes]):
+	spawn_enemy_at(pos, enemy_scene, ticks_to_spawn, attributes);

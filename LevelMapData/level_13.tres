@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_uh4es")
 pos = Vector2i(0, -8)
-id = 22
+id = 23
 save_name = "level_13"
 level_name = "Stalemate = Death"
 objective = "Kill 2 enemies"

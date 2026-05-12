@@ -6,15 +6,16 @@
 [ext_resource type="Script" uid="uid://3s5fmo1ne7gy" path="res://Scripts/Actors/Fruit/fruit_spawn_table_resource.gd" id="4_n0q1n"]
 [ext_resource type="Script" uid="uid://c5x5ehh7vn7t1" path="res://Scripts/Actors/Fruit/fruit_spawn_table_entry_resource.gd" id="5_0t802"]
 [ext_resource type="PackedScene" uid="uid://cs4dlelyisc3y" path="res://Scenes/Fruits/jumpscare_apple.tscn" id="6_gaubx"]
-[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/Components/level_manager.tscn" id="7_5cc1u"]
+[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/LevelComponents/level_manager.tscn" id="7_5cc1u"]
 [ext_resource type="Resource" uid="uid://hxfi1j2v35js" path="res://BoardData/Bonus7.tres" id="8_axgm3"]
 [ext_resource type="PackedScene" uid="uid://c5dee402455iu" path="res://Scenes/Snakes/normal_snake.tscn" id="8_m163e"]
-[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="9_8xlqv"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/LevelComponents/level_intro.tscn" id="9_8xlqv"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="10_m163e"]
-[ext_resource type="PackedScene" uid="uid://du2x418ndfjad" path="res://Scenes/Components/dynamic_camera.tscn" id="10_negmx"]
+[ext_resource type="PackedScene" uid="uid://du2x418ndfjad" path="res://Scenes/LevelComponents/dynamic_camera.tscn" id="10_negmx"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="11_ph6xp"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="12_7ad75"]
 [ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="13_x8vfn"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6qvhk"]
 texture = ExtResource("1_uo7n7")

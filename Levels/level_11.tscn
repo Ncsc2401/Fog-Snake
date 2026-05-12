@@ -5,16 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://dr5ov7u4kbfv7" path="res://Scenes/Fruits/fruit_spawner.tscn" id="3_oh26r"]
 [ext_resource type="Script" uid="uid://3s5fmo1ne7gy" path="res://Scripts/Actors/Fruit/fruit_spawn_table_resource.gd" id="4_abgqv"]
 [ext_resource type="PackedScene" uid="uid://c5dee402455iu" path="res://Scenes/Snakes/normal_snake.tscn" id="5_nr5j0"]
-[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/Components/level_manager.tscn" id="5_u0bod"]
+[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/LevelComponents/level_manager.tscn" id="5_u0bod"]
 [ext_resource type="Script" uid="uid://c5x5ehh7vn7t1" path="res://Scripts/Actors/Fruit/fruit_spawn_table_entry_resource.gd" id="5_u2er6"]
 [ext_resource type="PackedScene" uid="uid://dgm1x2ukk01m1" path="res://Scenes/Fruits/coffee.tscn" id="6_4lr6n"]
 [ext_resource type="Resource" uid="uid://dxuqhvvug7hgd" path="res://BoardData/Level11.tres" id="6_abgqv"]
 [ext_resource type="PackedScene" uid="uid://jb52fn0u5xki" path="res://Scenes/Fruits/sleeping_pills.tscn" id="7_dvo2d"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="7_u2er6"]
-[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="8_4lr6n"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/LevelComponents/level_intro.tscn" id="8_4lr6n"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="9_dvo2d"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="10_am3bd"]
 [ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="11_h702q"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wswhm"]
 texture = ExtResource("1_wi607")

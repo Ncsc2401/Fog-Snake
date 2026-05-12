@@ -1,0 +1,136 @@
+[gd_scene format=3 uid="uid://dmyeosgdon7sk"]
+
+[ext_resource type="Script" uid="uid://c2cm7nsym2ojr" path="res://Scripts/Actors/Fruit/fruit.gd" id="1_3a0k3"]
+[ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Actors/Fruit/fruit_resource.gd" id="2_dhyso"]
+[ext_resource type="Script" uid="uid://cffpnm6raml4s" path="res://Scripts/Actors/Fruit/FruitEatComponents/base_fruit_eat_component.gd" id="3_7mr66"]
+[ext_resource type="Script" uid="uid://bsv7qg871hms6" path="res://Scripts/Actors/Fruit/FruitEatComponents/spawn_random_fruit_eat_component.gd" id="4_dcd4x"]
+[ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="5_w8wuq"]
+[ext_resource type="Texture2D" uid="uid://7lefjcabmmlj" path="res://Assets/Sprites/Fruits/Pizza.png" id="6_q2mfu"]
+[ext_resource type="Script" uid="uid://bsbonjfxscb2v" path="res://Scripts/Actors/ActorActions/actor_action_node.gd" id="7_lqc05"]
+[ext_resource type="Script" uid="uid://fphnjwu5p8sa" path="res://Scripts/Actors/ActorActions/FindActorActionComponents/find_snakes_component.gd" id="8_q2rb5"]
+[ext_resource type="Script" uid="uid://o62lini3y70w" path="res://Scripts/Actors/ActorActions/find_actor_action.gd" id="9_aldob"]
+[ext_resource type="Script" uid="uid://b8ri0jw6yncac" path="res://Scripts/Actors/ActorActions/ChooseActorActionComponents/choose_snake_component.gd" id="10_7fo8e"]
+[ext_resource type="Script" uid="uid://duhk2f50srq8n" path="res://Scripts/Actors/ActorActions/choose_actor_action.gd" id="11_ef5wc"]
+[ext_resource type="Script" uid="uid://vy1u6tu1iy0n" path="res://Scripts/Actors/ActorActions/GetDataActorActionComponent/get_snake_data_component.gd" id="12_wxpgs"]
+[ext_resource type="Script" uid="uid://u6ah4mqpyfwv" path="res://Scripts/Actors/ActorActions/get_data_actor_action.gd" id="13_dhyso"]
+[ext_resource type="Script" uid="uid://bwus0docnk165" path="res://Scripts/Actors/ActorActions/FindActorActionComponents/find_possible_movements_component.gd" id="13_xcd3c"]
+[ext_resource type="Script" uid="uid://ctojhqqgqg4yi" path="res://Scripts/Actors/ActorActions/ChooseActorActionComponents/choose_movement_component.gd" id="14_av13t"]
+[ext_resource type="Script" uid="uid://cq7uekj2tof0v" path="res://Scripts/Actors/ActorActions/move_in_board_actor_action.gd" id="15_8a77g"]
+
+[sub_resource type="Resource" id="Resource_dhyso"]
+script = ExtResource("2_dhyso")
+fruit_name = "Pizza"
+points = 4
+size_increase = 3
+metadata/_custom_type_script = "uid://cn37grwtxs5jy"
+
+[sub_resource type="Resource" id="Resource_cuque"]
+script = ExtResource("4_dcd4x")
+metadata/_custom_type_script = "uid://bsv7qg871hms6"
+
+[sub_resource type="Resource" id="Resource_nxcck"]
+script = ExtResource("5_w8wuq")
+metadata/_custom_type_script = "uid://bod7gi7o0sngf"
+
+[sub_resource type="Resource" id="Resource_gr0om"]
+script = ExtResource("8_q2rb5")
+seach_area = 3
+metadata/_custom_type_script = "uid://fphnjwu5p8sa"
+
+[sub_resource type="Resource" id="Resource_u0xnj"]
+script = ExtResource("9_aldob")
+find_component = SubResource("Resource_gr0om")
+metadata/_custom_type_script = "uid://o62lini3y70w"
+
+[sub_resource type="Resource" id="Resource_lcy5p"]
+script = ExtResource("10_7fo8e")
+choose_by = 1
+metadata/_custom_type_script = "uid://b8ri0jw6yncac"
+
+[sub_resource type="Resource" id="Resource_6uhou"]
+script = ExtResource("11_ef5wc")
+choose_component = SubResource("Resource_lcy5p")
+action_priority = 1
+metadata/_custom_type_script = "uid://duhk2f50srq8n"
+
+[sub_resource type="Resource" id="Resource_7mr66"]
+script = ExtResource("12_wxpgs")
+metadata/_custom_type_script = "uid://vy1u6tu1iy0n"
+
+[sub_resource type="Resource" id="Resource_dcd4x"]
+script = ExtResource("13_dhyso")
+get_data_component = SubResource("Resource_7mr66")
+metadata/_custom_type_script = "uid://u6ah4mqpyfwv"
+
+[sub_resource type="Resource" id="Resource_1ht72"]
+script = ExtResource("13_xcd3c")
+seach_area = 2
+relative_to = 2
+metadata/_custom_type_script = "uid://bwus0docnk165"
+
+[sub_resource type="Resource" id="Resource_b4eva"]
+script = ExtResource("9_aldob")
+find_component = SubResource("Resource_1ht72")
+action_tick = 1
+metadata/_custom_type_script = "uid://o62lini3y70w"
+
+[sub_resource type="Resource" id="Resource_ccgfl"]
+script = ExtResource("14_av13t")
+relative_to = 3
+metadata/_custom_type_script = "uid://ctojhqqgqg4yi"
+
+[sub_resource type="Resource" id="Resource_4pnhx"]
+script = ExtResource("11_ef5wc")
+choose_component = SubResource("Resource_ccgfl")
+action_tick = 1
+action_priority = 1
+metadata/_custom_type_script = "uid://duhk2f50srq8n"
+
+[sub_resource type="Resource" id="Resource_shabq"]
+script = ExtResource("15_8a77g")
+action_tick = 2
+metadata/_custom_type_script = "uid://cq7uekj2tof0v"
+
+[node name="Pizza" type="Node2D" unique_id=1589894860 node_paths=PackedStringArray("actor_action_nodes_parent")]
+z_index = 6
+script = ExtResource("1_3a0k3")
+fruit_resource = SubResource("Resource_dhyso")
+fruit_eat_components = Array[ExtResource("3_7mr66")]([SubResource("Resource_cuque")])
+actor_action_nodes_parent = NodePath("Actions")
+max_ticks = 2
+alive_component = SubResource("Resource_nxcck")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1963994021]
+texture = ExtResource("6_q2mfu")
+
+[node name="Actions" type="Node" parent="." unique_id=302577701]
+
+[node name="0_0-FindSnakes" type="Node" parent="Actions" unique_id=1053066231]
+script = ExtResource("7_lqc05")
+actor_action = SubResource("Resource_u0xnj")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_1-ChooseSnake" type="Node" parent="Actions" unique_id=799472441]
+script = ExtResource("7_lqc05")
+actor_action = SubResource("Resource_6uhou")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_2-GetSnakePos" type="Node" parent="Actions" unique_id=984675062]
+script = ExtResource("7_lqc05")
+actor_action = SubResource("Resource_dcd4x")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="1_0-FindMovements" type="Node" parent="Actions" unique_id=96615306]
+script = ExtResource("7_lqc05")
+actor_action = SubResource("Resource_b4eva")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="1_1-ChooseMovement" type="Node" parent="Actions" unique_id=290804237]
+script = ExtResource("7_lqc05")
+actor_action = SubResource("Resource_4pnhx")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="2_0-Move" type="Node" parent="Actions" unique_id=1997982403]
+script = ExtResource("7_lqc05")
+actor_action = SubResource("Resource_shabq")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"

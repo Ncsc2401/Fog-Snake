@@ -7,13 +7,14 @@
 [ext_resource type="Script" uid="uid://3s5fmo1ne7gy" path="res://Scripts/Actors/Fruit/fruit_spawn_table_resource.gd" id="5_vybpl"]
 [ext_resource type="Script" uid="uid://c5x5ehh7vn7t1" path="res://Scripts/Actors/Fruit/fruit_spawn_table_entry_resource.gd" id="6_f6crn"]
 [ext_resource type="PackedScene" uid="uid://byayy2c7usui5" path="res://Scenes/Fruits/ice_cream.tscn" id="7_hu0ol"]
-[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/Components/level_manager.tscn" id="9_1537k"]
+[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/LevelComponents/level_manager.tscn" id="9_1537k"]
 [ext_resource type="Resource" uid="uid://cr00srmmtcx17" path="res://BoardData/Level5.tres" id="9_hu0ol"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="10_m47b0"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="11_gmfyt"]
-[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="11_x7gsr"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/LevelComponents/level_intro.tscn" id="11_x7gsr"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="12_2jyfw"]
 [ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="13_308mu"]
+
 
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lmqi1"]

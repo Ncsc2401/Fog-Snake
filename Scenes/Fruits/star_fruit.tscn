@@ -1,15 +1,17 @@
 [gd_scene format=3 uid="uid://p5d6nykafa2t"]
 
 [ext_resource type="Script" uid="uid://c2cm7nsym2ojr" path="res://Scripts/Actors/Fruit/fruit.gd" id="1_sdp74"]
-[ext_resource type="Texture2D" uid="uid://55t484ntkq7w" path="res://Assets/Sprites/StartFruit.png" id="1_u3ljt"]
+[ext_resource type="Texture2D" uid="uid://55t484ntkq7w" path="res://Assets/Sprites/Fruits/StartFruit.png" id="1_u3ljt"]
 [ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Actors/Fruit/fruit_resource.gd" id="2_sdp74"]
 [ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="3_a45tu"]
 [ext_resource type="Script" uid="uid://cffpnm6raml4s" path="res://Scripts/Actors/Fruit/FruitEatComponents/base_fruit_eat_component.gd" id="3_menib"]
 [ext_resource type="Script" uid="uid://bsv7qg871hms6" path="res://Scripts/Actors/Fruit/FruitEatComponents/spawn_random_fruit_eat_component.gd" id="3_otxwe"]
 [ext_resource type="Script" uid="uid://bsbonjfxscb2v" path="res://Scripts/Actors/ActorActions/actor_action_node.gd" id="4_m7eru"]
-[ext_resource type="Script" uid="uid://by75mlqmgmrtl" path="res://Scripts/Actors/ActorActions/find_cardinal_moves_actor_action.gd" id="5_a45tu"]
-[ext_resource type="Script" uid="uid://c74qxur36h0l" path="res://Scripts/Actors/ActorActions/choose_random_possible_board_move_actor_action.gd" id="6_fp4oy"]
-[ext_resource type="Script" uid="uid://cq7uekj2tof0v" path="res://Scripts/Actors/ActorActions/board_move_actor_action.gd" id="8_fp4oy"]
+[ext_resource type="Script" uid="uid://cq7uekj2tof0v" path="res://Scripts/Actors/ActorActions/move_in_board_actor_action.gd" id="8_fp4oy"]
+[ext_resource type="Script" uid="uid://bwus0docnk165" path="res://Scripts/Actors/ActorActions/FindActorActionComponents/find_possible_movements_component.gd" id="8_k4fnb"]
+[ext_resource type="Script" uid="uid://o62lini3y70w" path="res://Scripts/Actors/ActorActions/find_actor_action.gd" id="9_vmhw1"]
+[ext_resource type="Script" uid="uid://ctojhqqgqg4yi" path="res://Scripts/Actors/ActorActions/ChooseActorActionComponents/choose_movement_component.gd" id="10_vmhw1"]
+[ext_resource type="Script" uid="uid://duhk2f50srq8n" path="res://Scripts/Actors/ActorActions/choose_actor_action.gd" id="11_srx3c"]
 
 [sub_resource type="Resource" id="Resource_eo6dd"]
 script = ExtResource("2_sdp74")
@@ -26,16 +28,24 @@ metadata/_custom_type_script = "uid://bsv7qg871hms6"
 script = ExtResource("3_a45tu")
 metadata/_custom_type_script = "uid://bod7gi7o0sngf"
 
-[sub_resource type="Resource" id="Resource_otxwe"]
-script = ExtResource("5_a45tu")
-action_tick = 5
-metadata/_custom_type_script = "uid://by75mlqmgmrtl"
+[sub_resource type="Resource" id="Resource_srx3c"]
+script = ExtResource("8_k4fnb")
+metadata/_custom_type_script = "uid://bwus0docnk165"
 
-[sub_resource type="Resource" id="Resource_menib"]
-script = ExtResource("6_fp4oy")
-action_tick = 5
-action_priority = 1
-metadata/_custom_type_script = "uid://c74qxur36h0l"
+[sub_resource type="Resource" id="Resource_ljjt4"]
+script = ExtResource("9_vmhw1")
+find_component = SubResource("Resource_srx3c")
+metadata/_custom_type_script = "uid://o62lini3y70w"
+
+[sub_resource type="Resource" id="Resource_dxy4s"]
+script = ExtResource("10_vmhw1")
+choose_by = 2
+metadata/_custom_type_script = "uid://ctojhqqgqg4yi"
+
+[sub_resource type="Resource" id="Resource_2t07u"]
+script = ExtResource("11_srx3c")
+choose_component = SubResource("Resource_dxy4s")
+metadata/_custom_type_script = "uid://duhk2f50srq8n"
 
 [sub_resource type="Resource" id="Resource_k4fnb"]
 script = ExtResource("8_fp4oy")
@@ -59,12 +69,12 @@ texture = ExtResource("1_u3ljt")
 
 [node name="5_0-FindMoves" type="Node" parent="ActorActions" unique_id=393594787]
 script = ExtResource("4_m7eru")
-actor_action = SubResource("Resource_otxwe")
+actor_action = SubResource("Resource_ljjt4")
 metadata/_custom_type_script = "uid://bsbonjfxscb2v"
 
 [node name="5_1-ChooseMove" type="Node" parent="ActorActions" unique_id=1595542896]
 script = ExtResource("4_m7eru")
-actor_action = SubResource("Resource_menib")
+actor_action = SubResource("Resource_2t07u")
 metadata/_custom_type_script = "uid://bsbonjfxscb2v"
 
 [node name="5_2-Move" type="Node" parent="ActorActions" unique_id=197212395]

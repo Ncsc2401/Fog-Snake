@@ -20,7 +20,7 @@ func on_initialize():
 	
 	update_light_pos()
 	
-func on_move(direction : BaseSnake.Directions):	
+func on_move(direction : Snake.Directions):	
 	update_light_pos()
 
 func on_process(delta : float):

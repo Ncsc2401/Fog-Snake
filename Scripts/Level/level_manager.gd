@@ -26,7 +26,7 @@ var game_tick_time_starting_tick : int = 0;
 var walls : Array[Vector2i];
 var fruits : Array[Fruit]
 var spawners : Array[BaseSpawner]
-var snakes : Array[BaseSnake];
+var snakes : Array[Snake];
 var enemies : Array[Enemy];
 
 func _ready() -> void:
@@ -103,8 +103,8 @@ func tick_logic():
 	# Enemy dies
 	for enemy in enemies:
 		if !enemy.is_actor_alive():
-			points += enemy.enemy_resource.points_on_death;
-			kills += enemy.enemy_resource.kills_on_death;
+			points += enemy.l_enemy_resource.points_on_death;
+			kills += enemy.l_enemy_resource.kills_on_death;
 			
 			if score_ui == null:
 				push_warning("Score ui is null")
@@ -120,12 +120,12 @@ func tick_logic():
 		
 		for snake in snakes:
 			if fruit.board_position == snake.head.pos:
-				points += fruit.fruit_resource.points
+				points += fruit.l_fruit_resource.points
 				if score_ui == null:
 					push_warning("Score ui is null")
 				else:
 					update_score_display()
-				snake.eat_fruit(fruit.fruit_resource);
+				snake.eat_fruit(fruit.l_fruit_resource);
 				fruit.on_eat()
 	
 	# Snake grows

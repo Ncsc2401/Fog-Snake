@@ -7,17 +7,18 @@
 [ext_resource type="Script" uid="uid://3s5fmo1ne7gy" path="res://Scripts/Actors/Fruit/fruit_spawn_table_resource.gd" id="5_tg8pd"]
 [ext_resource type="Script" uid="uid://c5x5ehh7vn7t1" path="res://Scripts/Actors/Fruit/fruit_spawn_table_entry_resource.gd" id="6_vn7xk"]
 [ext_resource type="PackedScene" uid="uid://48om1rvld52o" path="res://Scenes/Fruits/apple.tscn" id="7_pg8ng"]
-[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/Components/level_manager.tscn" id="8_cqofn"]
+[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/LevelComponents/level_manager.tscn" id="8_cqofn"]
 [ext_resource type="Resource" uid="uid://cpoil6mmg6kcu" path="res://BoardData/Level7.tres" id="9_imrkm"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="10_d7ns6"]
 [ext_resource type="PackedScene" uid="uid://65wep6sjv2bu" path="res://Scenes/Enemies/enemy_spawner.tscn" id="11_mhaa7"]
 [ext_resource type="Script" uid="uid://6qt5wixa50el" path="res://Scripts/Actors/Enemy/enemy_spawn_table_resource.gd" id="12_cmy7x"]
 [ext_resource type="Script" uid="uid://bcgmgwcdgs13w" path="res://Scripts/Actors/Enemy/enemy_spawn_table_entry_resource.gd" id="13_dqnuc"]
 [ext_resource type="PackedScene" uid="uid://qxled4o5e5od" path="res://Scenes/Enemies/fly.tscn" id="14_5fo0f"]
-[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="15_t5ec6"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/LevelComponents/level_intro.tscn" id="15_t5ec6"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="16_gcned"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="17_it6rp"]
 [ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="18_igwh3"]
+
 
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gpb84"]

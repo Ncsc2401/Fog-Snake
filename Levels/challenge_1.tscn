@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://3s5fmo1ne7gy" path="res://Scripts/Actors/Fruit/fruit_spawn_table_resource.gd" id="3_87uai"]
 [ext_resource type="Script" uid="uid://c5x5ehh7vn7t1" path="res://Scripts/Actors/Fruit/fruit_spawn_table_entry_resource.gd" id="4_miqvu"]
 [ext_resource type="PackedScene" uid="uid://48om1rvld52o" path="res://Scenes/Fruits/apple.tscn" id="5_pbq31"]
-[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/Components/level_manager.tscn" id="6_53w2q"]
+[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/LevelComponents/level_manager.tscn" id="6_53w2q"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="8_yq8vx"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="9_1ieg8"]
 [ext_resource type="Resource" uid="uid://bsyl58dianshv" path="res://BoardData/Challenge1.tres" id="9_87uai"]
@@ -17,7 +17,8 @@
 [ext_resource type="Script" uid="uid://6qt5wixa50el" path="res://Scripts/Actors/Enemy/enemy_spawn_table_resource.gd" id="12_l3neo"]
 [ext_resource type="Script" uid="uid://bcgmgwcdgs13w" path="res://Scripts/Actors/Enemy/enemy_spawn_table_entry_resource.gd" id="13_io6xk"]
 [ext_resource type="PackedScene" uid="uid://bdnbplhqsw7jm" path="res://Scenes/Enemies/ladybug.tscn" id="14_8cisr"]
-[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="15_pbq31"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/LevelComponents/level_intro.tscn" id="15_pbq31"]
+
 
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_pbq31"]

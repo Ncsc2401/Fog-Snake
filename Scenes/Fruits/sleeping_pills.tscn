@@ -2,11 +2,12 @@
 
 [ext_resource type="Script" uid="uid://c2cm7nsym2ojr" path="res://Scripts/Actors/Fruit/fruit.gd" id="1_6ig17"]
 [ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Actors/Fruit/fruit_resource.gd" id="2_gunwh"]
-[ext_resource type="Texture2D" uid="uid://ch8ns7ke3nvyt" path="res://Assets/Sprites/Pill.png" id="2_n7rki"]
+[ext_resource type="Texture2D" uid="uid://ch8ns7ke3nvyt" path="res://Assets/Sprites/Fruits/Pill.png" id="2_n7rki"]
 [ext_resource type="Script" uid="uid://cffpnm6raml4s" path="res://Scripts/Actors/Fruit/FruitEatComponents/base_fruit_eat_component.gd" id="3_3ytad"]
 [ext_resource type="Script" uid="uid://btcixgm240p1c" path="res://Scripts/Actors/Fruit/FruitEatComponents/change_game_speed_eat_component.gd" id="4_2kyjp"]
 [ext_resource type="Script" uid="uid://bsv7qg871hms6" path="res://Scripts/Actors/Fruit/FruitEatComponents/spawn_random_fruit_eat_component.gd" id="5_5cecw"]
 [ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="6_vhaix"]
+
 
 [sub_resource type="Resource" id="Resource_fs660"]
 script = ExtResource("2_gunwh")

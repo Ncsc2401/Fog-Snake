@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c5dee402455iu"]
 
-[ext_resource type="Script" uid="uid://4w8urs321i4d" path="res://Scripts/Snakes/base_snake.gd" id="1_4ddoe"]
+[ext_resource type="Script" uid="uid://4w8urs321i4d" path="res://Scripts/Snakes/snake.gd" id="1_4ddoe"]
 [ext_resource type="Script" uid="uid://fugkvr1qh0m8" path="res://Scripts/Snakes/SnakeComponents/DeathComponents/normal_snake_death_component.gd" id="2_72rue"]
 [ext_resource type="Script" uid="uid://bln70orb5n6me" path="res://Scripts/Snakes/SnakeComponents/DrawComponents/default_snake_draw_component.gd" id="2_raf4p"]
 [ext_resource type="TileSet" uid="uid://brkptblvkpwo1" path="res://Scenes/Snakes/normal_snake_tile_set.tres" id="3_grded"]
@@ -14,6 +14,7 @@
 [ext_resource type="AudioStream" uid="uid://d4nbp100vbmj8" path="res://Assets/Sounds/fog-snake-mov-4.wav" id="7_72rue"]
 [ext_resource type="Script" uid="uid://t3ahs52kl0kk" path="res://Scripts/Snakes/SnakeComponents/EatComponents/normal_snake_eat_component.gd" id="7_wt6mx"]
 [ext_resource type="AudioStream" uid="uid://b5bnbcidomngq" path="res://Assets/Sounds/fog-snake-grow.wav" id="8_wt6mx"]
+
 
 [sub_resource type="Resource" id="Resource_dykhk"]
 script = ExtResource("2_72rue")

@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://0x74a4vwm555"]
+
+[ext_resource type="PackedScene" uid="uid://cfxfsi1oplo4x" path="res://Levels/level_15.tscn" id="1_ds200"]
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="1_l85he"]
+[ext_resource type="Resource" uid="uid://dx7jp0phlanj3" path="res://LevelMapData/level_17.tres" id="1_s7aiy"]
+[ext_resource type="Resource" uid="uid://dvbgfvy8ulfvh" path="res://LevelMapData/bonus_5.tres" id="3_t8034"]
+
+[resource]
+script = ExtResource("1_l85he")
+pos = Vector2i(-2, -6)
+id = 24
+save_name = "level_15"
+level_name = "The cracker of nuts"
+objective = "Get 30 points"
+level_scene = ExtResource("1_ds200")
+left_level = ExtResource("1_s7aiy")
+up_level = ExtResource("3_t8034")
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

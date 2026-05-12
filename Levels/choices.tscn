@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://48om1rvld52o" path="res://Scenes/Fruits/apple.tscn" id="7_ncli2"]
 [ext_resource type="PackedScene" uid="uid://h3t2dvc0174k" path="res://Scenes/Fruits/watermelon.tscn" id="8_1jqhs"]
 [ext_resource type="Theme" uid="uid://drnrqrrtdyfbm" path="res://Assets/UI/UiTheme.tres" id="8_7bisd"]
-[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/Components/level_manager.tscn" id="8_a71li"]
+[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/LevelComponents/level_manager.tscn" id="8_a71li"]
 [ext_resource type="Script" uid="uid://cit4k6u2rruwx" path="res://Scripts/choices_giver.gd" id="8_abtbe"]
 [ext_resource type="PackedScene" uid="uid://65wep6sjv2bu" path="res://Scenes/Enemies/enemy_spawner.tscn" id="8_vpylo"]
 [ext_resource type="PackedScene" uid="uid://byayy2c7usui5" path="res://Scenes/Fruits/ice_cream.tscn" id="9_1rgid"]
@@ -18,11 +18,12 @@
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="10_1jqhs"]
 [ext_resource type="Script" uid="uid://bcgmgwcdgs13w" path="res://Scripts/Actors/Enemy/enemy_spawn_table_entry_resource.gd" id="10_a71li"]
 [ext_resource type="PackedScene" uid="uid://p5d6nykafa2t" path="res://Scenes/Fruits/star_fruit.tscn" id="10_n7dqa"]
-[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="11_1rgid"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/LevelComponents/level_intro.tscn" id="11_1rgid"]
 [ext_resource type="PackedScene" uid="uid://bdnbplhqsw7jm" path="res://Scenes/Enemies/ladybug.tscn" id="11_51x5u"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="12_n7dqa"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="13_8yr6x"]
 [ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="14_scek3"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ct1fp"]
 texture = ExtResource("1_sessf")

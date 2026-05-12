@@ -5,19 +5,20 @@
 [ext_resource type="PackedScene" uid="uid://dr5ov7u4kbfv7" path="res://Scenes/Fruits/fruit_spawner.tscn" id="3_1dxqw"]
 [ext_resource type="Script" uid="uid://3s5fmo1ne7gy" path="res://Scripts/Actors/Fruit/fruit_spawn_table_resource.gd" id="4_jxc5s"]
 [ext_resource type="PackedScene" uid="uid://65wep6sjv2bu" path="res://Scenes/Enemies/enemy_spawner.tscn" id="4_md57n"]
-[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/Components/level_manager.tscn" id="5_40ilm"]
+[ext_resource type="PackedScene" uid="uid://dwn7uxum6e14p" path="res://Scenes/LevelComponents/level_manager.tscn" id="5_40ilm"]
 [ext_resource type="Script" uid="uid://6qt5wixa50el" path="res://Scripts/Actors/Enemy/enemy_spawn_table_resource.gd" id="5_md57n"]
 [ext_resource type="Script" uid="uid://c5x5ehh7vn7t1" path="res://Scripts/Actors/Fruit/fruit_spawn_table_entry_resource.gd" id="5_u8elf"]
 [ext_resource type="Script" uid="uid://bcgmgwcdgs13w" path="res://Scripts/Actors/Enemy/enemy_spawn_table_entry_resource.gd" id="6_40ilm"]
 [ext_resource type="Resource" uid="uid://d27sx077rgkps" path="res://BoardData/Level12.tres" id="6_cv1jq"]
 [ext_resource type="PackedScene" uid="uid://48om1rvld52o" path="res://Scenes/Fruits/apple.tscn" id="6_xpmu4"]
 [ext_resource type="PackedScene" uid="uid://dd8bsum2sf2qo" path="res://Scenes/Enemies/knight.tscn" id="7_40ilm"]
-[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="7_hq0r2"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/LevelComponents/level_intro.tscn" id="7_hq0r2"]
 [ext_resource type="PackedScene" uid="uid://c5dee402455iu" path="res://Scenes/Snakes/normal_snake.tscn" id="7_nyoia"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="8_jxc5s"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="9_u8elf"]
 [ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="10_xpmu4"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="13_u8elf"]
+
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wswhm"]
 texture = ExtResource("1_11ap8")

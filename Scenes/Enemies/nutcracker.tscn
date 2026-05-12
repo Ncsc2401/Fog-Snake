@@ -1,0 +1,269 @@
+[gd_scene format=3 uid="uid://kgrlrl453bow"]
+
+[ext_resource type="Script" uid="uid://dc2pgdqlx4j8x" path="res://Scripts/Actors/Enemy/enemy.gd" id="1_82gp1"]
+[ext_resource type="Script" uid="uid://u50f423e2317" path="res://Scripts/Actors/Enemy/enemy_resource.gd" id="2_06rch"]
+[ext_resource type="Script" uid="uid://cogn7slytosua" path="res://Scripts/Actors/Enemy/EnemyDeathComponents/nothing_enemy_death_component.gd" id="3_5ra2v"]
+[ext_resource type="Script" uid="uid://c5iwmutj7mwu4" path="res://Scripts/Actors/ActorAliveComponents/cardinal_blocked_actor_alive_component.gd" id="4_qxptt"]
+[ext_resource type="Texture2D" uid="uid://c2llr2rt2pmic" path="res://Assets/Sprites/Enemies/Nutcracker.png" id="5_82gp1"]
+[ext_resource type="Texture2D" uid="uid://c01kdmux1k782" path="res://Assets/Sprites/WarningTile.png" id="6_niqex"]
+[ext_resource type="Script" uid="uid://bsbonjfxscb2v" path="res://Scripts/Actors/ActorActions/actor_action_node.gd" id="7_5ra2v"]
+[ext_resource type="Script" uid="uid://b6ef2a875ay2s" path="res://Scripts/Actors/ActorActions/GetDataActorActionComponent/get_own_data_component.gd" id="8_m1fm1"]
+[ext_resource type="Script" uid="uid://u6ah4mqpyfwv" path="res://Scripts/Actors/ActorActions/get_data_actor_action.gd" id="9_v61hl"]
+[ext_resource type="Script" uid="uid://uy6q8b203l71" path="res://Scripts/Actors/ActorActions/set_memory_actor_action.gd" id="10_niqex"]
+[ext_resource type="Script" uid="uid://btsh0i041m13w" path="res://Scripts/Actors/ActorActions/SetMemoryActionComponents/random_data_set_memory_component.gd" id="11_defpd"]
+[ext_resource type="Script" uid="uid://nhqyhwow46pp" path="res://Scripts/Actors/ActorActions/math_actor_action.gd" id="12_defpd"]
+[ext_resource type="Script" uid="uid://b7k1qyic6i0q" path="res://Scripts/Actors/ActorActions/MathActorActionComponent/vector_math_component.gd" id="12_i41l8"]
+[ext_resource type="Script" uid="uid://bwus0docnk165" path="res://Scripts/Actors/ActorActions/FindActorActionComponents/find_possible_movements_component.gd" id="14_651s8"]
+[ext_resource type="Script" uid="uid://o62lini3y70w" path="res://Scripts/Actors/ActorActions/find_actor_action.gd" id="15_p05f4"]
+[ext_resource type="Script" uid="uid://ctojhqqgqg4yi" path="res://Scripts/Actors/ActorActions/ChooseActorActionComponents/choose_movement_component.gd" id="16_ihwf2"]
+[ext_resource type="Script" uid="uid://duhk2f50srq8n" path="res://Scripts/Actors/ActorActions/choose_actor_action.gd" id="17_dfsm7"]
+[ext_resource type="Script" uid="uid://cq7uekj2tof0v" path="res://Scripts/Actors/ActorActions/move_in_board_actor_action.gd" id="18_qxptt"]
+[ext_resource type="Script" uid="uid://cvl6ps22s2vjf" path="res://Scripts/Actors/ActorActions/warn_actor_action.gd" id="19_ihwf2"]
+[ext_resource type="Script" uid="uid://cltp1v5e5gt3" path="res://Scripts/Actors/ActorActions/forget_actor_action.gd" id="19_npj4c"]
+
+[sub_resource type="Resource" id="Resource_58trk"]
+script = ExtResource("2_06rch")
+enemy_name = "Knight"
+points_on_death = 3
+kills_on_death = 1
+metadata/_custom_type_script = "uid://u50f423e2317"
+
+[sub_resource type="Resource" id="Resource_2n3tg"]
+script = ExtResource("3_5ra2v")
+metadata/_custom_type_script = "uid://cogn7slytosua"
+
+[sub_resource type="Resource" id="Resource_dfsm7"]
+script = ExtResource("4_qxptt")
+metadata/_custom_type_script = "uid://c5iwmutj7mwu4"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ixnb"]
+texture = ExtResource("6_niqex")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_r2kd0"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_2ixnb")
+
+[sub_resource type="Resource" id="Resource_niqex"]
+script = ExtResource("8_m1fm1")
+custom_key_value = "Current Position"
+metadata/_custom_type_script = "uid://b6ef2a875ay2s"
+
+[sub_resource type="Resource" id="Resource_defpd"]
+script = ExtResource("9_v61hl")
+get_data_component = SubResource("Resource_niqex")
+metadata/_custom_type_script = "uid://u6ah4mqpyfwv"
+
+[sub_resource type="Resource" id="Resource_i41l8"]
+script = ExtResource("11_defpd")
+value_type = 5
+choice_pool = [Vector2i(1, 0), Vector2i(-1, 0), Vector2i(0, 1), Vector2i(0, -1)]
+metadata/_custom_type_script = "uid://btsh0i041m13w"
+
+[sub_resource type="Resource" id="Resource_iirnf"]
+script = ExtResource("10_niqex")
+set_component = SubResource("Resource_i41l8")
+brain_key = "Foward Direction"
+one_time = true
+action_priority = 1
+metadata/_custom_type_script = "uid://uy6q8b203l71"
+
+[sub_resource type="Resource" id="Resource_p05f4"]
+script = ExtResource("12_i41l8")
+rounding_method = 2
+metadata/_custom_type_script = "uid://b7k1qyic6i0q"
+
+[sub_resource type="Resource" id="Resource_651s8"]
+script = ExtResource("12_defpd")
+a_key = "Current Position"
+b_key = "Foward Direction"
+c_key = "Next Step"
+math_component = SubResource("Resource_p05f4")
+result_as_array = true
+action_priority = 2
+metadata/_custom_type_script = "uid://nhqyhwow46pp"
+
+[sub_resource type="Resource" id="Resource_04cby"]
+script = ExtResource("14_651s8")
+seach_area = 5
+movements_memory_key = "Next Step"
+metadata/_custom_type_script = "uid://bwus0docnk165"
+
+[sub_resource type="Resource" id="Resource_m3dhd"]
+script = ExtResource("15_p05f4")
+find_component = SubResource("Resource_04cby")
+action_priority = 3
+metadata/_custom_type_script = "uid://o62lini3y70w"
+
+[sub_resource type="Resource" id="Resource_4ig5n"]
+script = ExtResource("16_ihwf2")
+choose_by = 2
+metadata/_custom_type_script = "uid://ctojhqqgqg4yi"
+
+[sub_resource type="Resource" id="Resource_khpc3"]
+script = ExtResource("17_dfsm7")
+choose_component = SubResource("Resource_4ig5n")
+action_priority = 4
+metadata/_custom_type_script = "uid://duhk2f50srq8n"
+
+[sub_resource type="Resource" id="Resource_27vv7"]
+script = ExtResource("19_npj4c")
+brain_key_to_forget = "Next Step"
+metadata/_custom_type_script = "uid://cltp1v5e5gt3"
+
+[sub_resource type="Resource" id="Resource_5efms"]
+script = ExtResource("19_ihwf2")
+warn_position_key = "nextboardmovement"
+action_tick = 1
+metadata/_custom_type_script = "uid://cvl6ps22s2vjf"
+
+[sub_resource type="Resource" id="Resource_ihwf2"]
+script = ExtResource("19_ihwf2")
+operation = 2
+action_tick = 3
+metadata/_custom_type_script = "uid://cvl6ps22s2vjf"
+
+[sub_resource type="Resource" id="Resource_kjwve"]
+script = ExtResource("18_qxptt")
+action_tick = 3
+action_priority = 1
+metadata/_custom_type_script = "uid://cq7uekj2tof0v"
+
+[sub_resource type="Resource" id="Resource_1t3tb"]
+script = ExtResource("8_m1fm1")
+custom_key_value = "Current Position"
+metadata/_custom_type_script = "uid://b6ef2a875ay2s"
+
+[sub_resource type="Resource" id="Resource_63334"]
+script = ExtResource("9_v61hl")
+get_data_component = SubResource("Resource_1t3tb")
+previous_value_key_backup = "Previous Position"
+action_tick = 3
+action_priority = 2
+metadata/_custom_type_script = "uid://u6ah4mqpyfwv"
+
+[sub_resource type="Resource" id="Resource_npj4c"]
+script = ExtResource("12_i41l8")
+operation_type = 8
+metadata/_custom_type_script = "uid://b7k1qyic6i0q"
+
+[sub_resource type="Resource" id="Resource_qxptt"]
+script = ExtResource("12_defpd")
+a_key = "Current Position"
+b_key = "Previous Position"
+c_key = "Not Moved"
+math_component = SubResource("Resource_npj4c")
+action_tick = 4
+metadata/_custom_type_script = "uid://nhqyhwow46pp"
+
+[sub_resource type="Resource" id="Resource_1syt6"]
+script = ExtResource("19_npj4c")
+brain_key_to_forget = "Foward Direction"
+brain_key_condition = "Not Moved"
+action_tick = 4
+action_priority = 1
+metadata/_custom_type_script = "uid://cltp1v5e5gt3"
+
+[sub_resource type="Resource" id="Resource_1am7b"]
+script = ExtResource("11_defpd")
+value_type = 5
+choice_pool = [Vector2i(1, 0), Vector2i(0, 1), Vector2i(-1, 0), Vector2i(0, -1)]
+metadata/_custom_type_script = "uid://btsh0i041m13w"
+
+[sub_resource type="Resource" id="Resource_qujy5"]
+script = ExtResource("10_niqex")
+set_component = SubResource("Resource_1am7b")
+can_overwrite = false
+brain_key = "Foward Direction"
+action_tick = 4
+action_priority = 2
+metadata/_custom_type_script = "uid://uy6q8b203l71"
+
+[node name="Nutcracker" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("actor_action_nodes_parent", "warning_layer")]
+script = ExtResource("1_82gp1")
+enemy_resource = SubResource("Resource_58trk")
+death_component = SubResource("Resource_2n3tg")
+actor_action_nodes_parent = NodePath("Actions")
+max_ticks = 7
+alive_component = SubResource("Resource_dfsm7")
+warning_layer = NodePath("WarningLayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733223946]
+z_index = 6
+texture = ExtResource("5_82gp1")
+
+[node name="WarningLayer" type="TileMapLayer" parent="." unique_id=1635689485]
+top_level = true
+z_index = 5
+z_as_relative = false
+tile_set = SubResource("TileSet_r2kd0")
+
+[node name="Actions" type="Node" parent="." unique_id=284076575]
+
+[node name="0_0-GetOwnPosition" type="Node" parent="Actions" unique_id=1741971142]
+script = ExtResource("7_5ra2v")
+actor_action = SubResource("Resource_defpd")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_1-ChooseDirection" type="Node" parent="Actions" unique_id=382546979]
+script = ExtResource("7_5ra2v")
+actor_action = SubResource("Resource_iirnf")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_2-CalculateNextMovement" type="Node" parent="Actions" unique_id=1080140654]
+script = ExtResource("7_5ra2v")
+actor_action = SubResource("Resource_651s8")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_3-FindMovements" type="Node" parent="Actions" unique_id=996605127]
+script = ExtResource("7_5ra2v")
+actor_action = SubResource("Resource_m3dhd")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_4-ChooseMovement" type="Node" parent="Actions" unique_id=1488904439]
+script = ExtResource("7_5ra2v")
+actor_action = SubResource("Resource_khpc3")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_5-ForgetNextStep" type="Node" parent="Actions" unique_id=404235310]
+script = ExtResource("7_5ra2v")
+actor_action = SubResource("Resource_27vv7")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="1_0-WarnPlayer" type="Node" parent="Actions" unique_id=640881139]
+script = ExtResource("7_5ra2v")
+actor_action = SubResource("Resource_5efms")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="3_0-ClearWarnings" type="Node" parent="Actions" unique_id=999958853]
+script = ExtResource("7_5ra2v")
+actor_action = SubResource("Resource_ihwf2")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="3_1-Move" type="Node" parent="Actions" unique_id=73657035]
+process_priority = 3
+process_physics_priority = 1
+script = ExtResource("7_5ra2v")
+actor_action = SubResource("Resource_kjwve")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="3_2-GetNewPos" type="Node" parent="Actions" unique_id=9708973]
+script = ExtResource("7_5ra2v")
+actor_action = SubResource("Resource_63334")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="4_0-ComparePositions" type="Node" parent="Actions" unique_id=2057863077]
+script = ExtResource("7_5ra2v")
+actor_action = SubResource("Resource_qxptt")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="4_1-ForgetIfNotMoved" type="Node" parent="Actions" unique_id=1377209880]
+script = ExtResource("7_5ra2v")
+actor_action = SubResource("Resource_1syt6")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="4_2-ChooseDirectionIfForget" type="Node" parent="Actions" unique_id=174188149]
+script = ExtResource("7_5ra2v")
+actor_action = SubResource("Resource_qujy5")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"

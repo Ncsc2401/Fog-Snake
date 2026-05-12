@@ -3,10 +3,11 @@
 [ext_resource type="Script" uid="uid://c2cm7nsym2ojr" path="res://Scripts/Actors/Fruit/fruit.gd" id="1_nuipn"]
 [ext_resource type="Script" uid="uid://cn37grwtxs5jy" path="res://Scripts/Actors/Fruit/fruit_resource.gd" id="2_6trnm"]
 [ext_resource type="Script" uid="uid://cffpnm6raml4s" path="res://Scripts/Actors/Fruit/FruitEatComponents/base_fruit_eat_component.gd" id="3_jl4na"]
-[ext_resource type="Texture2D" uid="uid://c2w03qdx7cy13" path="res://Assets/Sprites/Coffee.png" id="3_kft1u"]
+[ext_resource type="Texture2D" uid="uid://c2w03qdx7cy13" path="res://Assets/Sprites/Fruits/Coffee.png" id="3_kft1u"]
 [ext_resource type="Script" uid="uid://btcixgm240p1c" path="res://Scripts/Actors/Fruit/FruitEatComponents/change_game_speed_eat_component.gd" id="4_k8s04"]
 [ext_resource type="Script" uid="uid://bsv7qg871hms6" path="res://Scripts/Actors/Fruit/FruitEatComponents/spawn_random_fruit_eat_component.gd" id="5_g2slg"]
 [ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="6_ckxp1"]
+
 
 [sub_resource type="Resource" id="Resource_kft1u"]
 script = ExtResource("2_6trnm")

@@ -1,0 +1,179 @@
+[gd_scene format=3 uid="uid://b0hrkqmtgu7f6"]
+
+[ext_resource type="Script" uid="uid://dc2pgdqlx4j8x" path="res://Scripts/Actors/Enemy/enemy.gd" id="1_x8t5f"]
+[ext_resource type="Script" uid="uid://u50f423e2317" path="res://Scripts/Actors/Enemy/enemy_resource.gd" id="2_4ni7r"]
+[ext_resource type="Script" uid="uid://cogn7slytosua" path="res://Scripts/Actors/Enemy/EnemyDeathComponents/nothing_enemy_death_component.gd" id="3_ud1yb"]
+[ext_resource type="Script" uid="uid://byibdqmac44j" path="res://Scripts/Actors/ActorAliveComponents/surrounded_blocked_actor_alive_component.gd" id="4_rnqnt"]
+[ext_resource type="Texture2D" uid="uid://70v8vhbg2iou" path="res://Assets/Sprites/Enemies/Spider.png" id="5_wloym"]
+[ext_resource type="Texture2D" uid="uid://c01kdmux1k782" path="res://Assets/Sprites/WarningTile.png" id="6_q8vsf"]
+[ext_resource type="Script" uid="uid://bsbonjfxscb2v" path="res://Scripts/Actors/ActorActions/actor_action_node.gd" id="7_ox5xr"]
+[ext_resource type="Script" uid="uid://c03a10cllu2f8" path="res://Scripts/Actors/ActorActions/FindActorActionComponents/find_fruits_component.gd" id="8_q8vsf"]
+[ext_resource type="Script" uid="uid://o62lini3y70w" path="res://Scripts/Actors/ActorActions/find_actor_action.gd" id="9_6hqkn"]
+[ext_resource type="Script" uid="uid://g27sufd2t7t4" path="res://Scripts/Actors/ActorActions/ChooseActorActionComponents/choose_fruit_component.gd" id="10_q8vsf"]
+[ext_resource type="Script" uid="uid://duhk2f50srq8n" path="res://Scripts/Actors/ActorActions/choose_actor_action.gd" id="11_6hqkn"]
+[ext_resource type="Script" uid="uid://difwesm8w454r" path="res://Scripts/Actors/ActorActions/GetDataActorActionComponent/get_fruit_data_component.gd" id="12_0t1bn"]
+[ext_resource type="Script" uid="uid://u6ah4mqpyfwv" path="res://Scripts/Actors/ActorActions/get_data_actor_action.gd" id="13_4bmra"]
+[ext_resource type="Script" uid="uid://bwus0docnk165" path="res://Scripts/Actors/ActorActions/FindActorActionComponents/find_possible_movements_component.gd" id="14_rnqnt"]
+[ext_resource type="Script" uid="uid://ctojhqqgqg4yi" path="res://Scripts/Actors/ActorActions/ChooseActorActionComponents/choose_movement_component.gd" id="15_esu77"]
+[ext_resource type="Script" uid="uid://cvl6ps22s2vjf" path="res://Scripts/Actors/ActorActions/warn_actor_action.gd" id="16_esu77"]
+[ext_resource type="Script" uid="uid://cq7uekj2tof0v" path="res://Scripts/Actors/ActorActions/move_in_board_actor_action.gd" id="18_qub8n"]
+
+[sub_resource type="Resource" id="Resource_esu77"]
+script = ExtResource("2_4ni7r")
+enemy_name = "Spider"
+points_on_death = 5
+kills_on_death = 1
+metadata/_custom_type_script = "uid://u50f423e2317"
+
+[sub_resource type="Resource" id="Resource_2n3tg"]
+script = ExtResource("3_ud1yb")
+metadata/_custom_type_script = "uid://cogn7slytosua"
+
+[sub_resource type="Resource" id="Resource_hh5vg"]
+script = ExtResource("4_rnqnt")
+metadata/_custom_type_script = "uid://byibdqmac44j"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ixnb"]
+texture = ExtResource("6_q8vsf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_r2kd0"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_2ixnb")
+
+[sub_resource type="Resource" id="Resource_rxrcf"]
+script = ExtResource("8_q8vsf")
+seach_area = 3
+metadata/_custom_type_script = "uid://c03a10cllu2f8"
+
+[sub_resource type="Resource" id="Resource_6to6f"]
+script = ExtResource("9_6hqkn")
+find_component = SubResource("Resource_rxrcf")
+metadata/_custom_type_script = "uid://o62lini3y70w"
+
+[sub_resource type="Resource" id="Resource_2vf46"]
+script = ExtResource("10_q8vsf")
+choose_by = 2
+metadata/_custom_type_script = "uid://g27sufd2t7t4"
+
+[sub_resource type="Resource" id="Resource_4bmra"]
+script = ExtResource("11_6hqkn")
+choose_component = SubResource("Resource_2vf46")
+action_priority = 1
+metadata/_custom_type_script = "uid://duhk2f50srq8n"
+
+[sub_resource type="Resource" id="Resource_t0rfl"]
+script = ExtResource("12_0t1bn")
+metadata/_custom_type_script = "uid://difwesm8w454r"
+
+[sub_resource type="Resource" id="Resource_qub8n"]
+script = ExtResource("13_4bmra")
+get_data_component = SubResource("Resource_t0rfl")
+action_priority = 2
+metadata/_custom_type_script = "uid://u6ah4mqpyfwv"
+
+[sub_resource type="Resource" id="Resource_o8isg"]
+script = ExtResource("14_rnqnt")
+seach_area = 2
+relative_to = 1
+metadata/_custom_type_script = "uid://bwus0docnk165"
+
+[sub_resource type="Resource" id="Resource_2skqt"]
+script = ExtResource("9_6hqkn")
+find_component = SubResource("Resource_o8isg")
+action_priority = 3
+metadata/_custom_type_script = "uid://o62lini3y70w"
+
+[sub_resource type="Resource" id="Resource_40oox"]
+script = ExtResource("15_esu77")
+choose_by = 2
+metadata/_custom_type_script = "uid://ctojhqqgqg4yi"
+
+[sub_resource type="Resource" id="Resource_onrbq"]
+script = ExtResource("11_6hqkn")
+choose_component = SubResource("Resource_40oox")
+action_priority = 4
+metadata/_custom_type_script = "uid://duhk2f50srq8n"
+
+[sub_resource type="Resource" id="Resource_rf255"]
+script = ExtResource("16_esu77")
+warn_position_key = "NextBoardMovement"
+action_tick = 1
+metadata/_custom_type_script = "uid://cvl6ps22s2vjf"
+
+[sub_resource type="Resource" id="Resource_rnqnt"]
+script = ExtResource("16_esu77")
+operation = 2
+action_tick = 4
+metadata/_custom_type_script = "uid://cvl6ps22s2vjf"
+
+[sub_resource type="Resource" id="Resource_axtff"]
+script = ExtResource("18_qub8n")
+action_tick = 4
+action_priority = 1
+metadata/_custom_type_script = "uid://cq7uekj2tof0v"
+
+[node name="Spider" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("actor_action_nodes_parent", "warning_layer")]
+script = ExtResource("1_x8t5f")
+enemy_resource = SubResource("Resource_esu77")
+death_component = SubResource("Resource_2n3tg")
+actor_action_nodes_parent = NodePath("Actions")
+max_ticks = 4
+alive_component = SubResource("Resource_hh5vg")
+warning_layer = NodePath("WarningLayer")
+debug_print_failed_actions = true
+debug_print_brain_data_every_tick = true
+debug_print_current_tick = true
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733223946]
+z_index = 6
+texture = ExtResource("5_wloym")
+
+[node name="WarningLayer" type="TileMapLayer" parent="." unique_id=1635689485]
+top_level = true
+z_index = 5
+z_as_relative = false
+tile_set = SubResource("TileSet_r2kd0")
+
+[node name="Actions" type="Node" parent="." unique_id=284076575]
+
+[node name="0_0-FindFruits" type="Node" parent="Actions" unique_id=1356184634]
+script = ExtResource("7_ox5xr")
+actor_action = SubResource("Resource_6to6f")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_1-ChooseFruit" type="Node" parent="Actions" unique_id=475274086]
+script = ExtResource("7_ox5xr")
+actor_action = SubResource("Resource_4bmra")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_2-GetFruitData" type="Node" parent="Actions" unique_id=482471086]
+script = ExtResource("7_ox5xr")
+actor_action = SubResource("Resource_qub8n")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_3-FindMovements" type="Node" parent="Actions" unique_id=495862406]
+script = ExtResource("7_ox5xr")
+actor_action = SubResource("Resource_2skqt")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_4-ChooseMovement" type="Node" parent="Actions" unique_id=759710543]
+script = ExtResource("7_ox5xr")
+actor_action = SubResource("Resource_onrbq")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="1_0-WarnPlayer" type="Node" parent="Actions" unique_id=2043730476]
+script = ExtResource("7_ox5xr")
+actor_action = SubResource("Resource_rf255")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="4_0-ClearWarnings" type="Node" parent="Actions" unique_id=1952207533]
+script = ExtResource("7_ox5xr")
+actor_action = SubResource("Resource_rnqnt")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="4_1-Move" type="Node" parent="Actions" unique_id=222917839]
+script = ExtResource("7_ox5xr")
+actor_action = SubResource("Resource_axtff")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"

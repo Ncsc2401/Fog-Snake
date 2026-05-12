@@ -7,14 +7,15 @@
 [ext_resource type="Script" uid="uid://3s5fmo1ne7gy" path="res://Scripts/Actors/Fruit/fruit_spawn_table_resource.gd" id="5_knfpk"]
 [ext_resource type="Script" uid="uid://c5x5ehh7vn7t1" path="res://Scripts/Actors/Fruit/fruit_spawn_table_entry_resource.gd" id="6_88ge2"]
 [ext_resource type="PackedScene" uid="uid://48om1rvld52o" path="res://Scenes/Fruits/apple.tscn" id="7_u33en"]
-[ext_resource type="PackedScene" uid="uid://brj28kkj87j7u" path="res://Scenes/Components/multi_level_manager.tscn" id="8_l60lk"]
+[ext_resource type="PackedScene" uid="uid://brj28kkj87j7u" path="res://Scenes/LevelComponents/multi_level_manager.tscn" id="8_l60lk"]
 [ext_resource type="PackedScene" uid="uid://cbjavdw65rp46" path="res://Levels/maze_3.tscn" id="10_8mop3"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="10_qalry"]
 [ext_resource type="Resource" uid="uid://b6oytgi6gbbgd" path="res://BoardData/Maze2.tres" id="10_u33en"]
-[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/Components/level_intro.tscn" id="11_ra6mu"]
+[ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/LevelComponents/level_intro.tscn" id="11_ra6mu"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="12_gifc1"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="13_o0005"]
 [ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="14_cbh0w"]
+
 
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_7grwl"]

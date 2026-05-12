@@ -4,14 +4,19 @@
 [ext_resource type="Script" uid="uid://u50f423e2317" path="res://Scripts/Actors/Enemy/enemy_resource.gd" id="2_c1eua"]
 [ext_resource type="Script" uid="uid://cogn7slytosua" path="res://Scripts/Actors/Enemy/EnemyDeathComponents/nothing_enemy_death_component.gd" id="3_e1mfe"]
 [ext_resource type="Script" uid="uid://bgf4rrt4il350" path="res://Scripts/Actors/ActorAliveComponents/knight_blocked_actor_alive_component.gd" id="4_e1mfe"]
-[ext_resource type="Texture2D" uid="uid://bm8vikj4kdw6i" path="res://Assets/Sprites/Horse.png" id="5_xpvoi"]
+[ext_resource type="Texture2D" uid="uid://bm8vikj4kdw6i" path="res://Assets/Sprites/Enemies/Horse.png" id="5_xpvoi"]
 [ext_resource type="Texture2D" uid="uid://c01kdmux1k782" path="res://Assets/Sprites/WarningTile.png" id="6_56bv7"]
 [ext_resource type="Script" uid="uid://bsbonjfxscb2v" path="res://Scripts/Actors/ActorActions/actor_action_node.gd" id="7_mpw03"]
-[ext_resource type="Script" uid="uid://dng5raejynuuf" path="res://Scripts/Actors/ActorActions/find_knight_moves_actor_action.gd" id="8_nsfy1"]
-[ext_resource type="Script" uid="uid://c74qxur36h0l" path="res://Scripts/Actors/ActorActions/choose_random_possible_board_move_actor_action.gd" id="9_vp8sd"]
-[ext_resource type="Script" uid="uid://dkb65xr6l1gaw" path="res://Scripts/Actors/ActorActions/warn_next_board_movement_actor_action.gd" id="10_344mg"]
-[ext_resource type="Script" uid="uid://c2vlo5cen5kug" path="res://Scripts/Actors/ActorActions/clear_warnings_actor_action.gd" id="11_e1mfe"]
-[ext_resource type="Script" uid="uid://cq7uekj2tof0v" path="res://Scripts/Actors/ActorActions/board_move_actor_action.gd" id="12_2n3tg"]
+[ext_resource type="Script" uid="uid://bwus0docnk165" path="res://Scripts/Actors/ActorActions/FindActorActionComponents/find_possible_movements_component.gd" id="8_2n3tg"]
+[ext_resource type="Script" uid="uid://o62lini3y70w" path="res://Scripts/Actors/ActorActions/find_actor_action.gd" id="9_xpvoi"]
+[ext_resource type="Script" uid="uid://fphnjwu5p8sa" path="res://Scripts/Actors/ActorActions/FindActorActionComponents/find_snakes_component.gd" id="10_nsfy1"]
+[ext_resource type="Script" uid="uid://ctojhqqgqg4yi" path="res://Scripts/Actors/ActorActions/ChooseActorActionComponents/choose_movement_component.gd" id="10_xpvoi"]
+[ext_resource type="Script" uid="uid://duhk2f50srq8n" path="res://Scripts/Actors/ActorActions/choose_actor_action.gd" id="11_56bv7"]
+[ext_resource type="Script" uid="uid://b8ri0jw6yncac" path="res://Scripts/Actors/ActorActions/ChooseActorActionComponents/choose_snake_component.gd" id="11_vp8sd"]
+[ext_resource type="Script" uid="uid://cq7uekj2tof0v" path="res://Scripts/Actors/ActorActions/move_in_board_actor_action.gd" id="12_2n3tg"]
+[ext_resource type="Script" uid="uid://vy1u6tu1iy0n" path="res://Scripts/Actors/ActorActions/GetDataActorActionComponent/get_snake_data_component.gd" id="13_344mg"]
+[ext_resource type="Script" uid="uid://u6ah4mqpyfwv" path="res://Scripts/Actors/ActorActions/get_data_actor_action.gd" id="14_vp8sd"]
+[ext_resource type="Script" uid="uid://cvl6ps22s2vjf" path="res://Scripts/Actors/ActorActions/warn_actor_action.gd" id="16_vp8sd"]
 
 [sub_resource type="Resource" id="Resource_58trk"]
 script = ExtResource("2_c1eua")
@@ -37,24 +42,72 @@ texture_region_size = Vector2i(32, 32)
 tile_size = Vector2i(32, 32)
 sources/0 = SubResource("TileSetAtlasSource_2ixnb")
 
+[sub_resource type="Resource" id="Resource_nsfy1"]
+script = ExtResource("8_2n3tg")
+seach_area = 1
+metadata/_custom_type_script = "uid://bwus0docnk165"
+
+[sub_resource type="Resource" id="Resource_vp8sd"]
+script = ExtResource("9_xpvoi")
+find_component = SubResource("Resource_nsfy1")
+metadata/_custom_type_script = "uid://o62lini3y70w"
+
+[sub_resource type="Resource" id="Resource_jocjv"]
+script = ExtResource("10_nsfy1")
+seach_area = 3
+metadata/_custom_type_script = "uid://fphnjwu5p8sa"
+
 [sub_resource type="Resource" id="Resource_p1hca"]
-script = ExtResource("8_nsfy1")
-metadata/_custom_type_script = "uid://dng5raejynuuf"
+script = ExtResource("9_xpvoi")
+find_component = SubResource("Resource_jocjv")
+one_time = true
+action_priority = 1
+metadata/_custom_type_script = "uid://o62lini3y70w"
 
 [sub_resource type="Resource" id="Resource_vv71r"]
-script = ExtResource("9_vp8sd")
-action_priority = 1
-metadata/_custom_type_script = "uid://c74qxur36h0l"
+script = ExtResource("11_vp8sd")
+choose_by = 2
+metadata/_custom_type_script = "uid://b8ri0jw6yncac"
+
+[sub_resource type="Resource" id="Resource_64uvb"]
+script = ExtResource("11_56bv7")
+choose_component = SubResource("Resource_vv71r")
+one_time = true
+action_priority = 2
+metadata/_custom_type_script = "uid://duhk2f50srq8n"
+
+[sub_resource type="Resource" id="Resource_0xcpq"]
+script = ExtResource("13_344mg")
+metadata/_custom_type_script = "uid://vy1u6tu1iy0n"
+
+[sub_resource type="Resource" id="Resource_68l1y"]
+script = ExtResource("14_vp8sd")
+get_data_component = SubResource("Resource_0xcpq")
+metadata/_custom_type_script = "uid://u6ah4mqpyfwv"
+
+[sub_resource type="Resource" id="Resource_344mg"]
+script = ExtResource("10_xpvoi")
+choose_by = 1
+relative_to = 3
+metadata/_custom_type_script = "uid://ctojhqqgqg4yi"
+
+[sub_resource type="Resource" id="Resource_owhsp"]
+script = ExtResource("11_56bv7")
+choose_component = SubResource("Resource_344mg")
+action_priority = 4
+metadata/_custom_type_script = "uid://duhk2f50srq8n"
 
 [sub_resource type="Resource" id="Resource_w24e7"]
-script = ExtResource("10_344mg")
+script = ExtResource("16_vp8sd")
+warn_position_key = "NextBoardMovement"
 action_tick = 4
-metadata/_custom_type_script = "uid://dkb65xr6l1gaw"
+metadata/_custom_type_script = "uid://cvl6ps22s2vjf"
 
-[sub_resource type="Resource" id="Resource_xpvoi"]
-script = ExtResource("11_e1mfe")
+[sub_resource type="Resource" id="Resource_njkee"]
+script = ExtResource("16_vp8sd")
+operation = 2
 action_tick = 7
-metadata/_custom_type_script = "uid://c2vlo5cen5kug"
+metadata/_custom_type_script = "uid://cvl6ps22s2vjf"
 
 [sub_resource type="Resource" id="Resource_56bv7"]
 script = ExtResource("12_2n3tg")
@@ -62,13 +115,14 @@ action_tick = 7
 action_priority = 1
 metadata/_custom_type_script = "uid://cq7uekj2tof0v"
 
-[node name="Knight" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("actor_action_nodes_parent")]
+[node name="Knight" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("actor_action_nodes_parent", "warning_layer")]
 script = ExtResource("1_st7pj")
 enemy_resource = SubResource("Resource_58trk")
 death_component = SubResource("Resource_2n3tg")
 actor_action_nodes_parent = NodePath("Actions")
 max_ticks = 7
 alive_component = SubResource("Resource_mpw03")
+warning_layer = NodePath("WarningLayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733223946]
 z_index = 6
@@ -84,12 +138,27 @@ tile_set = SubResource("TileSet_r2kd0")
 
 [node name="0_0-FindSpaces" type="Node" parent="Actions" unique_id=312659699]
 script = ExtResource("7_mpw03")
+actor_action = SubResource("Resource_vp8sd")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_1-FindSnakes" type="Node" parent="Actions" unique_id=2043949112]
+script = ExtResource("7_mpw03")
 actor_action = SubResource("Resource_p1hca")
 metadata/_custom_type_script = "uid://bsbonjfxscb2v"
 
-[node name="0_1-ChooseSpace" type="Node" parent="Actions" unique_id=1476106599]
+[node name="0_2-ChooseSnake" type="Node" parent="Actions" unique_id=1186518021]
 script = ExtResource("7_mpw03")
-actor_action = SubResource("Resource_vv71r")
+actor_action = SubResource("Resource_64uvb")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_3-GetSnakePos" type="Node" parent="Actions" unique_id=766477967]
+script = ExtResource("7_mpw03")
+actor_action = SubResource("Resource_68l1y")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="0_4-ChooseSpace" type="Node" parent="Actions" unique_id=1476106599]
+script = ExtResource("7_mpw03")
+actor_action = SubResource("Resource_owhsp")
 metadata/_custom_type_script = "uid://bsbonjfxscb2v"
 
 [node name="4-WarnsPlayer" type="Node" parent="Actions" unique_id=722882601]
@@ -99,7 +168,7 @@ metadata/_custom_type_script = "uid://bsbonjfxscb2v"
 
 [node name="7_0-ClearsWarnings" type="Node" parent="Actions" unique_id=264186200]
 script = ExtResource("7_mpw03")
-actor_action = SubResource("Resource_xpvoi")
+actor_action = SubResource("Resource_njkee")
 metadata/_custom_type_script = "uid://bsbonjfxscb2v"
 
 [node name="7_1-Moves" type="Node" parent="Actions" unique_id=793956165]

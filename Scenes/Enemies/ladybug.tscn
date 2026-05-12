@@ -1,16 +1,18 @@
 [gd_scene format=3 uid="uid://bdnbplhqsw7jm"]
 
 [ext_resource type="Script" uid="uid://dc2pgdqlx4j8x" path="res://Scripts/Actors/Enemy/enemy.gd" id="1_2ixnb"]
-[ext_resource type="Texture2D" uid="uid://brwm75wj4rfd0" path="res://Assets/Sprites/Enemy1.png" id="2_2ixnb"]
+[ext_resource type="Texture2D" uid="uid://brwm75wj4rfd0" path="res://Assets/Sprites/Enemies/Enemy1.png" id="2_2ixnb"]
 [ext_resource type="Script" uid="uid://u50f423e2317" path="res://Scripts/Actors/Enemy/enemy_resource.gd" id="2_38glk"]
 [ext_resource type="Script" uid="uid://cogn7slytosua" path="res://Scripts/Actors/Enemy/EnemyDeathComponents/nothing_enemy_death_component.gd" id="3_31imc"]
 [ext_resource type="Script" uid="uid://bsbonjfxscb2v" path="res://Scripts/Actors/ActorActions/actor_action_node.gd" id="3_r2kd0"]
-[ext_resource type="Script" uid="uid://c2vlo5cen5kug" path="res://Scripts/Actors/ActorActions/clear_warnings_actor_action.gd" id="4_0eufc"]
-[ext_resource type="Script" uid="uid://ku2iy0sjuqg" path="res://Scripts/Actors/ActorActions/find_surrounding_moves_actor_action.gd" id="4_cqhm3"]
 [ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="4_k05ym"]
-[ext_resource type="Script" uid="uid://c74qxur36h0l" path="res://Scripts/Actors/ActorActions/choose_random_possible_board_move_actor_action.gd" id="4_t323u"]
-[ext_resource type="Script" uid="uid://dkb65xr6l1gaw" path="res://Scripts/Actors/ActorActions/warn_next_board_movement_actor_action.gd" id="4_wqrw0"]
-[ext_resource type="Script" uid="uid://cq7uekj2tof0v" path="res://Scripts/Actors/ActorActions/board_move_actor_action.gd" id="5_wqrw0"]
+[ext_resource type="Script" uid="uid://cq7uekj2tof0v" path="res://Scripts/Actors/ActorActions/move_in_board_actor_action.gd" id="5_wqrw0"]
+[ext_resource type="Script" uid="uid://bwus0docnk165" path="res://Scripts/Actors/ActorActions/FindActorActionComponents/find_possible_movements_component.gd" id="7_k05ym"]
+[ext_resource type="Script" uid="uid://o62lini3y70w" path="res://Scripts/Actors/ActorActions/find_actor_action.gd" id="8_odgpl"]
+[ext_resource type="Script" uid="uid://ctojhqqgqg4yi" path="res://Scripts/Actors/ActorActions/ChooseActorActionComponents/choose_movement_component.gd" id="9_odgpl"]
+[ext_resource type="Script" uid="uid://duhk2f50srq8n" path="res://Scripts/Actors/ActorActions/choose_actor_action.gd" id="10_cw032"]
+[ext_resource type="Script" uid="uid://cvl6ps22s2vjf" path="res://Scripts/Actors/ActorActions/warn_actor_action.gd" id="12_cw032"]
+[ext_resource type="PackedScene" uid="uid://de2pxyj06qdwo" path="res://Scenes/Enemies/enemy_warning_layer.tscn" id="14_cw032"]
 
 [sub_resource type="Resource" id="Resource_k05ym"]
 script = ExtResource("2_38glk")
@@ -27,23 +29,37 @@ metadata/_custom_type_script = "uid://cogn7slytosua"
 script = ExtResource("4_k05ym")
 metadata/_custom_type_script = "uid://bod7gi7o0sngf"
 
-[sub_resource type="Resource" id="Resource_31imc"]
-script = ExtResource("4_cqhm3")
-metadata/_custom_type_script = "uid://ku2iy0sjuqg"
+[sub_resource type="Resource" id="Resource_wcx1v"]
+script = ExtResource("7_k05ym")
+seach_area = 2
+metadata/_custom_type_script = "uid://bwus0docnk165"
 
-[sub_resource type="Resource" id="Resource_cnql6"]
-script = ExtResource("4_t323u")
-action_priority = 1
-metadata/_custom_type_script = "uid://c74qxur36h0l"
+[sub_resource type="Resource" id="Resource_a2aiq"]
+script = ExtResource("8_odgpl")
+find_component = SubResource("Resource_wcx1v")
+metadata/_custom_type_script = "uid://o62lini3y70w"
 
-[sub_resource type="Resource" id="Resource_38glk"]
-script = ExtResource("4_wqrw0")
+[sub_resource type="Resource" id="Resource_3wq2d"]
+script = ExtResource("9_odgpl")
+choose_by = 2
+metadata/_custom_type_script = "uid://ctojhqqgqg4yi"
+
+[sub_resource type="Resource" id="Resource_i641w"]
+script = ExtResource("10_cw032")
+choose_component = SubResource("Resource_3wq2d")
+metadata/_custom_type_script = "uid://duhk2f50srq8n"
+
+[sub_resource type="Resource" id="Resource_yhd2v"]
+script = ExtResource("12_cw032")
+warn_position_key = "NextBoardMovement"
 action_tick = 5
-metadata/_custom_type_script = "uid://dkb65xr6l1gaw"
+metadata/_custom_type_script = "uid://cvl6ps22s2vjf"
 
-[sub_resource type="Resource" id="Resource_t323u"]
-script = ExtResource("4_0eufc")
-metadata/_custom_type_script = "uid://c2vlo5cen5kug"
+[sub_resource type="Resource" id="Resource_wnllo"]
+script = ExtResource("12_cw032")
+operation = 2
+action_tick = 8
+metadata/_custom_type_script = "uid://cvl6ps22s2vjf"
 
 [sub_resource type="Resource" id="Resource_cqhm3"]
 script = ExtResource("5_wqrw0")
@@ -51,38 +67,41 @@ action_tick = 8
 action_priority = 1
 metadata/_custom_type_script = "uid://cq7uekj2tof0v"
 
-[node name="Ladybug" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("actor_action_nodes_parent")]
+[node name="Ladybug" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("actor_action_nodes_parent", "warning_layer")]
 script = ExtResource("1_2ixnb")
 enemy_resource = SubResource("Resource_k05ym")
 death_component = SubResource("Resource_odgpl")
 actor_action_nodes_parent = NodePath("Actions")
 max_ticks = 8
 alive_component = SubResource("Resource_cw032")
+warning_layer = NodePath("WarningLayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733223946]
 z_index = 6
 texture = ExtResource("2_2ixnb")
 
+[node name="WarningLayer" parent="." unique_id=1612680677 instance=ExtResource("14_cw032")]
+
 [node name="Actions" type="Node" parent="." unique_id=950043364]
 
 [node name="0_0-FindSpaces" type="Node" parent="Actions" unique_id=874082616]
 script = ExtResource("3_r2kd0")
-actor_action = SubResource("Resource_31imc")
+actor_action = SubResource("Resource_a2aiq")
 metadata/_custom_type_script = "uid://bsbonjfxscb2v"
 
 [node name="0_1-ChooseSpace" type="Node" parent="Actions" unique_id=1298063274]
 script = ExtResource("3_r2kd0")
-actor_action = SubResource("Resource_cnql6")
+actor_action = SubResource("Resource_i641w")
 metadata/_custom_type_script = "uid://bsbonjfxscb2v"
 
 [node name="5-WarnPlayer" type="Node" parent="Actions" unique_id=1716527739]
 script = ExtResource("3_r2kd0")
-actor_action = SubResource("Resource_38glk")
+actor_action = SubResource("Resource_yhd2v")
 metadata/_custom_type_script = "uid://bsbonjfxscb2v"
 
-[node name="8_0-ClearWArnings" type="Node" parent="Actions" unique_id=1605418056]
+[node name="8_0-ClearWarnings" type="Node" parent="Actions" unique_id=1605418056]
 script = ExtResource("3_r2kd0")
-actor_action = SubResource("Resource_t323u")
+actor_action = SubResource("Resource_wnllo")
 metadata/_custom_type_script = "uid://bsbonjfxscb2v"
 
 [node name="8_1-Moves" type="Node" parent="Actions" unique_id=604953125]

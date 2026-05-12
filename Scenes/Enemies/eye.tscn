@@ -1,0 +1,54 @@
+[gd_scene format=3 uid="uid://up5ykhpgcpq5"]
+
+[ext_resource type="Script" uid="uid://dc2pgdqlx4j8x" path="res://Scripts/Actors/Enemy/enemy.gd" id="1_5hhmg"]
+[ext_resource type="Script" uid="uid://u50f423e2317" path="res://Scripts/Actors/Enemy/enemy_resource.gd" id="2_o24py"]
+[ext_resource type="Script" uid="uid://cogn7slytosua" path="res://Scripts/Actors/Enemy/EnemyDeathComponents/nothing_enemy_death_component.gd" id="3_j1c6b"]
+[ext_resource type="Script" uid="uid://bgf4rrt4il350" path="res://Scripts/Actors/ActorAliveComponents/knight_blocked_actor_alive_component.gd" id="4_wxp4c"]
+[ext_resource type="Texture2D" uid="uid://5vy024ji30ki" path="res://Assets/Sprites/Enemies/Eye.png" id="5_5hhmg"]
+[ext_resource type="Texture2D" uid="uid://c01kdmux1k782" path="res://Assets/Sprites/WarningTile.png" id="6_ydfmq"]
+
+[sub_resource type="Resource" id="Resource_58trk"]
+script = ExtResource("2_o24py")
+enemy_name = "Knight"
+points_on_death = 3
+kills_on_death = 1
+metadata/_custom_type_script = "uid://u50f423e2317"
+
+[sub_resource type="Resource" id="Resource_2n3tg"]
+script = ExtResource("3_j1c6b")
+metadata/_custom_type_script = "uid://cogn7slytosua"
+
+[sub_resource type="Resource" id="Resource_mpw03"]
+script = ExtResource("4_wxp4c")
+metadata/_custom_type_script = "uid://bgf4rrt4il350"
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ixnb"]
+texture = ExtResource("6_ydfmq")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_r2kd0"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_2ixnb")
+
+[node name="Eye" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("actor_action_nodes_parent", "warning_layer")]
+script = ExtResource("1_5hhmg")
+enemy_resource = SubResource("Resource_58trk")
+death_component = SubResource("Resource_2n3tg")
+actor_action_nodes_parent = NodePath("Actions")
+max_ticks = 7
+alive_component = SubResource("Resource_mpw03")
+warning_layer = NodePath("WarningLayer")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733223946]
+z_index = 6
+texture = ExtResource("5_5hhmg")
+hframes = 2
+
+[node name="WarningLayer" type="TileMapLayer" parent="." unique_id=1635689485]
+top_level = true
+z_index = 5
+z_as_relative = false
+tile_set = SubResource("TileSet_r2kd0")
+
+[node name="Actions" type="Node" parent="." unique_id=284076575]

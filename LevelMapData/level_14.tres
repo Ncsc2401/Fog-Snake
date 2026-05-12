@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="MapLevelData" format=3 uid="uid://dxel770ke264r"]
+
+[ext_resource type="Resource" uid="uid://c252koo3i0taw" path="res://LevelMapData/bonus_6.tres" id="1_ye15f"]
+[ext_resource type="PackedScene" uid="uid://dykwrfu2f4pdn" path="res://Levels/level_14.tscn" id="2_7jmsa"]
+[ext_resource type="Script" uid="uid://7wwtq4kmxin" path="res://Scripts/Map/map_level_data.gd" id="3_l12qp"]
+
+[resource]
+script = ExtResource("3_l12qp")
+pos = Vector2i(-1, -1)
+id = 3
+save_name = "level_14"
+level_name = "Gas Gas Gas"
+objective = "Get 20 points"
+level_scene = ExtResource("2_7jmsa")
+down_level = ExtResource("1_ye15f")
+metadata/_custom_type_script = "uid://7wwtq4kmxin"

@@ -3,7 +3,7 @@ extends BaseSnakeComponent
 
 class_name BaseSnakeMiscComponent;
 
-func initialize(snake : BaseSnake):
+func initialize(snake : Snake):
 	super(snake)
 	on_initialize();
 
@@ -13,7 +13,7 @@ func on_initialize();
 
 ## Called every time snake moves
 @abstract
-func on_move(direction : BaseSnake.Directions);
+func on_move(direction : Snake.Directions);
 
 ## Called every frame
 @abstract

@@ -6,7 +6,7 @@
 [resource]
 script = ExtResource("1_fk403")
 pos = Vector2i(2, -7)
-id = 25
+id = 30
 save_name = "challenge_2"
 level_name = "A true trouble"
 objective = "Get 45 points"

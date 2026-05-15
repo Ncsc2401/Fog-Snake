@@ -12,11 +12,6 @@ var level_manager : LevelManager;
 
 @export var alive_component : BaseActorAliveComponent
 
-@export_subgroup("Warning Related")
-@export var warning_layer : TileMapLayer;
-@export var warning_layer_source : int;
-@export var warning_layer_coordinate : Vector2i;
-
 @export_subgroup("Debug", "debug_")
 @export var debug_print_failed_actions : bool = false
 @export var debug_print_brain_data_every_tick : bool = false;

@@ -15,7 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="8_iq75q"]
 [ext_resource type="Script" uid="uid://6qt5wixa50el" path="res://Scripts/Actors/Enemy/enemy_spawn_table_resource.gd" id="9_3ml36"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="9_odvk4"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="10_3ml36"]
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="10_3ml36"]
 [ext_resource type="Script" uid="uid://bcgmgwcdgs13w" path="res://Scripts/Actors/Enemy/enemy_spawn_table_entry_resource.gd" id="10_n2qdp"]
 [ext_resource type="PackedScene" uid="uid://kgrlrl453bow" path="res://Scenes/Enemies/nutcracker.tscn" id="11_pqiv6"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="15_3ml36"]

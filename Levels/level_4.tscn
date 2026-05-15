@@ -14,7 +14,7 @@
 [ext_resource type="Resource" uid="uid://4yb2a65ae6g6" path="res://BoardData/Level4.tres" id="11_6iucq"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="11_y1fcd"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="12_3227t"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="12_ln4nl"]
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="12_ln4nl"]
 [ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/LevelComponents/level_intro.tscn" id="13_lk1ng"]
 
 

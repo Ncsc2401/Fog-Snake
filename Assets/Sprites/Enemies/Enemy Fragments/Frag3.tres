@@ -1,0 +1,7 @@
+[gd_resource type="AtlasTexture" format=3 uid="uid://dxk1inunohv4m"]
+
+[ext_resource type="Texture2D" uid="uid://d25bum7557mum" path="res://Assets/Sprites/Enemies/Enemy Fragments/EnemyDeathParticlesFragments.png" id="1_cyfex"]
+
+[resource]
+atlas = ExtResource("1_cyfex")
+region = Rect2(32, 0, 16, 16)

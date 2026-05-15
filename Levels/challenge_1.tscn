@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="9_1ieg8"]
 [ext_resource type="Resource" uid="uid://bsyl58dianshv" path="res://BoardData/Challenge1.tres" id="9_87uai"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="10_miqvu"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="10_q8dej"]
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="10_q8dej"]
 [ext_resource type="PackedScene" uid="uid://65wep6sjv2bu" path="res://Scenes/Enemies/enemy_spawner.tscn" id="11_lf742"]
 [ext_resource type="Script" uid="uid://6qt5wixa50el" path="res://Scripts/Actors/Enemy/enemy_spawn_table_resource.gd" id="12_l3neo"]
 [ext_resource type="Script" uid="uid://bcgmgwcdgs13w" path="res://Scripts/Actors/Enemy/enemy_spawn_table_entry_resource.gd" id="13_io6xk"]

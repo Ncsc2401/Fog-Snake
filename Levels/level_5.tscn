@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="11_gmfyt"]
 [ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/LevelComponents/level_intro.tscn" id="11_x7gsr"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="12_2jyfw"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="13_308mu"]
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="13_308mu"]
 
 
 

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://qt6chxjqysxc"]
+
+[ext_resource type="Theme" uid="uid://drnrqrrtdyfbm" path="res://Assets/UI/UiTheme.tres" id="1_de23q"]
+[ext_resource type="Script" uid="uid://12iwtumyjc8d" path="res://Scripts/Menu/score.gd" id="2_c7mb3"]
+
+[node name="Score" type="Control" unique_id=56910234]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme = ExtResource("1_de23q")
+script = ExtResource("2_c7mb3")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=323797907]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 31.0
+grow_horizontal = 2
+theme_override_constants/margin_left = 20
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 20
+
+[node name="PointsDisplay" type="Label" parent="MarginContainer" unique_id=1434022859]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "0 Points"
+
+[node name="LevelClearedDisplay" type="Label" parent="MarginContainer" unique_id=131763848]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "(Level Cleared)"
+horizontal_alignment = 2

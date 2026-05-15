@@ -1,0 +1,42 @@
+[gd_resource type="TileSet" format=3 uid="uid://duoqsbiyaxhe8"]
+
+[ext_resource type="Texture2D" uid="uid://cks351e44pyst" path="res://Assets/Sprites/BlindSnake.png" id="1_01spt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xoi54"]
+texture = ExtResource("1_01spt")
+texture_region_size = Vector2i(32, 32)
+0:0/next_alternative_id = 4
+0:0/0 = 0
+0:0/1 = 1
+0:0/1/transpose = true
+0:0/2 = 2
+0:0/2/flip_h = true
+0:0/3 = 3
+0:0/3/flip_v = true
+0:0/3/transpose = true
+1:0/next_alternative_id = 2
+1:0/0 = 0
+1:0/1 = 1
+1:0/1/transpose = true
+2:0/next_alternative_id = 4
+2:0/0 = 0
+2:0/1 = 1
+2:0/1/flip_v = true
+2:0/2 = 2
+2:0/2/flip_h = true
+2:0/2/flip_v = true
+2:0/3 = 3
+2:0/3/flip_h = true
+3:0/next_alternative_id = 4
+3:0/0 = 0
+3:0/1 = 1
+3:0/1/transpose = true
+3:0/2 = 2
+3:0/2/flip_h = true
+3:0/3 = 3
+3:0/3/flip_v = true
+3:0/3/transpose = true
+
+[resource]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_xoi54")

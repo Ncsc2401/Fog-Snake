@@ -19,13 +19,12 @@
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="11_rte40"]
 [ext_resource type="Script" uid="uid://6qt5wixa50el" path="res://Scripts/Actors/Enemy/enemy_spawn_table_resource.gd" id="11_ucoer"]
 [ext_resource type="Script" uid="uid://bcgmgwcdgs13w" path="res://Scripts/Actors/Enemy/enemy_spawn_table_entry_resource.gd" id="12_iw114"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="12_wofqe"]
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="12_wofqe"]
 [ext_resource type="PackedScene" uid="uid://qxled4o5e5od" path="res://Scenes/Enemies/fly.tscn" id="13_rte40"]
 [ext_resource type="PackedScene" uid="uid://bdnbplhqsw7jm" path="res://Scenes/Enemies/ladybug.tscn" id="14_wofqe"]
+[ext_resource type="Script" uid="uid://70dhhop8xt8i" path="res://Scripts/Snakes/SnakeComponents/MiscComponents/base_snake_misc_component.gd" id="16_r0ebs"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="19_wofqe"]
 [ext_resource type="PackedScene" uid="uid://dqk08ixjb43p0" path="res://Scenes/LevelComponents/normal_camera.tscn" id="21_cw1jt"]
-
-
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6qvhk"]
 texture = ExtResource("1_a5i2i")
@@ -121,14 +120,13 @@ initial_enemy_pos = Array[Vector2i]([Vector2i(8, 3), Vector2i(9, 3), Vector2i(-1
 spawn_table_resource = SubResource("Resource_cib7u")
 
 [node name="InvertedSnake" parent="." unique_id=1548924198 node_paths=PackedStringArray("level_manager") instance=ExtResource("5_qraae")]
-makes_move_sounds = false
 initial_body = Array[Vector2i]([Vector2i(8, -8), Vector2i(9, -8), Vector2i(10, -8)])
 initial_direction = 1
 level_manager = NodePath("../LevelManager")
+misc_components = Array[ExtResource("16_r0ebs")]([])
 
 [node name="NormalSnake" parent="." unique_id=1445298191 node_paths=PackedStringArray("level_manager") instance=ExtResource("6_4mlec")]
 initial_body = Array[Vector2i]([Vector2i(-9, 7), Vector2i(-10, 7), Vector2i(-11, 7)])
-initial_direction = 2
 level_manager = NodePath("../LevelManager")
 
 [node name="LevelManager" parent="." unique_id=1303606008 node_paths=PackedStringArray("game_over_menu", "score_ui") instance=ExtResource("7_datb7")]

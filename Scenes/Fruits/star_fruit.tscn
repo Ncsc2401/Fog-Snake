@@ -7,11 +7,15 @@
 [ext_resource type="Script" uid="uid://cffpnm6raml4s" path="res://Scripts/Actors/Fruit/FruitEatComponents/base_fruit_eat_component.gd" id="3_menib"]
 [ext_resource type="Script" uid="uid://bsv7qg871hms6" path="res://Scripts/Actors/Fruit/FruitEatComponents/spawn_random_fruit_eat_component.gd" id="3_otxwe"]
 [ext_resource type="Script" uid="uid://bsbonjfxscb2v" path="res://Scripts/Actors/ActorActions/actor_action_node.gd" id="4_m7eru"]
+[ext_resource type="Script" uid="uid://qj7ef7qhe2ti" path="res://Scripts/Actors/Fruit/FruitEatComponents/particles_fruit_eat_component.gd" id="5_ljjt4"]
+[ext_resource type="AudioStream" uid="uid://4lbtbsibalwf" path="res://Assets/Sounds/EatNew.wav" id="6_2t07u"]
+[ext_resource type="Script" uid="uid://b1k0x8v43wxld" path="res://Scripts/Actors/Fruit/FruitEatComponents/sound_fruit_eat_component.gd" id="7_q28ro"]
 [ext_resource type="Script" uid="uid://cq7uekj2tof0v" path="res://Scripts/Actors/ActorActions/move_in_board_actor_action.gd" id="8_fp4oy"]
 [ext_resource type="Script" uid="uid://bwus0docnk165" path="res://Scripts/Actors/ActorActions/FindActorActionComponents/find_possible_movements_component.gd" id="8_k4fnb"]
 [ext_resource type="Script" uid="uid://o62lini3y70w" path="res://Scripts/Actors/ActorActions/find_actor_action.gd" id="9_vmhw1"]
 [ext_resource type="Script" uid="uid://ctojhqqgqg4yi" path="res://Scripts/Actors/ActorActions/ChooseActorActionComponents/choose_movement_component.gd" id="10_vmhw1"]
 [ext_resource type="Script" uid="uid://duhk2f50srq8n" path="res://Scripts/Actors/ActorActions/choose_actor_action.gd" id="11_srx3c"]
+[ext_resource type="Script" uid="uid://cvl6ps22s2vjf" path="res://Scripts/Actors/ActorActions/warn_actor_action.gd" id="12_srx3c"]
 
 [sub_resource type="Resource" id="Resource_eo6dd"]
 script = ExtResource("2_sdp74")
@@ -23,6 +27,15 @@ metadata/_custom_type_script = "uid://cn37grwtxs5jy"
 [sub_resource type="Resource" id="Resource_vmhw1"]
 script = ExtResource("3_otxwe")
 metadata/_custom_type_script = "uid://bsv7qg871hms6"
+
+[sub_resource type="Resource" id="Resource_wbt3h"]
+script = ExtResource("5_ljjt4")
+metadata/_custom_type_script = "uid://qj7ef7qhe2ti"
+
+[sub_resource type="Resource" id="Resource_7q4yh"]
+script = ExtResource("7_q28ro")
+eat_sound = ExtResource("6_2t07u")
+metadata/_custom_type_script = "uid://b1k0x8v43wxld"
 
 [sub_resource type="Resource" id="Resource_fp4oy"]
 script = ExtResource("3_a45tu")
@@ -47,17 +60,31 @@ script = ExtResource("11_srx3c")
 choose_component = SubResource("Resource_dxy4s")
 metadata/_custom_type_script = "uid://duhk2f50srq8n"
 
+[sub_resource type="Resource" id="Resource_q28ro"]
+script = ExtResource("12_srx3c")
+warning_type = 1
+warn_position_key = "NextBoardMovement"
+action_tick = 3
+action_priority = 2
+metadata/_custom_type_script = "uid://cvl6ps22s2vjf"
+
+[sub_resource type="Resource" id="Resource_rnqgu"]
+script = ExtResource("12_srx3c")
+operation = 2
+action_tick = 5
+metadata/_custom_type_script = "uid://cvl6ps22s2vjf"
+
 [sub_resource type="Resource" id="Resource_k4fnb"]
 script = ExtResource("8_fp4oy")
 action_tick = 5
-action_priority = 2
+action_priority = 1
 metadata/_custom_type_script = "uid://cq7uekj2tof0v"
 
 [node name="StarFruit" type="Node2D" unique_id=772311244 node_paths=PackedStringArray("actor_action_nodes_parent")]
 z_index = 6
 script = ExtResource("1_sdp74")
 fruit_resource = SubResource("Resource_eo6dd")
-fruit_eat_components = Array[ExtResource("3_menib")]([SubResource("Resource_vmhw1")])
+fruit_eat_components = Array[ExtResource("3_menib")]([SubResource("Resource_vmhw1"), SubResource("Resource_wbt3h"), SubResource("Resource_7q4yh")])
 actor_action_nodes_parent = NodePath("ActorActions")
 max_ticks = 5
 alive_component = SubResource("Resource_fp4oy")
@@ -67,17 +94,27 @@ texture = ExtResource("1_u3ljt")
 
 [node name="ActorActions" type="Node" parent="." unique_id=280436264]
 
-[node name="5_0-FindMoves" type="Node" parent="ActorActions" unique_id=393594787]
+[node name="3_0-FindMoves" type="Node" parent="ActorActions" unique_id=393594787]
 script = ExtResource("4_m7eru")
 actor_action = SubResource("Resource_ljjt4")
 metadata/_custom_type_script = "uid://bsbonjfxscb2v"
 
-[node name="5_1-ChooseMove" type="Node" parent="ActorActions" unique_id=1595542896]
+[node name="3_1-ChooseMove" type="Node" parent="ActorActions" unique_id=1595542896]
 script = ExtResource("4_m7eru")
 actor_action = SubResource("Resource_2t07u")
 metadata/_custom_type_script = "uid://bsbonjfxscb2v"
 
-[node name="5_2-Move" type="Node" parent="ActorActions" unique_id=197212395]
+[node name="3_2-Warn" type="Node" parent="ActorActions" unique_id=1238031233]
+script = ExtResource("4_m7eru")
+actor_action = SubResource("Resource_q28ro")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="5_0-ClearWarnings" type="Node" parent="ActorActions" unique_id=1366777709]
+script = ExtResource("4_m7eru")
+actor_action = SubResource("Resource_rnqgu")
+metadata/_custom_type_script = "uid://bsbonjfxscb2v"
+
+[node name="5_1-Move" type="Node" parent="ActorActions" unique_id=197212395]
 script = ExtResource("4_m7eru")
 actor_action = SubResource("Resource_k4fnb")
 metadata/_custom_type_script = "uid://bsbonjfxscb2v"

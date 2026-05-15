@@ -14,9 +14,12 @@
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="11_anq7m"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="11_stune"]
 [ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/LevelComponents/level_intro.tscn" id="12_stune"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="12_tqhtx"]
-
-
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="12_tqhtx"]
+[ext_resource type="Script" uid="uid://bgi5ncm7b48j0" path="res://Scripts/Music/music_player_api_node.gd" id="13_o4niv"]
+[ext_resource type="Script" uid="uid://doe5hq533g8tc" path="res://Scripts/Music/MusicPlayerActions/base_music_player_api_action.gd" id="14_04h4j"]
+[ext_resource type="AudioStream" uid="uid://c6yl5wckkynci" path="res://Assets/Music/ScarySoudtrack.wav" id="15_v8ab4"]
+[ext_resource type="Script" uid="uid://b6qie068ife0i" path="res://Scripts/Music/MusicPlayerActions/play_music_player_api_action.gd" id="16_anq7m"]
+[ext_resource type="Script" uid="uid://b87pm136o7g0t" path="res://Scripts/Music/MusicPlayerActions/change_playback_music_player_api_action.gd" id="17_04h4j"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xc2cj"]
 texture = ExtResource("1_bc2tp")
@@ -51,6 +54,16 @@ script = ExtResource("11_stune")
 points_to_win = 1
 metadata/_custom_type_script = "uid://dh5gms1csyc1n"
 
+[sub_resource type="Resource" id="Resource_tqhtx"]
+script = ExtResource("16_anq7m")
+music = ExtResource("15_v8ab4")
+metadata/_custom_type_script = "uid://b6qie068ife0i"
+
+[sub_resource type="Resource" id="Resource_v8ab4"]
+script = ExtResource("17_04h4j")
+new_playback = 1
+metadata/_custom_type_script = "uid://b87pm136o7g0t"
+
 [node name="Maze1" type="Node2D" unique_id=1990779035]
 
 [node name="BackgroundLayer" type="TileMapLayer" parent="." unique_id=359924269]
@@ -84,6 +97,11 @@ score_ui = NodePath("../UI/Score")
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1947359457]
 
 [node name="LevelIntro" parent="." unique_id=39525408 instance=ExtResource("12_stune")]
+
+[node name="MusicPlayerAPINode" type="Node" parent="." unique_id=1434319339]
+script = ExtResource("13_o4niv")
+music_player_api_actions = Array[ExtResource("14_04h4j")]([SubResource("Resource_tqhtx"), SubResource("Resource_v8ab4")])
+metadata/_custom_type_script = "uid://bgi5ncm7b48j0"
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=1391929785]
 

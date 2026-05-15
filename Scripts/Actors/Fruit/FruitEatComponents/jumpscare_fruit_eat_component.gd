@@ -17,10 +17,12 @@ func on_eat():
 	var bunny_image : TextureRect = control_node.get_node("BunnyImage");
 	var bunny_sound : AudioStreamPlayer = control_node.get_node("BunnySound");
 	
+	MusicPlayer.stop();
+	
 	if SaveManager.current_settings.jumpscares:
 		jumpscare_image.show();
 		jumpscare_sound.play();
-		await bunny_sound.finish
+		await jumpscare_sound.finished
 		
 	else:
 		bunny_image.show();

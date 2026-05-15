@@ -13,6 +13,7 @@ func change_scene_to_level(level_scene : PackedScene):
 ## Changes the scene to the map also unpauses the game if paused and updates game state to map
 func change_scene_to_map():
 	GameState.game_state = GameState.MAP
+	MusicPlayer.reset();
 	change_scene(MAP)
 	await Transition.TransitionEnded
 	GameState.unpause_game()
@@ -20,6 +21,7 @@ func change_scene_to_map():
 ## Changes scene to the main menu scene, also unpauses the game if paused and updates game state to menu
 func change_scene_to_main_menu():
 	GameState.game_state = GameState.MENU
+	MusicPlayer.reset();
 	change_scene(MAIN_MENU);
 	await Transition.TransitionEnded
 	GameState.unpause_game()

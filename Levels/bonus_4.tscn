@@ -13,7 +13,7 @@
 [ext_resource type="Script" uid="uid://8b7rjkcyq8sv" path="res://Scripts/WinConditions/fill_whole_board_condition.gd" id="10_ie3ed"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="12_lyaby"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="13_41121"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="14_mwjjq"]
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="14_mwjjq"]
 
 
 [sub_resource type="Resource" id="Resource_utic7"]

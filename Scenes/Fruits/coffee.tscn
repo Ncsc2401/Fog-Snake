@@ -7,7 +7,9 @@
 [ext_resource type="Script" uid="uid://btcixgm240p1c" path="res://Scripts/Actors/Fruit/FruitEatComponents/change_game_speed_eat_component.gd" id="4_k8s04"]
 [ext_resource type="Script" uid="uid://bsv7qg871hms6" path="res://Scripts/Actors/Fruit/FruitEatComponents/spawn_random_fruit_eat_component.gd" id="5_g2slg"]
 [ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="6_ckxp1"]
-
+[ext_resource type="Script" uid="uid://qj7ef7qhe2ti" path="res://Scripts/Actors/Fruit/FruitEatComponents/particles_fruit_eat_component.gd" id="6_jl4na"]
+[ext_resource type="AudioStream" uid="uid://4lbtbsibalwf" path="res://Assets/Sounds/EatNew.wav" id="7_g2slg"]
+[ext_resource type="Script" uid="uid://b1k0x8v43wxld" path="res://Scripts/Actors/Fruit/FruitEatComponents/sound_fruit_eat_component.gd" id="8_ckxp1"]
 
 [sub_resource type="Resource" id="Resource_kft1u"]
 script = ExtResource("2_6trnm")
@@ -26,6 +28,15 @@ metadata/_custom_type_script = "uid://btcixgm240p1c"
 script = ExtResource("5_g2slg")
 metadata/_custom_type_script = "uid://bsv7qg871hms6"
 
+[sub_resource type="Resource" id="Resource_k8s04"]
+script = ExtResource("6_jl4na")
+metadata/_custom_type_script = "uid://qj7ef7qhe2ti"
+
+[sub_resource type="Resource" id="Resource_exrrl"]
+script = ExtResource("8_ckxp1")
+eat_sound = ExtResource("7_g2slg")
+metadata/_custom_type_script = "uid://b1k0x8v43wxld"
+
 [sub_resource type="Resource" id="Resource_md2by"]
 script = ExtResource("6_ckxp1")
 metadata/_custom_type_script = "uid://bod7gi7o0sngf"
@@ -34,7 +45,7 @@ metadata/_custom_type_script = "uid://bod7gi7o0sngf"
 z_index = 6
 script = ExtResource("1_nuipn")
 fruit_resource = SubResource("Resource_kft1u")
-fruit_eat_components = Array[ExtResource("3_jl4na")]([SubResource("Resource_8anr4"), SubResource("Resource_3t3xs")])
+fruit_eat_components = Array[ExtResource("3_jl4na")]([SubResource("Resource_8anr4"), SubResource("Resource_3t3xs"), SubResource("Resource_k8s04"), SubResource("Resource_exrrl")])
 actor_action_nodes_parent = NodePath("Actions")
 alive_component = SubResource("Resource_md2by")
 

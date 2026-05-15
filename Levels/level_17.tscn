@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="13_nnxsd"]
 [ext_resource type="PackedScene" uid="uid://b0hrkqmtgu7f6" path="res://Scenes/Enemies/spider.tscn" id="14_ont82"]
 [ext_resource type="PackedScene" uid="uid://c5dee402455iu" path="res://Scenes/Snakes/normal_snake.tscn" id="14_p0oxb"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="14_qxbtl"]
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="14_qxbtl"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="16_q05pf"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_hk8gq"]

@@ -16,7 +16,7 @@
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="9_fr7jg"]
 [ext_resource type="Script" uid="uid://bcgmgwcdgs13w" path="res://Scripts/Actors/Enemy/enemy_spawn_table_entry_resource.gd" id="9_wn8wr"]
 [ext_resource type="PackedScene" uid="uid://b0hrkqmtgu7f6" path="res://Scenes/Enemies/spider.tscn" id="10_eis2c"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="10_wn8wr"]
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="10_wn8wr"]
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="14_fr7jg"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_dpim3"]
@@ -81,7 +81,7 @@ spawn_table_resource = SubResource("Resource_fr7jg")
 
 [node name="EnemySpawner" parent="." unique_id=1146343413 node_paths=PackedStringArray("level_manager") instance=ExtResource("4_s8tgt")]
 level_manager = NodePath("../LevelManager")
-initial_enemy_pos = Array[Vector2i]([Vector2i(2, -4), Vector2i(4, -5), Vector2i(4, 2), Vector2i(2, 4), Vector2i(4, 4)])
+initial_enemy_pos = Array[Vector2i]([Vector2i(4, -5), Vector2i(4, 2), Vector2i(2, 4), Vector2i(4, 4)])
 spawn_table_resource = SubResource("Resource_lc2vk")
 
 [node name="NormalSnake" parent="." unique_id=1548924198 node_paths=PackedStringArray("level_manager") instance=ExtResource("5_c7igk")]

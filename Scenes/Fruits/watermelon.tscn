@@ -6,7 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://dfshjr0cl0x7" path="res://Assets/Sprites/Fruits/Watermeon.png" id="3_jhtj6"]
 [ext_resource type="Script" uid="uid://bsv7qg871hms6" path="res://Scripts/Actors/Fruit/FruitEatComponents/spawn_random_fruit_eat_component.gd" id="4_c3aug"]
 [ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="5_24807"]
-
+[ext_resource type="Script" uid="uid://qj7ef7qhe2ti" path="res://Scripts/Actors/Fruit/FruitEatComponents/particles_fruit_eat_component.gd" id="5_c3aug"]
+[ext_resource type="AudioStream" uid="uid://4lbtbsibalwf" path="res://Assets/Sounds/EatNew.wav" id="6_andti"]
+[ext_resource type="Script" uid="uid://b1k0x8v43wxld" path="res://Scripts/Actors/Fruit/FruitEatComponents/sound_fruit_eat_component.gd" id="7_k3ss1"]
 
 [sub_resource type="Resource" id="Resource_jhtj6"]
 script = ExtResource("2_eewg5")
@@ -19,6 +21,15 @@ metadata/_custom_type_script = "uid://cn37grwtxs5jy"
 script = ExtResource("4_c3aug")
 metadata/_custom_type_script = "uid://bsv7qg871hms6"
 
+[sub_resource type="Resource" id="Resource_andti"]
+script = ExtResource("5_c3aug")
+metadata/_custom_type_script = "uid://qj7ef7qhe2ti"
+
+[sub_resource type="Resource" id="Resource_bpbfv"]
+script = ExtResource("7_k3ss1")
+eat_sound = ExtResource("6_andti")
+metadata/_custom_type_script = "uid://b1k0x8v43wxld"
+
 [sub_resource type="Resource" id="Resource_c3aug"]
 script = ExtResource("5_24807")
 metadata/_custom_type_script = "uid://bod7gi7o0sngf"
@@ -27,7 +38,7 @@ metadata/_custom_type_script = "uid://bod7gi7o0sngf"
 z_index = 6
 script = ExtResource("1_0h0bw")
 fruit_resource = SubResource("Resource_jhtj6")
-fruit_eat_components = Array[ExtResource("3_24807")]([SubResource("Resource_6vqot")])
+fruit_eat_components = Array[ExtResource("3_24807")]([SubResource("Resource_6vqot"), SubResource("Resource_andti"), SubResource("Resource_bpbfv")])
 actor_action_nodes_parent = NodePath("Node")
 alive_component = SubResource("Resource_c3aug")
 

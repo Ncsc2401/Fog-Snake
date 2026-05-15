@@ -66,6 +66,9 @@ func process_requests():
 			match attribute:
 				RANDOM_POSITION_ATTRIBUTE:
 					if status == STATUS_READY:
+						if get_random_position() == null:
+							spawn_request.status = STATUS_FAILED;
+							continue
 						spawn_request.pos = get_random_position()
 				RANDOM_SCENE_ATTRIBUTE:
 					if status == STATUS_READY:

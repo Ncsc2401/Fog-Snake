@@ -14,8 +14,11 @@
 [ext_resource type="PackedScene" uid="uid://du2x418ndfjad" path="res://Scenes/LevelComponents/dynamic_camera.tscn" id="10_negmx"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="11_ph6xp"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="12_7ad75"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="13_x8vfn"]
-
+[ext_resource type="Script" uid="uid://bgi5ncm7b48j0" path="res://Scripts/Music/music_player_api_node.gd" id="13_5cc1u"]
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="13_x8vfn"]
+[ext_resource type="Script" uid="uid://doe5hq533g8tc" path="res://Scripts/Music/MusicPlayerActions/base_music_player_api_action.gd" id="14_axgm3"]
+[ext_resource type="AudioStream" uid="uid://c6yl5wckkynci" path="res://Assets/Music/ScarySoudtrack.wav" id="15_8xlqv"]
+[ext_resource type="Script" uid="uid://b6qie068ife0i" path="res://Scripts/Music/MusicPlayerActions/play_music_player_api_action.gd" id="16_negmx"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6qvhk"]
 texture = ExtResource("1_uo7n7")
@@ -50,6 +53,11 @@ script = ExtResource("10_m163e")
 points_to_win = 1
 metadata/_custom_type_script = "uid://dh5gms1csyc1n"
 
+[sub_resource type="Resource" id="Resource_ph6xp"]
+script = ExtResource("16_negmx")
+music = ExtResource("15_8xlqv")
+metadata/_custom_type_script = "uid://b6qie068ife0i"
+
 [node name="Bonus7" type="Node2D" unique_id=1566722920]
 
 [node name="WallLayer" type="TileMapLayer" parent="." unique_id=242907570]
@@ -83,6 +91,11 @@ game_over_menu = NodePath("../UI/GameOverMenu")
 score_ui = NodePath("../UI/Score")
 
 [node name="LevelIntro" parent="." unique_id=39525408 instance=ExtResource("9_8xlqv")]
+
+[node name="MusicPlayerAPINode" type="Node" parent="." unique_id=656788282]
+script = ExtResource("13_5cc1u")
+music_player_api_actions = Array[ExtResource("14_axgm3")]([SubResource("Resource_ph6xp")])
+metadata/_custom_type_script = "uid://bgi5ncm7b48j0"
 
 [node name="UI" type="CanvasLayer" parent="." unique_id=990025321]
 

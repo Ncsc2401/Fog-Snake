@@ -19,10 +19,9 @@
 [ext_resource type="Script" uid="uid://dh5gms1csyc1n" path="res://Scripts/WinConditions/points_win_condition.gd" id="9_ekitg"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="10_bvt5n"]
 [ext_resource type="Script" uid="uid://6qt5wixa50el" path="res://Scripts/Actors/Enemy/enemy_spawn_table_resource.gd" id="10_lanlt"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="11_lanlt"]
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="11_lanlt"]
 [ext_resource type="Script" uid="uid://bcgmgwcdgs13w" path="res://Scripts/Actors/Enemy/enemy_spawn_table_entry_resource.gd" id="11_p46nt"]
-
-
+[ext_resource type="Script" uid="uid://70dhhop8xt8i" path="res://Scripts/Snakes/SnakeComponents/MiscComponents/base_snake_misc_component.gd" id="13_p46nt"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6qvhk"]
 texture = ExtResource("1_k83ce")
@@ -94,10 +93,10 @@ level_manager = NodePath("../LevelManager")
 spawn_table_resource = SubResource("Resource_pi137")
 
 [node name="InvertedSnake" parent="." unique_id=1548924198 node_paths=PackedStringArray("level_manager") instance=ExtResource("5_0es07")]
-makes_move_sounds = false
 initial_body = Array[Vector2i]([Vector2i(6, -3), Vector2i(6, -4), Vector2i(6, -5)])
 initial_direction = 8
 level_manager = NodePath("../LevelManager")
+misc_components = Array[ExtResource("13_p46nt")]([])
 
 [node name="NormalSnake" parent="." unique_id=394383775 node_paths=PackedStringArray("level_manager") instance=ExtResource("6_ekitg")]
 initial_body = Array[Vector2i]([Vector2i(-7, 2), Vector2i(-7, 3), Vector2i(-7, 4)])

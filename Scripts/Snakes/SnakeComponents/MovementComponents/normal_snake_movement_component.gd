@@ -3,11 +3,6 @@ extends BaseSnakeMovementComponent
 class_name NormalSnakeMovementComponent;
 
 func move(move_direction : Snake.Directions):
-	snake.play_movement_sounds()
-	
-	# Saves the last direction the snake moved
-	snake.last_direction = snake.direction
-	
 	# Next pos it will move
 	var next : Vector2i = snake.head.pos + snake.direction_to_vector[move_direction]
 	

@@ -22,8 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://bdnbplhqsw7jm" path="res://Scenes/Enemies/ladybug.tscn" id="11_51x5u"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="12_n7dqa"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="13_8yr6x"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="14_scek3"]
-
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="14_scek3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ct1fp"]
 texture = ExtResource("1_sessf")
@@ -194,18 +193,27 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=1804699565]
+[node name="VBoxContainer2" type="VBoxContainer" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer" unique_id=497715785]
 layout_mode = 2
-theme_override_constants/separation = 50
+
+[node name="Rarity1" type="Label" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=640401064]
+layout_mode = 2
+text = "RArity"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2" unique_id=1804699565]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 75
 alignment = 1
 
-[node name="Choice1" type="Label" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=865614026]
+[node name="Choice1" type="Label" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=865614026]
 layout_mode = 2
 text = "Option a"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Choice1Button" type="Button" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer" unique_id=812621644]
+[node name="Choice1Button" type="Button" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=812621644]
 custom_minimum_size = Vector2(160, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -222,17 +230,26 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBoxContainer" type="VBoxContainer" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2/MarginContainer" unique_id=567768016]
+[node name="VBoxContainer2" type="VBoxContainer" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2/MarginContainer" unique_id=134873880]
 layout_mode = 2
-theme_override_constants/separation = 50
-alignment = 1
 
-[node name="Choice2" type="Label" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=714612977]
+[node name="Rarity2" type="Label" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2" unique_id=2032058031]
+layout_mode = 2
+text = "Rartirt"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2" unique_id=567768016]
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_constants/separation = 75
+alignment = 2
+
+[node name="Choice2" type="Label" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=714612977]
 layout_mode = 2
 text = "Option B"
 horizontal_alignment = 1
 
-[node name="Choice2Button" type="Button" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer" unique_id=1659737851]
+[node name="Choice2Button" type="Button" parent="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer" unique_id=1659737851]
 custom_minimum_size = Vector2(160, 60)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -250,5 +267,5 @@ visible = false
 
 [node name="Score" parent="UI" unique_id=56910234 instance=ExtResource("14_scek3")]
 
-[connection signal="pressed" from="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer/Choice1Button" to="ChoicesGiver" method="_on_choice_1_button_pressed"]
-[connection signal="pressed" from="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer/Choice2Button" to="ChoicesGiver" method="_on_choice_2_button_pressed"]
+[connection signal="pressed" from="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer/MarginContainer/VBoxContainer2/VBoxContainer/Choice1Button" to="ChoicesGiver" method="_on_choice_1_button_pressed"]
+[connection signal="pressed" from="ChoicesGiver/CanvasLayer/ChoicesMenu/MarginContainer/VBoxContainer/CenterContainer/HBoxContainer/PanelContainer2/MarginContainer/VBoxContainer2/VBoxContainer/Choice2Button" to="ChoicesGiver" method="_on_choice_2_button_pressed"]

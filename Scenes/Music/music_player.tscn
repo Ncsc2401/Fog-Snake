@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://312c6nj83kkc"]
+
+[ext_resource type="Script" uid="uid://dsltso1a3lo25" path="res://Scripts/Music/music_player.gd" id="1_p30cf"]
+
+[node name="MusicPlayer" type="Node" unique_id=1700407986]
+process_mode = 3
+script = ExtResource("1_p30cf")
+
+[node name="Player1" type="AudioStreamPlayer" parent="." unique_id=1877152086]
+autoplay = true
+bus = &"Music"
+
+[node name="Player2" type="AudioStreamPlayer" parent="." unique_id=1615420741]
+volume_db = -80.0
+bus = &"Music"
+
+[connection signal="finished" from="Player1" to="." method="_on_player_1_finished"]
+[connection signal="finished" from="Player2" to="." method="_on_player_2_finished"]

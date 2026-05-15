@@ -81,10 +81,6 @@ var direction_to_angle : Dictionary[Directions, float] = {
 ## Tile map layer where the snake is drawn
 @export var snake_layer: TileMapLayer;
 
-@export_subgroup("Sound Related")
-@export var sound_controller : SoundController;
-@export var makes_move_sounds : bool = true;
-
 @export_subgroup("Components")
 @export var death_component : BaseSnakeDeathComponent;
 @export var draw_component : BaseSnakeDrawComponent
@@ -243,23 +239,6 @@ func clear_snake():
 func force_clear_snake():
 	snake_layer.clear()
 
-func play_movement_sounds():
-	if makes_move_sounds == false:
-		return;
-	
-	if sound_controller == null:
-		print("Missing sound controller");
-		return
-	
-	if direction == Directions.UP && last_direction != Directions.UP:
-		sound_controller.play_sound("Up")
-	elif direction == Directions.LEFT && last_direction != Directions.LEFT:
-		sound_controller.play_sound("Left")
-	elif direction == Directions.DOWN && last_direction != Directions.DOWN:
-		sound_controller.play_sound("Down")
-	elif direction == Directions.RIGHT && last_direction != Directions.RIGHT:
-		sound_controller.play_sound("Right")
-
 func draw_snake():
 	if is_dead:
 		return;
@@ -270,9 +249,6 @@ func draw_snake():
 func move():
 	if is_dead:
 		return;
-	
-	# Saves the last direction the snake moved
-	last_direction = direction
 	
 	# Get new direction
 	var possible_movement : Directions = Directions.RIGHT
@@ -295,6 +271,9 @@ func move():
 	for misc_component in l_misc_components:
 		if misc_component.is_initialized:
 			misc_component.on_move(direction);
+	
+	# Saves the last direction the snake moved
+	last_direction = direction
 
 func die():
 	if is_dead:

@@ -2,6 +2,8 @@ extends Node2D
 
 class_name LevelManager
 
+const VICTORY_SOUND = preload("uid://c8hs85mjrx0w0")
+
 var points = 0;
 var kills = 0;
 var won : bool = false;
@@ -86,6 +88,13 @@ func on_game_over():
 func check_victory():
 	if win_condition.check_win() && !won:
 		won = true;
+		score_ui.display_level_cleared()
+		SoundNode.play_sound(
+			VICTORY_SOUND, 
+			SoundNode.AudioBuses.SOUND_EFFECTS,
+			get_tree()
+		);
+		
 		winning_tick = GlobalSignals.ticks;
 
 func tick_logic():

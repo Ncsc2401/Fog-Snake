@@ -15,8 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://p5d6nykafa2t" path="res://Scenes/Fruits/star_fruit.tscn" id="7_47ssx"]
 [ext_resource type="PackedScene" uid="uid://bv1frym08dq8u" path="res://Scenes/LevelComponents/level_intro.tscn" id="7_ykdpc"]
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="8_7f8ay"]
+[ext_resource type="Script" uid="uid://70dhhop8xt8i" path="res://Scripts/Snakes/SnakeComponents/MiscComponents/base_snake_misc_component.gd" id="9_3euda"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="9_kftsw"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="10_3euda"]
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="10_3euda"]
 [ext_resource type="Script" uid="uid://8b7rjkcyq8sv" path="res://Scripts/WinConditions/fill_whole_board_condition.gd" id="14_kftsw"]
 
 [sub_resource type="Resource" id="Resource_04esj"]
@@ -81,21 +82,21 @@ level_manager = NodePath("../LevelManager")
 [node name="MirrorSnake" parent="." unique_id=1066729875 node_paths=PackedStringArray("level_manager") instance=ExtResource("5_ht4oe")]
 initial_body = Array[Vector2i]([Vector2i(-11, -1), Vector2i(-12, -1)])
 level_manager = NodePath("../LevelManager")
-makes_move_sounds = false
 input_component = SubResource("Resource_kftsw")
+misc_components = Array[ExtResource("9_3euda")]([])
 
 [node name="MirrorSnake2" parent="." unique_id=473156214 node_paths=PackedStringArray("level_manager") instance=ExtResource("5_ht4oe")]
 initial_body = Array[Vector2i]([Vector2i(10, 0), Vector2i(11, 0)])
 initial_direction = 1
 level_manager = NodePath("../LevelManager")
-makes_move_sounds = false
 input_component = SubResource("Resource_xjgkl")
+misc_components = Array[ExtResource("9_3euda")]([])
 
 [node name="InvertedSnake" parent="." unique_id=1784489856 node_paths=PackedStringArray("level_manager") instance=ExtResource("7_7f8ay")]
 initial_body = Array[Vector2i]([Vector2i(10, -1), Vector2i(11, -1)])
 initial_direction = 1
 level_manager = NodePath("../LevelManager")
-makes_move_sounds = false
+misc_components = Array[ExtResource("9_3euda")]([])
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1022288373]
 

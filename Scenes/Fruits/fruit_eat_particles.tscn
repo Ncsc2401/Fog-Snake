@@ -1,0 +1,74 @@
+[gd_scene format=3 uid="uid://qavg853sbi05"]
+
+[ext_resource type="Script" uid="uid://brfb7741g0yvj" path="res://Scripts/Actors/Fruit/fruit_eat_particles.gd" id="1_0ukfb"]
+[ext_resource type="Texture2D" uid="uid://dntdkr3nqhrpr" path="res://Assets/Sprites/FruitEatParticlesFragments.png" id="2_b1pl6"]
+[ext_resource type="Texture2D" uid="uid://c1h3o0d8e1jy0" path="res://Assets/Sprites/FruitEatParticlesJuice.png" id="3_rgx17"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_psc1t"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_h3jv2"]
+offsets = PackedFloat32Array(0, 0.6625442, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jy5hn"]
+gradient = SubResource("Gradient_h3jv2")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_4d06q"]
+particle_flag_disable_z = true
+angle_min = -4.9999895
+angle_max = 5.000011
+spread = 180.0
+initial_velocity_min = 30.0
+initial_velocity_max = 60.0
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -25.000002
+linear_accel_max = -20.000002
+scale_max = 1.5
+color_ramp = SubResource("GradientTexture1D_jy5hn")
+anim_offset_max = 1.0
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_i5pnm"]
+particles_animation = true
+particles_anim_h_frames = 3
+particles_anim_v_frames = 2
+particles_anim_loop = false
+
+[sub_resource type="Gradient" id="Gradient_yyvk4"]
+offsets = PackedFloat32Array(0, 0.54946995, 1)
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_nnfch"]
+gradient = SubResource("Gradient_yyvk4")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8tlrc"]
+particle_flag_disable_z = true
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_nnfch")
+anim_offset_max = 1.0
+
+[node name="FruitEatParticles" type="Node2D" unique_id=1928100461]
+script = ExtResource("1_0ukfb")
+
+[node name="FruitFragments" type="GPUParticles2D" parent="." unique_id=616532623]
+z_index = 1
+material = SubResource("CanvasItemMaterial_psc1t")
+emitting = false
+amount = 5
+texture = ExtResource("2_b1pl6")
+lifetime = 2.5
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_4d06q")
+
+[node name="FruitJuice" type="GPUParticles2D" parent="." unique_id=1383247259]
+material = SubResource("CanvasItemMaterial_i5pnm")
+emitting = false
+amount = 1
+texture = ExtResource("3_rgx17")
+lifetime = 3.0
+one_shot = true
+process_material = SubResource("ParticleProcessMaterial_8tlrc")

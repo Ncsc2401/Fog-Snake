@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://cedmegqdgql04"]
+
+[ext_resource type="Texture2D" uid="uid://cbb2kgc4dg4yu" path="res://Assets/Sprites/WarningTileMap.png" id="1_r24pt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0214d"]
+texture = ExtResource("1_r24pt")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_ykflu"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_0214d")
+
+[node name="WarningLayer" type="TileMapLayer" unique_id=339183410]
+top_level = true
+z_index = 5
+z_as_relative = false
+tile_set = SubResource("TileSet_ykflu")

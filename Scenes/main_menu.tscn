@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dtyijfkkxbnrd" path="res://Assets/Sprites/AbsurdismText.png" id="4_cp0ys"]
 [ext_resource type="Texture2D" uid="uid://bsblyqxcc7h1u" path="res://Assets/Sprites/SnakeText.png" id="5_yhxw7"]
 [ext_resource type="Texture2D" uid="uid://dlm7vj45xhfqt" path="res://Assets/Sprites/ExclamationMarkText.png" id="6_trj04"]
+[ext_resource type="PackedScene" uid="uid://dnbis0hyb6sf4" path="res://Scenes/Enemies/enemy_death_particles.tscn" id="8_yhxw7"]
+[ext_resource type="PackedScene" uid="uid://qavg853sbi05" path="res://Scenes/Fruits/fruit_eat_particles.tscn" id="9_trj04"]
+[ext_resource type="Shader" uid="uid://cc1ipwtp83dcj" path="res://transition_shader.gdshader" id="10_16hvj"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_48xlc"]
 line_spacing = 8.0
@@ -100,6 +103,12 @@ _data = {
 &"Intro": SubResource("Animation_cp0ys"),
 &"RESET": SubResource("Animation_yhxw7")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vr1f0"]
+shader = ExtResource("10_16hvj")
+shader_parameter/band_amount = 3.0
+shader_parameter/progress = 0.20000000298024
+shader_parameter/transition_color = Color(0, 0, 0, 1)
 
 [node name="MainMenu" type="Control" unique_id=527600818]
 layout_mode = 3
@@ -316,6 +325,21 @@ text = "Yes"
 
 [node name="IntroPlayer" type="AnimationPlayer" parent="." unique_id=559276652]
 libraries/ = SubResource("AnimationLibrary_trj04")
+
+[node name="ShaderInit" type="Node2D" parent="." unique_id=1564405773]
+position = Vector2(-660, 379)
+
+[node name="EnemyDeathParticles" parent="ShaderInit" unique_id=949205864 instance=ExtResource("8_yhxw7")]
+on_ready = true
+
+[node name="FruitEatParticles" parent="ShaderInit" unique_id=1928100461 instance=ExtResource("9_trj04")]
+on_ready = true
+
+[node name="TextureRect2" type="ColorRect" parent="ShaderInit" unique_id=697214937]
+material = SubResource("ShaderMaterial_vr1f0")
+offset_left = -1.0
+offset_right = 39.0
+offset_bottom = 40.0
 
 [connection signal="pressed" from="MainMenuButtons/MarginContainer/VBoxContainer/ContinueButton" to="." method="_on_continue_button_pressed"]
 [connection signal="pressed" from="MainMenuButtons/MarginContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]

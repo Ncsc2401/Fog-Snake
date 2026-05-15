@@ -14,9 +14,9 @@
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="8_pfrfi"]
 [ext_resource type="PackedScene" uid="uid://c2byxgf4uejvt" path="res://Scenes/Snakes/mirror_snake.tscn" id="8_rhodt"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="9_g6dun"]
+[ext_resource type="Script" uid="uid://70dhhop8xt8i" path="res://Scripts/Snakes/SnakeComponents/MiscComponents/base_snake_misc_component.gd" id="9_pfrfi"]
 [ext_resource type="PackedScene" uid="uid://c5dee402455iu" path="res://Scenes/Snakes/normal_snake.tscn" id="9_rhodt"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="10_kdvns"]
-
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="10_kdvns"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wswhm"]
 texture = ExtResource("1_7lp18")
@@ -77,7 +77,7 @@ spawn_table_resource = SubResource("Resource_g6dun")
 [node name="MirrorSnake" parent="." unique_id=1548924198 node_paths=PackedStringArray("level_manager") instance=ExtResource("8_rhodt")]
 initial_body = Array[Vector2i]([Vector2i(-5, -1), Vector2i(-6, -1), Vector2i(-7, -1)])
 level_manager = NodePath("../LevelManager")
-makes_move_sounds = false
+misc_components = Array[ExtResource("9_pfrfi")]([])
 
 [node name="NormalSnake" parent="." unique_id=1398910043 node_paths=PackedStringArray("level_manager") instance=ExtResource("9_rhodt")]
 initial_body = Array[Vector2i]([Vector2i(-5, 0), Vector2i(-6, 0), Vector2i(-7, 0)])

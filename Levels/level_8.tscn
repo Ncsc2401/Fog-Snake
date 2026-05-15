@@ -20,7 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://c0ab63kyjl08a" path="res://Scenes/UI/in_game_menu.tscn" id="16_hieim"]
 [ext_resource type="PackedScene" uid="uid://du2x418ndfjad" path="res://Scenes/LevelComponents/dynamic_camera.tscn" id="16_p81r4"]
 [ext_resource type="PackedScene" uid="uid://civhkml0xs3an" path="res://Scenes/UI/game_over_menu.tscn" id="17_uwxm2"]
-[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/score.tscn" id="18_vpkf0"]
+[ext_resource type="PackedScene" uid="uid://qt6chxjqysxc" path="res://Scenes/UI/ui.tscn" id="18_vpkf0"]
 
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ffmle"]

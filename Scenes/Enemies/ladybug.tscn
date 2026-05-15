@@ -3,16 +3,18 @@
 [ext_resource type="Script" uid="uid://dc2pgdqlx4j8x" path="res://Scripts/Actors/Enemy/enemy.gd" id="1_2ixnb"]
 [ext_resource type="Texture2D" uid="uid://brwm75wj4rfd0" path="res://Assets/Sprites/Enemies/Enemy1.png" id="2_2ixnb"]
 [ext_resource type="Script" uid="uid://u50f423e2317" path="res://Scripts/Actors/Enemy/enemy_resource.gd" id="2_38glk"]
-[ext_resource type="Script" uid="uid://cogn7slytosua" path="res://Scripts/Actors/Enemy/EnemyDeathComponents/nothing_enemy_death_component.gd" id="3_31imc"]
+[ext_resource type="Script" uid="uid://jlt18axd4kj7" path="res://Scripts/Actors/Enemy/EnemyDeathComponents/base_enemy_death_component.gd" id="3_odgpl"]
 [ext_resource type="Script" uid="uid://bsbonjfxscb2v" path="res://Scripts/Actors/ActorActions/actor_action_node.gd" id="3_r2kd0"]
+[ext_resource type="Script" uid="uid://dxe88x4gntb33" path="res://Scripts/Actors/Enemy/EnemyDeathComponents/particles_enemy_death_component.gd" id="4_cw032"]
 [ext_resource type="Script" uid="uid://bod7gi7o0sngf" path="res://Scripts/Actors/ActorAliveComponents/imortal_actor_alive_component.gd" id="4_k05ym"]
+[ext_resource type="AudioStream" uid="uid://c0l2rw40anihw" path="res://Assets/Sounds/EnemyDeath.wav" id="5_wcx1v"]
 [ext_resource type="Script" uid="uid://cq7uekj2tof0v" path="res://Scripts/Actors/ActorActions/move_in_board_actor_action.gd" id="5_wqrw0"]
+[ext_resource type="Script" uid="uid://82xplmym6pq4" path="res://Scripts/Actors/Enemy/EnemyDeathComponents/sound_enemy_death_component.gd" id="6_a2aiq"]
 [ext_resource type="Script" uid="uid://bwus0docnk165" path="res://Scripts/Actors/ActorActions/FindActorActionComponents/find_possible_movements_component.gd" id="7_k05ym"]
 [ext_resource type="Script" uid="uid://o62lini3y70w" path="res://Scripts/Actors/ActorActions/find_actor_action.gd" id="8_odgpl"]
 [ext_resource type="Script" uid="uid://ctojhqqgqg4yi" path="res://Scripts/Actors/ActorActions/ChooseActorActionComponents/choose_movement_component.gd" id="9_odgpl"]
 [ext_resource type="Script" uid="uid://duhk2f50srq8n" path="res://Scripts/Actors/ActorActions/choose_actor_action.gd" id="10_cw032"]
 [ext_resource type="Script" uid="uid://cvl6ps22s2vjf" path="res://Scripts/Actors/ActorActions/warn_actor_action.gd" id="12_cw032"]
-[ext_resource type="PackedScene" uid="uid://de2pxyj06qdwo" path="res://Scenes/Enemies/enemy_warning_layer.tscn" id="14_cw032"]
 
 [sub_resource type="Resource" id="Resource_k05ym"]
 script = ExtResource("2_38glk")
@@ -21,9 +23,14 @@ points_on_death = 1
 kills_on_death = 1
 metadata/_custom_type_script = "uid://u50f423e2317"
 
-[sub_resource type="Resource" id="Resource_odgpl"]
-script = ExtResource("3_31imc")
-metadata/_custom_type_script = "uid://cogn7slytosua"
+[sub_resource type="Resource" id="Resource_ypufm"]
+script = ExtResource("4_cw032")
+metadata/_custom_type_script = "uid://dxe88x4gntb33"
+
+[sub_resource type="Resource" id="Resource_qqs2h"]
+script = ExtResource("6_a2aiq")
+death_sound = ExtResource("5_wcx1v")
+metadata/_custom_type_script = "uid://82xplmym6pq4"
 
 [sub_resource type="Resource" id="Resource_cw032"]
 script = ExtResource("4_k05ym")
@@ -67,20 +74,17 @@ action_tick = 8
 action_priority = 1
 metadata/_custom_type_script = "uid://cq7uekj2tof0v"
 
-[node name="Ladybug" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("actor_action_nodes_parent", "warning_layer")]
+[node name="Ladybug" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("actor_action_nodes_parent")]
 script = ExtResource("1_2ixnb")
 enemy_resource = SubResource("Resource_k05ym")
-death_component = SubResource("Resource_odgpl")
+death_components = Array[ExtResource("3_odgpl")]([SubResource("Resource_ypufm"), SubResource("Resource_qqs2h")])
 actor_action_nodes_parent = NodePath("Actions")
 max_ticks = 8
 alive_component = SubResource("Resource_cw032")
-warning_layer = NodePath("WarningLayer")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733223946]
 z_index = 6
 texture = ExtResource("2_2ixnb")
-
-[node name="WarningLayer" parent="." unique_id=1612680677 instance=ExtResource("14_cw032")]
 
 [node name="Actions" type="Node" parent="." unique_id=950043364]
 

@@ -1,9 +1,7 @@
 ------ Sobre a complexidade do projeto ------
 
 Esse projeto foi feito, inicialmente, apenas para a segunda fase do PSEL da FOG.
-Entretanto, me empolguei bastante e isso virou praticamente outra coisa.
-
-Planejo, eventualmente, publicar isso no itch.io e queria tentar dar suporte a mods, por isso tudo é bem modular e abstraído
+Entretanto, me diverti muito fazendo isso e acabou ficando bem grande.
 
 Para facilitar a vida da alma infortunada que vai ter que analisar isso, aqui está onde cada ponto pode ser encontrado:
 
@@ -103,12 +101,17 @@ O código e demais elementos para a mecanica estão distribuídos em:
 	res://Scenes/Fruits/coffee.tscn
 
 "Tocar uma música durante o jogo e permitir o jogador desabilitar ela se quiser."
-Talvez eu tenha implementado a música (não fiz ainda no momento que escrevo isso)
+Implementei todo o sistema pra fazer isso acontecer, mas sou péssimo em fazer músicas então não tem nenhuma tocando. 
+Obs: A fase "Maze" tem música
 O código para a mecanica está distribuído em:
 	res://Scripts/Globals/save_manager.gd
 	res://Scripts/Settings/settings_data.gd
 	res://Scripts/Settings/settings_ui.gd
 	res://Scenes/UI/settings.tscn
+	res://Scripts/Music/music_player.gd
+	res://Scripts/Music/music_player_api_node.gd
+	res://Scripts/Music/MusicPlayerActions
+	res://Scenes/Music/music_player.tscn
 
 "Criar um ranking das X melhores pontuações."
 Isso pode ser visto no mapa depois de vencer uma fase

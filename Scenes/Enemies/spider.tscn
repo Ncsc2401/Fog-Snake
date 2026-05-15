@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://dc2pgdqlx4j8x" path="res://Scripts/Actors/Enemy/enemy.gd" id="1_x8t5f"]
 [ext_resource type="Script" uid="uid://u50f423e2317" path="res://Scripts/Actors/Enemy/enemy_resource.gd" id="2_4ni7r"]
-[ext_resource type="Script" uid="uid://cogn7slytosua" path="res://Scripts/Actors/Enemy/EnemyDeathComponents/nothing_enemy_death_component.gd" id="3_ud1yb"]
+[ext_resource type="Script" uid="uid://jlt18axd4kj7" path="res://Scripts/Actors/Enemy/EnemyDeathComponents/base_enemy_death_component.gd" id="3_rnqnt"]
+[ext_resource type="Script" uid="uid://dxe88x4gntb33" path="res://Scripts/Actors/Enemy/EnemyDeathComponents/particles_enemy_death_component.gd" id="4_esu77"]
 [ext_resource type="Script" uid="uid://byibdqmac44j" path="res://Scripts/Actors/ActorAliveComponents/surrounded_blocked_actor_alive_component.gd" id="4_rnqnt"]
+[ext_resource type="AudioStream" uid="uid://c0l2rw40anihw" path="res://Assets/Sounds/EnemyDeath.wav" id="5_t0rfl"]
 [ext_resource type="Texture2D" uid="uid://70v8vhbg2iou" path="res://Assets/Sprites/Enemies/Spider.png" id="5_wloym"]
-[ext_resource type="Texture2D" uid="uid://c01kdmux1k782" path="res://Assets/Sprites/WarningTile.png" id="6_q8vsf"]
+[ext_resource type="Script" uid="uid://82xplmym6pq4" path="res://Scripts/Actors/Enemy/EnemyDeathComponents/sound_enemy_death_component.gd" id="6_qub8n"]
 [ext_resource type="Script" uid="uid://bsbonjfxscb2v" path="res://Scripts/Actors/ActorActions/actor_action_node.gd" id="7_ox5xr"]
 [ext_resource type="Script" uid="uid://c03a10cllu2f8" path="res://Scripts/Actors/ActorActions/FindActorActionComponents/find_fruits_component.gd" id="8_q8vsf"]
 [ext_resource type="Script" uid="uid://o62lini3y70w" path="res://Scripts/Actors/ActorActions/find_actor_action.gd" id="9_6hqkn"]
@@ -25,22 +27,18 @@ points_on_death = 5
 kills_on_death = 1
 metadata/_custom_type_script = "uid://u50f423e2317"
 
-[sub_resource type="Resource" id="Resource_2n3tg"]
-script = ExtResource("3_ud1yb")
-metadata/_custom_type_script = "uid://cogn7slytosua"
+[sub_resource type="Resource" id="Resource_pg7vi"]
+script = ExtResource("4_esu77")
+metadata/_custom_type_script = "uid://dxe88x4gntb33"
+
+[sub_resource type="Resource" id="Resource_xqxd6"]
+script = ExtResource("6_qub8n")
+death_sound = ExtResource("5_t0rfl")
+metadata/_custom_type_script = "uid://82xplmym6pq4"
 
 [sub_resource type="Resource" id="Resource_hh5vg"]
 script = ExtResource("4_rnqnt")
 metadata/_custom_type_script = "uid://byibdqmac44j"
-
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2ixnb"]
-texture = ExtResource("6_q8vsf")
-texture_region_size = Vector2i(32, 32)
-0:0/0 = 0
-
-[sub_resource type="TileSet" id="TileSet_r2kd0"]
-tile_size = Vector2i(32, 32)
-sources/0 = SubResource("TileSetAtlasSource_2ixnb")
 
 [sub_resource type="Resource" id="Resource_rxrcf"]
 script = ExtResource("8_q8vsf")
@@ -114,27 +112,17 @@ action_tick = 4
 action_priority = 1
 metadata/_custom_type_script = "uid://cq7uekj2tof0v"
 
-[node name="Spider" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("actor_action_nodes_parent", "warning_layer")]
+[node name="Spider" type="Node2D" unique_id=1272509503 node_paths=PackedStringArray("actor_action_nodes_parent")]
 script = ExtResource("1_x8t5f")
 enemy_resource = SubResource("Resource_esu77")
-death_component = SubResource("Resource_2n3tg")
+death_components = Array[ExtResource("3_rnqnt")]([SubResource("Resource_pg7vi"), SubResource("Resource_xqxd6")])
 actor_action_nodes_parent = NodePath("Actions")
 max_ticks = 4
 alive_component = SubResource("Resource_hh5vg")
-warning_layer = NodePath("WarningLayer")
-debug_print_failed_actions = true
-debug_print_brain_data_every_tick = true
-debug_print_current_tick = true
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1733223946]
 z_index = 6
 texture = ExtResource("5_wloym")
-
-[node name="WarningLayer" type="TileMapLayer" parent="." unique_id=1635689485]
-top_level = true
-z_index = 5
-z_as_relative = false
-tile_set = SubResource("TileSet_r2kd0")
 
 [node name="Actions" type="Node" parent="." unique_id=284076575]
 

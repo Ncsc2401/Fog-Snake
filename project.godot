@@ -18,7 +18,7 @@ config/name="AbsurdismSnake"
 config/version="1.0"
 run/main_scene="uid://crvgjomcchcnf"
 config/features=PackedStringArray("4.6", "Forward Plus")
-config/icon="res://Assets/icon.svg"
+config/icon="uid://b6alqk6edrfe5"
 
 [audio]
 

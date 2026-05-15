@@ -3,7 +3,9 @@
 Esse projeto foi feito, inicialmente, apenas para a segunda fase do PSEL da FOG.
 Entretanto, me diverti muito fazendo isso e acabou ficando bem grande.
 
-Para facilitar a vida da alma infortunada que vai ter que analisar isso, aqui está onde cada ponto pode ser encontrado:
+Para a alma infortunada que vai ter que analisar isso, você tem 2 opções:
+a) Analisar o código do primeiro commit ("Snake base")
+b) Seguir o mapa abaixo de onde cada ponto do projeto pode ser encontrato
 
 ------ Pontos Obrigatórios ------
 
